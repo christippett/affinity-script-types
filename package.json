@@ -1,7 +1,7 @@
 {
   "name": "affinity-script-types",
   "version": "0.1.0",
-  "homepage": "https://github.com/christippett/affinity-type-scripts",
+  "homepage": "https://github.com/christippett/affinity-script-types",
   "author": "Chris Tippett <git@christippett.dev>",
   "description": "Generates TypeScript definitions for the Affinity scripting SDK.",
   "repository": {
@@ -14,6 +14,7 @@
   },
   "type": "module",
   "files": [
+    "types",
     "generate-types.mjs",
     "affinity_catalog.json",
     "affinity_structs.json",
@@ -26,10 +27,11 @@
     "README.md"
   ],
   "bin": {
-    "generate-affinity-types": "generate-types.mjs"
+    "affinity-types": "generate-types.mjs"
   },
   "scripts": {
-    "postinstall": "node generate-types.mjs",
+    "postinstall": "node generate-types.mjs --postinstall",
+    "build": "node generate-types.mjs --out-dir .",
     "generate": "node generate-types.mjs"
   },
   "keywords": [

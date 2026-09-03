@@ -4,53 +4,75 @@ This package contains TypeScript definitions for the [Affinity v3](https://affin
 
 ## What it does
 
-`npm install` (or `pnpm add`) runs a `postinstall` script that reads the JSLib sources shipped inside the Affinity application and adds the following files to your project's workspace:
+This package ships **pre-generated TypeScript definitions** inside the package itself (`node_modules/affinity-script-types/types/`):
 
-- `types/` — 62 modular `.d.ts` declarations, the 19 native `affinity:*`
-  modules, and a bundled reference.
-- `jsconfig.json` — a `paths` mapping that makes `require('/document')`,
-  `require('/geometry.js')` and `require('affinity:common')` resolve.
+- 62 modular `.d.ts` declarations covering Affinity's JSLib.
+- 19 native `affinity:*` module definitions with exact enums, parameter ranges, and struct types.
+- A bundled ambient reference.
 
-Open the project folder as your editor workspace root and your `.js` scripts get autocomplete, hover signatures and type checking immediately.
+When you run `npm install` (or `pnpm add`), the `postinstall` script automatically creates a `jsconfig.json` in your workspace root (if one doesn't exist) with path mappings that point to the package's type definitions:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "checkJs": true,
+    "allowJs": true,
+    "noEmit": true,
+    "types": [],
+    "paths": {
+      "/*": ["./node_modules/affinity-script-types/types/*"],
+      "/*.js": ["./node_modules/affinity-script-types/types/*"]
+    }
+  },
+  "include": ["**/*.js", "./node_modules/affinity-script-types/types/**/*.d.ts"]
+}
+```
+
+Because the type definitions live inside `node_modules`, your repository remains clean — no 60+ `.d.ts` files dumped into your project root.
 
 ## Usage
 
 ```bash
 cd my-affinity-scripts
-npm install affinity-script-types     # generates types/ + jsconfig.json
+npm install affinity-script-types
 ```
 
-Then open `my-affinity-scripts` in Zed, VS Code, or Cursor as the workspace root. No further configuration.
+Open `my-affinity-scripts` in Zed, VS Code, Cursor, or any LSP-enabled editor as your workspace root. Autocomplete, hover signatures, and type checking work immediately.
 
-### Regenerating manually
+### Initializing or restoring `jsconfig.json`
+
+If you installed with `--ignore-scripts`, or deleted your `jsconfig.json`, run:
+
+```bash
+npx affinity-types init
+# or overwrite an existing config
+npx affinity-types init --force
+```
+
+### Regenerating types locally (optional)
+
+The types shipped with the package are pre-built from Affinity's SDK. If Affinity releases an update and you want to regenerate types directly from your locally installed app bundle:
 
 ```bash
 npx affinity-types
-# or
-node node_modules/affinity-script-types/generate-types.mjs
 ```
 
 Flags:
 
-| Flag               | Default                                               | Purpose                                     |
-| ------------------ | ----------------------------------------------------- | ------------------------------------------- |
-| `--out-dir <path>` | the directory `npm install` was run from              | Where to write `types/` and `jsconfig.json` |
-| `--jslib <path>`   | `/Applications/Affinity.app/Contents/Resources/JSLib` | Override the JSLib source directory         |
-
-## How it works
-
-`generate-types.mjs` parses Affinity's internal JSLib source files and combines them with captured snapshots of the native `affinity:*` namespace (enums, structs, `*Api` method names, numeric bounds, and fixed array sizes with element types) shipped alongside this package, plus hand-pinned type overrides.
+| Flag               | Default                                               | Purpose                                      |
+| ------------------ | ----------------------------------------------------- | -------------------------------------------- |
+| `init`             | —                                                     | Create/restore `jsconfig.json` in project    |
+| `--force`          | `false`                                               | Overwrite existing `jsconfig.json`           |
+| `--out-dir <path>` | Current directory / `~/AffinityScripts`               | Output directory for regenerated types files |
+| `--jslib <path>`   | `/Applications/Affinity.app/Contents/Resources/JSLib` | Override the JSLib source directory          |
 
 ## Requirements
 
-- Affinity by Canva installed at the default macOS path (override with
-  `--jslib` otherwise).
-- Node.js (for the install-time generator). The generated `.d.ts` files
-  themselves are consumed by your editor's TypeScript language server — no Node
-  is needed at edit time.
-
-If Affinity is not installed (or its `JSLib` directory is missing or empty), the `postinstall` still exits `0` so your `npm install` never fails. It prints a message explaining that the package is inert without a local Affinity install — it has no runtime functionality and can be uninstalled — plus the command to generate types later (`npx affinity-types` once Affinity is present).
-
+- **To use types:** Node.js and any editor or AI agent harness supporting TypeScript / JavaScript LSP (VS Code, Zed, Cursor, Claude Code, etc.). Affinity does *not* need to be installed or running.
+- **To regenerate types from local app bundle (optional):** Affinity by Canva installed at the default macOS path (or passed via `--jslib`).
 ## AI agents: LSP vs. MCP-only
 
 When using an AI coding agent (such as Claude Code, Cursor, or harnesses with Language Server Protocol tools), installing this package gives the agent immediate, authoritative code intelligence through its local TypeScript language server rather than querying Affinity's MCP server across multiple turns.
