@@ -1,0 +1,378 @@
+{
+  "affinity:commands": {
+    "GroupTransformData": [
+      "reorderSpaces",
+      "isAutoSpacing",
+      "spacing",
+      "order",
+      "anchor",
+      "type"
+    ]
+  },
+  "affinity:common": {
+    "UnitValue": [
+      "units",
+      "value"
+    ]
+  },
+  "affinity:geometry": {
+    "CubicBezier": [
+      "end",
+      "c2",
+      "c1",
+      "start"
+    ],
+    "CurveCornerData": null,
+    "CurveNode": [
+      "type",
+      "style",
+      "position"
+    ],
+    "Point": [
+      "y",
+      "x"
+    ],
+    "Rectangle": [
+      "height",
+      "width",
+      "y",
+      "x"
+    ],
+    "Size": [
+      "height",
+      "width"
+    ],
+    "SizeInt": [
+      "height",
+      "width"
+    ],
+    "Transform": [
+      "data"
+    ],
+    "TransformData": [
+      "translateY",
+      "translateX",
+      "rotation",
+      "shear",
+      "scaleY",
+      "scaleX"
+    ],
+    "Vector": [
+      "y",
+      "x"
+    ]
+  },
+  "affinity:raster": {
+    "NodeRenderingEngineOptions": [
+      "drawBackground",
+      "isIsolatedRendering",
+      "allowDegradedBitmaps",
+      "clipToSpread",
+      "isMaskRenderingMode",
+      "ditherGradients",
+      "antialias",
+      "isPerfectClipping",
+      "upResamplerType",
+      "downResamplerType"
+    ]
+  },
+  "affinity:story": {
+    "StoryRange": [
+      "end",
+      "begin"
+    ]
+  },
+  "affinity:dom": {
+    "AddNoiseFilterParameters": [
+      "noiseType",
+      "intensity",
+      "isMonochromatic"
+    ],
+    "BilateralBlurFilterParameters": [
+      "radius",
+      "tolerance"
+    ],
+    "BlackAndWhiteAdjustmentParameters": [
+      "red",
+      "green",
+      "blue",
+      "cyan",
+      "magenta",
+      "yellow"
+    ],
+    "BloomFilterParameters": [
+      "method",
+      "shadowBlend",
+      "midtoneBlend",
+      "highlightBlend",
+      "isStrong",
+      "colour"
+    ],
+    "BoxBlurFilterParameters": [
+      "radius"
+    ],
+    "BrightnessContrastAdjustmentParameters": [
+      "brightness",
+      "contrast",
+      "isLinear"
+    ],
+    "ClarityFilterParameters": [
+      "strength"
+    ],
+    "ColourBalanceAdjustmentParameters": [
+      "preserveLuminosity",
+      "values"
+    ],
+    "ColourBalanceValues": [
+      "yellowBlue",
+      "magentaGreen",
+      "cyanRed"
+    ],
+    "CurveEdgeSubSelectionItem": [
+      "edgeID",
+      "curveID"
+    ],
+    "CurveNodeSubSelectionItem": [
+      "nodeID",
+      "curveID"
+    ],
+    "DefringeFilterParameters": [
+      "hue",
+      "removeComplementary",
+      "tolerance",
+      "radius",
+      "edgeBrightnessThreshold"
+    ],
+    "DenoiseFilterParameters": [
+      "luminance",
+      "luminanceDetail",
+      "luminanceContribution",
+      "colours",
+      "coloursContribution"
+    ],
+    "DiffuseFilterParameters": [
+      "intensity"
+    ],
+    "DiffuseGlowFilterParameters": [
+      "radius",
+      "intensity",
+      "threshold",
+      "opacity"
+    ],
+    "DustAndScratchFilterParameters": [
+      "radius",
+      "tolerance",
+      "isChannelTolerance"
+    ],
+    "EllipticalDepthOfFieldParameters": [
+      "position",
+      "rotation",
+      "inFocus",
+      "radiusY",
+      "radiusX"
+    ],
+    "ExposureAdjustmentParameters": [
+      "exposure"
+    ],
+    "FieldBlurItemParameters": [
+      "position",
+      "power",
+      "level"
+    ],
+    "GaussianBlurFilterParameters": [
+      "radius"
+    ],
+    "HSLShiftAdjustmentChannelParameters": [
+      "hueShift",
+      "saturationShift",
+      "luminosityShift"
+    ],
+    "HSLShiftAdjustmentColourRange": [
+      "rampUpBegin",
+      "rampUpEnd",
+      "rampDownBegin",
+      "rampDownEnd"
+    ],
+    "HalftoneFilterParameters": [
+      "dotType",
+      "screenType",
+      "cellSize",
+      "screenAngle",
+      "contrast",
+      "greyComponentReplacement",
+      "underColourRemoval"
+    ],
+    "HighPassFilterParameters": [
+      "radius",
+      "isMonochrome"
+    ],
+    "LTRB": [
+      "left",
+      "top",
+      "right",
+      "bottom"
+    ],
+    "LensBlurFilterParameters": [
+      "radius",
+      "numberOfBlades",
+      "bladeCurvature",
+      "bloomThreshold",
+      "bloomFactor",
+      "bloomColour"
+    ],
+    "LevelsAdjustmentChannelParameters": [
+      "outputWhiteLevel",
+      "outputBlackLevel",
+      "gamma",
+      "whiteLevel",
+      "blackLevel"
+    ],
+    "LevelsAdjustmentParameters": [
+      "channelParameters",
+      "masterParameters"
+    ],
+    "MaximumBlurFilterParameters": [
+      "radius",
+      "isCircular"
+    ],
+    "MedianBlurFilterParameters": [
+      "radius"
+    ],
+    "MeshSubSelectionItem": [
+      "y",
+      "x"
+    ],
+    "MinimumBlurFilterParameters": [
+      "radius",
+      "isCircular"
+    ],
+    "MotionBlurFilterParameters": [
+      "radius",
+      "angle"
+    ],
+    "NormalsAdjustmentParameters": [
+      "rotation",
+      "scale",
+      "flipX",
+      "flipY"
+    ],
+    "PinchPunchFilterParameters": [
+      "position",
+      "radius",
+      "intensity"
+    ],
+    "PixelateFilterParameters": [
+      "quantisation"
+    ],
+    "PosteriseAdjustmentParameters": [
+      "levels"
+    ],
+    "RadialBlurFilterParameters": [
+      "position",
+      "angle"
+    ],
+    "RecolourAdjustmentParameters": [
+      "hue",
+      "saturation",
+      "lightness"
+    ],
+    "RippleFilterParameters": [
+      "position",
+      "intensity"
+    ],
+    "SelectiveColourAdjustmentParameters": [
+      "weights",
+      "isRelative"
+    ],
+    "ShadowsHighlightsAdjustmentParameters": [
+      "shadows",
+      "highlights"
+    ],
+    "ShadowsHighlightsFilterParameters": [
+      "version",
+      "shadowsStrength",
+      "shadowsRange",
+      "shadowsRadius",
+      "highlightsStrength",
+      "highlightsRange",
+      "highlightsRadius"
+    ],
+    "SphericalFilterParameters": [
+      "position",
+      "radius",
+      "intensity"
+    ],
+    "SplitToningAdjustmentParameters": [
+      "highlightsHue",
+      "highlightsSaturation",
+      "shadowsHue",
+      "shadowsSaturation",
+      "balance"
+    ],
+    "ThresholdAdjustmentParameters": [
+      "threshold"
+    ],
+    "TiltShiftDepthOfFieldParameters": [
+      "position",
+      "rotation",
+      "bottom",
+      "inFocusBottom",
+      "inFocusTop",
+      "top"
+    ],
+    "ToneCompressionAdjustmentParameters": [
+      "method",
+      "exposure",
+      "gamma",
+      "colour"
+    ],
+    "ToneStretchAdjustmentParameters": [
+      "method",
+      "gamma",
+      "stretchFactor",
+      "compression"
+    ],
+    "TwirlFilterParameters": [
+      "position",
+      "radius",
+      "angle"
+    ],
+    "UnsharpMaskFilterParameters": [
+      "radius",
+      "threshold",
+      "factor"
+    ],
+    "VibranceAdjustmentParameters": [
+      "vibrance",
+      "saturation"
+    ],
+    "VignetteFilterParameters": [
+      "exposure",
+      "hardness",
+      "scale",
+      "shape"
+    ],
+    "VoronoiFilterParameters": [
+      "cellSize",
+      "lineWidth"
+    ],
+    "WhiteBalanceAdjustmentParameters": [
+      "whiteBalance",
+      "tint"
+    ],
+    "SelectiveColourWeights": [
+      "blackWeight",
+      "cyanWeight",
+      "magentaWeight",
+      "yellowWeight"
+    ]
+  },
+  "affinity:colours": {
+    "ColourStop": [
+      "position",
+      "midpoint",
+      "smoothness",
+      "colour"
+    ]
+  }
+}

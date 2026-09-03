@@ -1,0 +1,26 @@
+{
+  "ColourBalanceAdjustmentParameters": {
+    "values": {
+      "size": "[TonalRangeType.Highlights + 1]",
+      "element": "ColourBalanceValues"
+    }
+  },
+  "LevelsAdjustmentParameters": {
+    "channelParameters": {
+      "size": "[5]",
+      "element": "LevelsAdjustmentChannelParameters"
+    }
+  },
+  "SelectiveColourAdjustmentParameters": {
+    "weights": {
+      "size": "[SelectiveColour.Blacks + 1]",
+      "element": "SelectiveColourWeights"
+    }
+  },
+  "Transform": {
+    "data": {
+      "size": "[6]",
+      "element": "number"
+    }
+  }
+}

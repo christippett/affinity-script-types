@@ -1,0 +1,45 @@
+{
+  "name": "affinity-script-types",
+  "version": "0.1.0",
+  "homepage": "https://github.com/christippett/affinity-type-scripts",
+  "author": "Chris Tippett <git@christippett.dev>",
+  "description": "Generates TypeScript definitions for the Affinity scripting SDK.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christippett/affinity-script-types.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christippett/affinity-script-types/issues"
+  },
+  "type": "module",
+  "files": [
+    "generate-types.mjs",
+    "affinity_catalog.json",
+    "affinity_structs.json",
+    "affinity_exports.json",
+    "affinity_api.json",
+    "affinity_overrides.json",
+    "affinity_param_ranges.json",
+    "affinity_struct_ranges.json",
+    "affinity_struct_array_sizes.json",
+    "README.md"
+  ],
+  "bin": {
+    "generate-affinity-types": "generate-types.mjs"
+  },
+  "scripts": {
+    "postinstall": "node generate-types.mjs",
+    "generate": "node generate-types.mjs"
+  },
+  "keywords": [
+    "affinity",
+    "affinity-designer",
+    "affinity-photo",
+    "affinity-publisher",
+    "scripting",
+    "typescript",
+    "types",
+    "autocomplete"
+  ]
+}
