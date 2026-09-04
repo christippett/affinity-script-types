@@ -8,6 +8,10 @@
     "type": "git",
     "url": "git+https://github.com/christippett/affinity-script-types.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/christippett/affinity-script-types/issues"
@@ -30,6 +34,7 @@
     "affinity-types": "generate-types.mjs"
   },
   "scripts": {
+    "test": "node --check generate-types.mjs",
     "postinstall": "node generate-types.mjs --postinstall",
     "build": "node generate-types.mjs --out-dir .",
     "generate": "node generate-types.mjs"
