@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/christippett/affinity-script-types/compare/v1.0.0...v1.1.0) (2026-09-07)
+
+
+### Features
+
+* Improve parameter and return type inference ([d0b431c](https://github.com/christippett/affinity-script-types/commit/d0b431cf841319bd9bffe97c1b2a6bed8c3f59e0))
+
 ## 1.0.0 (2026-09-07)
 
 

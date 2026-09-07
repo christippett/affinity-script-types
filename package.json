@@ -1,6 +1,6 @@
 {
   "name": "affinity-script-types",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/christippett/affinity-script-types",
   "author": "Chris Tippett <git@christippett.dev>",
   "description": "Generates TypeScript definitions for the Affinity scripting SDK.",
