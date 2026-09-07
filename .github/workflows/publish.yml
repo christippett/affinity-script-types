@@ -69,4 +69,4 @@ jobs:
           package-manager-cache: false
 
       - name: Publish to npm with provenance
-        run: npm publish
+        run: npm stage publish
