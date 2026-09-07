@@ -6,7 +6,7 @@ export class LayerEffectsInterface extends HandleObject {
   constructor(handle?: any);
   readonly effectCount: any;
   getEffect(index?: any): any;
-  enumerateEffects(callback?: any): any;
+  enumerateEffects(callback?: (...args: any[]) => any): any;
   readonly effects: any;
   readonly hasAnyVisibleEffects: any;
   readonly hasActiveEffects: any;

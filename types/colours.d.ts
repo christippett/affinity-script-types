@@ -58,27 +58,27 @@ export class Colour extends HandleObject {
 
 export class ColourProfile extends HandleObject {
   constructor(handle?: any);
-  readonly isColourProfile: any;
-  readonly name: any;
-  readonly isStandard: any;
-  readonly isLinear: any;
+  readonly isColourProfile: boolean;
+  readonly name: string;
+  readonly isStandard: boolean;
+  readonly isLinear: boolean;
   readonly colourSpace: any;
   readonly colourSpaceStr: any;
-  readonly version: any;
-  readonly versionStr: any;
-  readonly deviceClass: any;
-  readonly deviceClassStr: any;
+  readonly version: number;
+  readonly versionStr: string;
+  readonly deviceClass: number;
+  readonly deviceClassStr: string;
   canApplyTo(format?: any): any;
-  readonly approximateGamma: any;
+  readonly approximateGamma: number;
   static find(name?: any): ColourProfile;
   static readonly profileCount: any;
   static getProfile(index?: any): ColourProfile;
   static getAll(): any;
   static getDefaultForColourSpace(colourSpace?: any): ColourProfile;
   static getDefaultForFormat(format?: any): ColourProfile;
-  static enumerateProfiles(callback?: any): any;
-  static enumerateProfilesForFormat(format?: any, callback?: any): any;
-  static enumerateProfilesForColourSpace(colourSpace?: any, callback?: any): any;
+  static enumerateProfiles(callback?: (...args: any[]) => any): any;
+  static enumerateProfilesForFormat(format?: any, callback?: (...args: any[]) => any): any;
+  static enumerateProfilesForColourSpace(colourSpace?: any, callback?: (...args: any[]) => any): any;
   static getProfilesForFormat(format?: any): any;
   static getProfilesForColourSpace(colourSpace?: any): any;
 }

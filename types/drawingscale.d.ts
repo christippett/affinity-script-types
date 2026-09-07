@@ -4,10 +4,10 @@ import { HandleObject } from '/handleobject';
 
 export class DrawingScale extends HandleObject {
   constructor(handle?: any);
-  toString(useTightFormat?: any, showUnits?: any, indicateApproximations?: any): any;
+  undefined
   readonly leftValue: any;
   readonly rightValue: any;
-  static enumerateDefaults(units?: any, callback?: any): any;
+  static enumerateDefaults(units?: any, callback?: (...args: any[]) => any): any;
   static getDefaults(units?: any): any;
   static createFromIntegers(left?: any, right?: any, simplifyFaction?: any): DrawingScale;
   static create(leftUnitValue?: any, rightUnitValue?: any): DrawingScale;

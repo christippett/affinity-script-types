@@ -12,7 +12,7 @@ export class HatchLine extends HandleObject {
   readonly patternDashCount: any;
   getPatternDash(index?: any): any;
   pattern: any;
-  enumeratePattern(callback?: any): any;
+  enumeratePattern(callback?: (...args: any[]) => any): any;
   readonly isSolid: any;
 }
 
@@ -23,7 +23,7 @@ export class HatchPattern extends HandleObject {
   static createDefault(): HatchPattern;
   readonly hatchLineCount: any;
   getHatchLine(index?: any): HatchLine;
-  enumerateHatchLines(callback?: any): any;
+  enumerateHatchLines(callback?: (...args: any[]) => any): any;
   appendHatchLine(hatchLine?: any): any;
   appendHatchLineData(origin?: any, rotation?: any, step?: any, pattern?: any): any;
   clearHatchLines(): any;

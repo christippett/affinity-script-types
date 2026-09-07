@@ -95,7 +95,7 @@ export class CompoundCommandBuilder extends HandleObject {
 export class DocumentCommand extends HandleObject {
   constructor(handle?: any);
   readonly description: any;
-  enumerateNewNodes(callback?: any): any;
+  enumerateNewNodes(callback?: (...args: any[]) => any): any;
   readonly newNodes: any;
   static createSetSelection(selection?: any): DocumentCommand;
   static createDeleteSelection(selection?: any, ignoreRasterSelection?: any): DocumentCommand;

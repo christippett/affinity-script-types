@@ -6,8 +6,8 @@ export class UnitValueConverter extends HandleObject {
   constructor(handle?: any);
   static create(dpi?: any, viewDpi?: any): UnitValueConverter;
   clone(): UnitValueConverter;
-  readonly dpi: any;
-  readonly viewDpi: any;
+  readonly dpi: number;
+  readonly viewDpi: number;
   getConversionFactor(from?: any, to?: any): any;
 }
 

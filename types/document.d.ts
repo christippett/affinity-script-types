@@ -16,7 +16,7 @@ export class Document extends HandleObject {
   executeCommand(documentCommand?: any, preview?: any): any;
   readonly history: any;
   static readonly current: Document | null;
-  static enumerateAll(callback?: any): any;
+  static enumerateAll(callback?: (...args: any[]) => any): any;
   static readonly all: any;
   static load(path?: any): Document;
   readonly isEmbedded: boolean;
@@ -39,27 +39,27 @@ export class Document extends HandleObject {
   readonly maskFormat: any;
   units: any;
   readonly unitValueConverter: any;
-  enumerateSnapshots(callback?: any): any;
+  enumerateSnapshots(callback?: (...args: any[]) => any): any;
   readonly snapshotCount: any;
   readonly snapshots: any;
   readonly currentSnapshotIndex: any;
   readonly currentSnapshotHistoryIndex: any;
   readonly currentSnapshot: any;
   readonly rasterSelection: any;
-  enumerateFontNames(callback?: any): any;
+  enumerateFontNames(callback?: (...args: any[]) => any): any;
   getFontNames(): any;
   readonly sessionUuid: string;
   readonly persistentUuid: string;
-  static getCurrentAsync(callback?: any): any;
-  static loadAsync(path?: any, callback?: any): any;
-  static createFromPresetAsync(preset?: any, landscape?: any, callback?: any): any;
-  static createAsync(options?: any, callback?: any): any;
-  executeCommandAsync(command?: any, callback?: any, preview?: any): any;
-  saveAsync(callback?: any): any;
-  saveAsAsync(path?: any, callback?: any): any;
-  saveAsPackageAsync(path?: any, policy?: any, callback?: any): any;
-  closeAsync(callback?: any): any;
-  exportAsync(path?: any, exportOptions?: any, exportArea?: any, size?: any, callback?: any): any;
+  static getCurrentAsync(callback?: (...args: any[]) => any): any;
+  static loadAsync(path?: any, callback?: (...args: any[]) => any): any;
+  static createFromPresetAsync(preset?: any, landscape?: any, callback?: (...args: any[]) => any): any;
+  static createAsync(options?: any, callback?: (...args: any[]) => any): any;
+  executeCommandAsync(command?: any, callback?: (...args: any[]) => any, preview?: any): any;
+  saveAsync(callback?: (...args: any[]) => any): any;
+  saveAsAsync(path?: any, callback?: (...args: any[]) => any): any;
+  saveAsPackageAsync(path?: any, policy?: any, callback?: (...args: any[]) => any): any;
+  closeAsync(callback?: (...args: any[]) => any): any;
+  exportAsync(path?: any, exportOptions?: any, exportArea?: any, size?: any, callback?: (...args: any[]) => any): any;
   readonly sizePixels: any;
   readonly widthPixels: number;
   readonly heightPixels: number;
@@ -283,10 +283,10 @@ export class Document extends HandleObject {
   setArtboardDocumentProperties(artboardInterface?: any, artboardDocumentProperties?: any): any;
   addArtboard(artboardDefinition?: any, copyProperties?: any, copyGuides?: any, preview?: any): any;
   addRectangularArtboard(rectangle?: any, copyProperties?: any, copyGuides?: any, preview?: any): any;
-  setLayerDescriptionAsync(description?: any, selection?: any, callback?: any, preview?: any): any;
-  setTagColourAsync(colour?: any, selection?: any, callback?: any, preview?: any): any;
-  setShapeAsync(shape?: any, selection?: any, callback?: any, preview?: any): any;
-  clearPreviewsAsync(callback?: any): any;
+  setLayerDescriptionAsync(description?: any, selection?: any, callback?: (...args: any[]) => any, preview?: any): any;
+  setTagColourAsync(colour?: any, selection?: any, callback?: (...args: any[]) => any, preview?: any): any;
+  setShapeAsync(shape?: any, selection?: any, callback?: (...args: any[]) => any, preview?: any): any;
+  clearPreviewsAsync(callback?: (...args: any[]) => any): any;
   readonly pageCount: any;
   readonly spreadCount: any;
 }
@@ -304,7 +304,7 @@ export class DocumentExportRecord extends HandleObject {
 export class DocumentExportRecords extends HandleObject {
   constructor(handle?: any);
   readonly count: any;
-  enumerate(callback?: any): any;
+  enumerate(callback?: (...args: any[]) => any): any;
   readonly all: any;
 }
 
@@ -320,12 +320,12 @@ export class DocumentHistory extends HandleObject {
   readonly undoDescription: any;
   readonly redoDescription: any;
   getItem(index?: any): DocumentHistoryItem;
-  enumerateItems(callback?: any): any;
+  enumerateItems(callback?: (...args: any[]) => any): any;
   readonly items: any;
   undo(preview?: any): any;
   redo(preview?: any): any;
-  undoAsync(callback?: any, preview?: any): any;
-  redoAsync(callback?: any, preview?: any): any;
+  undoAsync(callback?: (...args: any[]) => any, preview?: any): any;
+  redoAsync(callback?: (...args: any[]) => any, preview?: any): any;
 }
 
 export class DocumentHistoryItem extends HandleObject {
@@ -339,7 +339,7 @@ export class DocumentHistoryItem extends HandleObject {
 
 export class DocumentPreset extends HandleObject {
   constructor(handle?: any);
-  static enumerateAll(callback?: any): any;
+  static enumerateAll(callback?: (...args: any[]) => any): any;
   static readonly all: any;
   readonly name: any;
   readonly units: any;
@@ -384,7 +384,7 @@ export class DocumentSnapshot extends HandleObject {
   readonly description: any;
   readonly format: any;
   createDocument(): Document;
-  createDocumentAsync(callback?: any): any;
+  createDocumentAsync(callback?: (...args: any[]) => any): any;
 }
 
 export class FileExportArea extends HandleObject {
@@ -402,7 +402,7 @@ export class FileExportArea extends HandleObject {
 
 export class FileExportOptions extends HandleObject {
   constructor(handle?: any);
-  static enumeratePresetNames(callback?: any): any;
+  static enumeratePresetNames(callback?: (...args: any[]) => any): any;
   static createWithPresetName(presetName?: any): FileExportOptions;
   static createForCanvaExport(dpi?: any): FileExportOptions;
   static readonly allPresetNames: any;

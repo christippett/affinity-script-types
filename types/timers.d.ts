@@ -12,11 +12,11 @@ export class Timer extends HandleObject {
   expiryBigInt: any;
   moveExpiry(value?: any): any;
   expiryFromNow: any;
-  waitAsync(callback?: any): any;
+  waitAsync(callback?: (...args: any[]) => any): any;
   dispose(): any;
   expiresFromNow: any;
 }
 
-export function setImmediate(callback?: any, args?: any): any;
-export function setTimeout(delay?: any, callback?: any, args?: any): any;
-export function setInterval(delay?: any, callback?: any, args?: any): any;
+export function setImmediate(callback?: (...args: any[]) => any, args?: any): any;
+export function setTimeout(delay?: any, callback?: (...args: any[]) => any, args?: any): any;
+export function setInterval(delay?: any, callback?: (...args: any[]) => any, args?: any): any;

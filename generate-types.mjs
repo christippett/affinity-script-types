@@ -778,7 +778,12 @@ function parseModule(name, src) {
 
 function tsParams(params) {
   if (params.length === 0) return "";
-  return params.map((p) => `${p}?: any`).join(", ");
+  return params
+    .map((p) => {
+      if (p === "callback") return "callback?: (...args: any[]) => any";
+      return `${p}?: any`;
+    })
+    .join(", ");
 }
 
 function emitClass(cls, indent, localNames, overrides) {
@@ -826,28 +831,32 @@ function emitClass(cls, indent, localNames, overrides) {
     return localNames.has(base) ? r : "any";
   };
 
-  const clsOv = overrides[cls.name] || {};
+  const clsOv = overrides?.classes?.[cls.name] || {};
   for (const [name, isStatic] of order) {
     const prefix = isStatic ? "static " : "";
     const key = `${isStatic}\u0000${name}`;
     const kind = kindByKey.get(key);
-    const ov = clsOv[name] || {};
-    const ovType = ov.type !== undefined ? ov.type : null;
+    const ov = clsOv[name];
+    if (ov) {
+      out.push(`${pad}  ${ov.raw}`);
+      continue;
+    }
     if (kind === "method") {
-      const params =
-        ov.params !== undefined
-          ? ov.params.join(", ")
-          : tsParams(paramsByKey.get(key));
-      const ret = ovType !== null ? ovType : retType(key);
+      const params = tsParams(paramsByKey.get(key));
+      const ret = retType(key);
       out.push(`${pad}  ${prefix}${name}(${params}): ${ret};`);
     } else if (kind === "get") {
-      out.push(
-        `${pad}  ${prefix}readonly ${name}: ${ovType !== null ? ovType : retType(key)};`,
-      );
+      out.push(`${pad}  ${prefix}readonly ${name}: ${retType(key)};`);
     } else {
-      out.push(
-        `${pad}  ${prefix}${name}: ${ovType !== null ? ovType : "any"};`,
-      );
+      out.push(`${pad}  ${prefix}${name}: any;`);
+    }
+  }
+  if (overrides?.classes?.[cls.name]) {
+    for (const [name, mem] of Object.entries(overrides.classes[cls.name])) {
+      const key = `${mem.static}\u0000${name}`;
+      if (!kindByKey.has(key)) {
+        out.push(`${pad}  ${mem.raw}`);
+      }
     }
   }
 
@@ -867,10 +876,8 @@ function emitEnum(name, entries, indent) {
     `${pad}  readonly entries: readonly (readonly [string, number])[];`,
     `${pad}  readonly isEnum: true;`,
     `${pad}  parse(value: number): AffinityEnumValue;`,
-    `${pad}} = {`,
+    `${pad}};`,
   );
-  for (const [k, v] of entries) out.push(`${pad}  ${k}: { value: ${v} },`);
-  out.push(`${pad}} as unknown as any;`);
   return out;
 }
 
@@ -1010,6 +1017,14 @@ function moduleBody(m, registry, enumsByMod, structsByMod, overrides, indent) {
       );
     else lines.push(`${pad}export const ${name}: any;`);
   }
+
+  const extraTypes = overrides?.extraTypes || [];
+  for (const extra of extraTypes) {
+    lines.push("");
+    for (const eline of extra.split("\n")) {
+      lines.push(eline ? `${pad}${eline}` : "");
+    }
+  }
   return lines;
 }
 
@@ -1028,7 +1043,7 @@ interface AffinityEnumValue {
   toString(): string;
 }
 
-declare const environment: {
+declare var environment: {
   readonly logLevel: any;
   readonly SDKVersion: string;
   readonly V8Version: string;
@@ -1036,14 +1051,15 @@ declare const environment: {
   getHeapStatistics(): any;
   postTask(callback: () => void): void;
 };
+declare var console: any;
 
-declare const console: any;
-
-declare class TextDecoder {
-  constructor(encoding?: string);
+interface TextDecoder {
   decode(input?: any, options?: any): string;
 }
-
+declare var TextDecoder: {
+  prototype: TextDecoder;
+  new (encoding?: string): TextDecoder;
+};
 declare module '*.json' {
   const value: any;
   export = value;
@@ -1085,6 +1101,55 @@ const JSCONFIG = getJsconfig();
 
 function loadCatalog(which) {
   return JSON.parse(readFileSync(join(HERE, `affinity_${which}.json`), "utf8"));
+}
+
+function loadOverrides() {
+  const overridesDir = join(HERE, "overrides");
+  const overridesByMod = {};
+  if (!existsSync(overridesDir)) return overridesByMod;
+
+  for (const file of readdirSync(overridesDir)) {
+    if (!file.endsWith(".d.ts")) continue;
+    const modName = file.slice(0, -5);
+    const content = readFileSync(join(overridesDir, file), "utf8");
+    const parsed = { classes: {}, extraTypes: [] };
+
+    let current = [];
+    let depth = 0;
+
+    for (const line of content.split("\n")) {
+      const trimmed = line.trim();
+      if (!depth && (!trimmed || trimmed.startsWith("//") || trimmed.startsWith("import ")))
+        continue;
+      current.push(line);
+      for (const ch of line) {
+        if (ch === "{") depth++;
+        else if (ch === "}") depth--;
+      }
+      if (depth === 0 && current.length) {
+        const block = current.join("\n").trim();
+        current = [];
+        const m = block.match(/^export\s+(?:abstract\s+)?class\s+([A-Za-z_$][\w$]*)(?:\s+extends\s+[A-Za-z_$][\w$]*)?\s*\{([\s\S]*)\}$/);
+        if (m) {
+          const members = {};
+          for (const mline of m[2].split("\n")) {
+            const raw = mline.trim().replace(/;$/, "");
+            if (!raw || raw.startsWith("//")) continue;
+            const isStatic = /\bstatic\s+/.test(raw);
+            const nameMatch = raw.replace(/\b(?:static|readonly)\s+/g, "").match(/^([A-Za-z_$][\w$]*)/);
+            if (nameMatch) {
+              members[nameMatch[1]] = { raw: raw + ";", static: isStatic };
+            }
+          }
+          parsed.classes[m[1]] = members;
+        } else {
+          parsed.extraTypes.push(block);
+        }
+      }
+    }
+    overridesByMod[modName] = parsed;
+  }
+  return overridesByMod;
 }
 
 function discoverJslib(jslib) {
@@ -1131,7 +1196,7 @@ function generate(jslib, outDir) {
   const structs = loadCatalog("structs");
   const exports = loadCatalog("exports");
   const api = loadCatalog("api");
-  const overrides = loadCatalog("overrides");
+  const overrides = loadOverrides();
   const paramRanges = loadCatalog("param_ranges");
   const structRanges = loadCatalog("struct_ranges");
   const structSizes = loadCatalog("struct_array_sizes");
@@ -1172,7 +1237,7 @@ function generate(jslib, outDir) {
   for (const m of modules) {
     const lines = [
       HEADER,
-      ...moduleBody(m, registry, enums, structs, overrides, 0),
+      ...moduleBody(m, registry, enums, structs, overrides[m.name] || {}, 0),
     ];
     writeFileSync(
       join(typesDir, `${m.name}.d.ts`),
@@ -1181,7 +1246,7 @@ function generate(jslib, outDir) {
     );
   }
 
-  const bundled = [HEADER, GLOBALS];
+  const bundled = [HEADER];
   for (const mod of NATIVE_MODULES) {
     bundled.push(
       ...emitNativeModule(
@@ -1199,7 +1264,7 @@ function generate(jslib, outDir) {
   }
   for (const m of modules) {
     bundled.push(`declare module '/${m.name}' {`);
-    bundled.push(...moduleBody(m, registry, enums, structs, overrides, 1));
+    bundled.push(...moduleBody(m, registry, enums, structs, overrides[m.name] || {}, 1));
     bundled.push("}");
     bundled.push("");
   }

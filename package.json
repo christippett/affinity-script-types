@@ -24,7 +24,6 @@
     "affinity_structs.json",
     "affinity_exports.json",
     "affinity_api.json",
-    "affinity_overrides.json",
     "affinity_param_ranges.json",
     "affinity_struct_ranges.json",
     "affinity_struct_array_sizes.json",

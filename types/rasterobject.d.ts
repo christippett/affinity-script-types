@@ -6,7 +6,7 @@ export class Bitmap extends RasterObject {
   constructor(handle?: any);
   static create(width?: any, height?: any, format?: any): Bitmap;
   static loadFromFile(path?: any, format?: any): Bitmap;
-  static loadFromFileAsync(path?: any, format?: any, callback?: any): any;
+  static loadFromFileAsync(path?: any, format?: any, callback?: (...args: any[]) => any): any;
 }
 
 export class NodeRenderingEngine extends RasterObject {

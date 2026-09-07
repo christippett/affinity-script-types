@@ -14,7 +14,7 @@ export class DescriptionInterface extends HandleObject {
   readonly node: any;
   setUserDescription(description?: any, preview?: any): any;
   setTagColour(colour?: any, preview?: any): any;
-  setUserDescriptionAsync(description?: any, callback?: any, preview?: any): any;
-  setTagColourAsync(colour?: any, callback?: any, preview?: any): any;
+  setUserDescriptionAsync(description?: any, callback?: (...args: any[]) => any, preview?: any): any;
+  setTagColourAsync(colour?: any, callback?: (...args: any[]) => any, preview?: any): any;
 }
 

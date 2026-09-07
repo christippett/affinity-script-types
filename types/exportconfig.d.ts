@@ -8,7 +8,7 @@ export class ExportConfig extends HandleObject {
   deleteFormat(index?: any): any;
   replaceFormat(index?: any, exportFormat?: any): any;
   readonly formatCount: any;
-  enumerateFormats(callback?: any): any;
+  enumerateFormats(callback?: (...args: any[]) => any): any;
   readonly formats: any;
 }
 
@@ -18,7 +18,7 @@ export class ExportFormat extends HandleObject {
   deleteSize(index?: any): any;
   replaceSize(index?: any, exportSize?: any): any;
   readonly sizeCount: any;
-  enumerateSizes(callback?: any): any;
+  enumerateSizes(callback?: (...args: any[]) => any): any;
   readonly sizes: any;
   static createWithFileExportOptions(fileExportOptions?: any): ExportFormat;
 }

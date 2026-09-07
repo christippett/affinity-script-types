@@ -17,9 +17,9 @@ export class LineStyleInterface extends HandleObject {
   getFillDescriptor(index?: any, obeyScaleWithObject?: any): any;
   getLineStyleDescriptor(index?: any): any;
   getDescriptors(index?: any, obeyScaleWithObject?: any): any;
-  enumerateFillDescriptors(callback?: any, obeyScaleWithObject?: any): any;
-  enumerateLineStyleDescriptors(callback?: any): any;
-  enumerateDescriptors(callback?: any, obeyScaleWithObject?: any): any;
+  enumerateFillDescriptors(callback?: (...args: any[]) => any, obeyScaleWithObject?: any): any;
+  enumerateLineStyleDescriptors(callback?: (...args: any[]) => any): any;
+  enumerateDescriptors(callback?: (...args: any[]) => any, obeyScaleWithObject?: any): any;
   readonly node: any;
   penFillDescriptor: any;
   lineStyleDescriptor: any;

@@ -12,13 +12,7 @@ declare module 'affinity:application' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    AffinityRetail: { value: 0 },
-    AppStoreRetail: { value: 1 },
-    InternalAlpha: { value: 2 },
-    CustomerBeta: { value: 3 },
-    PublicBeta: { value: 4 },
-  } as unknown as any;
+  };
   export const UiParadigm: {
     readonly Desktop: AffinityEnumValue;
     readonly Tablet: AffinityEnumValue;
@@ -27,10 +21,7 @@ declare module 'affinity:application' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Desktop: { value: 0 },
-    Tablet: { value: 1 },
-  } as unknown as any;
+  };
   export const ApplicationApi: {
     getArgC(...args: any[]): any;
     getArgV(...args: any[]): any;
@@ -80,20 +71,7 @@ declare module 'affinity:brushes' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Random: { value: 1 },
-    Pressure: { value: 2 },
-    Angle: { value: 3 },
-    Tilt: { value: 4 },
-    Rotation: { value: 5 },
-    Cyclic: { value: 6 },
-    Velocity: { value: 7 },
-    VelocityInverse: { value: 8 },
-    Direction: { value: 9 },
-    Wheel: { value: 10 },
-    Distance: { value: 11 },
-  } as unknown as any;
+  };
   export const CornerStrategy: {
     readonly Pull: AffinityEnumValue;
     readonly Fold: AffinityEnumValue;
@@ -103,11 +81,7 @@ declare module 'affinity:brushes' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Pull: { value: 0 },
-    Fold: { value: 1 },
-    Overlap: { value: 2 },
-  } as unknown as any;
+  };
   export const RasterBrushTextureMode: {
     readonly None: AffinityEnumValue;
     readonly Nozzle: AffinityEnumValue;
@@ -117,11 +91,7 @@ declare module 'affinity:brushes' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Nozzle: { value: 1 },
-    Final: { value: 2 },
-  } as unknown as any;
+  };
   export const VectorBrushDynamicControllerType: {
     readonly None: AffinityEnumValue;
     readonly Pressure: AffinityEnumValue;
@@ -132,12 +102,7 @@ declare module 'affinity:brushes' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Pressure: { value: 1 },
-    Velocity: { value: 2 },
-    VelocityInverse: { value: 3 },
-  } as unknown as any;
+  };
   export const BrushDynamicApi: {
     clone(...args: any[]): any;
     getControllerType(...args: any[]): any;
@@ -246,14 +211,7 @@ declare module 'affinity:colours' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Unknown: { value: 0 },
-    Grey: { value: 1 },
-    RGB: { value: 2 },
-    CMYK: { value: 3 },
-    LAB: { value: 4 },
-    RGBU: { value: 5 },
-  } as unknown as any;
+  };
   export class ColourStop {
     constructor(...args: any[]);
     /** [0.0, 1.0] */
@@ -367,15 +325,7 @@ declare module 'affinity:commands' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    LogicalEdge: { value: 0 },
-    Spread: { value: 1 },
-    SpreadMargins: { value: 2 },
-    FirstSelected: { value: 3 },
-    LastSelected: { value: 4 },
-    Page: { value: 5 },
-    PageMargins: { value: 6 },
-  } as unknown as any;
+  };
   export const GroupTransformOrder: {
     readonly Min: AffinityEnumValue;
     readonly Mid: AffinityEnumValue;
@@ -385,11 +335,7 @@ declare module 'affinity:commands' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Min: { value: 0 },
-    Mid: { value: 1 },
-    Max: { value: 2 },
-  } as unknown as any;
+  };
   export const GroupTransformType: {
     readonly None: AffinityEnumValue;
     readonly Min: AffinityEnumValue;
@@ -406,18 +352,7 @@ declare module 'affinity:commands' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Min: { value: 1 },
-    Mid: { value: 2 },
-    Max: { value: 3 },
-    DistributeMin: { value: 4 },
-    DistributeMid: { value: 5 },
-    DistributeMax: { value: 6 },
-    Space: { value: 7 },
-    Reorder: { value: 8 },
-    SpaceKeyObject: { value: 9 },
-  } as unknown as any;
+  };
   export const InsertionMode: {
     readonly Default: AffinityEnumValue;
     readonly Inside_AtBack: AffinityEnumValue;
@@ -429,13 +364,7 @@ declare module 'affinity:commands' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Default: { value: 0 },
-    Inside_AtBack: { value: 1 },
-    Inside_AtFront: { value: 2 },
-    Behind: { value: 3 },
-    Top: { value: 4 },
-  } as unknown as any;
+  };
   export const LineCommandDefaultsMode: {
     readonly None: AffinityEnumValue;
     readonly Line: AffinityEnumValue;
@@ -447,13 +376,7 @@ declare module 'affinity:commands' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Line: { value: 1 },
-    Brush: { value: 2 },
-    ArtText: { value: 3 },
-    FrameText: { value: 4 },
-  } as unknown as any;
+  };
   export class GroupTransformData {
     constructor(...args: any[]);
     reorderSpaces: any;
@@ -933,41 +856,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Normal: { value: 0 },
-    Pigment: { value: 1 },
-    Darken: { value: 2 },
-    DarkerColour: { value: 3 },
-    Multiply: { value: 4 },
-    ColourBurn: { value: 5 },
-    LinearBurn: { value: 6 },
-    Lighten: { value: 7 },
-    LighterColour: { value: 8 },
-    Screen: { value: 9 },
-    ColourDodge: { value: 10 },
-    Add: { value: 11 },
-    Overlay: { value: 12 },
-    SoftLight: { value: 13 },
-    HardLight: { value: 14 },
-    VividLight: { value: 15 },
-    PinLight: { value: 16 },
-    LinearLight: { value: 17 },
-    HardMix: { value: 18 },
-    Difference: { value: 19 },
-    Exclusion: { value: 20 },
-    Subtract: { value: 21 },
-    Divide: { value: 22 },
-    Hue: { value: 23 },
-    Saturation: { value: 24 },
-    Luminosity: { value: 25 },
-    Colour: { value: 26 },
-    Average: { value: 27 },
-    Negation: { value: 28 },
-    Reflect: { value: 29 },
-    Glow: { value: 30 },
-    ContrastInvert: { value: 31 },
-    Erase: { value: 32 },
-  } as unknown as any;
+  };
   export const EnumerationResult: {
     readonly Continue: AffinityEnumValue;
     readonly Stop: AffinityEnumValue;
@@ -976,10 +865,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Continue: { value: 0 },
-    Stop: { value: 1 },
-  } as unknown as any;
+  };
   export const ErrorCode: {
     readonly OK: AffinityEnumValue;
     readonly ERROR: AffinityEnumValue;
@@ -1170,192 +1056,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    OK: { value: 0 },
-    ERROR: { value: 1 },
-    INVALID_OP: { value: 2 },
-    INVALID_HANDLE: { value: 3 },
-    DEPRECATED: { value: 4 },
-    DISPOSED: { value: 5 },
-    ABORTED: { value: 6 },
-    ALLOC_ERROR: { value: 7 },
-    CREATE_FILE_ERROR: { value: 8 },
-    FILE_ALREADY_OPEN: { value: 9 },
-    READ_ONLY: { value: 10 },
-    READ_ERROR: { value: 11 },
-    WRITE_ERROR: { value: 12 },
-    IS_LOCKED: { value: 13 },
-    IS_LOCKED_THIS_DEVICE: { value: 14 },
-    IS_LOCKED_BLOCKED: { value: 15 },
-    ASYNC_IN_PROGRESS: { value: 16 },
-    COMMAND_FAILED: { value: 17 },
-    BAD_TYPE: { value: 18 },
-    NO_ENVIRONMENT: { value: 19 },
-    SAVE_ERROR: { value: 128 },
-    WARNINGS_ONLY: { value: 144 },
-    NOT_ALLOWED: { value: 145 },
-    CREATE_DIR_ERROR: { value: 146 },
-    EMBED_METADATA_ERROR: { value: 147 },
-    CREATE_GAIN_MAP_ERROR: { value: 148 },
-    PARSE_FILE_ERROR: { value: 256 },
-    CREATE_TEMPORARY_ARCHIVE_ERROR: { value: 257 },
-    OPEN_LINKED_ARCHIVE_ERROR: { value: 258 },
-    BAD_FILE_VERSION: { value: 259 },
-    FUTURE_FILE_VERSION: { value: 260 },
-    BAD_ARCHIVE: { value: 261 },
-    FILE_TRUNCATED: { value: 262 },
-    VALIDATION_FAILED: { value: 263 },
-    VALIDATION_FOR_EMBED_FAILED: { value: 264 },
-    MIGRATION_FAILED: { value: 265 },
-    BAD_SIGNAL_FILE: { value: 266 },
-    WRONG_PASSWORD: { value: 267 },
-    EMBED_RESTRICTED: { value: 268 },
-    COPY_FILE_ERROR: { value: 269 },
-    UNSUPPORTED_ENCRYPTION: { value: 270 },
-    NOT_DOCUMENT_ARCHIVE: { value: 271 },
-    FILE_CORRUPTED: { value: 272 },
-    UNSUPPORTED_FEATURES: { value: 273 },
-    UNSUPPORTED_VERSION: { value: 274 },
-    UNSUPPORTED_COMPRESSION: { value: 275 },
-    ARCHIVE_FILE_NOT_FOUND: { value: 276 },
-    PARSE_KNOWN_FILE_TYPE_ERROR: { value: 277 },
-    LOST_OWNERSHIP: { value: 384 },
-    OWNERSHIP_VALIDATION_ERROR: { value: 385 },
-    LOCK_LOST: { value: 386 },
-    ARCHIVE_LOST: { value: 387 },
-    ARCHIVE_LOST_DURING_STREAMLINE: { value: 388 },
-    ARCHIVE_BROKEN_DURING_STREAMLINE: { value: 389 },
-    OUT_OF_SPACE_DURING_STREAMLINE: { value: 390 },
-    ARCHIVE_LOST_DURING_MIGRATE: { value: 391 },
-    SCRATCH_LOST: { value: 392 },
-    SAVE_TO_TEMPORARY_ARCHIVE_ERROR: { value: 393 },
-    ARCHIVE_HAS_BEEN_REWOUND: { value: 394 },
-    ARCHIVE_IS_READ_ONLY: { value: 395 },
-    AUTOSAVE_REQUIRES_SCRATCH_FILE: { value: 396 },
-    ARCHIVE_INTEGRITY_VERIFICATION_ERROR: { value: 397 },
-    ARCHIVE_FILES_VERIFICATION_ERROR: { value: 398 },
-    RASTER_DATA_LOST: { value: 399 },
-    BACKING_DATA_LOST: { value: 400 },
-    BACKING_DATA_MISSING: { value: 401 },
-    DOCUMENT_IS_TEMPORARY: { value: 402 },
-    IN_EXTERNAL_UPDATE: { value: 403 },
-    INTERNAL_ERROR: { value: 404 },
-    RESTORE_FILE_NOT_FOUND: { value: 405 },
-    RESTORE_ACCESS_DENIED: { value: 406 },
-    RESTORE_PERMISSION_DENIED: { value: 407 },
-    RESTORE_READ_ONLY: { value: 408 },
-    RESTORE_OPEN_ERROR: { value: 409 },
-    RESTORE_TIMEDOUT: { value: 410 },
-    RESTORE_CONNECTION_REFUSED: { value: 411 },
-    RESTORE_MISMATCH: { value: 412 },
-    LINK_RECURSIVE: { value: 413 },
-    OPERATION_NOT_PERMITTED: { value: 1024 },
-    NO_SUCH_FILE_OR_DIRECTORY: { value: 1025 },
-    NO_SUCH_PROCESS: { value: 1026 },
-    INTERRUPTED_SYSTEM_CALL: { value: 1027 },
-    INPUT_OUTPUT_ERROR: { value: 1028 },
-    DEVICE_NOT_CONFIGURED: { value: 1029 },
-    ARGUMENT_LIST_TOO_LONG: { value: 1030 },
-    EXEC_FORMAT_ERROR: { value: 1031 },
-    BAD_FILE_DESCRIPTOR: { value: 1032 },
-    NO_CHILD_PROCESSES: { value: 1033 },
-    RESOURCE_DEADLOCK_AVOIDED: { value: 1034 },
-    CANNOT_ALLOCATE_MEMORY: { value: 1035 },
-    PERMISSION_DENIED: { value: 1036 },
-    BAD_ADDRESS: { value: 1037 },
-    DEVICE_OR_RESOURCE_BUSY: { value: 1038 },
-    FILE_EXISTS: { value: 1039 },
-    CROSS_DEVICE_LINK: { value: 1040 },
-    OPERATION_NOT_SUPPORTED_BY_DEVICE: { value: 1041 },
-    NOT_A_DIRECTORY: { value: 1042 },
-    IS_A_DIRECTORY: { value: 1043 },
-    INVALID_ARGS: { value: 1044 },
-    TOO_MANY_OPEN_FILES_IN_SYSTEM: { value: 1045 },
-    TOO_MANY_OPEN_FILES: { value: 1046 },
-    INAPPROPRIATE_IOCTL_FOR_DEVICE: { value: 1047 },
-    TEXT_FILE_BUSY: { value: 1048 },
-    FILE_TOO_LARGE: { value: 1049 },
-    NO_SPACE_LEFT_ON_DEVICE: { value: 1050 },
-    ILLEGAL_SEEK: { value: 1051 },
-    READ_ONLY_FILE_SYSTEM: { value: 1052 },
-    TOO_MANY_LINKS: { value: 1053 },
-    BROKEN_PIPE: { value: 1054 },
-    NUMERICAL_ARGUMENT_OUT_OF_DOMAIN: { value: 1055 },
-    RESULT_TOO_LARGE: { value: 1056 },
-    RESOURCE_TEMPORARILY_UNAVAILABLE: { value: 1057 },
-    OPERATION_NOW_IN_PROGRESS: { value: 1058 },
-    OPERATION_ALREADY_IN_PROGRESS: { value: 1059 },
-    SOCKET_OPERATION_ON_NON_SOCKET: { value: 1060 },
-    DESTINATION_ADDRESS_REQUIRED: { value: 1061 },
-    MESSAGE_TOO_LONG: { value: 1062 },
-    PROTOCOL_WRONG_TYPE_FOR_SOCKET: { value: 1063 },
-    PROTOCOL_NOT_AVAILABLE: { value: 1064 },
-    PROTOCOL_NOT_SUPPORTED: { value: 1065 },
-    NOT_SUPPORTED: { value: 1066 },
-    ADDRESS_FAMILY_NOT_SUPPORTED: { value: 1067 },
-    ADDRESS_ALREADY_IN_USE: { value: 1068 },
-    ADDRESS_NOT_AVAILABLE: { value: 1069 },
-    NETWORK_DOWN: { value: 1070 },
-    NETWORK_UNREACHABLE: { value: 1071 },
-    NETWORK_RESET: { value: 1072 },
-    CONNECTION_ABORTED: { value: 1073 },
-    CONNECTION_RESET: { value: 1074 },
-    NO_BUFFER_SPACE_AVAILABLE: { value: 1075 },
-    SOCKET_ALREADY_CONNECTED: { value: 1076 },
-    SOCKET_NOT_CONNECTED: { value: 1077 },
-    OPERATION_TIMED_OUT: { value: 1078 },
-    CONNECTION_REFUSED: { value: 1079 },
-    TOO_MANY_LEVELS_OF_SYMBOLIC_LINKS: { value: 1080 },
-    FILE_NAME_TOO_LONG: { value: 1081 },
-    HOST_UNREACHABLE: { value: 1082 },
-    DIRECTORY_NOT_EMPTY: { value: 1083 },
-    NO_LOCKS_AVAILABLE: { value: 1084 },
-    NOT_IMPLEMENTED: { value: 1085 },
-    OVERFLOW: { value: 1086 },
-    OPERATION_CANCELLED: { value: 1087 },
-    IDENTIFIER_REMOVED: { value: 1088 },
-    NO_MESSAGE_OF_DESIRED_TYPE: { value: 1089 },
-    ILLEGAL_BYTE_SEQUENCE: { value: 1090 },
-    BAD_MESSAGE: { value: 1091 },
-    NO_MESSAGE_AVAILABLE_ON_STREAM: { value: 1092 },
-    LINK_SEVERED: { value: 1093 },
-    NO_STREAM_RESOURCES: { value: 1094 },
-    NOT_A_STREAM: { value: 1095 },
-    PROTOCOL_ERROR: { value: 1096 },
-    STREAM_IOCTL_TIMEOUT: { value: 1097 },
-    STATE_NOT_RECOVERABLE: { value: 1098 },
-    OWNER_DEAD: { value: 1099 },
-    BLOCK_DEVICE_REQUIRED: { value: 1100 },
-    SOCKET_TYPE_NOT_SUPPORTED: { value: 1101 },
-    PROTOCOL_FAMILY_NOT_SUPPORTED: { value: 1102 },
-    CANNOT_SEND_AFTER_SOCKET_SHUTDOWN: { value: 1103 },
-    TOO_MANY_REFERENCES: { value: 1104 },
-    HOST_IS_DOWN: { value: 1105 },
-    TOO_MANY_PROCESSES: { value: 1106 },
-    TOO_MANY_USERS: { value: 1107 },
-    DISC_QUOTA_EXCEEDED: { value: 1108 },
-    STALE_NFS_FILE_HANDLE: { value: 1109 },
-    TOO_MANY_LEVELS_OF_REMOTE_IN_PATH: { value: 1110 },
-    RPC_STRUCT_BAD: { value: 1111 },
-    RPC_VERSION_WRONG: { value: 1112 },
-    RPC_PROG_NOT_AVAIL: { value: 1113 },
-    PROGRAM_VERSION_WRONG: { value: 1114 },
-    PROCEDURE_UNAVAILABLE: { value: 1115 },
-    INAPPROPRIATE_FILE_TYPE_OR_FORMAT: { value: 1116 },
-    AUTHENTICATION_ERROR: { value: 1117 },
-    NEED_AUTHENTICATOR: { value: 1118 },
-    DEVICE_POWER_IS_OFF: { value: 1119 },
-    DEVICE_ERROR: { value: 1120 },
-    BAD_EXECUTABLE: { value: 1121 },
-    BAD_ARCHITECTURE: { value: 1122 },
-    SHARED_LIBRARY_VERSION_MISMATCH: { value: 1123 },
-    MALFORMED_MACHO_FILE: { value: 1124 },
-    ATTRIBUTE_NOT_FOUND: { value: 1125 },
-    MULTIHOP_ATTEMPTED: { value: 1126 },
-    NO_SUCH_POLICY_REGISTERED: { value: 1127 },
-    INTERFACE_OUTPUT_QUEUE_FULL: { value: 1128 },
-    STRING_TRUNCATED: { value: 1129 },
-  } as unknown as any;
+  };
   export const HorizontalAlignment: {
     readonly Left: AffinityEnumValue;
     readonly Centre: AffinityEnumValue;
@@ -1366,12 +1067,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Left: { value: 0 },
-    Centre: { value: 1 },
-    Right: { value: 2 },
-    Fill: { value: 3 },
-  } as unknown as any;
+  };
   export const LogLevel: {
     readonly None: AffinityEnumValue;
     readonly Log: AffinityEnumValue;
@@ -1385,15 +1081,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Log: { value: 1 },
-    Error: { value: 2 },
-    Warn: { value: 3 },
-    Info: { value: 4 },
-    Debug: { value: 5 },
-    All: { value: 6 },
-  } as unknown as any;
+  };
   export const UnitType: {
     readonly Number: AffinityEnumValue;
     readonly Percentage: AffinityEnumValue;
@@ -1427,35 +1115,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Number: { value: 0 },
-    Percentage: { value: 1 },
-    Permille: { value: 2 },
-    Degree: { value: 3 },
-    Radian: { value: 4 },
-    Pixel: { value: 5 },
-    Inch: { value: 6 },
-    Point: { value: 7 },
-    Millimetre: { value: 8 },
-    Centimetre: { value: 9 },
-    Metre: { value: 10 },
-    Foot: { value: 11 },
-    Yard: { value: 12 },
-    Cat: { value: 13 },
-    Pica: { value: 14 },
-    Kilometre: { value: 15 },
-    Mile: { value: 16 },
-    Byte: { value: 17 },
-    Kilobyte: { value: 18 },
-    Megabyte: { value: 19 },
-    Gigabyte: { value: 20 },
-    Terabyte: { value: 21 },
-    Petabyte: { value: 22 },
-    Exabyte: { value: 23 },
-    Zettabyte: { value: 24 },
-    Yottabyte: { value: 25 },
-    Kelvin: { value: 26 },
-  } as unknown as any;
+  };
   export const UserUnitType: {
     readonly Default: AffinityEnumValue;
     readonly Text: AffinityEnumValue;
@@ -1465,11 +1125,7 @@ declare module 'affinity:common' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Default: { value: 0 },
-    Text: { value: 1 },
-    Line: { value: 2 },
-  } as unknown as any;
+  };
   export class UnitValue {
     constructor(...args: any[]);
     units: any;
@@ -1503,10 +1159,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Gaussian: { value: 0 },
-    Uniform: { value: 1 },
-  } as unknown as any;
+  };
   export const AntialiasingMode: {
     readonly Inherit: AffinityEnumValue;
     readonly ForceOn: AffinityEnumValue;
@@ -1516,11 +1169,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Inherit: { value: 0 },
-    ForceOn: { value: 1 },
-    ForceOff: { value: 2 },
-  } as unknown as any;
+  };
   export const BloomMethod: {
     readonly Contrast: AffinityEnumValue;
     readonly Bright: AffinityEnumValue;
@@ -1529,10 +1178,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Contrast: { value: 0 },
-    Bright: { value: 1 },
-  } as unknown as any;
+  };
   export const CompoundOperation: {
     readonly Union: AffinityEnumValue;
     readonly Intersect: AffinityEnumValue;
@@ -1543,12 +1189,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Union: { value: 0 },
-    Intersect: { value: 1 },
-    Subtract: { value: 2 },
-    Xor: { value: 3 },
-  } as unknown as any;
+  };
   export const ConstraintType: {
     readonly NotSizable: AffinityEnumValue;
     readonly FixedMinX: AffinityEnumValue;
@@ -1569,22 +1210,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    NotSizable: { value: 0 },
-    FixedMinX: { value: 1 },
-    ScaleWidth: { value: 2 },
-    FixedMaxX: { value: 4 },
-    FixedMinY: { value: 8 },
-    ScaleHeight: { value: 16 },
-    Default: { value: 18 },
-    FixedMaxY: { value: 32 },
-    FixedAspectMin: { value: 64 },
-    FixedAspectMax: { value: 128 },
-    ForceAspectMin: { value: 256 },
-    ForceAspectMax: { value: 512 },
-    StretchToFit: { value: 1024 },
-    NoScale: { value: 2048 },
-  } as unknown as any;
+  };
   export const ContentType: {
     readonly Main: AffinityEnumValue;
     readonly Frame: AffinityEnumValue;
@@ -1594,11 +1220,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Main: { value: 0 },
-    Frame: { value: 1 },
-    Cell: { value: 2 },
-  } as unknown as any;
+  };
   export const DepthOfFieldMode: {
     readonly Elliptical: AffinityEnumValue;
     readonly TiltShift: AffinityEnumValue;
@@ -1607,10 +1229,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Elliptical: { value: 0 },
-    TiltShift: { value: 1 },
-  } as unknown as any;
+  };
   export const DocumentLoadMode: {
     readonly Application: AffinityEnumValue;
     readonly Spreads: AffinityEnumValue;
@@ -1620,11 +1239,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Application: { value: 0 },
-    Spreads: { value: 1 },
-    Artboards: { value: 2 },
-  } as unknown as any;
+  };
   export const EffectiveMarginBehaviour: {
     readonly PageBoxIfDisabled: AffinityEnumValue;
     readonly InvalidIfDisabledOrEmpty: AffinityEnumValue;
@@ -1634,11 +1249,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    PageBoxIfDisabled: { value: 0 },
-    InvalidIfDisabledOrEmpty: { value: 1 },
-    SkipIfDisabled: { value: 2 },
-  } as unknown as any;
+  };
   export const ExportScalePreset: {
     readonly Standard: AffinityEnumValue;
     readonly Mult2x: AffinityEnumValue;
@@ -1653,16 +1264,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Standard: { value: 0 },
-    Mult2x: { value: 1 },
-    Mult3x: { value: 2 },
-    Width100: { value: 3 },
-    Height50: { value: 4 },
-    Square64: { value: 5 },
-    Square64Mult2x: { value: 6 },
-    Width32Height32: { value: 7 },
-  } as unknown as any;
+  };
   export const ExportScaleSizeType: {
     readonly None: AffinityEnumValue;
     readonly Width: AffinityEnumValue;
@@ -1674,13 +1276,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Width: { value: 1 },
-    Height: { value: 2 },
-    Square: { value: 3 },
-    WidthHeight: { value: 4 },
-  } as unknown as any;
+  };
   export const FileType: {
     readonly JPEG: AffinityEnumValue;
     readonly PNG: AffinityEnumValue;
@@ -1704,25 +1300,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    JPEG: { value: 0 },
-    PNG: { value: 1 },
-    TIFF: { value: 2 },
-    WEBP: { value: 3 },
-    HDPhoto: { value: 4 },
-    RAW: { value: 5 },
-    GIF: { value: 6 },
-    JPEG2000: { value: 7 },
-    BMP: { value: 8 },
-    TGA: { value: 9 },
-    OpenEXR: { value: 10 },
-    HDR: { value: 11 },
-    Unknown: { value: 12 },
-    Affinity: { value: 13 },
-    HEIF: { value: 14 },
-    FITS: { value: 15 },
-    Plugin: { value: 16 },
-  } as unknown as any;
+  };
   export const HalftoneDotType: {
     readonly Cosine: AffinityEnumValue;
     readonly Round: AffinityEnumValue;
@@ -1732,11 +1310,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Cosine: { value: 0 },
-    Round: { value: 1 },
-    Line: { value: 2 },
-  } as unknown as any;
+  };
   export const HalftoneScreenType: {
     readonly Mono: AffinityEnumValue;
     readonly Colour: AffinityEnumValue;
@@ -1747,12 +1321,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Mono: { value: 0 },
-    Colour: { value: 1 },
-    Line: { value: 2 },
-    Circular: { value: 3 },
-  } as unknown as any;
+  };
   export const ImagePlacement: {
     readonly Embedded: AffinityEnumValue;
     readonly Linked: AffinityEnumValue;
@@ -1761,10 +1330,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Embedded: { value: 0 },
-    Linked: { value: 1 },
-  } as unknown as any;
+  };
   export const NodeChildType: {
     readonly Main: AffinityEnumValue;
     readonly Enclosure: AffinityEnumValue;
@@ -1776,13 +1342,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Main: { value: 0 },
-    Enclosure: { value: 1 },
-    MasterSpread: { value: 2 },
-    WrapShape: { value: 3 },
-    StoryPin: { value: 4 },
-  } as unknown as any;
+  };
   export const NodeMoveType: {
     readonly Before: AffinityEnumValue;
     readonly After: AffinityEnumValue;
@@ -1792,11 +1352,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Before: { value: 0 },
-    After: { value: 1 },
-    Inside: { value: 2 },
-  } as unknown as any;
+  };
   export const PackageResourcesPolicy: {
     readonly None: AffinityEnumValue;
     readonly IncludeImages: AffinityEnumValue;
@@ -1809,14 +1365,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    IncludeImages: { value: 1 },
-    IncludeTexts: { value: 2 },
-    IncludeCSS: { value: 3 },
-    IncludeUnrestrictedFonts: { value: 4 },
-    IncludeRestrictedFonts: { value: 5 },
-  } as unknown as any;
+  };
   export const PageBoundingBoxType: {
     readonly MediaBox: AffinityEnumValue;
     readonly CropBox: AffinityEnumValue;
@@ -1832,17 +1381,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    MediaBox: { value: 0 },
-    CropBox: { value: 1 },
-    TrimBox: { value: 2 },
-    ArtBox: { value: 3 },
-    BleedBox: { value: 4 },
-    MinimumContent: { value: 5 },
-    MinimumVisibleContent: { value: 6 },
-    MaximumContent: { value: 7 },
-    MaximumVisibleContent: { value: 8 },
-  } as unknown as any;
+  };
   export const PagePresetType: {
     readonly Unknown: AffinityEnumValue;
     readonly Photo: AffinityEnumValue;
@@ -1856,15 +1395,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Unknown: { value: 0 },
-    Photo: { value: 1 },
-    PageSizes: { value: 2 },
-    PrintSizes: { value: 3 },
-    Canvases: { value: 4 },
-    VideoWeb: { value: 5 },
-    Devices: { value: 6 },
-  } as unknown as any;
+  };
   export const PredefinedTagKey: {
     readonly AltTextTag: AffinityEnumValue;
     readonly AltTextSource: AffinityEnumValue;
@@ -1876,13 +1407,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    AltTextTag: { value: 0 },
-    AltTextSource: { value: 1 },
-    ExtDescTag: { value: 2 },
-    ExtDescSource: { value: 3 },
-    ScriptLabel: { value: 4 },
-  } as unknown as any;
+  };
   export const RasterSelectionLogicalOperation: {
     readonly New: AffinityEnumValue;
     readonly Add: AffinityEnumValue;
@@ -1893,12 +1418,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    New: { value: 0 },
-    Add: { value: 1 },
-    Subtract: { value: 2 },
-    Intersect: { value: 3 },
-  } as unknown as any;
+  };
   export const RasterSelectionOutlineAlignment: {
     readonly Outside: AffinityEnumValue;
     readonly Centre: AffinityEnumValue;
@@ -1908,11 +1428,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Outside: { value: 0 },
-    Centre: { value: 1 },
-    Inside: { value: 2 },
-  } as unknown as any;
+  };
   export const SelectiveColour: {
     readonly Reds: AffinityEnumValue;
     readonly Yellows: AffinityEnumValue;
@@ -1928,17 +1444,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Reds: { value: 0 },
-    Yellows: { value: 1 },
-    Greens: { value: 2 },
-    Cyans: { value: 3 },
-    Blues: { value: 4 },
-    Magentas: { value: 5 },
-    Whites: { value: 6 },
-    Neutrals: { value: 7 },
-    Blacks: { value: 8 },
-  } as unknown as any;
+  };
   export const ShadowsHighlightsVersion: {
     readonly Default: AffinityEnumValue;
     readonly V16: AffinityEnumValue;
@@ -1947,10 +1453,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Default: { value: 0 },
-    V16: { value: 1 },
-  } as unknown as any;
+  };
   export const SpatialAnchor: {
     readonly None: AffinityEnumValue;
     readonly TopLeft: AffinityEnumValue;
@@ -1968,19 +1471,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    TopLeft: { value: 1 },
-    CentreLeft: { value: 2 },
-    BottomLeft: { value: 3 },
-    TopCentre: { value: 4 },
-    Centre: { value: 5 },
-    BottomCentre: { value: 6 },
-    TopRight: { value: 7 },
-    CentreRight: { value: 8 },
-    BottomRight: { value: 9 },
-    FocalPoint: { value: 10 },
-  } as unknown as any;
+  };
   export const SubSelectionType: {
     readonly CurveEdge: AffinityEnumValue;
     readonly CurveNode: AffinityEnumValue;
@@ -1999,20 +1490,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    CurveEdge: { value: 0 },
-    CurveNode: { value: 1 },
-    Text: { value: 2 },
-    Table: { value: 3 },
-    ExportFormat: { value: 4 },
-    Fill: { value: 5 },
-    LineFill: { value: 6 },
-    Transparency: { value: 7 },
-    FillMesh: { value: 8 },
-    LineFillMesh: { value: 9 },
-    TransparencyMesh: { value: 10 },
-    GeometryModifier: { value: 11 },
-  } as unknown as any;
+  };
   export const TableEdgeSelector: {
     readonly None: AffinityEnumValue;
     readonly Left: AffinityEnumValue;
@@ -2033,22 +1511,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Left: { value: 1 },
-    Right: { value: 2 },
-    OuterColumns: { value: 3 },
-    InnerColumns: { value: 4 },
-    Columns: { value: 7 },
-    Top: { value: 8 },
-    Bottom: { value: 16 },
-    OuterRows: { value: 24 },
-    Border: { value: 27 },
-    InnerRows: { value: 32 },
-    Inner: { value: 36 },
-    Rows: { value: 56 },
-    All: { value: 63 },
-  } as unknown as any;
+  };
   export const TextDefaultType: {
     readonly Art: AffinityEnumValue;
     readonly Frame: AffinityEnumValue;
@@ -2058,11 +1521,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Art: { value: 0 },
-    Frame: { value: 1 },
-    Unknown: { value: 2 },
-  } as unknown as any;
+  };
   export const TonalRangeType: {
     readonly Shadows: AffinityEnumValue;
     readonly Midtones: AffinityEnumValue;
@@ -2072,11 +1531,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Shadows: { value: 0 },
-    Midtones: { value: 1 },
-    Highlights: { value: 2 },
-  } as unknown as any;
+  };
   export const ToneCompressionMethod: {
     readonly Basic: AffinityEnumValue;
     readonly Natural: AffinityEnumValue;
@@ -2091,16 +1546,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Basic: { value: 0 },
-    Natural: { value: 1 },
-    Bright: { value: 2 },
-    Contrast: { value: 3 },
-    Filmic: { value: 4 },
-    Punchy: { value: 5 },
-    PBRNeutral: { value: 6 },
-    Log: { value: 7 },
-  } as unknown as any;
+  };
   export const ToneStretchMethod: {
     readonly Basic: AffinityEnumValue;
     readonly Arcsinh: AffinityEnumValue;
@@ -2112,13 +1558,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Basic: { value: 0 },
-    Arcsinh: { value: 1 },
-    Logarithmic: { value: 2 },
-    Structural: { value: 3 },
-    ColourPreserving: { value: 4 },
-  } as unknown as any;
+  };
   export const VisibilityMode: {
     readonly Main: AffinityEnumValue;
     readonly Export: AffinityEnumValue;
@@ -2127,10 +1567,7 @@ declare module 'affinity:dom' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Main: { value: 0 },
-    Export: { value: 1 },
-  } as unknown as any;
+  };
   export class AddNoiseFilterParameters {
     constructor(...args: any[]);
     noiseType: any;
@@ -4195,13 +3632,7 @@ declare module 'affinity:fills' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Alpha: { value: 1 },
-    Noise: { value: 2 },
-    Intensity: { value: 4 },
-    All: { value: 7 },
-  } as unknown as any;
+  };
   export const FillType: {
     readonly Unknown: AffinityEnumValue;
     readonly None: AffinityEnumValue;
@@ -4215,15 +3646,7 @@ declare module 'affinity:fills' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Unknown: { value: 0 },
-    None: { value: 1 },
-    Solid: { value: 2 },
-    Gradient: { value: 3 },
-    Bitmap: { value: 4 },
-    Mesh: { value: 5 },
-    Hatch: { value: 6 },
-  } as unknown as any;
+  };
   export const GradientFillType: {
     readonly Linear: AffinityEnumValue;
     readonly Elliptical: AffinityEnumValue;
@@ -4234,12 +3657,7 @@ declare module 'affinity:fills' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Linear: { value: 0 },
-    Elliptical: { value: 1 },
-    Radial: { value: 2 },
-    Conical: { value: 3 },
-  } as unknown as any;
+  };
   export const BitmapFillApi: {
     clone(...args: any[]): any;
     cloneAsBitmapFill(...args: any[]): any;
@@ -4347,11 +3765,7 @@ declare module 'affinity:fonts' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Any: { value: 0 },
-    Family: { value: 1 },
-    Exact: { value: 2 },
-  } as unknown as any;
+  };
   export const FontWeight: {
     readonly Thin: AffinityEnumValue;
     readonly ExtraLight: AffinityEnumValue;
@@ -4367,17 +3781,7 @@ declare module 'affinity:fonts' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Thin: { value: 100 },
-    ExtraLight: { value: 200 },
-    Light: { value: 300 },
-    Normal: { value: 400 },
-    Medium: { value: 500 },
-    SemiBold: { value: 600 },
-    Bold: { value: 700 },
-    ExtraBold: { value: 800 },
-    Black: { value: 900 },
-  } as unknown as any;
+  };
   export const FontWidth: {
     readonly UltraCondensed: AffinityEnumValue;
     readonly ExtraCondensed: AffinityEnumValue;
@@ -4393,17 +3797,7 @@ declare module 'affinity:fonts' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    UltraCondensed: { value: 1 },
-    ExtraCondensed: { value: 2 },
-    Condensed: { value: 3 },
-    SemiCondensed: { value: 4 },
-    Normal: { value: 5 },
-    SemiExpanded: { value: 6 },
-    Expanded: { value: 7 },
-    ExtraExpanded: { value: 8 },
-    UltraExpanded: { value: 9 },
-  } as unknown as any;
+  };
   export const PanoseType: {
     readonly Unknown: AffinityEnumValue;
     readonly Unmatched: AffinityEnumValue;
@@ -4416,14 +3810,7 @@ declare module 'affinity:fonts' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Unknown: { value: 0 },
-    Unmatched: { value: 1 },
-    Body: { value: 2 },
-    Script: { value: 3 },
-    Decorative: { value: 4 },
-    Symbol: { value: 5 },
-  } as unknown as any;
+  };
   export const FontApi: {
     clone(...args: any[]): any;
     cloneAsFont(...args: any[]): any;
@@ -4507,18 +3894,7 @@ declare module 'affinity:fs' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    SkipExisting: { value: 1 },
-    OverwriteExisting: { value: 2 },
-    UpdateExisting: { value: 4 },
-    Recursive: { value: 8 },
-    CopySymlinks: { value: 16 },
-    SkipSymlinks: { value: 32 },
-    DirectoriesOnly: { value: 64 },
-    CreateSymlinks: { value: 128 },
-    CreateHardLinks: { value: 256 },
-  } as unknown as any;
+  };
   export const FileOrigin: {
     readonly Begin: AffinityEnumValue;
     readonly Current: AffinityEnumValue;
@@ -4528,11 +3904,7 @@ declare module 'affinity:fs' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Begin: { value: 0 },
-    Current: { value: 1 },
-    End: { value: 2 },
-  } as unknown as any;
+  };
   export const FilePermissions: {
     readonly None: AffinityEnumValue;
     readonly OthersExec: AffinityEnumValue;
@@ -4558,27 +3930,7 @@ declare module 'affinity:fs' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    OthersExec: { value: 1 },
-    OthersWrite: { value: 2 },
-    OthersRead: { value: 4 },
-    OthersAll: { value: 7 },
-    GroupExec: { value: 8 },
-    GroupWrite: { value: 16 },
-    GroupRead: { value: 32 },
-    GroupAll: { value: 56 },
-    OwnerExec: { value: 64 },
-    OwnerWrite: { value: 128 },
-    OwnerRead: { value: 256 },
-    OwnerAll: { value: 448 },
-    All: { value: 511 },
-    StickyBit: { value: 512 },
-    SetGid: { value: 1024 },
-    SetUid: { value: 2048 },
-    Mask: { value: 4095 },
-    Unknown: { value: 65535 },
-  } as unknown as any;
+  };
   export const PathType: {
     readonly None: AffinityEnumValue;
     readonly NotFound: AffinityEnumValue;
@@ -4595,18 +3947,7 @@ declare module 'affinity:fs' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    NotFound: { value: 1 },
-    File: { value: 2 },
-    Directory: { value: 3 },
-    Symlink: { value: 4 },
-    Block: { value: 5 },
-    Character: { value: 6 },
-    Fifo: { value: 7 },
-    Socket: { value: 8 },
-    Unknown: { value: 9 },
-  } as unknown as any;
+  };
   export const PermOptions: {
     readonly Replace: AffinityEnumValue;
     readonly Add: AffinityEnumValue;
@@ -4617,12 +3958,7 @@ declare module 'affinity:fs' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Replace: { value: 1 },
-    Add: { value: 2 },
-    Remove: { value: 4 },
-    NoFollow: { value: 8 },
-  } as unknown as any;
+  };
   export const DirectoryIteratorApi: {
     create(...args: any[]): any;
     getFileSize(...args: any[]): any;
@@ -4736,13 +4072,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Round: { value: 1 },
-    Inverse: { value: 2 },
-    Straight: { value: 3 },
-    CutOut: { value: 4 },
-  } as unknown as any;
+  };
   export const CurveNodeStyle: {
     readonly None: AffinityEnumValue;
     readonly Cusp: AffinityEnumValue;
@@ -4753,12 +4083,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Cusp: { value: 1 },
-    Smooth: { value: 2 },
-    Smart: { value: 3 },
-  } as unknown as any;
+  };
   export const CurveNodeType: {
     readonly OnCurve: AffinityEnumValue;
     readonly Cubic1: AffinityEnumValue;
@@ -4768,11 +4093,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    OnCurve: { value: 0 },
-    Cubic1: { value: 1 },
-    Cubic2: { value: 2 },
-  } as unknown as any;
+  };
   export const QRPayloadType: {
     readonly Text: AffinityEnumValue;
     readonly URL: AffinityEnumValue;
@@ -4791,20 +4112,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Text: { value: 0 },
-    URL: { value: 1 },
-    Phone: { value: 2 },
-    SMS: { value: 3 },
-    Email: { value: 4 },
-    WhatsApp: { value: 5 },
-    FaceTime: { value: 6 },
-    Location: { value: 7 },
-    Wifi: { value: 8 },
-    VEvent: { value: 9 },
-    VCard: { value: 10 },
-    DataMerge: { value: 11 },
-  } as unknown as any;
+  };
   export const ShapeArrowEndStyle: {
     readonly None: AffinityEnumValue;
     readonly Arrow: AffinityEnumValue;
@@ -4822,19 +4130,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Arrow: { value: 1 },
-    TailTriangular: { value: 2 },
-    TailSquare: { value: 3 },
-    Circle: { value: 4 },
-    HalfCircleInner: { value: 5 },
-    HalfCircleOuter: { value: 6 },
-    Diamond: { value: 7 },
-    Box: { value: 8 },
-    Barb: { value: 9 },
-    Chevron: { value: 10 },
-  } as unknown as any;
+  };
   export const ShapeBoolParam: {
     readonly Arrow_LeftIsProportional: AffinityEnumValue;
     readonly Arrow_RightIsProportional: AffinityEnumValue;
@@ -4849,16 +4145,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Arrow_LeftIsProportional: { value: 0 },
-    Arrow_RightIsProportional: { value: 1 },
-    CalloutEllipse_AbsoluteSizes: { value: 2 },
-    CalloutRectangle_SingleRadius: { value: 3 },
-    CalloutRectangle_AbsoluteSizes: { value: 4 },
-    Polygon_SmoothPoints: { value: 5 },
-    Rectangle_SingleRadius: { value: 6 },
-    Tear_FixedBallSize: { value: 7 },
-  } as unknown as any;
+  };
   export const ShapeCornerIndex: {
     readonly TopLeft: AffinityEnumValue;
     readonly TopRight: AffinityEnumValue;
@@ -4869,12 +4156,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    TopLeft: { value: 0 },
-    TopRight: { value: 1 },
-    BottomRight: { value: 2 },
-    BottomLeft: { value: 3 },
-  } as unknown as any;
+  };
   export const ShapeCornerType: {
     readonly Round: AffinityEnumValue;
     readonly Straight: AffinityEnumValue;
@@ -4886,13 +4168,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Round: { value: 0 },
-    Straight: { value: 1 },
-    RoundInverse: { value: 2 },
-    Cutout: { value: 3 },
-    None: { value: 4 },
-  } as unknown as any;
+  };
   export const ShapeEnumParam: {
     readonly Rectangle_BottomLeftCornerType: AffinityEnumValue;
     readonly Rectangle_BottomRightCornerType: AffinityEnumValue;
@@ -4905,14 +4181,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Rectangle_BottomLeftCornerType: { value: 0 },
-    Rectangle_BottomRightCornerType: { value: 1 },
-    Rectangle_TopLeftCornerType: { value: 2 },
-    Rectangle_TopRightCornerType: { value: 3 },
-    Arrow_LeftEndStyle: { value: 4 },
-    Arrow_RightEndStyle: { value: 5 },
-  } as unknown as any;
+  };
   export const ShapeFloatParam: {
     readonly Arrow_LeftLength: AffinityEnumValue;
     readonly Arrow_LeftInnerOffset: AffinityEnumValue;
@@ -4972,61 +4241,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Arrow_LeftLength: { value: 0 },
-    Arrow_LeftInnerOffset: { value: 1 },
-    Arrow_RightLength: { value: 2 },
-    Arrow_RightInnerOffset: { value: 3 },
-    Arrow_Thickness: { value: 4 },
-    CalloutEllipse_TailAngle: { value: 5 },
-    CalloutEllipse_TailEndPosition: { value: 6 },
-    CalloutEllipse_TailHeight: { value: 7 },
-    CalloutRectangle_BottomLeftRadius: { value: 8 },
-    CalloutRectangle_BottomRightRadius: { value: 9 },
-    CalloutRectangle_TopLeftRadius: { value: 10 },
-    CalloutRectangle_TopRightRadius: { value: 11 },
-    CalloutRectangle_TailEndPosition: { value: 12 },
-    CalloutRectangle_TailHeight: { value: 13 },
-    CalloutRectangle_TailPosition: { value: 14 },
-    CalloutRectangle_TailWidth: { value: 15 },
-    Cloud_InnerRadius: { value: 16 },
-    Cog_Curve: { value: 17 },
-    Cog_HoleRadius: { value: 18 },
-    Cog_InnerRadius: { value: 19 },
-    Cog_NotchSize: { value: 20 },
-    Cog_ToothSize: { value: 21 },
-    Crescent_ArcLeft: { value: 22 },
-    Crescent_ArcRight: { value: 23 },
-    Diamond_Position: { value: 24 },
-    DoubleStar_InnerRadius: { value: 25 },
-    DoubleStar_PointRadius: { value: 26 },
-    Heart_Spread: { value: 27 },
-    Pie_InnerRadius: { value: 28 },
-    Pie_StartAngle: { value: 29 },
-    Pie_EndAngle: { value: 30 },
-    Pie_Sweep: { value: 31 },
-    Polygon_Curve: { value: 32 },
-    Rectangle_BottomLeftRadius: { value: 33 },
-    Rectangle_BottomRightRadius: { value: 34 },
-    Rectangle_TopLeftRadius: { value: 35 },
-    Rectangle_TopRightRadius: { value: 36 },
-    Segment_Angle: { value: 37 },
-    Segment_LowerLine: { value: 38 },
-    Segment_UpperLine: { value: 39 },
-    SquareStar_Cutout: { value: 40 },
-    Star_CircleOuterRadius: { value: 41 },
-    Star_CircleInnerRadius: { value: 42 },
-    Star_InnerRadius: { value: 43 },
-    Star_LeftCurve: { value: 44 },
-    Star_RightCurve: { value: 45 },
-    Trapezoid_LeftPosition: { value: 46 },
-    Trapezoid_RightPosition: { value: 47 },
-    Triangle_Position: { value: 48 },
-    Tear_BallSize: { value: 49 },
-    Tear_Curve: { value: 50 },
-    Tear_Bend: { value: 51 },
-    Tear_TailPosition: { value: 52 },
-  } as unknown as any;
+  };
   export const ShapeIntParam: {
     readonly Cloud_BubbleCount: AffinityEnumValue;
     readonly Cog_ToothCount: AffinityEnumValue;
@@ -5039,14 +4254,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Cloud_BubbleCount: { value: 0 },
-    Cog_ToothCount: { value: 1 },
-    DoubleStar_PointCount: { value: 2 },
-    Polygon_SideCount: { value: 3 },
-    SquareStar_SideCount: { value: 4 },
-    Star_PointCount: { value: 5 },
-  } as unknown as any;
+  };
   export const ShapeMajorAxis: {
     readonly Y: AffinityEnumValue;
     readonly X: AffinityEnumValue;
@@ -5055,10 +4263,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Y: { value: 0 },
-    X: { value: 1 },
-  } as unknown as any;
+  };
   export const ShapeSpiralStyle: {
     readonly SemiCircle: AffinityEnumValue;
     readonly CounterSemiCircle: AffinityEnumValue;
@@ -5071,14 +4276,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    SemiCircle: { value: 0 },
-    CounterSemiCircle: { value: 1 },
-    Fibonacci: { value: 2 },
-    SegmentedLogarithmic: { value: 3 },
-    SegmentedLinear: { value: 4 },
-    Plotted: { value: 5 },
-  } as unknown as any;
+  };
   export const ShapeType: {
     readonly Rectangle: AffinityEnumValue;
     readonly Ellipse: AffinityEnumValue;
@@ -5111,34 +4309,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Rectangle: { value: 0 },
-    Ellipse: { value: 1 },
-    Triangle: { value: 2 },
-    Diamond: { value: 3 },
-    Trapezoid: { value: 4 },
-    Polygon: { value: 5 },
-    Star: { value: 6 },
-    DoubleStar: { value: 7 },
-    Arrow: { value: 8 },
-    Pie: { value: 9 },
-    Cog: { value: 10 },
-    Cloud: { value: 11 },
-    CalloutRectangle: { value: 12 },
-    CalloutEllipse: { value: 13 },
-    Crescent: { value: 14 },
-    Segment: { value: 15 },
-    SquareStar: { value: 16 },
-    Tear: { value: 17 },
-    Heart: { value: 18 },
-    Cat: { value: 19 },
-    Cat2: { value: 20 },
-    Cat3: { value: 21 },
-    Cat4: { value: 22 },
-    QRCode: { value: 23 },
-    Spiral: { value: 24 },
-    Style: { value: 25 },
-  } as unknown as any;
+  };
   export const SplineProfile: {
     readonly Linear: AffinityEnumValue;
     readonly SCurve: AffinityEnumValue;
@@ -5151,14 +4322,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Linear: { value: 0 },
-    SCurve: { value: 1 },
-    SmoothIn: { value: 2 },
-    SmoothOut: { value: 3 },
-    Squared: { value: 4 },
-    SquareRoot: { value: 5 },
-  } as unknown as any;
+  };
   export const WifiEncryptionType: {
     readonly None: AffinityEnumValue;
     readonly WEP: AffinityEnumValue;
@@ -5168,11 +4332,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    WEP: { value: 1 },
-    WPA_WPA2: { value: 2 },
-  } as unknown as any;
+  };
   export const WindingOrder: {
     readonly OddEven: AffinityEnumValue;
     readonly NonZero: AffinityEnumValue;
@@ -5181,10 +4341,7 @@ declare module 'affinity:geometry' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    OddEven: { value: 0 },
-    NonZero: { value: 1 },
-  } as unknown as any;
+  };
   export class CubicBezier {
     constructor(...args: any[]);
     end: any;
@@ -6017,12 +5174,7 @@ declare module 'affinity:layereffects' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Inner: { value: 0 },
-    Outer: { value: 1 },
-    Emboss: { value: 2 },
-    Pillow: { value: 3 },
-  } as unknown as any;
+  };
   export const LayerEffectType: {
     readonly BevelEmboss: AffinityEnumValue;
     readonly Outline: AffinityEnumValue;
@@ -6039,18 +5191,7 @@ declare module 'affinity:layereffects' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    BevelEmboss: { value: 0 },
-    Outline: { value: 1 },
-    PhongBevel: { value: 2 },
-    InnerShadow: { value: 3 },
-    InnerGlow: { value: 4 },
-    ColourOverlay: { value: 5 },
-    GradientOverlay: { value: 6 },
-    OuterGlow: { value: 7 },
-    OuterShadow: { value: 8 },
-    GaussianBlur: { value: 9 },
-  } as unknown as any;
+  };
   export const StrokeFillType: {
     readonly Solid: AffinityEnumValue;
     readonly Contour: AffinityEnumValue;
@@ -6060,11 +5201,7 @@ declare module 'affinity:layereffects' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Solid: { value: 0 },
-    Contour: { value: 1 },
-    Gradient: { value: 2 },
-  } as unknown as any;
+  };
   export const BevelEmbossLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsBevelEmbossLayerEffect(...args: any[]): any;
@@ -6306,33 +5443,7 @@ declare module 'affinity:linestyles' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Triangle: { value: 0 },
-    TriangleTall: { value: 1 },
-    TriangleWide: { value: 2 },
-    Curved: { value: 3 },
-    Barbed: { value: 4 },
-    Simple: { value: 5 },
-    SimpleTall: { value: 6 },
-    SimpleWide: { value: 7 },
-    SimpleClosed: { value: 8 },
-    SimpleClosedTall: { value: 9 },
-    SimpleClosedWide: { value: 10 },
-    Circle: { value: 11 },
-    CircleSolid: { value: 12 },
-    Square: { value: 13 },
-    SquareSolid: { value: 14 },
-    Bar: { value: 15 },
-    Oblique: { value: 16 },
-    Oblique_Alternate: { value: 17 },
-    Origin: { value: 18 },
-    Origin_Alternate: { value: 19 },
-    Datum_60_Blank: { value: 20 },
-    Datum_60_Filled: { value: 21 },
-    Datum_45_Blank: { value: 22 },
-    Datum_45_Filled: { value: 23 },
-    Affinity: { value: 24 },
-  } as unknown as any;
+  };
   export const LineCap: {
     readonly Butt: AffinityEnumValue;
     readonly Square: AffinityEnumValue;
@@ -6342,11 +5453,7 @@ declare module 'affinity:linestyles' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Butt: { value: 0 },
-    Square: { value: 1 },
-    Round: { value: 2 },
-  } as unknown as any;
+  };
   export const LineJoin: {
     readonly MiterLegacy: AffinityEnumValue;
     readonly Miter: AffinityEnumValue;
@@ -6357,12 +5464,7 @@ declare module 'affinity:linestyles' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    MiterLegacy: { value: 0 },
-    Miter: { value: 1 },
-    Round: { value: 2 },
-    Bevel: { value: 3 },
-  } as unknown as any;
+  };
   export const LineStyleMask: {
     readonly Type: AffinityEnumValue;
     readonly ScaledWeight: AffinityEnumValue;
@@ -6380,19 +5482,7 @@ declare module 'affinity:linestyles' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Type: { value: 1 },
-    ScaledWeight: { value: 2 },
-    Brush: { value: 4 },
-    Cap: { value: 8 },
-    Join: { value: 16 },
-    Miter: { value: 32 },
-    DashPattern: { value: 64 },
-    DashPhase: { value: 128 },
-    Weight: { value: 256 },
-    BalancedDashes: { value: 512 },
-    All: { value: 65535 },
-  } as unknown as any;
+  };
   export const LineType: {
     readonly None: AffinityEnumValue;
     readonly Solid: AffinityEnumValue;
@@ -6403,12 +5493,7 @@ declare module 'affinity:linestyles' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Solid: { value: 1 },
-    Dash: { value: 2 },
-    Texture: { value: 3 },
-  } as unknown as any;
+  };
   export const StrokeAlignment: {
     readonly Centre: AffinityEnumValue;
     readonly Inside: AffinityEnumValue;
@@ -6418,11 +5503,7 @@ declare module 'affinity:linestyles' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Centre: { value: 0 },
-    Inside: { value: 1 },
-    Outside: { value: 2 },
-  } as unknown as any;
+  };
   export const ArrowHeadApi: {
     clone(...args: any[]): any;
     /** scaleX: [0.25, 5.0]; scaleY: [0.25, 5.0] */
@@ -6544,55 +5625,7 @@ declare module 'affinity:network' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Continue: { value: 100 },
-    SwitchingProtocols: { value: 101 },
-    Processing: { value: 102 },
-    EarlyHints: { value: 103 },
-    Ok: { value: 200 },
-    Created: { value: 201 },
-    Accepted: { value: 202 },
-    NonAuthoritativeInformation: { value: 203 },
-    NoContent: { value: 204 },
-    ResetContent: { value: 205 },
-    PartialContent: { value: 206 },
-    MultiStatus: { value: 207 },
-    AlreadyReported: { value: 208 },
-    IMUsed: { value: 226 },
-    MultipleChoices: { value: 300 },
-    MovedPermanently: { value: 301 },
-    Found: { value: 302 },
-    SeeOther: { value: 303 },
-    NotModified: { value: 304 },
-    UseProxy: { value: 305 },
-    SwitchProxy: { value: 306 },
-    TemporaryRedirect: { value: 307 },
-    PermanentRedirect: { value: 308 },
-    Invalid: { value: 400 },
-    Unauthorized: { value: 401 },
-    PaymentRequired: { value: 402 },
-    Forbidden: { value: 403 },
-    NotFound: { value: 404 },
-    MethodNotAllowed: { value: 405 },
-    NotAcceptable: { value: 406 },
-    ProxyAuthenticationRequired: { value: 407 },
-    RequestTimeout: { value: 408 },
-    Conflict: { value: 409 },
-    Gone: { value: 410 },
-    ContentTooLarge: { value: 413 },
-    Throttled: { value: 429 },
-    UnknownError: { value: 500 },
-    NotImplemented: { value: 501 },
-    BadGateway: { value: 502 },
-    ServiceUnavailable: { value: 503 },
-    GatewayTimeout: { value: 504 },
-    HTTPVersionNotSupported: { value: 505 },
-    VariantAlsoNegotiates: { value: 506 },
-    InsufficientStorage: { value: 507 },
-    LoopDetected: { value: 508 },
-    NotExtended: { value: 510 },
-    NetworkAuthenticationRequired: { value: 511 },
-  } as unknown as any;
+  };
   export const RequestMethod: {
     readonly Get: AffinityEnumValue;
     readonly Post: AffinityEnumValue;
@@ -6601,10 +5634,7 @@ declare module 'affinity:network' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Get: { value: 0 },
-    Post: { value: 1 },
-  } as unknown as any;
+  };
   export const HttpRequestApi: {
     create(...args: any[]): any;
     do(...args: any[]): any;
@@ -6636,12 +5666,7 @@ declare module 'affinity:raster' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Zero: { value: 0 },
-    Repeat: { value: 1 },
-    Wrap: { value: 2 },
-    Mirror: { value: 3 },
-  } as unknown as any;
+  };
   export const RasterFormat: {
     readonly RGBA8: AffinityEnumValue;
     readonly RGBA16: AffinityEnumValue;
@@ -6659,19 +5684,7 @@ declare module 'affinity:raster' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    RGBA8: { value: 0 },
-    RGBA16: { value: 1 },
-    IA8: { value: 2 },
-    IA16: { value: 3 },
-    CMYKA8: { value: 4 },
-    LABA16: { value: 5 },
-    M8: { value: 6 },
-    M16: { value: 7 },
-    EMPTY: { value: 8 },
-    RGBAUF: { value: 9 },
-    MF: { value: 10 },
-  } as unknown as any;
+  };
   export const RasterIntent: {
     readonly Perceptual: AffinityEnumValue;
     readonly RelativeColourimetric: AffinityEnumValue;
@@ -6682,12 +5695,7 @@ declare module 'affinity:raster' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Perceptual: { value: 0 },
-    RelativeColourimetric: { value: 1 },
-    Saturation: { value: 2 },
-    AbsoluteColourimetric: { value: 3 },
-  } as unknown as any;
+  };
   export const RasterObjectType: {
     readonly Bitmap: AffinityEnumValue;
     readonly Buffer: AffinityEnumValue;
@@ -6697,11 +5705,7 @@ declare module 'affinity:raster' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Bitmap: { value: 0 },
-    Buffer: { value: 1 },
-    RenderingEngine: { value: 2 },
-  } as unknown as any;
+  };
   export const RasterResamplerType: {
     readonly Default: AffinityEnumValue;
     readonly BilinearMipmap: AffinityEnumValue;
@@ -6717,17 +5721,7 @@ declare module 'affinity:raster' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Default: { value: 0 },
-    BilinearMipmap: { value: 1 },
-    NearestNeighbourMipmap: { value: 2 },
-    NearestNeighbour: { value: 3 },
-    Bilinear: { value: 4 },
-    Bicubic: { value: 5 },
-    SeparableLanczos3: { value: 6 },
-    NonseparableLanczos3: { value: 7 },
-    AntialiasedNearestNeighbourMipmap: { value: 8 },
-  } as unknown as any;
+  };
   export class NodeRenderingEngineOptions {
     constructor(...args: any[]);
     drawBackground: any;
@@ -6892,18 +5886,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    CapsToSmallCaps: { value: 1 },
-    SmallCaps: { value: 2 },
-    AllCaps: { value: 3 },
-    AllSmallCaps: { value: 4 },
-    CapsToPetiteCaps: { value: 5 },
-    PetiteCaps: { value: 6 },
-    AllPetiteCaps: { value: 7 },
-    Titling: { value: 8 },
-    Unicase: { value: 9 },
-  } as unknown as any;
+  };
   export const CrossReferenceSubGlyphType: {
     readonly PageNumber: AffinityEnumValue;
     readonly SectionName: AffinityEnumValue;
@@ -6920,18 +5903,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    PageNumber: { value: 0 },
-    SectionName: { value: 1 },
-    AboveBelow: { value: 2 },
-    NumberedParagraph: { value: 3 },
-    ParagraphBody: { value: 4 },
-    ListNumber: { value: 5 },
-    NoteNumber: { value: 6 },
-    AnchorName: { value: 7 },
-    ChapterName: { value: 8 },
-    ObjectDescription: { value: 9 },
-  } as unknown as any;
+  };
   export const CrossReferenceTargetType: {
     readonly Anchor: AffinityEnumValue;
     readonly Paragraph: AffinityEnumValue;
@@ -6941,11 +5913,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Anchor: { value: 0 },
-    Paragraph: { value: 1 },
-    IndexMark: { value: 2 },
-  } as unknown as any;
+  };
   export const DataMergeSourceType: {
     readonly RecordIndex: AffinityEnumValue;
     readonly OriginalRecordIndex: AffinityEnumValue;
@@ -6955,11 +5923,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    RecordIndex: { value: 0 },
-    OriginalRecordIndex: { value: 1 },
-    SourceName: { value: 2 },
-  } as unknown as any;
+  };
   export const DocumentFieldType: {
     readonly Author: AffinityEnumValue;
     readonly Tags: AffinityEnumValue;
@@ -7020,62 +5984,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Author: { value: 0 },
-    Tags: { value: 1 },
-    Comments: { value: 2 },
-    Title: { value: 3 },
-    LastEditedBy: { value: 4 },
-    Size: { value: 5 },
-    Created: { value: 6 },
-    Modified: { value: 7 },
-    PageCount: { value: 8 },
-    Revision: { value: 9 },
-    SaveCount: { value: 10 },
-    Printed: { value: 11 },
-    Filename: { value: 12 },
-    Path: { value: 13 },
-    Subject: { value: 14 },
-    Rating: { value: 15 },
-    Headline: { value: 16 },
-    AuthorPosition: { value: 17 },
-    DescriptionWriter: { value: 18 },
-    ImageLocation: { value: 19 },
-    ImageCity: { value: 20 },
-    ImageState: { value: 21 },
-    ImageCountry: { value: 22 },
-    ImageIsoCountryCode: { value: 23 },
-    Source: { value: 24 },
-    Credit: { value: 25 },
-    Genre: { value: 26 },
-    SubjectCodes: { value: 27 },
-    Scenes: { value: 28 },
-    JobId: { value: 29 },
-    Instructions: { value: 30 },
-    ContactAddress: { value: 31 },
-    ContactCity: { value: 32 },
-    ContactState: { value: 33 },
-    ContactPostcode: { value: 34 },
-    ContactCountry: { value: 35 },
-    ContactPhone: { value: 36 },
-    ContactEmail: { value: 37 },
-    ContactWebsite: { value: 38 },
-    IsCopyrighted: { value: 39 },
-    CopyrightTerms: { value: 40 },
-    CopyrightUrl: { value: 41 },
-    CcLicenceName: { value: 42 },
-    CcMorePermsUrl: { value: 43 },
-    CcAttributionUrl: { value: 44 },
-    CcAttributionName: { value: 45 },
-    CameraModel: { value: 46 },
-    CameraMaker: { value: 47 },
-    Lens: { value: 48 },
-    DateShot: { value: 49 },
-    Publisher: { value: 50 },
-    ISBN10: { value: 51 },
-    ISBN13: { value: 52 },
-    Illustrator: { value: 53 },
-  } as unknown as any;
+  };
   export const FieldDataType: {
     readonly String: AffinityEnumValue;
     readonly Number: AffinityEnumValue;
@@ -7085,11 +5994,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    String: { value: 0 },
-    Number: { value: 1 },
-    DateTime: { value: 2 },
-  } as unknown as any;
+  };
   export const FillerTextType: {
     readonly Lorem: AffinityEnumValue;
     readonly Alice: AffinityEnumValue;
@@ -7098,10 +6003,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Lorem: { value: 0 },
-    Alice: { value: 1 },
-  } as unknown as any;
+  };
   export const GlyphAttDoubleType: {
     readonly Height: AffinityEnumValue;
     readonly CharacterSpacing: AffinityEnumValue;
@@ -7119,19 +6021,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Height: { value: 0 },
-    CharacterSpacing: { value: 1 },
-    BaselineAdvance: { value: 2 },
-    AutoKernMinHeight: { value: 3 },
-    OffsetX: { value: 4 },
-    OffsetY: { value: 5 },
-    ManualKerning: { value: 6 },
-    ScaleX: { value: 7 },
-    ScaleY: { value: 8 },
-    ShearX: { value: 9 },
-    AbsoluteLeading: { value: 10 },
-  } as unknown as any;
+  };
   export const GlyphAttStringType: {
     readonly SpellingLanguageId: AffinityEnumValue;
     readonly StyleName: AffinityEnumValue;
@@ -7141,11 +6031,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    SpellingLanguageId: { value: 0 },
-    StyleName: { value: 1 },
-    HyphenationLanguageId: { value: 2 },
-  } as unknown as any;
+  };
   export const GlyphType: {
     readonly Anchor: AffinityEnumValue;
     readonly Char: AffinityEnumValue;
@@ -7176,32 +6062,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Anchor: { value: 0 },
-    Char: { value: 1 },
-    CrossReference: { value: 2 },
-    CrossReferenceSub: { value: 3 },
-    FillerText: { value: 4 },
-    CapturedDateTime: { value: 5 },
-    CustomField: { value: 6 },
-    DataMergeField: { value: 7 },
-    DataMergeSource: { value: 8 },
-    DocumentField: { value: 9 },
-    RunningHeader: { value: 10 },
-    PageNumber: { value: 11 },
-    RangenoteBody: { value: 12 },
-    RangenoteReference: { value: 13 },
-    SectionName: { value: 14 },
-    GlyphIndex: { value: 15 },
-    HardBreak: { value: 16 },
-    IndentToHere: { value: 17 },
-    IndexMark: { value: 18 },
-    ListNumber: { value: 19 },
-    NoteNumber: { value: 20 },
-    Pin: { value: 21 },
-    RangenoteEnd: { value: 22 },
-    RightIndentTab: { value: 23 },
-  } as unknown as any;
+  };
   export const HardBreakType: {
     readonly None: AffinityEnumValue;
     readonly Line: AffinityEnumValue;
@@ -7218,18 +6079,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Line: { value: 1 },
-    Paragraph: { value: 2 },
-    Column: { value: 3 },
-    TableCell: { value: 4 },
-    Frame: { value: 5 },
-    Page: { value: 6 },
-    OddPage: { value: 7 },
-    EvenPage: { value: 8 },
-    Story: { value: 9 },
-  } as unknown as any;
+  };
   export const LeadingOverrideType: {
     readonly None: AffinityEnumValue;
     readonly AtLeast: AffinityEnumValue;
@@ -7238,10 +6088,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    AtLeast: { value: 1 },
-  } as unknown as any;
+  };
   export const NotePosition: {
     readonly Unknown: AffinityEnumValue;
     readonly BottomOfColumn: AffinityEnumValue;
@@ -7264,24 +6111,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Unknown: { value: 0 },
-    BottomOfColumn: { value: 1 },
-    BottomOfFrame: { value: 2 },
-    EndOfStory: { value: 3 },
-    StoryFrame: { value: 4 },
-    SectionFrame: { value: 5 },
-    DocumentFrame: { value: 6 },
-    BelowText: { value: 7 },
-    BelowFrame: { value: 8 },
-    LeftOfFrame: { value: 9 },
-    RightOfFrame: { value: 10 },
-    AwayFromSpine: { value: 11 },
-    TowardsSpine: { value: 12 },
-    AlternateSides: { value: 13 },
-    ClosestSide: { value: 14 },
-    EndOfBook: { value: 15 },
-  } as unknown as any;
+  };
   export const NoteType: {
     readonly None: AffinityEnumValue;
     readonly Footnote: AffinityEnumValue;
@@ -7292,12 +6122,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Footnote: { value: 1 },
-    Endnote: { value: 2 },
-    Sidenote: { value: 3 },
-  } as unknown as any;
+  };
   export const OpticalAlignmentType: {
     readonly None: AffinityEnumValue;
     readonly Manual: AffinityEnumValue;
@@ -7307,11 +6132,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Manual: { value: 1 },
-    Font: { value: 2 },
-  } as unknown as any;
+  };
   export const PageNumberType: {
     readonly Current: AffinityEnumValue;
     readonly Next: AffinityEnumValue;
@@ -7323,13 +6144,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Current: { value: 0 },
-    Next: { value: 1 },
-    Previous: { value: 2 },
-    SectionTotal: { value: 3 },
-    RunLast: { value: 4 },
-  } as unknown as any;
+  };
   export const ParagraphAlignXType: {
     readonly Left: AffinityEnumValue;
     readonly Centre: AffinityEnumValue;
@@ -7345,17 +6160,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Left: { value: 0 },
-    Centre: { value: 1 },
-    Right: { value: 2 },
-    JustifyLeft: { value: 3 },
-    JustifyCentre: { value: 4 },
-    JustifyRight: { value: 5 },
-    JustifyAll: { value: 6 },
-    AwayFromSpine: { value: 7 },
-    TowardsSpine: { value: 8 },
-  } as unknown as any;
+  };
   export const ParagraphAttDoubleType: {
     readonly RelativeLeading: AffinityEnumValue;
     readonly AbsoluteLeading: AffinityEnumValue;
@@ -7383,29 +6188,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    RelativeLeading: { value: 0 },
-    AbsoluteLeading: { value: 1 },
-    LeftIndent: { value: 2 },
-    RightIndent: { value: 3 },
-    FirstLineIndent: { value: 4 },
-    SpaceBefore: { value: 5 },
-    SpaceAfter: { value: 6 },
-    DefaultTabStops: { value: 7 },
-    MinWordSpacing: { value: 8 },
-    DesiredWordSpacing: { value: 9 },
-    MaxWordSpacing: { value: 10 },
-    MinLetterSpacing: { value: 11 },
-    DesiredLetterSpacing: { value: 12 },
-    MaxLetterSpacing: { value: 13 },
-    MinHyphenScore: { value: 14 },
-    HyphenationZone: { value: 15 },
-    HyphenationZoneCapitals: { value: 16 },
-    HyphenationZoneParagraphEnd: { value: 17 },
-    HyphenationZoneColumnEnd: { value: 18 },
-    LastLineOutdent: { value: 19 },
-    SpaceBetweenSameStyles: { value: 20 },
-  } as unknown as any;
+  };
   export const ParagraphAttStringType: {
     readonly StyleName: AffinityEnumValue;
     readonly keys: readonly string[];
@@ -7413,9 +6196,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    StyleName: { value: 0 },
-  } as unknown as any;
+  };
   export const ParagraphLeadingType: {
     readonly RelativeToIdeal: AffinityEnumValue;
     readonly RelativeToHeight: AffinityEnumValue;
@@ -7427,13 +6208,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    RelativeToIdeal: { value: 0 },
-    RelativeToHeight: { value: 1 },
-    ExactlyAbsolute: { value: 2 },
-    AtLeastAbsolute: { value: 3 },
-    RelativeToIdealAbsolute: { value: 4 },
-  } as unknown as any;
+  };
   export const ParagraphLineBreakModeType: {
     readonly Auto: AffinityEnumValue;
     readonly Western: AffinityEnumValue;
@@ -7443,11 +6218,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Auto: { value: 0 },
-    Western: { value: 1 },
-    International: { value: 2 },
-  } as unknown as any;
+  };
   export const ParagraphPDFExportTagType: {
     readonly P: AffinityEnumValue;
     readonly H1: AffinityEnumValue;
@@ -7461,15 +6232,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    P: { value: 0 },
-    H1: { value: 1 },
-    H2: { value: 2 },
-    H3: { value: 3 },
-    H4: { value: 4 },
-    H5: { value: 5 },
-    H6: { value: 6 },
-  } as unknown as any;
+  };
   export const ParagraphStartAtHardBreakType: {
     readonly None: AffinityEnumValue;
     readonly Column: AffinityEnumValue;
@@ -7482,14 +6245,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Column: { value: 1 },
-    Frame: { value: 2 },
-    Page: { value: 3 },
-    EvenPage: { value: 4 },
-    OddPage: { value: 5 },
-  } as unknown as any;
+  };
   export const ParagraphUseSpaceBeforeMode: {
     readonly OnlyBetweenParagraphs: AffinityEnumValue;
     readonly OnlyAtColumnTop: AffinityEnumValue;
@@ -7499,11 +6255,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    OnlyBetweenParagraphs: { value: 0 },
-    OnlyAtColumnTop: { value: 1 },
-    Always: { value: 2 },
-  } as unknown as any;
+  };
   export const SoftBreakType: {
     readonly Normal: AffinityEnumValue;
     readonly Space: AffinityEnumValue;
@@ -7522,20 +6274,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Normal: { value: 0 },
-    Space: { value: 1 },
-    Never: { value: 2 },
-    WithoutHyphen: { value: 3 },
-    SoftHyphen: { value: 4 },
-    Ideographic: { value: 5 },
-    Punctuation: { value: 6 },
-    OpenPunctuation: { value: 7 },
-    ClosePunctuation: { value: 8 },
-    CloseParenthesis: { value: 9 },
-    Solidus: { value: 10 },
-    InfixNumeric: { value: 11 },
-  } as unknown as any;
+  };
   export const StoryIoFormat: {
     readonly Raw: AffinityEnumValue;
     readonly UserDescriptions: AffinityEnumValue;
@@ -7559,25 +6298,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Raw: { value: 0 },
-    UserDescriptions: { value: 1 },
-    InternalDescriptions: { value: 2 },
-    MenuDescriptions: { value: 4 },
-    CppDescriptions: { value: 8 },
-    Debug: { value: 10 },
-    Returns: { value: 16 },
-    Newlines: { value: 32 },
-    CrLf: { value: 48 },
-    Tabs: { value: 64 },
-    HideStoryTerminator: { value: 512 },
-    CommandDescriptions: { value: 513 },
-    ClipboardDescriptions: { value: 544 },
-    ReplaceCrLfTabWithSpace: { value: 1024 },
-    ReplaceTypographicQuotes: { value: 2048 },
-    TokenDescriptions: { value: 4096 },
-    FieldDescriptions: { value: 8192 },
-  } as unknown as any;
+  };
   export const SuperSubType: {
     readonly None: AffinityEnumValue;
     readonly Superscript: AffinityEnumValue;
@@ -7587,11 +6308,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Superscript: { value: 1 },
-    Subscript: { value: 2 },
-  } as unknown as any;
+  };
   export const TableAxis: {
     readonly Columns: AffinityEnumValue;
     readonly Rows: AffinityEnumValue;
@@ -7600,10 +6317,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Columns: { value: 0 },
-    Rows: { value: 1 },
-  } as unknown as any;
+  };
   export const TocRoleType: {
     readonly None: AffinityEnumValue;
     readonly PageNumber: AffinityEnumValue;
@@ -7612,10 +6326,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    PageNumber: { value: 1 },
-  } as unknown as any;
+  };
   export const TypographicLineType: {
     readonly None: AffinityEnumValue;
     readonly Single: AffinityEnumValue;
@@ -7625,11 +6336,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    None: { value: 0 },
-    Single: { value: 1 },
-    Double: { value: 2 },
-  } as unknown as any;
+  };
   export const WordPartType: {
     readonly Word: AffinityEnumValue;
     readonly Punctuation: AffinityEnumValue;
@@ -7639,11 +6346,7 @@ declare module 'affinity:story' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Word: { value: 0 },
-    Punctuation: { value: 1 },
-    Space: { value: 2 },
-  } as unknown as any;
+  };
   export class StoryRange {
     constructor(...args: any[]);
     end: any;
@@ -8093,27 +6796,7 @@ declare module 'affinity:ui' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Unknown: { value: 0 },
-    Separator: { value: 1 },
-    Switch: { value: 2 },
-    ComboBox: { value: 3 },
-    ButtonSet: { value: 4 },
-    RadioGroup: { value: 5 },
-    StaticText: { value: 6 },
-    UnitValueEditor: { value: 7 },
-    CheckBox: { value: 8 },
-    SpatialAnchor: { value: 9 },
-    ColourPicker: { value: 10 },
-    TextBox: { value: 11 },
-    FontPicker: { value: 12 },
-    FillEditor: { value: 13 },
-    StrokeEditor: { value: 14 },
-    Group: { value: 15 },
-    Column: { value: 16 },
-    ColumnStack: { value: 17 },
-    Button: { value: 18 },
-  } as unknown as any;
+  };
   export const DialogResult: {
     readonly Cancel: AffinityEnumValue;
     readonly Ok: AffinityEnumValue;
@@ -8122,10 +6805,7 @@ declare module 'affinity:ui' {
     readonly entries: readonly (readonly [string, number])[];
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
-  } = {
-    Cancel: { value: 0 },
-    Ok: { value: 1 },
-  } as unknown as any;
+  };
   export const DialogApi: {
     addColumn(...args: any[]): any;
     create(...args: any[]): any;

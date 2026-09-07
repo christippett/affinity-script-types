@@ -11,7 +11,7 @@ export class ShapeInterface extends HandleObject {
   readonly domainTransform: any;
   readonly node: any;
   setShape(shape?: any, preview?: any): any;
-  setShapeAsync(shape?: any, callback?: any, preview?: any): any;
+  setShapeAsync(shape?: any, callback?: (...args: any[]) => any, preview?: any): any;
 }
 
 export { ShapeType } from 'affinity:geometry';

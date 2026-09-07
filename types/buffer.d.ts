@@ -13,7 +13,7 @@ export class Buffer extends HandleObject {
   equals(other?: any): any;
   compare(other?: any): any;
   compareSome(start1?: any, end1?: any, other?: any, start2?: any, end2?: any): any;
-  toString(): any;
+  undefined
   readonly length: any;
   readonly buffer: any;
   readonly array: any;

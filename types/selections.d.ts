@@ -8,9 +8,9 @@ export class CurveEdgeSubSelection extends SubSelection {
   readonly isEmpty: any;
   readonly itemCount: any;
   getItem(index?: any): any;
-  enumerateItems(callback?: any): any;
+  enumerateItems(callback?: (...args: any[]) => any): any;
   readonly items: any;
-  enumerateItemsWithCurveID(curveID?: any, callback?: any): any;
+  enumerateItemsWithCurveID(curveID?: any, callback?: (...args: any[]) => any): any;
   getItemsWithCurveID(curveID?: any): any;
   cloneAndAddItems(items?: any): CurveEdgeSubSelection;
   cloneAndRemoveItems(items?: any): CurveEdgeSubSelection;
@@ -24,9 +24,9 @@ export class CurveNodeSubSelection extends SubSelection {
   readonly isEmpty: any;
   readonly itemCount: any;
   getItem(index?: any): any;
-  enumerateItems(callback?: any): any;
+  enumerateItems(callback?: (...args: any[]) => any): any;
   readonly items: any;
-  enumerateItemsWithCurveID(curveID?: any, callback?: any): any;
+  enumerateItemsWithCurveID(curveID?: any, callback?: (...args: any[]) => any): any;
   getItemsWithCurveID(curveID?: any): any;
   cloneAndAddItems(items?: any): CurveNodeSubSelection;
   cloneAndRemoveItems(items?: any): CurveNodeSubSelection;
@@ -39,7 +39,7 @@ export class FillMeshSubSelection extends SubSelection {
   readonly isFillMeshSubSelection: any;
   readonly isEmpty: any;
   readonly itemCount: any;
-  enumerateItems(callback?: any): any;
+  enumerateItems(callback?: (...args: any[]) => any): any;
   readonly items: any;
   static fromSubSelection(subSelection?: any): FillMeshSubSelection;
 }
@@ -57,7 +57,7 @@ export class LineFillMeshSubSelection extends SubSelection {
   readonly isLineFillMeshSubSelection: any;
   readonly isEmpty: any;
   readonly itemCount: any;
-  enumerateItems(callback?: any): any;
+  enumerateItems(callback?: (...args: any[]) => any): any;
   readonly items: any;
   static fromSubSelection(subSelection?: any): LineFillMeshSubSelection;
 }
@@ -98,7 +98,7 @@ export class SelectionItem extends HandleObject {
   getSubSelection(index?: any): any;
   getSubSelectionOfType(subSelectionType?: any): any;
   readonly subSelectionCount: any;
-  enumerateSubSelections(callback?: any): any;
+  enumerateSubSelections(callback?: (...args: any[]) => any): any;
   readonly subSelections: any;
 }
 
@@ -115,8 +115,8 @@ export class TableSubSelection extends SubSelection {
   readonly anchor: any;
   readonly caret: any;
   readonly boundingBox: any;
-  enumerateCells(callback?: any): any;
-  enumerateEdges(tableAxis?: any, tableEdgeSelector?: any, callback?: any): any;
+  enumerateCells(callback?: (...args: any[]) => any): any;
+  enumerateEdges(tableAxis?: any, tableEdgeSelector?: any, callback?: (...args: any[]) => any): any;
   readonly cells: any;
   getEdges(tableAxis?: any, tableEdgeSelector?: any): any;
   static fromSubSelection(subSelection?: any): TableSubSelection;
@@ -133,7 +133,7 @@ export class TextSelection extends SubSelection {
   readonly markedTextEnd: any;
   readonly rangeCount: any;
   getRange(index?: any): any;
-  enumerateRanges(callback?: any): any;
+  enumerateRanges(callback?: (...args: any[]) => any): any;
   readonly ranges: any;
 }
 
@@ -142,7 +142,7 @@ export class TransparencyMeshSubSelection extends SubSelection {
   readonly isTransparencyMeshSubSelection: any;
   readonly isEmpty: any;
   readonly itemCount: any;
-  enumerateItems(callback?: any): any;
+  enumerateItems(callback?: (...args: any[]) => any): any;
   readonly items: any;
   static fromSubSelection(subSelection?: any): TransparencyMeshSubSelection;
 }

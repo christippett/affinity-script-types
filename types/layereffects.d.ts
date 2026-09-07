@@ -137,7 +137,7 @@ export class PhongBevelLayerEffect extends LayerEffect {
   specularColour: any;
   readonly lightCount: any;
   getLight(index?: any): PointLight;
-  enumerateLights(callback?: any): any;
+  enumerateLights(callback?: (...args: any[]) => any): any;
   insertLight(index?: any, pointLight?: any): any;
   removeLight(index?: any): any;
   appendLight(pointLight?: any): any;

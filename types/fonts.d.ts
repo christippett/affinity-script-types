@@ -28,11 +28,11 @@ export class Font extends HandleObject {
   readonly traitsName: any;
   readonly variableBold: any;
   readonly variableItalic: any;
-  toString(): any;
+  undefined
   readonly isSerif: any;
   readonly isSansSerif: any;
   readonly isMonospaced: any;
-  static enumerate(callback?: any): any;
+  static enumerate(callback?: (...args: any[]) => any): any;
   static readonly all: any;
   static createEmpty(): Font;
   static createDefault(): Font;
@@ -45,7 +45,7 @@ export class Font extends HandleObject {
 export class FontCollection extends HandleObject {
   constructor(handle?: any);
   readonly displayName: any;
-  static enumerateCollections(callback?: any): any;
+  static enumerateCollections(callback?: (...args: any[]) => any): any;
   static readonly all: any;
 }
 
@@ -56,9 +56,9 @@ export class FontFamily extends HandleObject {
   readonly fontCount: any;
   readonly length: any;
   getFont(index?: any): Font;
-  enumerateFonts(callback?: any): any;
+  enumerateFonts(callback?: (...args: any[]) => any): any;
   readonly fonts: any;
-  static enumerate(callback?: any): any;
+  static enumerate(callback?: (...args: any[]) => any): any;
   static readonly all: any;
   readonly hasVariations: any;
   readonly hasFixed: any;
@@ -72,7 +72,7 @@ export class Panose extends HandleObject {
   readonly isSansSerif: any;
   readonly isMonospaced: any;
   readonly isEmpty: any;
-  toString(): any;
+  undefined
   getDistance(other?: any): any;
 }
 

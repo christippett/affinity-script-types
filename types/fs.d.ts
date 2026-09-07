@@ -47,22 +47,22 @@ export class File extends HandleObject {
   flush(): any;
   getLength(asBigInt?: any): any;
   close(): any;
-  seekAsync(offset?: any, origin?: any, callback?: any): any;
-  readAsync(buffer?: any, offset?: any, length?: any, position?: any, callback?: any): any;
-  writeAsync(buffer?: any, offset?: any, length?: any, position?: any, callback?: any): any;
-  writeStringAsUtf8Async(str?: any, position?: any, callback?: any): any;
-  writeStringAsUtf16Async(str?: any, position?: any, callback?: any): any;
-  writeStringAsync(str?: any, position?: any, callback?: any): any;
-  tellAsync(callback?: any): any;
-  isEofAsync(callback?: any): any;
-  flushAsync(callback?: any): any;
-  getLengthAsync(callback?: any, asBigInt?: any): any;
-  closeAsync(cancelOps?: any, callback?: any): any;
+  seekAsync(offset?: any, origin?: any, callback?: (...args: any[]) => any): any;
+  readAsync(buffer?: any, offset?: any, length?: any, position?: any, callback?: (...args: any[]) => any): any;
+  writeAsync(buffer?: any, offset?: any, length?: any, position?: any, callback?: (...args: any[]) => any): any;
+  writeStringAsUtf8Async(str?: any, position?: any, callback?: (...args: any[]) => any): any;
+  writeStringAsUtf16Async(str?: any, position?: any, callback?: (...args: any[]) => any): any;
+  writeStringAsync(str?: any, position?: any, callback?: (...args: any[]) => any): any;
+  tellAsync(callback?: (...args: any[]) => any): any;
+  isEofAsync(callback?: (...args: any[]) => any): any;
+  flushAsync(callback?: (...args: any[]) => any): any;
+  getLengthAsync(callback?: (...args: any[]) => any, asBigInt?: any): any;
+  closeAsync(cancelOps?: any, callback?: (...args: any[]) => any): any;
   position: any;
   readonly length: any;
   readonly size: any;
   static readAll(path?: any): any;
-  static readAllAsync(path?: any, callback?: any): File;
+  static readAllAsync(path?: any, callback?: (...args: any[]) => any): File;
   readonly promises: any;
 }
 

@@ -13,7 +13,7 @@ interface AffinityEnumValue {
   toString(): string;
 }
 
-declare const environment: {
+declare var environment: {
   readonly logLevel: any;
   readonly SDKVersion: string;
   readonly V8Version: string;
@@ -21,14 +21,15 @@ declare const environment: {
   getHeapStatistics(): any;
   postTask(callback: () => void): void;
 };
+declare var console: any;
 
-declare const console: any;
-
-declare class TextDecoder {
-  constructor(encoding?: string);
+interface TextDecoder {
   decode(input?: any, options?: any): string;
 }
-
+declare var TextDecoder: {
+  prototype: TextDecoder;
+  new (encoding?: string): TextDecoder;
+};
 declare module '*.json' {
   const value: any;
   export = value;

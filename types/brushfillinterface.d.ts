@@ -13,7 +13,7 @@ export class BrushFillInterface extends HandleObject {
   getDescriptor(index?: any, obeyScaleWithObject?: any): any;
   getCurrentDescriptor(obeyScaleWithObject?: any): any;
   readonly currentIndex: any;
-  enumerateDescriptors(callback?: any, obeyScaleWithObject?: any): any;
+  enumerateDescriptors(callback?: (...args: any[]) => any, obeyScaleWithObject?: any): any;
   readonly subSelectionCount: any;
   getSubSelection(index?: any): any;
   readonly node: any;

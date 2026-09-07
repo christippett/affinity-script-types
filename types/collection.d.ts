@@ -33,7 +33,7 @@ export class Collection {
   at(index?: any): any;
   countIf(predicate?: any, thisArg?: any): any;
   readonly first: any;
-  forEach(callback?: any, thisArg?: any): any;
+  forEach(callback?: (...args: any[]) => any, thisArg?: any): any;
   readonly last: any;
   readonly length: any;
   readonly isEmpty: any;

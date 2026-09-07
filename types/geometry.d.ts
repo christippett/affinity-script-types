@@ -28,7 +28,7 @@ export class Transform {
   sheared(x?: any, y?: any): any;
   rotated(rads?: any): any;
   translated(x?: any, y?: any): any;
-  toString(): any;
+  undefined
   readonly xAxis: any;
   readonly yAxis: any;
   readonly origin: any;
@@ -63,7 +63,7 @@ export class CubicBezier {
   splitRight(t?: any): any;
   getParamAtLength(length?: any): any;
   clone(): CubicBezier;
-  toString(): any;
+  undefined
   reversed(): any;
   transformed(xf?: any): any;
   readonly length: any;
@@ -120,7 +120,7 @@ export class Curve extends HandleObject {
   readonly nodeCount: any;
   getNode(pointIndex?: any): any;
   appendNode(node?: any): any;
-  enumerateNodes(callback?: any): any;
+  enumerateNodes(callback?: (...args: any[]) => any): any;
   readonly nodes: any;
   makeClosed(): any;
   generatePolygon(tolerance?: any): any;
@@ -236,7 +236,7 @@ export class Polygon extends HandleObject {
   readonly boundingBox: any;
   readonly pointCount: any;
   getPoint(pointIndex?: any): any;
-  enumeratePoints(callback?: any): any;
+  enumeratePoints(callback?: (...args: any[]) => any): any;
   clear(): any;
   addPoint(point?: any): any;
   addPointXY(x?: any, y?: any): any;
