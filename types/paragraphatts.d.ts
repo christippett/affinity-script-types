@@ -12,19 +12,19 @@ export class ParagraphAtts extends HandleObject {
   useSpaceBeforeMode: any;
   pdfExportTagType: any;
   lineBreakModeType: any;
-  isKeepWithPrevious: any;
-  isKeepTogether: any;
-  isPreventWidows: any;
-  isPreventOrphans: any;
+  isKeepWithPrevious: boolean;
+  isKeepTogether: boolean;
+  isPreventWidows: boolean;
+  isPreventOrphans: boolean;
   alignToBaselineGrid: any;
-  isAutoHyphenate: any;
-  isIndex: any;
+  isAutoHyphenate: boolean;
+  isIndex: boolean;
   useSpaceBetweenSameStyles: any;
-  isSumBeforeAndAfterSpace: any;
-  isBookEndnotes: any;
+  isSumBeforeAndAfterSpace: boolean;
+  isBookEndnotes: boolean;
   useModernLeading: any;
   keepWithNext: any;
-  hyphenateMinLength: any;
+  hyphenateMinLength: number;
   hyphenateMinPrefix: any;
   hyphenateMinSuffix: any;
   maxConsecutiveHyphens: any;
@@ -50,10 +50,10 @@ export class ParagraphAtts extends HandleObject {
   lastLineOutdent: any;
   spaceBetweenSameStyles: any;
   getDoubleValue(att?: any): any;
-  setDoubleValue(att?: any, value?: any): any;
-  styleName: any;
+  setDoubleValue(att?: any, value?: any): this;
+  styleName: string;
   getStringValue(att?: any): any;
-  setStringValue(att?: any, value?: any): any;
+  setStringValue(att?: any, value?: any): this;
 }
 
 export { ParagraphAlignXType } from 'affinity:story';

@@ -4,18 +4,18 @@ import { HandleObject } from '/handleobject';
 
 export class TextFrameInterface extends HandleObject {
   constructor(handle?: any);
-  readonly canHideOverflow: any;
-  readonly canUseBaselineGrid: any;
-  readonly canUseTextWraps: any;
-  readonly hasScaledText: any;
+  readonly canHideOverflow: boolean;
+  readonly canUseBaselineGrid: boolean;
+  readonly canUseTextWraps: boolean;
+  readonly hasScaledText: boolean;
   readonly ignoreBaselineGrid: any;
   readonly ignoreTextWraps: any;
-  readonly isMultiFrameTextFlow: any;
-  readonly isTextFlowBack: any;
-  readonly isTextFlowFront: any;
-  readonly isWrappingText: any;
+  readonly isMultiFrameTextFlow: boolean;
+  readonly isTextFlowBack: boolean;
+  readonly isTextFlowFront: boolean;
+  readonly isWrappingText: boolean;
   readonly textBegin: any;
-  readonly textFlowIndex: any;
+  readonly textFlowIndex: number;
   readonly scalarStoryToDomainTransform: any;
   readonly storyToDomainTransform: any;
   readonly textRenderScale: any;

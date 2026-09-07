@@ -8,7 +8,7 @@ export class UnitValueConverter extends HandleObject {
   clone(): UnitValueConverter;
   readonly dpi: number;
   readonly viewDpi: number;
-  getConversionFactor(from?: any, to?: any): any;
+  getConversionFactor(from?: any, to?: any): number;
 }
 
 export { UnitType } from 'affinity:common';

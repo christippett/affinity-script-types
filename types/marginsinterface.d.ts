@@ -5,6 +5,6 @@ import { HandleObject } from '/handleobject';
 export class MarginsInterface extends HandleObject {
   constructor(handle?: any);
   readonly useMargins: any;
-  readonly hasMargins: any;
+  readonly hasMargins: boolean;
 }
 

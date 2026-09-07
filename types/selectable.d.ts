@@ -4,6 +4,6 @@ import { HandleObject } from '/handleobject';
 
 export class Selectable extends HandleObject {
   constructor(handle?: any);
-  readonly isSelectable: any;
+  readonly isSelectable: boolean;
 }
 

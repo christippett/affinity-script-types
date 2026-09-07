@@ -4,10 +4,10 @@ import { HandleObject } from '/handleobject';
 
 export class TagInterface extends HandleObject {
   constructor(handle?: any);
-  hasKey(key?: any): any;
+  hasKey(key?: any): boolean;
   getValueForKey(key?: any): any;
-  readonly isMarkAsDecoration: any;
-  hasPredefinedKey(key?: any): any;
+  readonly isMarkAsDecoration: boolean;
+  hasPredefinedKey(key?: any): boolean;
   getValueForPredefinedKey(key?: any): any;
   readonly node: any;
 }

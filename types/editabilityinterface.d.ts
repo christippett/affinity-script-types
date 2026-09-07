@@ -4,9 +4,9 @@ import { HandleObject } from '/handleobject';
 
 export class EditabilityInterface extends HandleObject {
   constructor(handle?: any);
-  readonly isEditable: any;
-  readonly isLocalEditable: any;
-  readonly isMasterEditable: any;
+  readonly isEditable: boolean;
+  readonly isLocalEditable: boolean;
+  readonly isMasterEditable: boolean;
   readonly node: any;
 }
 

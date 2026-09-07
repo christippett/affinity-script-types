@@ -2,39 +2,41 @@
 
 import { Collection } from '/collection';
 import { HandleObject } from '/handleobject';
+import { FileType } from 'affinity:dom';
+import { PathType } from 'affinity:fs';
 
 export class Directory {
-  constructor(path?: any);
-  readonly path: any;
+  constructor(path?: string);
+  readonly path: PathType;
   readonly entries: DirectoryEntries;
 }
 
 export class DirectoryEntries extends Collection {
-  constructor(path?: any, resolveSymlink?: any);
+  constructor(path?: string, resolveSymlink?: boolean);
   readonly all: RecursiveDirectoryEntries;
-  readonly files: any;
+  readonly files: FileType;
   readonly filePaths: any;
 }
 
 export class DirectoryIterator extends HandleObject {
   constructor(handle?: any);
-  static at(path?: any): DirectoryIterator;
-  isDone(): any;
+  static at(path?: string): DirectoryIterator;
+  isDone(): boolean;
   next(): any;
-  readonly path: any;
+  readonly path: string;
   readonly fileSize: any;
   getFileSize(asBigInt?: any): any;
   readonly fileStatus: FileStatus;
   readonly symlinkStatus: FileStatus;
-  entry(resolveSymlink?: any): any;
+  entry(resolveSymlink?: boolean): any;
   readonly done: any;
 }
 
 export class File extends HandleObject {
-  constructor(path?: any, mode?: any);
-  static length(path?: any): File;
-  static size(path?: any): any;
-  open(path?: any, mode?: any): any;
+  constructor(path?: string, mode?: any);
+  static length(path?: string): File;
+  static size(path?: string): any;
+  open(path?: string, mode?: any): any;
   seek(offset?: any, origin?: any): any;
   read(buffer?: any, length?: any): any;
   write(buffer?: any, length?: any): any;
@@ -42,10 +44,10 @@ export class File extends HandleObject {
   writeStringAsUtf16(str?: any): any;
   writeString(str?: any): any;
   tell(): any;
-  readonly isEof: any;
-  readonly isOpen: any;
+  readonly isEof: boolean;
+  readonly isOpen: boolean;
   flush(): any;
-  getLength(asBigInt?: any): any;
+  getLength(asBigInt?: any): number;
   close(): any;
   seekAsync(offset?: any, origin?: any, callback?: (...args: any[]) => any): any;
   readAsync(buffer?: any, offset?: any, length?: any, position?: any, callback?: (...args: any[]) => any): any;
@@ -54,28 +56,28 @@ export class File extends HandleObject {
   writeStringAsUtf16Async(str?: any, position?: any, callback?: (...args: any[]) => any): any;
   writeStringAsync(str?: any, position?: any, callback?: (...args: any[]) => any): any;
   tellAsync(callback?: (...args: any[]) => any): any;
-  isEofAsync(callback?: (...args: any[]) => any): any;
+  isEofAsync(callback?: (...args: any[]) => any): boolean;
   flushAsync(callback?: (...args: any[]) => any): any;
-  getLengthAsync(callback?: (...args: any[]) => any, asBigInt?: any): any;
+  getLengthAsync(callback?: (...args: any[]) => any, asBigInt?: any): number;
   closeAsync(cancelOps?: any, callback?: (...args: any[]) => any): any;
   position: any;
-  readonly length: any;
+  readonly length: number;
   readonly size: any;
-  static readAll(path?: any): any;
-  static readAllAsync(path?: any, callback?: (...args: any[]) => any): File;
-  readonly promises: any;
+  static readAll(path?: string): any;
+  static readAllAsync(path?: string, callback?: (...args: any[]) => any): File;
+  readonly promises: FilePromises;
 }
 
 export class FilePromises {
   constructor(file?: any);
-  readonly file: any;
-  seek(offset?: any, origin?: any): any;
-  read(buffer?: any, offset?: any, length?: any, position?: any): any;
-  write(buffer?: any, offset?: any, length?: any, position?: any): any;
-  tell(): any;
-  isEof(): any;
-  flush(): any;
-  getLength(asBigInt?: any): any;
+  readonly file: FileType;
+  seek(offset?: any, origin?: any): Promise;
+  read(buffer?: any, offset?: any, length?: any, position?: any): Promise;
+  write(buffer?: any, offset?: any, length?: any, position?: any): Promise;
+  tell(): Promise;
+  isEof(): Promise;
+  flush(): Promise;
+  getLength(asBigInt?: any): Promise;
   readonly position: any;
   readonly eof: any;
   readonly length: any;
@@ -91,44 +93,44 @@ export class FileStatus extends HandleObject {
 
 export class FileSystemPromises {
   constructor(...args: any[]);
-  static areEquivalent(path1?: any, path2?: any): any;
-  static copy(path1?: any, path2?: any, options?: any): any;
-  static copyFile(path1?: any, path2?: any, options?: any): any;
-  static createDirectories(path?: any): any;
-  static createDirectory(path?: any): any;
-  static createDirectorySymlink(target?: any, link?: any): any;
-  static createSymlink(target?: any, link?: any): any;
-  static exists(path?: any): any;
-  static getAbsolute(path?: any): any;
-  static getCanonical(path?: any): any;
-  static getFileSize(path?: any): any;
-  static getFileStatus(path?: any): any;
-  static getHardLinkCount(path?: any): any;
-  static getSpace(path?: any, useBigInts?: any): any;
-  static getSymlinkStatus(path?: any): any;
-  static getWeaklyCanonical(path?: any): any;
-  static isBlockFile(path?: any): any;
-  static isCharacterFile(path?: any): any;
-  static isDirectory(path?: any): any;
-  static isEmpty(path?: any): any;
-  static isFifo(path?: any): any;
-  static isOther(path?: any): any;
-  static isRegularFile(path?: any): any;
-  static isSocket(path?: any): any;
-  static isSymlink(path?: any): any;
-  static readSymlink(path?: any): any;
-  static remove(path?: any): any;
-  static removeAll(path?: any): any;
-  static rename(oldPath?: any, newPath?: any): any;
-  static resizeFile(path?: any, newSize?: any): any;
-  static setFilePermissions(path?: any, filePermissions?: any, permOptions?: any): any;
-  static open(path?: any, mode?: any): any;
-  static readAll(path?: any): any;
+  static areEquivalent(path1?: any, path2?: any): Promise;
+  static copy(path1?: any, path2?: any, options?: any): Promise;
+  static copyFile(path1?: any, path2?: any, options?: any): Promise;
+  static createDirectories(path?: string): Promise;
+  static createDirectory(path?: string): Promise;
+  static createDirectorySymlink(target?: any, link?: any): Promise;
+  static createSymlink(target?: any, link?: any): Promise;
+  static exists(path?: string): Promise;
+  static getAbsolute(path?: string): Promise;
+  static getCanonical(path?: string): Promise;
+  static getFileSize(path?: string): Promise;
+  static getFileStatus(path?: string): Promise;
+  static getHardLinkCount(path?: string): Promise;
+  static getSpace(path?: string, useBigInts?: any): Promise;
+  static getSymlinkStatus(path?: string): Promise;
+  static getWeaklyCanonical(path?: string): Promise;
+  static isBlockFile(path?: string): Promise;
+  static isCharacterFile(path?: string): Promise;
+  static isDirectory(path?: string): Promise;
+  static isEmpty(path?: string): Promise;
+  static isFifo(path?: string): Promise;
+  static isOther(path?: string): Promise;
+  static isRegularFile(path?: string): Promise;
+  static isSocket(path?: string): Promise;
+  static isSymlink(path?: string): Promise;
+  static readSymlink(path?: string): Promise;
+  static remove(path?: string): Promise;
+  static removeAll(path?: string): Promise;
+  static rename(oldPath?: any, newPath?: any): Promise;
+  static resizeFile(path?: string, newSize?: any): Promise;
+  static setFilePermissions(path?: string, filePermissions?: any, permOptions?: any): Promise;
+  static open(path?: string, mode?: any): Promise;
+  static readAll(path?: string): any;
 }
 
 export class RecursiveDirectoryEntries extends Collection {
-  constructor(path?: any, resolveSymlink?: any);
-  readonly files: any;
+  constructor(path?: string, resolveSymlink?: boolean);
+  readonly files: FileType;
   readonly filePaths: any;
 }
 

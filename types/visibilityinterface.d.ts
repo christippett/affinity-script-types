@@ -8,8 +8,8 @@ export class TextVisibilityOptions extends HandleObject {
   clone(): TextVisibilityOptions;
   equals(other?: any): any;
   anySet(): any;
-  setNone(): any;
-  setNewViewDefaults(): any;
+  setNone(): this;
+  setNewViewDefaults(): this;
   showSpecialCharacters: any;
   showIndexMarks: any;
   showAnchors: any;
@@ -21,9 +21,9 @@ export class VisibilityInterface extends HandleObject {
   constructor(handle?: any);
   readonly globalOpacity: any;
   readonly fillOpacity: any;
-  readonly isVisible: any;
-  readonly isVisibleInExport: any;
-  readonly isVisibleInDomain: any;
+  readonly isVisible: boolean;
+  readonly isVisibleInExport: boolean;
+  readonly isVisibleInDomain: boolean;
   testVisibility(options?: any): any;
   readonly node: any;
 }
@@ -32,7 +32,7 @@ export class VisibilityTestOptions extends HandleObject {
   constructor(handle?: any);
   static create(): VisibilityTestOptions;
   clone(): VisibilityTestOptions;
-  textVisibilityOptions: any;
+  textVisibilityOptions: TextVisibilityOptions;
   ignoreVisibilityFlags: any;
   applyExportableVisibility: any;
   showEmptyRects: any;

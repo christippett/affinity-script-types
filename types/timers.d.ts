@@ -17,6 +17,6 @@ export class Timer extends HandleObject {
   expiresFromNow: any;
 }
 
-export function setImmediate(callback?: (...args: any[]) => any, args?: any): any;
-export function setTimeout(delay?: any, callback?: (...args: any[]) => any, args?: any): any;
-export function setInterval(delay?: any, callback?: (...args: any[]) => any, args?: any): any;
+export function setImmediate(callback?: (...args: any[]) => any, ...args: any): any;
+export function setTimeout(delay?: any, callback?: (...args: any[]) => any, ...args: any): any;
+export function setInterval(delay?: any, callback?: (...args: any[]) => any, ...args: any): any;

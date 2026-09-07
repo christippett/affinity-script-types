@@ -4,7 +4,7 @@ import { HandleObject } from '/handleobject';
 
 export class BaseBoxInterface extends HandleObject {
   constructor(handle?: any);
-  readonly isBaseBoxInterface: any;
+  readonly isBaseBoxInterface: boolean;
   readonly baseBox: any;
   readonly constrainingBaseBox: any;
   getBaseBox(includeClips?: any): any;

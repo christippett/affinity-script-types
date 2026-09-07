@@ -4,14 +4,14 @@ import { HandleObject } from '/handleobject';
 
 export class PictureFrameInterface extends HandleObject {
   constructor(handle?: any);
-  readonly enabled: any;
-  readonly description: any;
-  readonly hasFrameContents: any;
+  readonly enabled: boolean;
+  readonly description: string;
+  readonly hasFrameContents: boolean;
   readonly frameContents: any;
   readonly anchor: any;
-  readonly isClearFillOnPopulate: any;
+  readonly isClearFillOnPopulate: boolean;
   readonly originalContentRectangle: any;
-  readonly dataMergeFieldId: any;
+  readonly dataMergeFieldId: number;
   calculateAnchor(node?: any, hint?: any): any;
   calculateConstraints(node?: any, hint?: any): any;
   readonly node: any;

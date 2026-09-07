@@ -4,8 +4,8 @@ import { HandleObject } from '/handleobject';
 
 export class RasterSelection extends HandleObject {
   constructor(handle?: any);
-  readonly isCurrentPixelSelection: any;
-  readonly isSelectAllOrNone: any;
-  readonly isSelectNone: any;
+  readonly isCurrentPixelSelection: boolean;
+  readonly isSelectAllOrNone: boolean;
+  readonly isSelectNone: boolean;
 }
 

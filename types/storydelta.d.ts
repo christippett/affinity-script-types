@@ -11,7 +11,7 @@ export class StoryDelta extends HandleObject {
   static createLeadingOverrideType(type?: any): StoryDelta;
   static createOpticalAlignmentType(type?: any): StoryDelta;
   static createTocRoleType(type?: any): StoryDelta;
-  static createIsNoBreak(isNoBreak?: any): StoryDelta;
+  static createIsNoBreak(isNoBreak?: boolean): StoryDelta;
   static createOpenTypeScriptTag(tag?: any): StoryDelta;
   static createOpenTypeLanguageTag(tag?: any): StoryDelta;
   static createGlyphDouble(key?: any, value?: any): StoryDelta;

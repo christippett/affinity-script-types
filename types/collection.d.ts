@@ -4,15 +4,15 @@ export class Collection {
   constructor(genFunc?: any);
   readonly generator: any;
   static empty(): any;
-  static fibonacci(i?: any, j?: any): Collection;
-  static of(items?: any): SpanCollection;
+  static fibonacci(i?: number, j?: number): Collection;
+  static of(...items: any): SpanCollection;
   static over(seq?: any): SpanCollection;
   static random(): Collection;
   static range(start?: any, count?: any): RangeCollection;
-  append(others?: any): Collection;
+  append(...others: any): this;
   entries(): Collection;
   filter(predicate?: any, thisArg?: any): Collection;
-  flat(depth?: any, flattenStrings?: any): Collection;
+  flat(depth?: number, flattenStrings?: boolean): Collection;
   keys(): Collection;
   lastN(num?: any): Collection;
   map(mapFunc?: any, thisArg?: any): Collection;
@@ -36,10 +36,10 @@ export class Collection {
   forEach(callback?: (...args: any[]) => any, thisArg?: any): any;
   readonly last: any;
   readonly length: any;
-  readonly isEmpty: any;
+  readonly isEmpty: boolean;
   none(predicate?: any, thisArg?: any): any;
   reduce(reduceFunc?: any, initialValue?: any): any;
-  join(sep?: any): any;
+  join(sep?: string): any;
   toArray(): any;
 }
 
@@ -52,11 +52,11 @@ export class RangeCollection extends Collection {
   readonly first: any;
   readonly last: any;
   readonly length: any;
-  readonly isEmpty: any;
+  readonly isEmpty: boolean;
 }
 
 export class SpanCollection extends Collection {
-  constructor(span?: any, begin?: any, end?: any);
+  constructor(span?: any, begin?: number, end?: any);
   readonly first: any;
   readonly last: any;
   readonly length: any;
@@ -64,6 +64,6 @@ export class SpanCollection extends Collection {
   skip(num?: any): SpanCollection;
   reverse(): SpanCollection;
   at(index?: any): any;
-  readonly isEmpty: any;
+  readonly isEmpty: boolean;
 }
 
