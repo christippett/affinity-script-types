@@ -29,12 +29,10 @@
     "affinity_struct_array_sizes.json",
     "README.md"
   ],
-  "bin": {
-    "affinity-types": "generate-types.mjs"
-  },
   "scripts": {
     "test": "node --check generate-types.mjs",
     "postinstall": "node generate-types.mjs --postinstall",
+    "init": "node generate-types.mjs --init",
     "build": "node generate-types.mjs --out-dir .",
     "generate": "node generate-types.mjs"
   },

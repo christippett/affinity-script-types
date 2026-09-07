@@ -17,16 +17,19 @@ Install the `affinity-script-types` package in the directory where you develop y
 npm install affinity-script-types --save-dev
 ```
 
-The package includes a `postinstall` script that's only function is to create the file `jsconfig.json` in the workspace root (if it doesn't already exist). This file includes the path mappings to the type definitions installed by this package and configures their use by IDEs and language servers.
+The package includes a `postinstall` script whose only function is to create the file `jsconfig.json` in the workspace root (if it doesn't already exist). You can also run:
 
-If you'd prefer not to allow the `postinstall` script to generate this file for you automatically, you can instead manually configure the file yourself using the following template:
+```bash
+npm run init
+```
 
+If you'd prefer not to generate this file automatically, you can manually configure it using the following template:
 ```json
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "preserve",
-    "moduleResolution": "bundler",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "checkJs": true,
     "allowJs": true,
     "noEmit": true,
