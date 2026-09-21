@@ -23,7 +23,8 @@ The package includes a `postinstall` script whose only function is to create the
 npm run init
 ```
 
-If you'd prefer not to generate this file automatically, you can manually configure it using the following template:
+If you'd prefer to create the configuration file yourself instead of automatically via npm's `postinstall`, refer to the template below and save it as `jsconfig.json` in the root of your project (or `tsconfig.json` if you intend to write scripts in TypeScript):
+
 ```json
 {
   "compilerOptions": {
@@ -33,13 +34,18 @@ If you'd prefer not to generate this file automatically, you can manually config
     "checkJs": true,
     "allowJs": true,
     "noEmit": true,
+    "skipLibCheck": true,
     "types": [],
     "paths": {
       "/*": ["./node_modules/affinity-script-types/types/*"],
       "/*.js": ["./node_modules/affinity-script-types/types/*"]
     }
   },
-  "include": ["**/*.js", "./node_modules/affinity-script-types/types/**/*.d.ts"]
+  "include": [
+    "**/*.js",
+    "**/*.ts",
+    "./node_modules/affinity-script-types/types/**/*.d.ts"
+  ]
 }
 ```
 

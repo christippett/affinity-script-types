@@ -1336,6 +1336,7 @@ function getJsconfig(
     "checkJs": true,
     "allowJs": true,
     "noEmit": true,
+    "skipLibCheck": true,
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
@@ -1351,8 +1352,30 @@ function getJsconfig(
 `;
 }
 
-const JSCONFIG = getJsconfig();
+function getTsconfig(
+  typesRelDir = "./node_modules/affinity-script-types/types",
+) {
+  return `\
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "types": [],
+    "paths": {
+      "/*": ["${typesRelDir}/*"],
+      "/*.js": ["${typesRelDir}/*"]
+    }
+  },
+  "include": ["**/*.ts", "${typesRelDir}/**/*.d.ts"]
+}
+`;
+}
 
+const JSCONFIG = getJsconfig();
+const TSCONFIG = getTsconfig();
 // --------------------------------------------------------------------------- //
 // Orchestration
 // --------------------------------------------------------------------------- //
@@ -1530,10 +1553,12 @@ function generate(jslib, outDir) {
 
 }
 
-function installConfig(targetDir = process.env.INIT_CWD || process.cwd(), force = false) {
-  const cfg = join(targetDir, "jsconfig.json");
+function installConfig(targetDir = process.env.INIT_CWD || process.cwd(), force = false, isTypeScript = false) {
+  const filename = isTypeScript ? "tsconfig.json" : "jsconfig.json";
+  const cfg = join(targetDir, filename);
+  const generator = isTypeScript ? getTsconfig : getJsconfig;
   if (!existsSync(cfg) || force) {
-    writeFileSync(cfg, getJsconfig("./node_modules/affinity-script-types/types"), "utf8");
+    writeFileSync(cfg, generator("./node_modules/affinity-script-types/types"), "utf8");
     console.log(`[affinity-script-types] wrote ${cfg}`);
   }
 }
@@ -1543,20 +1568,22 @@ function main(argv) {
     argv.includes("--postinstall") ||
     process.env.npm_lifecycle_event === "postinstall";
   const isInit = argv.includes("init") || argv.includes("--init");
+  const isInitTs = argv.includes("init:ts") || argv.includes("--init:ts") || argv.includes("--ts");
   const force = argv.includes("--force");
 
-  if (isInit) {
+  if (isInit || isInitTs) {
     const targetDir = process.env.INIT_CWD || process.cwd();
-    installConfig(resolve(targetDir), force);
+    installConfig(resolve(targetDir), force, isInitTs);
     return 0;
   }
 
   if (isPostinstall) {
     // When installed as a dependency, ship with pre-generated types inside the package.
-    // Postinstall simply ensures jsconfig.json is created in the consumer project.
+    // Postinstall ensures jsconfig.json or tsconfig.json is created in the consumer project.
     const targetDir = process.env.INIT_CWD;
     if (targetDir && resolve(targetDir) !== resolve(HERE)) {
-      installConfig(resolve(targetDir), false);
+      const hasTsConfig = existsSync(join(resolve(targetDir), "tsconfig.json"));
+      installConfig(resolve(targetDir), false, hasTsConfig);
       return 0;
     }
   }

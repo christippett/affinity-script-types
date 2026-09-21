@@ -17,6 +17,7 @@
     "url": "https://github.com/christippett/affinity-script-types/issues"
   },
   "type": "module",
+  "types": "types/affinity.d.ts",
   "files": [
     "types",
     "generate-types.mjs",
@@ -33,6 +34,7 @@
     "test": "node --check generate-types.mjs",
     "postinstall": "node generate-types.mjs --postinstall",
     "init": "node generate-types.mjs --init",
+    "init:ts": "node generate-types.mjs --init:ts",
     "build": "node generate-types.mjs --out-dir .",
     "generate": "node generate-types.mjs"
   },
