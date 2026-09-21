@@ -1,11 +1,5 @@
 import { HandleObject } from '/handleobject';
 
-export interface HttpRequestResult {
-  state: AffinityEnumValue;
-  response: HttpResponse;
-  reason: string;
-}
-
 export class HttpRequest extends HandleObject {
   setTimeoutInSec(timeoutSec: number): this;
   setSuppressUserAgentHeader(suppress: boolean): this;

@@ -374,5 +374,12 @@
       "smoothness",
       "colour"
     ]
+  },
+  "affinity:network": {
+    "HttpRequestResult": [
+      "state",
+      "response",
+      "reason"
+    ]
   }
 }

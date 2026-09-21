@@ -5727,6 +5727,12 @@ declare module 'affinity:network' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class HttpRequestResult {
+    constructor(...args: any[]);
+    state: any;
+    response: any;
+    reason: any;
+  }
   export const HttpRequestApi: {
     create(...args: any[]): any;
     do(...args: any[]): any;

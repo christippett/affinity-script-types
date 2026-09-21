@@ -25,11 +25,6 @@ export class HttpResponse extends HandleObject {
   readonly content: unknown;
 }
 
+export { HttpRequestResult } from 'affinity:network';
 export { RequestMethod } from 'affinity:network';
 export { HttpStatusCode } from 'affinity:network';
-
-export interface HttpRequestResult {
-  state: AffinityEnumValue;
-  response: HttpResponse;
-  reason: string;
-}
