@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/christippett/affinity-script-types/compare/v1.1.0...v1.2.0) (2026-09-22)
+
+
+### Features
+
+* add tsconfig generator and init:ts script ([69539d8](https://github.com/christippett/affinity-script-types/commit/69539d8791b4bcbbc53f94f6d68c5a22d8cc892c))
+* **network:** Add HttpRequestResult struct ([a731c70](https://github.com/christippett/affinity-script-types/commit/a731c70c8678b8cee23dd4ab4dd1800e2c389c96))
+
 ## [1.1.0](https://github.com/christippett/affinity-script-types/compare/v1.0.0...v1.1.0) (2026-09-07)
 
 
