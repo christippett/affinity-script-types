@@ -11,9 +11,9 @@ import {
 } from "node:fs";
 import { dirname, join, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
-import { homedir } from "node:os";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
+const PARSED_DOCS_OUTPUT = "affinity_sdk_docs.json";
 const DEFAULT_JSLIB = "/Applications/Affinity.app/Contents/Resources/JSLib";
 
 const NATIVE_MODULES = [
@@ -32,6 +32,7 @@ const NATIVE_MODULES = [
   "affinity:layereffects",
   "affinity:linestyles",
   "affinity:network",
+  "affinity:os",
   "affinity:raster",
   "affinity:story",
   "affinity:timers",
@@ -303,8 +304,16 @@ function parseParam(g) {
   } else {
     if (name === "callback") type = "(...args: any[]) => any";
     else if (/^(?:is|has|should)[A-Z]/.test(name)) type = "boolean";
-    else if (/(?:Count|Index|Length|Dpi|Width|Height)$/.test(name)) type = "number";
-    else if (name === "text" || name === "name" || name === "path" || name === "url" || name === "desc") type = "string";
+    else if (/(?:Count|Index|Length|Dpi|Width|Height)$/.test(name))
+      type = "number";
+    else if (
+      name === "text" ||
+      name === "name" ||
+      name === "path" ||
+      name === "url" ||
+      name === "desc"
+    )
+      type = "string";
   }
   return { name, type, optional, isRest };
 }
@@ -313,11 +322,18 @@ function union(types) {
   const concrete = [...types].filter((t) => t !== null).sort();
   const hasNull = types.has(null);
   if (concrete.length === 1) return concrete[0] + (hasNull ? " | null" : "");
-  if (concrete.length > 1) return concrete.join(" | ") + (hasNull ? " | null" : "");
+  if (concrete.length > 1)
+    return concrete.join(" | ") + (hasNull ? " | null" : "");
   return null;
 }
 
-function inferReturn(body, memberName = "", clsName = "", registry = null, enumsCatalog = null) {
+function inferReturn(
+  body,
+  memberName = "",
+  clsName = "",
+  registry = null,
+  enumsCatalog = null,
+) {
   const assigned = new Map();
   const rets = [];
   const n = body.length;
@@ -326,10 +342,16 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
   // Special: .map(..).flat() chaining in Dialog/DialogColumn/DialogColumnStack
   const rawStr = body.map((t) => t[1]).join("");
   if (rawStr.includes(".map(") && rawStr.includes(".flat()")) {
-    if (rawStr.includes("group.controls") || rawStr.includes(".controls.toArray()")) {
+    if (
+      rawStr.includes("group.controls") ||
+      rawStr.includes(".controls.toArray()")
+    ) {
       return "DialogControl[]";
     }
-    if (rawStr.includes("column.groups") || rawStr.includes(".groups.toArray()")) {
+    if (
+      rawStr.includes("column.groups") ||
+      rawStr.includes(".groups.toArray()")
+    ) {
       return "DialogGroup[]";
     }
   }
@@ -340,7 +362,11 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
       const nxt = body[i + 1];
       // return new Mod.Class(...) or return new Class(...)
       if (isIdent(nxt, "new") && i + 2 < n && isKind(body[i + 2], "ident")) {
-        if (i + 4 < n && isPunct(body[i + 3], ".") && isKind(body[i + 4], "ident")) {
+        if (
+          i + 4 < n &&
+          isPunct(body[i + 3], ".") &&
+          isKind(body[i + 4], "ident")
+        ) {
           rets.push(["new", body[i + 4][1]]);
         } else {
           rets.push(["new", body[i + 2][1]]);
@@ -355,7 +381,13 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
         }
       } else if (isKind(nxt, "ident") && FACTORY_FUNCTIONS[nxt[1]]) {
         rets.push(["type", FACTORY_FUNCTIONS[nxt[1]]]);
-      } else if (isKind(nxt, "ident") && nxt[1].endsWith("Api") && i + 3 < n && isPunct(body[i + 2], ".") && isKind(body[i + 3], "ident")) {
+      } else if (
+        isKind(nxt, "ident") &&
+        nxt[1].endsWith("Api") &&
+        i + 3 < n &&
+        isPunct(body[i + 2], ".") &&
+        isKind(body[i + 3], "ident")
+      ) {
         rets.push(["api", nxt[1], body[i + 3][1]]);
       } else if (isIdent(nxt, "true") || isIdent(nxt, "false")) {
         rets.push(["type", "boolean"]);
@@ -368,12 +400,26 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
       } else if (isKind(nxt, "ident")) {
         rets.push(["var", nxt[1]]);
       }
-    } else if (isIdent(t, "this") && i + 3 < n && isPunct(body[i + 1], ".") && isKind(body[i + 2], "ident") && isPunct(body[i + 3], "=")) {
+    } else if (
+      isIdent(t, "this") &&
+      i + 3 < n &&
+      isPunct(body[i + 1], ".") &&
+      isKind(body[i + 2], "ident") &&
+      isPunct(body[i + 3], "=")
+    ) {
       const prop = body[i + 2][1];
       const j = i + 4;
-      if (j + 1 < n && isIdent(body[j], "new") && isKind(body[j + 1], "ident")) {
+      if (
+        j + 1 < n &&
+        isIdent(body[j], "new") &&
+        isKind(body[j + 1], "ident")
+      ) {
         if (!assigned.has(prop)) assigned.set(prop, new Set());
-        if (j + 3 < n && isPunct(body[j + 2], ".") && isKind(body[j + 3], "ident")) {
+        if (
+          j + 3 < n &&
+          isPunct(body[j + 2], ".") &&
+          isKind(body[j + 3], "ident")
+        ) {
           assigned.get(prop).add(body[j + 3][1]);
         } else {
           assigned.get(prop).add(body[j + 1][1]);
@@ -381,14 +427,26 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
       }
     } else if (isKind(t, "ident") && i + 1 < n && isPunct(body[i + 1], "=")) {
       const j = i + 2;
-      if (j + 1 < n && isIdent(body[j], "new") && isKind(body[j + 1], "ident")) {
+      if (
+        j + 1 < n &&
+        isIdent(body[j], "new") &&
+        isKind(body[j + 1], "ident")
+      ) {
         if (!assigned.has(t[1])) assigned.set(t[1], new Set());
-        if (j + 3 < n && isPunct(body[j + 2], ".") && isKind(body[j + 3], "ident")) {
+        if (
+          j + 3 < n &&
+          isPunct(body[j + 2], ".") &&
+          isKind(body[j + 3], "ident")
+        ) {
           assigned.get(t[1]).add(body[j + 3][1]);
         } else {
           assigned.get(t[1]).add(body[j + 1][1]);
         }
-      } else if (j + 1 < n && isKind(body[j], "ident") && FACTORY_FUNCTIONS[body[j][1]]) {
+      } else if (
+        j + 1 < n &&
+        isKind(body[j], "ident") &&
+        FACTORY_FUNCTIONS[body[j][1]]
+      ) {
         if (!assigned.has(t[1])) assigned.set(t[1], new Set());
         assigned.get(t[1]).add(FACTORY_FUNCTIONS[body[j][1]]);
       } else if (j < n && isIdent(body[j], "null")) {
@@ -412,7 +470,12 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
     }
     if (r[0] === "api") {
       const [, apiName, methodName] = r;
-      const inferred = inferFromApiOrMember(methodName, apiName, clsName, enumsCatalog);
+      const inferred = inferFromApiOrMember(
+        methodName,
+        apiName,
+        clsName,
+        enumsCatalog,
+      );
       if (inferred) return inferred;
     }
   }
@@ -420,23 +483,68 @@ function inferReturn(body, memberName = "", clsName = "", registry = null, enums
   // If method has no returns, or if memberName suggests a type
   if (!hasReturn && memberName.startsWith("set")) return "this";
   if (memberName) {
-    const inferred = inferFromApiOrMember(memberName, "", clsName, enumsCatalog);
+    const inferred = inferFromApiOrMember(
+      memberName,
+      "",
+      clsName,
+      enumsCatalog,
+    );
     if (inferred) return inferred;
   }
   return null;
 }
 
-function inferFromApiOrMember(name, apiName = "", clsName = "", enumsCatalog = null) {
+function inferFromApiOrMember(
+  name,
+  apiName = "",
+  clsName = "",
+  enumsCatalog = null,
+) {
   // Booleans
-  if (/^(?:is|has|should|can)[A-Z]/.test(name) || /^(?:getIs|getHas|getShould|getCan)/.test(name) || name === "isRetina" || name === "isPortrait" || name === "isTransparent" || name === "isFacingPages" || name === "saveHistory" || name === "linkTextFiles" || name === "preserveTextStyles") {
+  if (
+    /^(?:is|has|should|can)[A-Z]/.test(name) ||
+    /^(?:getIs|getHas|getShould|getCan)/.test(name) ||
+    name === "isRetina" ||
+    name === "isPortrait" ||
+    name === "isTransparent" ||
+    name === "isFacingPages" ||
+    name === "saveHistory" ||
+    name === "linkTextFiles" ||
+    name === "preserveTextStyles"
+  ) {
     return "boolean";
   }
   // Numbers
-  if (/(?:Count|Index|Length|Dpi|Width|Height|Proportion|Factor|Precision|ID|Id)$/.test(name) || /^(?:getCount|getIndex|getLength|getDpi|getWidth|getHeight|getDrawingScale|getPageWidth|getPageHeight|getInitialWidth|getPrecision|getPaddingFactor|getWidthProportion|getItemID)/.test(name) || name === "dpi" || name === "viewDpi" || name === "drawingScale" || name === "pageWidth" || name === "pageHeight" || name === "initialWidth" || name === "precision" || name === "paddingFactor" || name === "widthProportion" || name === "itemID" || name === "controlID") {
+  if (
+    /(?:Count|Index|Length|Dpi|Width|Height|Proportion|Factor|Precision|ID|Id)$/.test(
+      name,
+    ) ||
+    /^(?:getCount|getIndex|getLength|getDpi|getWidth|getHeight|getDrawingScale|getPageWidth|getPageHeight|getInitialWidth|getPrecision|getPaddingFactor|getWidthProportion|getItemID)/.test(
+      name,
+    ) ||
+    name === "dpi" ||
+    name === "viewDpi" ||
+    name === "drawingScale" ||
+    name === "pageWidth" ||
+    name === "pageHeight" ||
+    name === "initialWidth" ||
+    name === "precision" ||
+    name === "paddingFactor" ||
+    name === "widthProportion" ||
+    name === "itemID" ||
+    name === "controlID"
+  ) {
     return "number";
   }
   // Strings
-  if (/(?:Name|Title|Description|Path|Version|Uuid)$/.test(name) || /^(?:getName|getTitle|getDescription|getPath|getVersion)/.test(name) || name === "label" || name === "text" || name === "title" || name === "description") {
+  if (
+    /(?:Name|Title|Description|Path|Version|Uuid)$/.test(name) ||
+    /^(?:getName|getTitle|getDescription|getPath|getVersion)/.test(name) ||
+    name === "label" ||
+    name === "text" ||
+    name === "title" ||
+    name === "description"
+  ) {
     return "string";
   }
   // Void methods
@@ -463,24 +571,48 @@ function matchEnumFromCatalog(name, clsName, enumsCatalog) {
       if (p === en || p + "type" === en) return enumName;
       if (p.endsWith("s") && p.slice(0, -1) + "type" === en) return enumName;
       if (clsName) {
-        const clsPrefix = clsName.replace(/(?:Item|Control|Node|Command)$/, "").toLowerCase();
-        if (clsPrefix + p === en || clsPrefix + p + "type" === en) return enumName;
+        const clsPrefix = clsName
+          .replace(/(?:Item|Control|Node|Command)$/, "")
+          .toLowerCase();
+        if (clsPrefix + p === en || clsPrefix + p + "type" === en)
+          return enumName;
       }
     }
   }
   return null;
 }
 
-function skipBody(toks, i, memberName = "", clsName = "", registry = null, enumsCatalog = null) {
+function skipBody(
+  toks,
+  i,
+  memberName = "",
+  clsName = "",
+  registry = null,
+  enumsCatalog = null,
+) {
   const end = skipGroup(toks, i, "{", "}");
-  return [inferReturn(toks.slice(i + 1, end - 1), memberName, clsName, registry, enumsCatalog), end];
+  return [
+    inferReturn(
+      toks.slice(i + 1, end - 1),
+      memberName,
+      clsName,
+      registry,
+      enumsCatalog,
+    ),
+    end,
+  ];
 }
 
 // --------------------------------------------------------------------------- //
 // Parsing
 // --------------------------------------------------------------------------- //
 
-function parseMembers(toks, clsName = "", registry = null, enumsCatalog = null) {
+function parseMembers(
+  toks,
+  clsName = "",
+  registry = null,
+  enumsCatalog = null,
+) {
   const members = [];
   let i = 0;
   const n = toks.length;
@@ -517,7 +649,14 @@ function parseMembers(toks, clsName = "", registry = null, enumsCatalog = null) 
         i += 2;
         if (i < n && isPunct(toks[i], "(")) i = skipGroup(toks, i, "(", ")");
         if (i < n && isPunct(toks[i], "{")) {
-          const [ret, j] = skipBody(toks, i, mem.name, clsName, registry, enumsCatalog);
+          const [ret, j] = skipBody(
+            toks,
+            i,
+            mem.name,
+            clsName,
+            registry,
+            enumsCatalog,
+          );
           i = j;
           if (kind === "get") mem.returns = ret;
         }
@@ -601,7 +740,14 @@ function parseMembers(toks, clsName = "", registry = null, enumsCatalog = null) 
         members.push(mem);
         i = end;
         if (i < n && isPunct(toks[i], "{")) {
-          const [ret, j] = skipBody(toks, i, mem.name, clsName, registry, enumsCatalog);
+          const [ret, j] = skipBody(
+            toks,
+            i,
+            mem.name,
+            clsName,
+            registry,
+            enumsCatalog,
+          );
           i = j;
           mem.returns = ret;
         }
@@ -632,7 +778,12 @@ function parseClass(toks, i, registry = null, enumsCatalog = null) {
   }
   if (!isPunct(toks[j], "{")) return [{ name, parent, members: [] }, j];
   const end = skipGroup(toks, j, "{", "}");
-  const members = parseMembers(toks.slice(j + 1, end - 1), name, registry, enumsCatalog);
+  const members = parseMembers(
+    toks.slice(j + 1, end - 1),
+    name,
+    registry,
+    enumsCatalog,
+  );
   return [{ name, parent, members }, end];
 }
 
@@ -659,11 +810,23 @@ function parseAssign(toks, i, registry = null, enumsCatalog = null) {
     return ["", false, [], bodyEnd];
   const target = parts[0];
   const isProto = parts.length >= 2 && parts[parts.length - 1] === "prototype";
-  const members = parseAssignBody(toks.slice(i + 1, bodyEnd - 1), isDefine, target, registry, enumsCatalog);
+  const members = parseAssignBody(
+    toks.slice(i + 1, bodyEnd - 1),
+    isDefine,
+    target,
+    registry,
+    enumsCatalog,
+  );
   return [target, isProto, members, bodyEnd];
 }
 
-function parseAssignBody(toks, isDefine, target = "", registry = null, enumsCatalog = null) {
+function parseAssignBody(
+  toks,
+  isDefine,
+  target = "",
+  registry = null,
+  enumsCatalog = null,
+) {
   const members = [];
   let i = 0;
   const n = toks.length;
@@ -695,7 +858,14 @@ function parseAssignBody(toks, isDefine, target = "", registry = null, enumsCata
               j = skipGroup(inner, j, "(", ")");
             let ret = null;
             if (j < inner.length && isPunct(inner[j], "{")) {
-              const r = skipBody(inner, j, name, target, registry, enumsCatalog);
+              const r = skipBody(
+                inner,
+                j,
+                name,
+                target,
+                registry,
+                enumsCatalog,
+              );
               ret = r[0];
               j = r[1];
             }
@@ -879,7 +1049,12 @@ function parseModule(name, src, registry = null, enumsCatalog = null) {
       isKind(toks[i + 2], "ident") &&
       (toks[i + 2][1] === "assign" || toks[i + 2][1] === "defineProperties")
     ) {
-      const [target, isProto, members, j] = parseAssign(toks, i, registry, enumsCatalog);
+      const [target, isProto, members, j] = parseAssign(
+        toks,
+        i,
+        registry,
+        enumsCatalog,
+      );
       i = j;
       if (target) {
         if (!m.classes.has(target))
@@ -918,15 +1093,13 @@ function parseModule(name, src, registry = null, enumsCatalog = null) {
           if (!m.classes.has(target))
             m.classes.set(target, { name: target, parent: null, members: [] });
           const kind = isFn ? "method" : "field";
-          m.classes
-            .get(target)
-            .members.push({
-              name: sname,
-              kind,
-              static: true,
-              params,
-              returns: null,
-            });
+          m.classes.get(target).members.push({
+            name: sname,
+            kind,
+            static: true,
+            params,
+            returns: null,
+          });
         }
         continue;
       }
@@ -1026,7 +1199,12 @@ function emitClass(cls, indent, localNames, overrides) {
     if (kind === "method") {
       let paramsList = paramsByKey.get(key) || [];
       // If method is setFoo(v) and property foo exists with a known type, infer v's type
-      if (name.startsWith("set") && name.length > 3 && paramsList.length === 1 && (!paramsList[0].type || paramsList[0].type === "any")) {
+      if (
+        name.startsWith("set") &&
+        name.length > 3 &&
+        paramsList.length === 1 &&
+        (!paramsList[0].type || paramsList[0].type === "any")
+      ) {
         const propName = name[3].toLowerCase() + name.slice(4);
         const propKey = `false\u0000${propName}`;
         const propType = returnsByKey.get(propKey);
@@ -1186,7 +1364,18 @@ function moduleBody(m, registry, enumsByMod, structsByMod, overrides, indent) {
       if (mem.returns) {
         const tokens = mem.returns.split(/[^A-Za-z0-9_$]+/).filter(Boolean);
         for (const tok of tokens) {
-          if (tok === "this" || tok === "any" || tok === "boolean" || tok === "number" || tok === "string" || tok === "null" || tok === "undefined" || tok === "void" || tok === "Function") continue;
+          if (
+            tok === "this" ||
+            tok === "any" ||
+            tok === "boolean" ||
+            tok === "number" ||
+            tok === "string" ||
+            tok === "null" ||
+            tok === "undefined" ||
+            tok === "void" ||
+            tok === "Function"
+          )
+            continue;
           if (localNames.has(tok)) continue;
           const jslibSrc = registry.get(tok);
           if (jslibSrc && jslibSrc !== m.name) {
@@ -1215,7 +1404,18 @@ function moduleBody(m, registry, enumsByMod, structsByMod, overrides, indent) {
         if (p.type) {
           const tokens = p.type.split(/[^A-Za-z0-9_$]+/).filter(Boolean);
           for (const tok of tokens) {
-            if (tok === "this" || tok === "any" || tok === "boolean" || tok === "number" || tok === "string" || tok === "null" || tok === "undefined" || tok === "void" || tok === "Function") continue;
+            if (
+              tok === "this" ||
+              tok === "any" ||
+              tok === "boolean" ||
+              tok === "number" ||
+              tok === "string" ||
+              tok === "null" ||
+              tok === "undefined" ||
+              tok === "void" ||
+              tok === "Function"
+            )
+              continue;
             if (localNames.has(tok)) continue;
             const jslibSrc = registry.get(tok);
             if (jslibSrc && jslibSrc !== m.name) {
@@ -1324,64 +1524,69 @@ declare module '*.json' {
 }
 `;
 
-function getJsconfig(
+function getConfig(
+  name = "jsconfig.json",
   typesRelDir = "./node_modules/affinity-script-types/types",
 ) {
-  return `\
-{
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "checkJs": true,
-    "allowJs": true,
-    "noEmit": true,
-    "skipLibCheck": true,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "strictNullChecks": false,
-    "useUnknownInCatchVariables": false,
-    "types": [],
-    "paths": {
-      "/*": ["${typesRelDir}/*"],
-      "/*.js": ["${typesRelDir}/*"]
-    }
-  },
-  "include": ["**/*.js", "${typesRelDir}/**/*.d.ts"]
-}
-`;
+  let config;
+  const shared = {
+    compilerOptions: {
+      target: "ES2022",
+      module: "commonjs",
+      moduleResolution: "node",
+      skipLibCheck: true,
+      types: [],
+      paths: {
+        "/*": [`${typesRelDir}/*`],
+        "/*.js": [`${typesRelDir}/*`],
+      },
+    },
+    include: ["**/*.js", `${typesRelDir}/**/*.d.ts`],
+  };
+
+  switch (name) {
+    case "jsconfig.json":
+    default:
+      config = {
+        compilerOptions: {
+          ...shared.compilerOptions,
+          checkJs: true,
+          allowJs: true,
+          noEmit: true,
+          noImplicitAny: false,
+          noImplicitThis: false,
+          strictNullChecks: false,
+          useUnknownInCatchVariables: false,
+        },
+        include: [...shared.include, "**/*.js"],
+      };
+
+    case "tsconfig.json":
+      config = {
+        compilerOptions: {
+          ...shared.compilerOptions,
+          outDir: "./dist",
+        },
+        include: [...shared.include, "**/*.ts"],
+      };
+  }
+  return JSON.stringify(config, null, 2) + "\n";
 }
 
-function getTsconfig(
-  typesRelDir = "./node_modules/affinity-script-types/types",
-) {
-  return `\
-{
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "skipLibCheck": true,
-    "types": [],
-    "paths": {
-      "/*": ["${typesRelDir}/*"],
-      "/*.js": ["${typesRelDir}/*"]
-    }
-  },
-  "include": ["**/*.ts", "${typesRelDir}/**/*.d.ts"]
-}
-`;
-}
-
-const JSCONFIG = getJsconfig();
-const TSCONFIG = getTsconfig();
+const JSCONFIG = getConfig("jsconfig.json");
+const TSCONFIG = getConfig("tsconfig.json");
 // --------------------------------------------------------------------------- //
 // Orchestration
 // --------------------------------------------------------------------------- //
 
 function loadCatalog(which) {
-  return JSON.parse(readFileSync(join(HERE, `affinity_${which}.json`), "utf8"));
+  const p = join(HERE, `affinity_${which}.json`);
+  return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : {};
+}
+
+function loadSdkDocs() {
+  const p = join(HERE, PARSED_DOCS_OUTPUT);
+  return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : null;
 }
 
 function loadOverrides() {
@@ -1400,7 +1605,10 @@ function loadOverrides() {
 
     for (const line of content.split("\n")) {
       const trimmed = line.trim();
-      if (!depth && (!trimmed || trimmed.startsWith("//") || trimmed.startsWith("import ")))
+      if (
+        !depth &&
+        (!trimmed || trimmed.startsWith("//") || trimmed.startsWith("import "))
+      )
         continue;
       current.push(line);
       for (const ch of line) {
@@ -1410,14 +1618,18 @@ function loadOverrides() {
       if (depth === 0 && current.length) {
         const block = current.join("\n").trim();
         current = [];
-        const m = block.match(/^export\s+(?:abstract\s+)?class\s+([A-Za-z_$][\w$]*)(?:\s+extends\s+[A-Za-z_$][\w$]*)?\s*\{([\s\S]*)\}$/);
+        const m = block.match(
+          /^export\s+(?:abstract\s+)?class\s+([A-Za-z_$][\w$]*)(?:\s+extends\s+[A-Za-z_$][\w$]*)?\s*\{([\s\S]*)\}$/,
+        );
         if (m) {
           const members = {};
           for (const mline of m[2].split("\n")) {
             const raw = mline.trim().replace(/;$/, "");
             if (!raw || raw.startsWith("//")) continue;
             const isStatic = /\bstatic\s+/.test(raw);
-            const nameMatch = raw.replace(/\b(?:static|readonly)\s+/g, "").match(/^([A-Za-z_$][\w$]*)/);
+            const nameMatch = raw
+              .replace(/\b(?:static|readonly)\s+/g, "")
+              .match(/^([A-Za-z_$][\w$]*)/);
             if (nameMatch) {
               members[nameMatch[1]] = { raw: raw + ";", static: isStatic };
             }
@@ -1473,16 +1685,80 @@ function finalize(m, structs) {
 }
 
 function generate(jslib, outDir) {
-  const enums = loadCatalog("catalog");
-  const structs = loadCatalog("structs");
-  const exports = loadCatalog("exports");
-  const api = loadCatalog("api");
+  // ponytail: official doc truth forms canonical foundation; progressive introspection enhances it
+  const sdkDocs = loadSdkDocs();
+  const catalog = loadCatalog("catalog");
+  const structsCatalog = loadCatalog("structs");
+  const exportsCatalog = loadCatalog("exports");
+  const apiCatalog = loadCatalog("api");
   const overrides = loadOverrides();
   const paramRanges = loadCatalog("param_ranges");
   const structRanges = loadCatalog("struct_ranges");
   const structSizes = loadCatalog("struct_array_sizes");
   const files = discoverJslib(jslib);
   const registry = buildRegistry(files);
+
+  const enums = {};
+  const structs = {};
+  const exports = {};
+  const api = {};
+
+  for (const mod of NATIVE_MODULES) {
+    const docMod = sdkDocs && sdkDocs.modules ? sdkDocs.modules[mod] : null;
+    const runtimeEnums = catalog[mod] || {};
+    const runtimeStructs = structsCatalog[mod] || {};
+    const runtimeApis = apiCatalog[mod] || {};
+    const runtimeExports = exportsCatalog[mod] || [];
+
+    // 1. Enums: Start from doc truth, progressively enhance with runtime enum values
+    enums[mod] = {};
+    if (docMod && docMod.enums) {
+      for (const eName of Object.keys(docMod.enums)) {
+        enums[mod][eName] = runtimeEnums[eName] || [];
+      }
+    }
+    for (const [eName, eEntries] of Object.entries(runtimeEnums)) {
+      if (!enums[mod][eName]) enums[mod][eName] = eEntries;
+    }
+
+    // 2. Structs: Start from doc truth, progressively enhance with runtime struct fields
+    structs[mod] = {};
+    if (docMod && docMod.structs) {
+      for (const sName of Object.keys(docMod.structs)) {
+        structs[mod][sName] = runtimeStructs[sName] || null;
+      }
+    }
+    for (const [sName, sFields] of Object.entries(runtimeStructs)) {
+      if (!structs[mod][sName]) structs[mod][sName] = sFields;
+    }
+
+    // 3. APIs: Start from doc truth, progressively enhance with runtime methods
+    api[mod] = {};
+    if (docMod && docMod.apis) {
+      for (const [aName, aObj] of Object.entries(docMod.apis)) {
+        const methods = new Set(Object.keys(aObj.methods || {}));
+        if (Array.isArray(runtimeApis[aName])) {
+          for (const m of runtimeApis[aName]) methods.add(m);
+        }
+        api[mod][aName] = Array.from(methods).sort();
+      }
+    }
+    for (const [aName, aMethods] of Object.entries(runtimeApis)) {
+      if (!api[mod][aName]) {
+        api[mod][aName] = Array.isArray(aMethods) ? [...aMethods].sort() : [];
+      }
+    }
+
+    // 4. Exports: Union of APIs, Handles, Enums, Structs, and runtime exports
+    const expSet = new Set(runtimeExports);
+    for (const a of Object.keys(api[mod])) expSet.add(a);
+    if (docMod && docMod.handles) {
+      for (const h of Object.keys(docMod.handles)) expSet.add(h);
+    }
+    for (const e of Object.keys(enums[mod])) expSet.add(e);
+    for (const s of Object.keys(structs[mod])) expSet.add(s);
+    exports[mod] = Array.from(expSet).sort();
+  }
 
   const typesDir = join(outDir, "types");
   mkdirSync(typesDir, { recursive: true });
@@ -1510,9 +1786,11 @@ function generate(jslib, outDir) {
     nativeLines.join("\n"),
     "utf8",
   );
-
   const modules = files.map((f) =>
-    finalize(parseModule(basename(f, ".js"), readFileSync(f, "utf8"), registry, enums), structs),
+    finalize(
+      parseModule(basename(f, ".js"), readFileSync(f, "utf8"), registry, enums),
+      structs,
+    ),
   );
 
   for (const m of modules) {
@@ -1545,22 +1823,32 @@ function generate(jslib, outDir) {
   }
   for (const m of modules) {
     bundled.push(`declare module '/${m.name}' {`);
-    bundled.push(...moduleBody(m, registry, enums, structs, overrides[m.name] || {}, 1));
+    bundled.push(
+      ...moduleBody(m, registry, enums, structs, overrides[m.name] || {}, 1),
+    );
     bundled.push("}");
     bundled.push("");
   }
   writeFileSync(join(typesDir, "affinity.d.ts"), bundled.join("\n"), "utf8");
-
 }
 
-function installConfig(targetDir = process.env.INIT_CWD || process.cwd(), force = false, isTypeScript = false) {
+function installConfig(
+  targetDir = process.env.INIT_CWD || process.cwd(),
+  force = false,
+  isTypeScript = false,
+) {
   const filename = isTypeScript ? "tsconfig.json" : "jsconfig.json";
+  const typesRelPath = "./node_modules/affinity-script-types/types";
   const cfg = join(targetDir, filename);
-  const generator = isTypeScript ? getTsconfig : getJsconfig;
   if (!existsSync(cfg) || force) {
-    writeFileSync(cfg, generator("./node_modules/affinity-script-types/types"), "utf8");
-    console.log(`[affinity-script-types] wrote ${cfg}`);
+    writeFileSync(cfg, getConfig(filename, typesRelPath), "utf8");
+    log("config saved", cfg);
   }
+}
+
+function log(msg, ...args) {
+  const prefix = `[affinity-sdk-types] ${msg}`;
+  console.warn(prefix, ...args);
 }
 
 function main(argv) {
@@ -1568,74 +1856,45 @@ function main(argv) {
     argv.includes("--postinstall") ||
     process.env.npm_lifecycle_event === "postinstall";
   const isInit = argv.includes("init") || argv.includes("--init");
-  const isInitTs = argv.includes("init:ts") || argv.includes("--init:ts") || argv.includes("--ts");
+  const isInitTs =
+    argv.includes("init:ts") ||
+    argv.includes("--init:ts") ||
+    argv.includes("--ts");
   const force = argv.includes("--force");
 
-  if (isInit || isInitTs) {
-    const targetDir = process.env.INIT_CWD || process.cwd();
-    installConfig(resolve(targetDir), force, isInitTs);
+  const targetDir = process.env.INIT_CWD || process.cwd();
+  if (isInit || isInitTs || isPostinstall) {
+    installConfig(resolve(targetDir), force && isPostinstall, isInitTs);
     return 0;
   }
 
-  if (isPostinstall) {
-    // When installed as a dependency, ship with pre-generated types inside the package.
-    // Postinstall ensures jsconfig.json or tsconfig.json is created in the consumer project.
-    const targetDir = process.env.INIT_CWD;
-    if (targetDir && resolve(targetDir) !== resolve(HERE)) {
-      const hasTsConfig = existsSync(join(resolve(targetDir), "tsconfig.json"));
-      installConfig(resolve(targetDir), false, hasTsConfig);
-      return 0;
-    }
-  }
-
   let jslib = DEFAULT_JSLIB;
-  let outDir = process.env.INIT_CWD || join(homedir(), "AffinityScripts");
+  let outDir = targetDir;
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === "--jslib") jslib = argv[++i];
     else if (argv[i] === "--out-dir") outDir = argv[++i];
   }
 
-  let reason = null;
   try {
-    if (!statSync(jslib).isDirectory()) reason = "not a directory";
-  } catch {
-    reason = "not found";
-  }
-  if (reason === null) {
-    try {
-      if (!readdirSync(jslib).some((f) => f.endsWith(".js")))
-        reason = "empty (no .js modules found)";
-    } catch {
-      reason = "unreadable";
+    if (!statSync(jslib).isDirectory()) {
+      log("not a directory");
+      return 1;
+    } else if (!readdirSync(jslib).some((f) => f.endsWith(".js"))) {
+      log("empty (no .js modules found)");
+      return 1;
     }
-  }
-
-  if (reason !== null) {
-    console.warn("");
-    console.warn(
-      "[affinity-script-types] Could not regenerate type definitions.",
-    );
-    console.warn(
-      `[affinity-script-types] Affinity's scripting SDK was ${reason} at: ${jslib}`,
-    );
-    console.warn(
-      "[affinity-script-types] Pre-shipped types inside node_modules/affinity-script-types/types remain available.",
-    );
-    console.warn("");
-    return 0;
+  } catch {
+    log("unable to locate SDK JSLib files");
+    return 1;
   }
 
   try {
     generate(jslib, resolve(outDir));
   } catch (err) {
-    console.warn(
-      `[affinity-script-types] type generation failed: ${err && err.message ? err.message : err}`,
-    );
-    return 0;
+    log(`type generation failed: ${err && err.message ? err.message : err}`);
+    return 1;
   }
-  console.log(
-    `[affinity-script-types] generated types/ in ${resolve(outDir)}`,
-  );
+  log(`generated types`);
   return 0;
 }
 if (import.meta.url === `file://${process.argv[1]}`)
