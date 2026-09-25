@@ -13,6 +13,7 @@ import { dirname, join, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
+const RESOURCE_DIR = resolve(HERE, "./resources");
 const PARSED_DOCS_OUTPUT = "affinity_sdk_docs.json";
 const DEFAULT_JSLIB = "/Applications/Affinity.app/Contents/Resources/JSLib";
 
@@ -1580,17 +1581,12 @@ const TSCONFIG = getConfig("tsconfig.json");
 // --------------------------------------------------------------------------- //
 
 function loadCatalog(which) {
-  const p = join(HERE, `affinity_${which}.json`);
+  const p = join(RESOURCE_DIR, `affinity_${which}.json`);
   return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : {};
 }
 
-function loadSdkDocs() {
-  const p = join(HERE, PARSED_DOCS_OUTPUT);
-  return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : null;
-}
-
 function loadOverrides() {
-  const overridesDir = join(HERE, "overrides");
+  const overridesDir = join(RESOURCE_DIR, "overrides");
   const overridesByMod = {};
   if (!existsSync(overridesDir)) return overridesByMod;
 
@@ -1686,7 +1682,7 @@ function finalize(m, structs) {
 
 function generate(jslib, outDir) {
   // ponytail: official doc truth forms canonical foundation; progressive introspection enhances it
-  const sdkDocs = loadSdkDocs();
+  const sdkDocs = loadCatalog("sdk_docs");
   const catalog = loadCatalog("catalog");
   const structsCatalog = loadCatalog("structs");
   const exportsCatalog = loadCatalog("exports");
