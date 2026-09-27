@@ -14,7 +14,6 @@ import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const RESOURCE_DIR = resolve(HERE, "./resources");
-const PARSED_DOCS_OUTPUT = "affinity_sdk_docs.json";
 const DEFAULT_JSLIB = "/Applications/Affinity.app/Contents/Resources/JSLib";
 
 const NATIVE_MODULES = [
@@ -1561,7 +1560,7 @@ function getConfig(
         },
         include: [...shared.include, "**/*.js"],
       };
-
+      break;
     case "tsconfig.json":
       config = {
         compilerOptions: {

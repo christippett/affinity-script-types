@@ -19,16 +19,10 @@
   "type": "module",
   "types": "types/affinity.d.ts",
   "files": [
-    "types",
+    "README.md",
     "generate-types.mjs",
-    "affinity_catalog.json",
-    "affinity_structs.json",
-    "affinity_exports.json",
-    "affinity_api.json",
-    "affinity_param_ranges.json",
-    "affinity_struct_ranges.json",
-    "affinity_struct_array_sizes.json",
-    "README.md"
+    "types",
+    "resources"
   ],
   "scripts": {
     "test": "node --check generate-types.mjs",
