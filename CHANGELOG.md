@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/christippett/affinity-script-types/compare/v1.2.0...v1.3.0) (2026-09-27)
+
+
+### Features
+
+* Integrate canonical SDK docs into generator ([3df80cc](https://github.com/christippett/affinity-script-types/commit/3df80cc1e9ca6c4aea2334838c009f16fc97a0a4))
+
+
+### Bug Fixes
+
+* config switch syntax and update packaged files ([ce0e3bb](https://github.com/christippett/affinity-script-types/commit/ce0e3bbb73535024dafebd28f2ec7d3e867fb6f6))
+
 ## [1.2.0](https://github.com/christippett/affinity-script-types/compare/v1.1.0...v1.2.0) (2026-09-22)
 
 
