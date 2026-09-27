@@ -46,17 +46,26 @@ import { ShapeType } from 'affinity:geometry';
 import { StoryIoFormat } from 'affinity:story';
 import { StrokeAlignment } from 'affinity:linestyles';
 
+export class AddNoiseFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isAddNoiseFilterParameters: boolean;
+  intensity: any;
+  noiseType: any;
+  isMonochromatic: boolean;
+  static create(): AddNoiseFilterParameters;
+}
+
 export class AddNoiseFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isAddNoiseFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: AddNoiseFilterParameters;
 }
 
 export class AddNoiseFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isAddNoiseFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: AddNoiseFilterParameters;
+  setParameters(parameters?: AddNoiseFilterParameters): this;
   static create(parameters?: any): AddNoiseFilterRasterNodeDefinition;
   static createDefault(): AddNoiseFilterRasterNodeDefinition;
 }
@@ -82,107 +91,174 @@ export class ArtTextNodeDefinition extends TextNodeDefinition {
   static createFromStoryBuilder(position?: any, storyBuilder?: any): ArtTextNodeDefinition;
 }
 
+export class BilateralBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isBilateralBlurFilterParameters: boolean;
+  radius: any;
+  tolerance: any;
+  static create(): BilateralBlurFilterParameters;
+}
+
 export class BilateralBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isBilateralBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: BilateralBlurFilterParameters;
 }
 
 export class BilateralBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isBilateralBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: BilateralBlurFilterParameters;
+  setParameters(parameters?: BilateralBlurFilterParameters): this;
   static create(params?: any): BilateralBlurFilterRasterNodeDefinition;
   static createDefault(): BilateralBlurFilterRasterNodeDefinition;
+}
+
+export class BlackAndWhiteAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isBlackAndWhiteAdjustmentParameters: boolean;
+  red: any;
+  green: any;
+  blue: any;
+  cyan: any;
+  magenta: any;
+  yellow: any;
+  static create(): BlackAndWhiteAdjustmentParameters;
 }
 
 export class BlackAndWhiteAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isBlackAndWhiteAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: BlackAndWhiteAdjustmentParameters;
 }
 
 export class BlackAndWhiteAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isBlackAndWhiteAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: BlackAndWhiteAdjustmentParameters;
+  setParameters(parameters?: BlackAndWhiteAdjustmentParameters): this;
   static create(parameters?: any): BlackAndWhiteAdjustmentRasterNodeDefinition;
   static createDefault(): BlackAndWhiteAdjustmentRasterNodeDefinition;
+}
+
+export class BloomFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isBloomFilterParameters: boolean;
+  shadowBlend: any;
+  midtoneBlend: any;
+  highlightBlend: any;
+  isStrong: boolean;
+  method: any;
+  colour: any;
+  static create(): BloomFilterParameters;
 }
 
 export class BloomFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isBloomFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: BloomFilterParameters;
 }
 
 export class BloomFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isBloomFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: BloomFilterParameters;
+  setParameters(parameters?: BloomFilterParameters): this;
   static create(params?: any): BloomFilterRasterNodeDefinition;
   static createDefault(): BloomFilterRasterNodeDefinition;
+}
+
+export class BoxBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isBoxBlurFilterParameters: boolean;
+  radius: any;
+  static create(): BoxBlurFilterParameters;
 }
 
 export class BoxBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isBoxBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: BoxBlurFilterParameters;
 }
 
 export class BoxBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isBoxBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: BoxBlurFilterParameters;
+  setParameters(parameters?: BoxBlurFilterParameters): this;
   static create(params?: any): BoxBlurFilterRasterNodeDefinition;
   static createDefault(): BoxBlurFilterRasterNodeDefinition;
+}
+
+export class BrightnessContrastAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isBrightnessContrastAdjustmentParameters: boolean;
+  brightness: any;
+  contrast: any;
+  isLinear: boolean;
+  static create(): BrightnessContrastAdjustmentParameters;
 }
 
 export class BrightnessContrastAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isBrightnessContrastAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: BrightnessContrastAdjustmentParameters;
 }
 
 export class BrightnessContrastAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isBrightnessContrastAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: BrightnessContrastAdjustmentParameters;
+  setParameters(parameters?: BrightnessContrastAdjustmentParameters): this;
   static create(parameters?: any): BrightnessContrastAdjustmentRasterNodeDefinition;
   static createDefault(): BrightnessContrastAdjustmentRasterNodeDefinition;
+}
+
+export class ClarityFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isClarityFilterParameters: boolean;
+  strength: any;
+  static create(): ClarityFilterParameters;
 }
 
 export class ClarityFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isClarityFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ClarityFilterParameters;
 }
 
 export class ClarityFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isClarityFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ClarityFilterParameters;
+  setParameters(parameters?: ClarityFilterParameters): this;
   static create(parameters?: any): ClarityFilterRasterNodeDefinition;
   static createDefault(): ClarityFilterRasterNodeDefinition;
+}
+
+export class ColourBalanceAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isColourBalanceAdjustmentParameters: boolean;
+  readonly valuesCount: number;
+  setValues(tonalRange?: any, value?: any): this;
+  getValues(tonalRange?: any): any;
+  enumerateValues(callback?: (...args: any[]) => any): any;
+  values: any;
+  preserveLuminosity: any;
+  static create(): ColourBalanceAdjustmentParameters;
 }
 
 export class ColourBalanceAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isColourBalanceAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ColourBalanceAdjustmentParameters;
 }
 
 export class ColourBalanceAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isColourBalanceAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ColourBalanceAdjustmentParameters;
+  setParameters(parameters?: ColourBalanceAdjustmentParameters): this;
   static create(parameters?: any): ColourBalanceAdjustmentRasterNodeDefinition;
   static createDefault(): ColourBalanceAdjustmentRasterNodeDefinition;
 }
@@ -214,6 +290,12 @@ export class CurvePathTextNode extends TextNode {
   readonly isCurvePathTextNode: boolean;
 }
 
+export class CurvePathTextNodeDefinition extends TextNodeDefinition {
+  constructor(handle?: any);
+  readonly isCurvePathTextNodeDefinition: boolean;
+  static createFromStoryBuilder(polyCurve?: any, storyBuilder?: any): CurvePathTextNodeDefinition;
+}
+
 export class CurvesAdjustmentParameters extends HandleObject {
   constructor(handle?: any);
   readonly isCurvesAdjustmentParameters: boolean;
@@ -222,6 +304,8 @@ export class CurvesAdjustmentParameters extends HandleObject {
   min: any;
   max: any;
   getChannelSpline(channel?: any): Spline;
+  readonly channelSplineCount: number;
+  enumerateChannelSplines(callback?: (...args: any[]) => any): any;
   static create(): CurvesAdjustmentParameters;
 }
 
@@ -235,40 +319,62 @@ export class CurvesAdjustmentRasterNode extends AdjustmentRasterNode {
 export class CurvesAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isCurvesAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: CurvesAdjustmentParameters;
+  setParameters(parameters?: CurvesAdjustmentParameters): this;
   colourSpace: ColourSpaceType;
   setColourSpace(csType?: ColourSpaceType): this;
   static create(params?: any, colourSpace?: any): CurvesAdjustmentRasterNodeDefinition;
   static createDefault(document?: any): CurvesAdjustmentRasterNodeDefinition;
 }
 
+export class DefringeFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isDefringeFilterParameters: boolean;
+  hue: any;
+  removeComplementary: any;
+  tolerance: any;
+  radius: any;
+  edgeBrightnessThreshold: any;
+  static create(): DefringeFilterParameters;
+}
+
 export class DefringeFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isDefringeFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: DefringeFilterParameters;
 }
 
 export class DefringeFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isDefringeFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: DefringeFilterParameters;
+  setParameters(parameters?: DefringeFilterParameters): this;
   static create(parameters?: any): DefringeFilterRasterNodeDefinition;
   static createDefault(): DefringeFilterRasterNodeDefinition;
+}
+
+export class DenoiseFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isDenoiseFilterParameters: boolean;
+  luminance: any;
+  luminanceDetail: any;
+  luminanceContribution: any;
+  colours: any;
+  coloursContribution: any;
+  static create(): DenoiseFilterParameters;
 }
 
 export class DenoiseFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isDenoiseFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: DenoiseFilterParameters;
 }
 
 export class DenoiseFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isDenoiseFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: DenoiseFilterParameters;
+  setParameters(parameters?: DenoiseFilterParameters): this;
   static create(parameters?: any): DenoiseFilterRasterNodeDefinition;
   static createDefault(): DenoiseFilterRasterNodeDefinition;
 }
@@ -300,32 +406,148 @@ export class DepthOfFieldFilterRasterNodeDefinition extends FilterRasterNodeDefi
   static createDefault(doc?: any): DepthOfFieldFilterRasterNodeDefinition;
 }
 
+export class DevelopNode extends PhysicalNode {
+  constructor(handle?: any);
+  readonly isDevelopNode: boolean;
+  readonly parameters: DevelopParameters;
+  readonly sourceIsRaw: any;
+  readonly imageSize: any;
+  readonly imageResourceInterface: ImageResourceInterface;
+  readonly rasterInterface: RasterInterface;
+}
+
+export class DevelopParameters extends HandleObject {
+  constructor(handle?: any);
+  readonly isDevelopParameters: boolean;
+  exposure: any;
+  exposureEnabled: any;
+  blackpoint: any;
+  whitepoint: any;
+  contrast: any;
+  enhanceEnabled: any;
+  saturation: any;
+  vibrance: any;
+  clarity: any;
+  texture: any;
+  shadowsIntensity: any;
+  highlightsIntensity: any;
+  shadowsHighlightsEnabled: any;
+  whiteBalance: any;
+  tint: any;
+  whiteBalanceEnabled: any;
+  readonly rawWhiteBalance: any;
+  applyToneCurve: any;
+  toneCurveEnabled: any;
+  toneCurveMethod: any;
+  curves: CurvesAdjustmentParameters;
+  curvesEnabled: any;
+  noiseReductionLuminanceSigma: any;
+  noiseReductionChromaSigma: any;
+  noiseReductionDetail: any;
+  luminanceContribution: any;
+  colourContribution: any;
+  noiseReductionEnabled: any;
+  waveletLumaSigma: any;
+  waveletChromaSigma: any;
+  waveletLevels: any;
+  waveletChromaLevels: any;
+  waveletDetail: any;
+  waveletNoiseReductionEnabled: any;
+  noiseAdditionIntensity: any;
+  noiseAdditionGaussian: any;
+  noiseAdditionColour: any;
+  noiseAdditionEnabled: any;
+  profileEnabled: any;
+  detailRefinementRadius: any;
+  detailRefinementAmount: any;
+  detailRefinementMethod: any;
+  detailRefinementEnabled: any;
+  defringeHue: any;
+  defringeComplementary: any;
+  defringeTolerance: any;
+  defringeThreshold: any;
+  defringeRadius: any;
+  defringeEnabled: any;
+  chromaticAberrationEnabled: any;
+  chromaticAberrationUseProfile: any;
+  lensVignetteEnabled: any;
+  lensVignetteUseProfile: any;
+  lensVignetteIntensity: any;
+  postVignetteEnabled: any;
+  postVignetteIntensity: any;
+  postVignetteScale: any;
+  postVignetteHardness: any;
+  lensCorrectionEnabled: any;
+  lensProfileDistortion: any;
+  lensDistortion: any;
+  lensRotation: any;
+  lensScale: any;
+  lensHorizontal: any;
+  lensVertical: any;
+  readonly lensProfileName: string;
+  invertEnabled: any;
+  invertMethod: any;
+  invertStrength: any;
+  hslEnabled: any;
+  blackAndWhiteEnabled: any;
+  splitToningEnabled: any;
+  selectiveColourEnabled: any;
+  colourBalanceEnabled: any;
+  hsl: HSLShiftAdjustmentParameters;
+  blackAndWhite: BlackAndWhiteAdjustmentParameters;
+  splitToning: SplitToningAdjustmentParameters;
+  selectiveColour: SelectiveColourAdjustmentParameters;
+  colourBalance: ColourBalanceAdjustmentParameters;
+  showClippedHighlights: any;
+  showClippedShadows: any;
+  showClippedTones: any;
+  showFocusPeaking: any;
+  focusPeakingHue: any;
+}
+
+export class DiffuseFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isDiffuseFilterParameters: boolean;
+  intensity: any;
+  static create(): DiffuseFilterParameters;
+}
+
 export class DiffuseFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isDiffuseFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: DiffuseFilterParameters;
 }
 
 export class DiffuseFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isDiffuseFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: DiffuseFilterParameters;
+  setParameters(parameters?: DiffuseFilterParameters): this;
   static create(parameters?: any): DiffuseFilterRasterNodeDefinition;
   static createDefault(): DiffuseFilterRasterNodeDefinition;
+}
+
+export class DiffuseGlowFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isDiffuseGlowFilterParameters: boolean;
+  radius: any;
+  intensity: any;
+  threshold: any;
+  opacity: any;
+  static create(): DiffuseGlowFilterParameters;
 }
 
 export class DiffuseGlowFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isDiffuseGlowFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: DiffuseGlowFilterParameters;
 }
 
 export class DiffuseGlowFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isDiffuseGlowFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: DiffuseGlowFilterParameters;
+  setParameters(parameters?: DiffuseGlowFilterParameters): this;
   static create(params?: any): DiffuseGlowFilterRasterNodeDefinition;
   static createDefault(): DiffuseGlowFilterRasterNodeDefinition;
 }
@@ -337,17 +559,26 @@ export class DocumentNode extends LogicalNode {
   readonly spreadCount: number;
 }
 
+export class DustAndScratchFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isDustAndScratchFilterParameters: boolean;
+  radius: any;
+  tolerance: any;
+  isChannelTolerance: boolean;
+  static create(): DustAndScratchFilterParameters;
+}
+
 export class DustAndScratchFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isDustAndScratchFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: DustAndScratchFilterParameters;
 }
 
 export class DustAndScratchFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isDustAndScratchFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: DustAndScratchFilterParameters;
+  setParameters(parameters?: DustAndScratchFilterParameters): this;
   static create(parameters?: any): DustAndScratchFilterRasterNodeDefinition;
   static createDefault(): DustAndScratchFilterRasterNodeDefinition;
 }
@@ -385,6 +616,7 @@ export class EmbeddedDocumentNode extends PhysicalNode {
   readonly layerVisibilities: any;
   readonly imageResourceInterface: ImageResourceInterface;
   readonly imageFilePath: string;
+  getImageFileSize(asBigInt?: any): any;
   readonly imageFileSize: any;
   readonly imageFileType: any;
   readonly imageFileTypeName: string;
@@ -403,16 +635,23 @@ export class EnclosureRasterNodeDefinition extends RasterNodeDefinition {
   readonly isEnclosureRasterNodeDefinition: boolean;
 }
 
+export class ExposureAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isExposureAdjustmentParameters: boolean;
+  exposure: any;
+  static create(): ExposureAdjustmentParameters;
+}
+
 export class ExposureAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isExposureAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ExposureAdjustmentParameters;
 }
 
 export class ExposureAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isExposureAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
+  parameters: ExposureAdjustmentParameters;
   static create(params?: any): ExposureAdjustmentRasterNodeDefinition;
   static createDefault(): ExposureAdjustmentRasterNodeDefinition;
 }
@@ -422,6 +661,7 @@ export class FieldBlurFilterParameters extends HandleObject {
   readonly isFieldBlurFilterParameters: boolean;
   readonly blurItemCount: number;
   getBlurItem(index?: any): any;
+  enumerateBlurItems(callback?: (...args: any[]) => any): any;
   addBlurItem(itemParams?: any): any;
   deleteBlurItem(index?: any): any;
   globalRadius: any;
@@ -437,8 +677,8 @@ export class FieldBlurFilterRasterNode extends FilterRasterNode {
 export class FieldBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isFieldBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: FieldBlurFilterParameters;
+  setParameters(parameters?: FieldBlurFilterParameters): this;
   static create(params?: any): FieldBlurFilterRasterNodeDefinition;
   static createDefault(doc?: any): FieldBlurFilterRasterNodeDefinition;
 }
@@ -467,17 +707,24 @@ export class FrameTextNodeDefinition extends TextNodeDefinition {
   static createFromStoryBuilder(frameBox?: any, storyBuilder?: any): FrameTextNodeDefinition;
 }
 
+export class GaussianBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isGaussianBlurFilterParameters: boolean;
+  radius: any;
+  static create(): GaussianBlurFilterParameters;
+}
+
 export class GaussianBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isGaussianBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: GaussianBlurFilterParameters;
 }
 
 export class GaussianBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isGaussianBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: GaussianBlurFilterParameters;
+  setParameters(parameters?: GaussianBlurFilterParameters): this;
   static create(parameters?: any): GaussianBlurFilterRasterNodeDefinition;
   static createDefault(): GaussianBlurFilterRasterNodeDefinition;
 }
@@ -501,6 +748,9 @@ export class HSLShiftAdjustmentParameters extends HandleObject {
   useHSV: any;
   getChannelParameters(channel?: any): any;
   getChannelColourRange(channel?: any): any;
+  readonly channelCount: number;
+  enumerateChannelParameters(callback?: (...args: any[]) => any): any;
+  enumerateChannelColourRanges(callback?: (...args: any[]) => any): any;
   static create(): HSLShiftAdjustmentParameters;
 }
 
@@ -513,36 +763,57 @@ export class HSLShiftAdjustmentRasterNode extends AdjustmentRasterNode {
 export class HSLShiftAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isHSLShiftAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
+  parameters: HSLShiftAdjustmentParameters;
   static create(parameters?: any): HSLShiftAdjustmentRasterNodeDefinition;
   static createDefault(): HSLShiftAdjustmentRasterNodeDefinition;
+}
+
+export class HalftoneFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isHalftoneFilterParameters: boolean;
+  cellSize: any;
+  screenAngle: any;
+  contrast: any;
+  screenType: any;
+  dotType: any;
+  greyComponentReplacement: any;
+  underColourRemoval: any;
+  static create(): HalftoneFilterParameters;
 }
 
 export class HalftoneFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isHalftoneFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: HalftoneFilterParameters;
 }
 
 export class HalftoneFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isHalftoneFilterRasterNodeDefinition: boolean;
-  parameters: any;
+  parameters: HalftoneFilterParameters;
   static create(params?: any): HalftoneFilterRasterNodeDefinition;
   static createDefault(): HalftoneFilterRasterNodeDefinition;
+}
+
+export class HighPassFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isHighPassFilterParameters: boolean;
+  radius: any;
+  isMonochrome: boolean;
+  static create(): HighPassFilterParameters;
 }
 
 export class HighPassFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isHighPassFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: HighPassFilterParameters;
 }
 
 export class HighPassFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isHighPassFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: HighPassFilterParameters;
+  setParameters(parameters?: HighPassFilterParameters): this;
   static create(parameters?: any): HighPassFilterRasterNodeDefinition;
   static createDefault(): HighPassFilterRasterNodeDefinition;
 }
@@ -560,6 +831,7 @@ export class ImageNode extends VectorNode {
   readonly isKOnly: boolean;
   readonly imageResourceInterface: ImageResourceInterface;
   readonly imageFilePath: string;
+  getImageFileSize(asBigInt?: any): any;
   readonly imageFileSize: any;
   readonly imageFileType: any;
   readonly imageFileTypeName: string;
@@ -592,33 +864,57 @@ export class InvertAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDe
   static create(): InvertAdjustmentRasterNodeDefinition;
 }
 
+export class LensBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isLensBlurFilterParameters: boolean;
+  radius: any;
+  numberOfBlades: any;
+  bladeCurvature: any;
+  bloomThreshold: any;
+  bloomFactor: number;
+  bloomColour: any;
+  static create(): LensBlurFilterParameters;
+}
+
 export class LensBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isLensBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: LensBlurFilterParameters;
 }
 
 export class LensBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isLensBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: LensBlurFilterParameters;
+  setParameters(parameters?: LensBlurFilterParameters): this;
   static create(params?: any): LensBlurFilterRasterNodeDefinition;
   static createDefault(): LensBlurFilterRasterNodeDefinition;
+}
+
+export class LevelsAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isLevelsAdjustmentParameters: boolean;
+  masterParameters: any;
+  readonly channelParametersCount: number;
+  setChannelParameters(channel?: any, value?: any): this;
+  getChannelParameters(channel?: any): any;
+  enumerateChannelParameters(callback?: (...args: any[]) => any): any;
+  channelParameters: any;
+  static create(): LevelsAdjustmentParameters;
 }
 
 export class LevelsAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isLevelsAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: LevelsAdjustmentParameters;
   readonly colourSpace: ColourSpaceType;
 }
 
 export class LevelsAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isLevelsAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: LevelsAdjustmentParameters;
+  setParameters(parameters?: LevelsAdjustmentParameters): this;
   colourSpace: ColourSpaceType;
   setColourSpace(csType?: ColourSpaceType): this;
   static create(params?: any, colourSpace?: any): LevelsAdjustmentRasterNodeDefinition;
@@ -663,62 +959,128 @@ export class LogicalNodeDefinition extends NodeDefinition {
   readonly isLogicalNodeDefinition: boolean;
 }
 
+export class MaximumBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isMaximumBlurFilterParameters: boolean;
+  radius: any;
+  isCircular: boolean;
+  static create(): MaximumBlurFilterParameters;
+}
+
 export class MaximumBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isMaximumBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: MaximumBlurFilterParameters;
 }
 
 export class MaximumBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isMaximumBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: MaximumBlurFilterParameters;
+  setParameters(parameters?: MaximumBlurFilterParameters): this;
   static create(params?: any): MaximumBlurFilterRasterNodeDefinition;
   static createDefault(): MaximumBlurFilterRasterNodeDefinition;
+}
+
+export class MeasurementNode extends VectorNode {
+  constructor(handle?: any);
+  readonly isMeasurementNode: boolean;
+  readonly factor: number;
+  readonly scaledUnitType: any;
+  readonly displayUnitType: any;
+  readonly annotationOffset: any;
+  readonly showEndpointMarkers: any;
+  readonly useDocumentPrecision: number;
+  readonly decimalPlaces: any;
+  readonly spreadDistance: any;
+  readonly spreadEndpoints: any;
+}
+
+export class MeasurementNodeDefinition extends VectorNodeDefinition {
+  constructor(handle?: any);
+  readonly isMeasurementNodeDefinition: boolean;
+  annotationOffset: any;
+  setAnnotationOffset(offset?: any): this;
+  showEndpointMarkers: any;
+  setShowEndpointMarkers(show?: any): this;
+  endpoints: any;
+  setEndpoints(start?: any, end?: any): this;
+  factor: number;
+  setFactor(factor?: number): this;
+  scaledUnitType: any;
+  setScaledUnitType(unitType?: any): this;
+  useDocumentPrecision: number;
+  decimalPlaces: any;
+  setDisplayPrecision(useDocumentPrecision?: any, decimalPlaces?: any): this;
+  labelGlyphAtts: any;
+  setLabelGlyphAtts(glyphAtts?: any): this;
+  static create(start?: any, end?: any, factor?: any, unitType?: any): MeasurementNodeDefinition;
+}
+
+export class MedianBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isMedianBlurFilterParameters: boolean;
+  radius: any;
+  static create(): MedianBlurFilterParameters;
 }
 
 export class MedianBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isMedianBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: MedianBlurFilterParameters;
 }
 
 export class MedianBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isMedianBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: MedianBlurFilterParameters;
+  setParameters(parameters?: MedianBlurFilterParameters): this;
   static create(params?: any): MedianBlurFilterRasterNodeDefinition;
   static createDefault(): MedianBlurFilterRasterNodeDefinition;
+}
+
+export class MinimumBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isMinimumBlurFilterParameters: boolean;
+  radius: any;
+  isCircular: boolean;
+  static create(): MinimumBlurFilterParameters;
 }
 
 export class MinimumBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isMinimumBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: MinimumBlurFilterParameters;
 }
 
 export class MinimumBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isMinimumBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: MinimumBlurFilterParameters;
+  setParameters(parameters?: MinimumBlurFilterParameters): this;
   static create(params?: any): MinimumBlurFilterRasterNodeDefinition;
   static createDefault(): MinimumBlurFilterRasterNodeDefinition;
+}
+
+export class MotionBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isMotionBlurFilterParameters: boolean;
+  radius: any;
+  angle: any;
+  static create(): MotionBlurFilterParameters;
 }
 
 export class MotionBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isMotionBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: MotionBlurFilterParameters;
 }
 
 export class MotionBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isMotionBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: MotionBlurFilterParameters;
+  setParameters(parameters?: MotionBlurFilterParameters): this;
   static create(params?: any): MotionBlurFilterRasterNodeDefinition;
   static createDefault(): MotionBlurFilterRasterNodeDefinition;
 }
@@ -814,6 +1176,7 @@ export class NodeCast extends HandleObject {
   setCurvePathTextNodeHandler(callback?: (...args: any[]) => any): any;
   setCurvesAdjustmentRasterNodeHandler(callback?: (...args: any[]) => any): any;
   setDocumentNodeHandler(callback?: (...args: any[]) => any): any;
+  setDevelopNodeHandler(callback?: (...args: any[]) => any): any;
   setEmbeddedDocumentNodeHandler(callback?: (...args: any[]) => any): any;
   setEnclosureRasterNodeHandler(callback?: (...args: any[]) => any): any;
   setExposureAdjustmentRasterNodeHandler(callback?: (...args: any[]) => any): any;
@@ -879,6 +1242,7 @@ export class NodeCast extends HandleObject {
   setShapePathTextNodeHandler(callback?: (...args: any[]) => any): any;
   setShapeTextNodeHandler(callback?: (...args: any[]) => any): any;
   setSpreadNodeHandler(callback?: (...args: any[]) => any): any;
+  setMeasurementNodeHandler(callback?: (...args: any[]) => any): any;
   setTableTextNodeHandler(callback?: (...args: any[]) => any): any;
   setTextNodeHandler(callback?: (...args: any[]) => any): any;
   setVectorNodeHandler(callback?: (...args: any[]) => any): any;
@@ -911,17 +1275,27 @@ export class NodeFactory {
   create(handle?: any): any;
 }
 
+export class NormalsAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isNormalsAdjustmentParameters: boolean;
+  rotation: any;
+  scale: any;
+  flipX: any;
+  flipY: any;
+  static create(): NormalsAdjustmentParameters;
+}
+
 export class NormalsAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isNormalsAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: NormalsAdjustmentParameters;
 }
 
 export class NormalsAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isNormalsAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: NormalsAdjustmentParameters;
+  setParameters(parameters?: NormalsAdjustmentParameters): this;
   static create(parameters?: any): NormalsAdjustmentRasterNodeDefinition;
   static createDefault(): NormalsAdjustmentRasterNodeDefinition;
 }
@@ -952,32 +1326,48 @@ export class PhysicalNodeDefinition extends NodeDefinition {
   readonly isPhysicalNodeDefinition: boolean;
 }
 
+export class PinchPunchFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isPinchPunchFilterParameters: boolean;
+  intensity: any;
+  radius: any;
+  position: any;
+  static create(): PinchPunchFilterParameters;
+}
+
 export class PinchPunchFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isPinchPunchFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: PinchPunchFilterParameters;
 }
 
 export class PinchPunchFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isPinchPunchFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: PinchPunchFilterParameters;
+  setParameters(parameters?: PinchPunchFilterParameters): this;
   static create(parameters?: any): PinchPunchFilterRasterNodeDefinition;
   static createDefault(document?: any): PinchPunchFilterRasterNodeDefinition;
+}
+
+export class PixelateFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isPixelateFilterParameters: boolean;
+  quantisation: any;
+  static create(): PixelateFilterParameters;
 }
 
 export class PixelateFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isPixelateFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: PixelateFilterParameters;
 }
 
 export class PixelateFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isPixelateFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: PixelateFilterParameters;
+  setParameters(parameters?: PixelateFilterParameters): this;
   static create(params?: any): PixelateFilterRasterNodeDefinition;
   static createDefault(): PixelateFilterRasterNodeDefinition;
 }
@@ -987,6 +1377,7 @@ export class PolyCurveNode extends VectorNode {
   readonly isPolyCurveNode: boolean;
   readonly artboardInterface: ArtboardInterface;
   artboardEnabled: any;
+  isArtboardEnabled: boolean;
   readonly artboardDescription: string;
   readonly artboardBaseBox: any;
   readonly artboardSpreadBaseBox: any;
@@ -998,7 +1389,7 @@ export class PolyCurveNodeDefinition extends VectorNodeDefinition {
   readonly isPolyCurveNodeDefinition: boolean;
   setCurves(curve?: PolyCurve): this;
   curves: PolyCurve;
-  static create(curve?: any, brushFill?: any, lineStyle?: any, lineFill?: any, transparencyFill?: any): PolyCurveNodeDefinition;
+  static create(curve?: any, brushFill?: any, lineFill?: any, lineStyle?: any, transparencyFill?: any): PolyCurveNodeDefinition;
   static createDefault(): PolyCurveNodeDefinition;
 }
 
@@ -1007,32 +1398,53 @@ export class PolyCurveTextNode extends TextNode {
   readonly isPolyCurveTextNode: boolean;
 }
 
+export class PolyCurveTextNodeDefinition extends TextNodeDefinition {
+  constructor(handle?: any);
+  readonly isPolyCurveTextNodeDefinition: boolean;
+  static createFromStoryBuilder(polyCurve?: any, storyBuilder?: any): PolyCurveTextNodeDefinition;
+}
+
+export class PosteriseAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isPosteriseAdjustmentParameters: boolean;
+  levels: any;
+  static create(): PosteriseAdjustmentParameters;
+}
+
 export class PosteriseAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isPosteriseAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: PosteriseAdjustmentParameters;
 }
 
 export class PosteriseAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isPosteriseAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: PosteriseAdjustmentParameters;
+  setParameters(parameters?: PosteriseAdjustmentParameters): this;
   static create(parameters?: any): PosteriseAdjustmentRasterNodeDefinition;
   static createDefault(): PosteriseAdjustmentRasterNodeDefinition;
+}
+
+export class RadialBlurFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isRadialBlurFilterParameters: boolean;
+  angle: any;
+  position: any;
+  static create(): RadialBlurFilterParameters;
 }
 
 export class RadialBlurFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isRadialBlurFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: RadialBlurFilterParameters;
 }
 
 export class RadialBlurFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isRadialBlurFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: RadialBlurFilterParameters;
+  setParameters(parameters?: RadialBlurFilterParameters): this;
   static create(parameters?: any): RadialBlurFilterRasterNodeDefinition;
   static createDefault(document?: any): RadialBlurFilterRasterNodeDefinition;
 }
@@ -1059,77 +1471,127 @@ export class RasterNodeDefinition extends PhysicalNodeDefinition {
   setBitmap(bm?: RasterObject): this;
 }
 
+export class RecolourAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isRecolourAdjustmentParameters: boolean;
+  hue: any;
+  saturation: any;
+  lightness: any;
+  static create(): RecolourAdjustmentParameters;
+}
+
 export class RecolourAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isRecolourAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: RecolourAdjustmentParameters;
 }
 
 export class RecolourAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isRecolourAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: RecolourAdjustmentParameters;
+  setParameters(parameters?: RecolourAdjustmentParameters): this;
   static create(parameters?: any): RecolourAdjustmentRasterNodeDefinition;
   static createDefault(): RecolourAdjustmentRasterNodeDefinition;
+}
+
+export class RippleFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isRippleFilterParameters: boolean;
+  intensity: any;
+  position: any;
+  static create(): RippleFilterParameters;
 }
 
 export class RippleFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isRippleFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: RippleFilterParameters;
 }
 
 export class RippleFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isRippleFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: RippleFilterParameters;
+  setParameters(parameters?: RippleFilterParameters): this;
   static create(parameters?: any): RippleFilterRasterNodeDefinition;
   static createDefault(document?: any): RippleFilterRasterNodeDefinition;
+}
+
+export class SelectiveColourAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isSelectiveColourAdjustmentParameters: boolean;
+  readonly weightsCount: number;
+  setWeights(colour?: any, value?: any): this;
+  getWeights(colour?: any): any;
+  enumerateWeights(callback?: (...args: any[]) => any): any;
+  weights: any;
+  isRelative: boolean;
+  static create(): SelectiveColourAdjustmentParameters;
 }
 
 export class SelectiveColourAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isSelectiveColourAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: SelectiveColourAdjustmentParameters;
 }
 
 export class SelectiveColourAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isSelectiveColourAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: SelectiveColourAdjustmentParameters;
+  setParameters(parameters?: SelectiveColourAdjustmentParameters): this;
   static create(parameters?: any): SelectiveColourAdjustmentRasterNodeDefinition;
   static createDefault(): SelectiveColourAdjustmentRasterNodeDefinition;
+}
+
+export class ShadowsHighlightsAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isShadowsHighlightsAdjustmentParameters: boolean;
+  shadows: any;
+  highlights: any;
+  static create(): ShadowsHighlightsAdjustmentParameters;
 }
 
 export class ShadowsHighlightsAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isShadowsHighlightsAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ShadowsHighlightsAdjustmentParameters;
 }
 
 export class ShadowsHighlightsAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isShadowsHighlightsAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ShadowsHighlightsAdjustmentParameters;
+  setParameters(parameters?: ShadowsHighlightsAdjustmentParameters): this;
   static create(parameters?: any): ShadowsHighlightsAdjustmentRasterNodeDefinition;
   static createDefault(): ShadowsHighlightsAdjustmentRasterNodeDefinition;
+}
+
+export class ShadowsHighlightsFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isShadowsHighlightsFilterParameters: boolean;
+  version: string;
+  shadowsStrength: any;
+  shadowsRange: any;
+  shadowsRadius: any;
+  highlightsStrength: any;
+  highlightsRange: any;
+  highlightsRadius: any;
+  static create(): ShadowsHighlightsFilterParameters;
 }
 
 export class ShadowsHighlightsFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isShadowsHighlightsFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ShadowsHighlightsFilterParameters;
 }
 
 export class ShadowsHighlightsFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isShadowsHighlightsFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ShadowsHighlightsFilterParameters;
+  setParameters(parameters?: ShadowsHighlightsFilterParameters): this;
   static create(parameters?: any): ShadowsHighlightsFilterRasterNodeDefinition;
   static createDefault(): ShadowsHighlightsFilterRasterNodeDefinition;
 }
@@ -1139,6 +1601,7 @@ export class ShapeNode extends VectorNode {
   readonly isShapeNode: boolean;
   readonly artboardInterface: ArtboardInterface;
   artboardEnabled: any;
+  isArtboardEnabled: boolean;
   readonly artboardDescription: string;
   readonly artboardBaseBox: any;
   readonly artboardSpreadBaseBox: any;
@@ -1169,6 +1632,12 @@ export class ShapePathTextNode extends TextNode {
   readonly shapeBoundingBox: any;
 }
 
+export class ShapePathTextNodeDefinition extends TextNodeDefinition {
+  constructor(handle?: any);
+  readonly isShapePathTextNodeDefinition: boolean;
+  static createFromStoryBuilder(shape?: any, rectangle?: any, storyBuilder?: any): ShapePathTextNodeDefinition;
+}
+
 export class ShapeTextNode extends TextNode {
   constructor(handle?: any);
   readonly isShapeTextNode: boolean;
@@ -1178,32 +1647,58 @@ export class ShapeTextNode extends TextNode {
   readonly shapeBoundingBox: any;
 }
 
+export class ShapeTextNodeDefinition extends TextNodeDefinition {
+  constructor(handle?: any);
+  readonly isShapeTextNodeDefinition: boolean;
+  static createFromStoryBuilder(shape?: any, rectangle?: any, storyBuilder?: any): ShapeTextNodeDefinition;
+}
+
+export class SphericalFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isSphericalFilterParameters: boolean;
+  intensity: any;
+  radius: any;
+  position: any;
+  static create(): SphericalFilterParameters;
+}
+
 export class SphericalFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isSphericalFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: SphericalFilterParameters;
 }
 
 export class SphericalFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isSphericalFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: SphericalFilterParameters;
+  setParameters(parameters?: SphericalFilterParameters): this;
   static create(parameters?: any): SphericalFilterRasterNodeDefinition;
   static createDefault(document?: any): SphericalFilterRasterNodeDefinition;
+}
+
+export class SplitToningAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isSplitToningAdjustmentParameters: boolean;
+  highlightsHue: any;
+  highlightsSaturation: any;
+  shadowsHue: any;
+  shadowsSaturation: any;
+  balance: any;
+  static create(): SplitToningAdjustmentParameters;
 }
 
 export class SplitToningAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isSplitToningAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: SplitToningAdjustmentParameters;
 }
 
 export class SplitToningAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isSplitToningAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: SplitToningAdjustmentParameters;
+  setParameters(parameters?: SplitToningAdjustmentParameters): this;
   static create(parameters?: any): SplitToningAdjustmentRasterNodeDefinition;
   static createDefault(): SplitToningAdjustmentRasterNodeDefinition;
 }
@@ -1244,6 +1739,7 @@ export class TextNode extends PhysicalNode {
   readonly isTextNode: boolean;
   readonly artboardInterface: ArtboardInterface;
   artboardEnabled: any;
+  isArtboardEnabled: boolean;
   readonly artboardDescription: string;
   readonly artboardBaseBox: any;
   readonly artboardSpreadBaseBox: any;
@@ -1292,77 +1788,122 @@ export class TextNodeDefinition extends PhysicalNodeDefinition {
   readonly isTextNodeDefinition: boolean;
 }
 
+export class ThresholdAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isThresholdAdjustmentParameters: boolean;
+  threshold: any;
+  static create(): ThresholdAdjustmentParameters;
+}
+
 export class ThresholdAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isThresholdAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ThresholdAdjustmentParameters;
 }
 
 export class ThresholdAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isThresholdAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ThresholdAdjustmentParameters;
+  setParameters(parameters?: ThresholdAdjustmentParameters): this;
   static create(parameters?: any): ThresholdAdjustmentRasterNodeDefinition;
   static createDefault(): ThresholdAdjustmentRasterNodeDefinition;
+}
+
+export class ToneCompressionAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isToneCompressionAdjustmentParameters: boolean;
+  method: any;
+  exposure: any;
+  gamma: any;
+  colour: any;
+  static create(): ToneCompressionAdjustmentParameters;
 }
 
 export class ToneCompressionAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isToneCompressionAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ToneCompressionAdjustmentParameters;
 }
 
 export class ToneCompressionAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isToneCompressionAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ToneCompressionAdjustmentParameters;
+  setParameters(parameters?: ToneCompressionAdjustmentParameters): this;
   static create(parameters?: any): ToneCompressionAdjustmentRasterNodeDefinition;
   static createDefault(): ToneCompressionAdjustmentRasterNodeDefinition;
+}
+
+export class ToneStretchAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isToneStretchAdjustmentParameters: boolean;
+  method: any;
+  gamma: any;
+  stretchFactor: number;
+  compression: any;
+  static create(): ToneStretchAdjustmentParameters;
 }
 
 export class ToneStretchAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isToneStretchAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: ToneStretchAdjustmentParameters;
 }
 
 export class ToneStretchAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isToneStretchAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: ToneStretchAdjustmentParameters;
+  setParameters(parameters?: ToneStretchAdjustmentParameters): this;
   static create(parameters?: any): ToneStretchAdjustmentRasterNodeDefinition;
   static createDefault(): ToneStretchAdjustmentRasterNodeDefinition;
+}
+
+export class TwirlFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isTwirlFilterParameters: boolean;
+  angle: any;
+  radius: any;
+  position: any;
+  static create(): TwirlFilterParameters;
 }
 
 export class TwirlFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isTwirlFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: TwirlFilterParameters;
 }
 
 export class TwirlFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isTwirlFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: TwirlFilterParameters;
+  setParameters(parameters?: TwirlFilterParameters): this;
   static create(parameters?: any): TwirlFilterRasterNodeDefinition;
   static createDefault(document?: any): TwirlFilterRasterNodeDefinition;
+}
+
+export class UnsharpMaskFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isUnsharpMaskFilterParameters: boolean;
+  radius: any;
+  threshold: any;
+  factor: number;
+  static create(): UnsharpMaskFilterParameters;
 }
 
 export class UnsharpMaskFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isUnsharpMaskFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: UnsharpMaskFilterParameters;
 }
 
 export class UnsharpMaskFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isUnsharpMaskFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: UnsharpMaskFilterParameters;
+  setParameters(parameters?: UnsharpMaskFilterParameters): this;
   static create(parameters?: any): UnsharpMaskFilterRasterNodeDefinition;
   static createDefault(): UnsharpMaskFilterRasterNodeDefinition;
 }
@@ -1425,136 +1966,134 @@ export class VectorNodeDefinition extends PhysicalNodeDefinition {
   setLineDescriptors(lineFillDescriptor?: any, lineStyleDescriptor?: any, index?: any): this;
   removeLineDescriptors(index?: any): this;
   currentLineDescriptorsIndex: number;
+  setPictureFrameEnabled(pictureFrameEnabled?: any): this;
+  pictureFrameEnabled: any;
+}
+
+export class VibranceAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isVibranceAdjustmentParameters: boolean;
+  vibrance: any;
+  saturation: any;
+  static create(): VibranceAdjustmentParameters;
 }
 
 export class VibranceAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isVibranceAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: VibranceAdjustmentParameters;
 }
 
 export class VibranceAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isVibranceAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: VibranceAdjustmentParameters;
+  setParameters(parameters?: VibranceAdjustmentParameters): this;
   static create(parameters?: any): VibranceAdjustmentRasterNodeDefinition;
   static createDefault(): VibranceAdjustmentRasterNodeDefinition;
+}
+
+export class VignetteFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isVignetteFilterParameters: boolean;
+  exposure: any;
+  hardness: any;
+  scale: any;
+  shape: ShapeType;
+  static create(): VignetteFilterParameters;
 }
 
 export class VignetteFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isVignetteFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: VignetteFilterParameters;
 }
 
 export class VignetteFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isVignetteFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: VignetteFilterParameters;
+  setParameters(parameters?: VignetteFilterParameters): this;
   static create(parameters?: any): VignetteFilterRasterNodeDefinition;
   static createDefault(): VignetteFilterRasterNodeDefinition;
+}
+
+export class VoronoiFilterParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isVoronoiFilterParameters: boolean;
+  cellSize: any;
+  lineWidth: number;
+  static create(): VoronoiFilterParameters;
 }
 
 export class VoronoiFilterRasterNode extends FilterRasterNode {
   constructor(handle?: any);
   readonly isVoronoiFilterRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: VoronoiFilterParameters;
 }
 
 export class VoronoiFilterRasterNodeDefinition extends FilterRasterNodeDefinition {
   constructor(handle?: any);
   readonly isVoronoiFilterRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: VoronoiFilterParameters;
+  setParameters(parameters?: VoronoiFilterParameters): this;
   static create(parameters?: any): VoronoiFilterRasterNodeDefinition;
   static createDefault(): VoronoiFilterRasterNodeDefinition;
+}
+
+export class WhiteBalanceAdjustmentParameters extends HandleObject {
+  constructor(...args: any);
+  readonly isWhiteBalanceAdjustmentParameters: boolean;
+  whiteBalance: any;
+  tint: any;
+  static create(): WhiteBalanceAdjustmentParameters;
 }
 
 export class WhiteBalanceAdjustmentRasterNode extends AdjustmentRasterNode {
   constructor(handle?: any);
   readonly isWhiteBalanceAdjustmentRasterNode: boolean;
-  readonly parameters: any;
+  readonly parameters: WhiteBalanceAdjustmentParameters;
 }
 
 export class WhiteBalanceAdjustmentRasterNodeDefinition extends AdjustmentRasterNodeDefinition {
   constructor(handle?: any);
   readonly isWhiteBalanceAdjustmentRasterNodeDefinition: boolean;
-  parameters: any;
-  setParameters(parameters?: any): this;
+  parameters: WhiteBalanceAdjustmentParameters;
+  setParameters(parameters?: WhiteBalanceAdjustmentParameters): this;
   static create(parameters?: any): WhiteBalanceAdjustmentRasterNodeDefinition;
   static createDefault(): WhiteBalanceAdjustmentRasterNodeDefinition;
 }
 
-export { BlackAndWhiteAdjustmentParameters } from 'affinity:dom';
-export { BrightnessContrastAdjustmentParameters } from 'affinity:dom';
-export { ColourBalanceAdjustmentParameters } from 'affinity:dom';
 export { ColourBalanceValues } from 'affinity:dom';
-export { ExposureAdjustmentParameters } from 'affinity:dom';
 export { HSLShiftAdjustmentChannelParameters } from 'affinity:dom';
 export { HSLShiftAdjustmentColourRange } from 'affinity:dom';
 export { LevelsAdjustmentChannelParameters } from 'affinity:dom';
-export { LevelsAdjustmentParameters } from 'affinity:dom';
-export { NormalsAdjustmentParameters } from 'affinity:dom';
-export { PosteriseAdjustmentParameters } from 'affinity:dom';
-export { RecolourAdjustmentParameters } from 'affinity:dom';
-export { ShadowsHighlightsAdjustmentParameters } from 'affinity:dom';
-export { SelectiveColourAdjustmentParameters } from 'affinity:dom';
-export { SplitToningAdjustmentParameters } from 'affinity:dom';
-export { ThresholdAdjustmentParameters } from 'affinity:dom';
-export { ToneCompressionAdjustmentParameters } from 'affinity:dom';
-export { ToneStretchAdjustmentParameters } from 'affinity:dom';
-export { VibranceAdjustmentParameters } from 'affinity:dom';
-export { WhiteBalanceAdjustmentParameters } from 'affinity:dom';
-export { AddNoiseFilterParameters } from 'affinity:dom';
-export { BilateralBlurFilterParameters } from 'affinity:dom';
-export { BloomFilterParameters } from 'affinity:dom';
-export { BoxBlurFilterParameters } from 'affinity:dom';
-export { ClarityFilterParameters } from 'affinity:dom';
-export { DefringeFilterParameters } from 'affinity:dom';
-export { DenoiseFilterParameters } from 'affinity:dom';
-export { DiffuseFilterParameters } from 'affinity:dom';
-export { DiffuseGlowFilterParameters } from 'affinity:dom';
-export { DustAndScratchFilterParameters } from 'affinity:dom';
 export { EllipticalDepthOfFieldParameters } from 'affinity:dom';
 export { FieldBlurItemParameters } from 'affinity:dom';
-export { GaussianBlurFilterParameters } from 'affinity:dom';
-export { HalftoneFilterParameters } from 'affinity:dom';
-export { ShadowsHighlightsFilterParameters } from 'affinity:dom';
-export { HighPassFilterParameters } from 'affinity:dom';
-export { LensBlurFilterParameters } from 'affinity:dom';
-export { MedianBlurFilterParameters } from 'affinity:dom';
-export { MaximumBlurFilterParameters } from 'affinity:dom';
-export { MinimumBlurFilterParameters } from 'affinity:dom';
-export { MotionBlurFilterParameters } from 'affinity:dom';
-export { PinchPunchFilterParameters } from 'affinity:dom';
-export { PixelateFilterParameters } from 'affinity:dom';
-export { RadialBlurFilterParameters } from 'affinity:dom';
-export { RippleFilterParameters } from 'affinity:dom';
-export { SphericalFilterParameters } from 'affinity:dom';
 export { TiltShiftDepthOfFieldParameters } from 'affinity:dom';
-export { TwirlFilterParameters } from 'affinity:dom';
-export { UnsharpMaskFilterParameters } from 'affinity:dom';
-export { VignetteFilterParameters } from 'affinity:dom';
-export { VoronoiFilterParameters } from 'affinity:dom';
-export function createTypedNode(handle?: any): any;
 export { AddNoiseType } from 'affinity:dom';
+export { BloomMethod } from 'affinity:dom';
 export { ColourSpaceType } from 'affinity:colours';
 export { DepthOfFieldMode } from 'affinity:dom';
+export { DevelopDetailRefinementMethod } from 'affinity:dom';
+export { DevelopInvertMethod } from 'affinity:dom';
+export { DevelopToneCurveMethod } from 'affinity:dom';
+export { HalftoneDotType } from 'affinity:dom';
+export { HalftoneScreenType } from 'affinity:dom';
+export { LineDescriptors } from 'affinity:dom';
+export { NodeChildType } from 'affinity:dom';
 export { PageBoundingBoxType } from 'affinity:dom';
 export { RasterExtendType } from 'affinity:raster';
 export { RasterFormat } from 'affinity:raster';
 export { RasterResamplerType } from 'affinity:raster';
 export { ShadowsHighlightsVersion } from 'affinity:dom';
 export { SelectiveColour } from 'affinity:dom';
+export { SelectiveColourWeights } from 'affinity:dom';
 export { TonalRangeType } from 'affinity:dom';
 export { ToneCompressionMethod } from 'affinity:dom';
 export { ToneStretchMethod } from 'affinity:dom';
-export { BloomMethod } from 'affinity:dom';
-export { HalftoneScreenType } from 'affinity:dom';
-export { HalftoneDotType } from 'affinity:dom';
-export { NodeChildType } from 'affinity:dom';
+export { UnitType } from 'affinity:common';
+export function createTypedNode(handle?: any): any;
 export const getNodeSiblings: any;
 export const getNodeChildren: any;
 export const getNodesRecursive: any;

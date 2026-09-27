@@ -9,8 +9,19 @@ import { GlyphType } from 'affinity:story';
 import { HardBreakType } from 'affinity:story';
 import { SoftBreakType } from 'affinity:story';
 import { StoryIoFormat } from 'affinity:story';
-import { StoryRange } from 'affinity:story';
 import { WordPartType } from 'affinity:story';
+
+export class StoryRange {
+  constructor(...args: any[]);
+  begin: any;
+  end: any;
+  readonly reversed: any;
+  readonly isForwards: boolean;
+  readonly isBackwards: boolean;
+  readonly isEmpty: boolean;
+  readonly count: number;
+  readonly length: number;
+}
 
 export class Story extends HandleObject {
   constructor(handle?: any);
@@ -95,7 +106,6 @@ export class Story extends HandleObject {
 
 export { GlyphType } from 'affinity:story';
 export { StoryIoFormat } from 'affinity:story';
-export { StoryRange } from 'affinity:story';
 export { HardBreakType } from 'affinity:story';
 export { SoftBreakType } from 'affinity:story';
 export { TableAxis } from 'affinity:story';

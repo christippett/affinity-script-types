@@ -9,10 +9,13 @@ import { UnitType } from 'affinity:common';
 export class ArtboardDocumentProperties extends HandleObject {
   constructor(handle?: any);
   static create(): ArtboardDocumentProperties;
+  clone(): ArtboardDocumentProperties;
   margin: any;
   setMargin(margin?: any): this;
   useMargin: any;
   setUseMargin(useMargin?: any): this;
+  marginFill: FillDescriptor;
+  setMarginFill(fillDescriptor?: FillDescriptor): this;
   drawingScale: DrawingScale;
   setDrawingScale(drawingScale?: DrawingScale): this;
   useDrawingScale: any;
@@ -26,39 +29,81 @@ export class ArtboardDocumentProperties extends HandleObject {
 export class DocumentProperties extends HandleObject {
   constructor(handle?: any);
   static create(): DocumentProperties;
+  clone(): DocumentProperties;
+  dimensions: any;
+  setDimensions(dimensions?: any): this;
   readonly colourFormat: any;
   readonly colourProfile: ColourProfile;
   setColourFormatAndProfile(rasterFormat?: any, colourProfile?: any): this;
   units: UnitType;
+  setUnits(unitType?: UnitType): this;
   shouldReflowPages: boolean;
-  readonly dpi: number;
-  readonly viewDpi: number;
+  setShouldReflowPages(shouldReflowPages?: boolean): this;
+  dpi: number;
   setDpi(dpi?: any, viewDpi?: number): this;
+  readonly viewDpi: number;
   drawingScale: DrawingScale;
+  setDrawingScale(drawingScale?: DrawingScale): this;
+  widthPixels: any;
+  heightPixels: any;
   pageWidth: number;
   pageHeight: number;
   margin: any;
-  marginFill: FillDescriptor;
+  marginFill: any;
   bleed: any;
+  setBleed(bleed?: any): this;
   bleedFill: FillDescriptor;
+  setBleedFill(fillDescriptorOrColour?: FillDescriptor): this;
   includeMargins: any;
   isRetina: boolean;
   isPortrait: boolean;
   isTransparent: boolean;
+  setIsTransparent(isTransparent?: boolean): this;
   saveHistory: boolean;
   isFacingPages: boolean;
+  setIsFacingPages(isFacingPages?: boolean): this;
   isFullSpreadStart: boolean;
+  setIsFullSpreadStart(isFullSpreadStart?: boolean): this;
   isVerticalStack: boolean;
+  setIsVerticalStack(isVerticalStack?: boolean): this;
   imageResourcePolicy: any;
+  setImageResourcePolicy(imageResourcePolicy?: any): this;
   linkTextFiles: boolean;
+  setLinkTextFiles(linkTextFiles?: boolean): this;
   preserveTextStyles: boolean;
+  setPreserveTextStyles(preserveTextStyles?: boolean): this;
   assignColourProfile: any;
+  setAssignColourProfile(assignColourProfile?: any): this;
   resamplerType: any;
+  setResamplerType(resamplerType?: any): this;
+}
+
+export class PageDocumentProperties extends HandleObject {
+  constructor(handle?: any);
+  static create(): PageDocumentProperties;
+  clone(): PageDocumentProperties;
+  moveFollowingPages: any;
+  setMoveFollowingPages(moveFollowingPages?: any): this;
+  pageOriginDelta: any;
+  setPageOriginDelta(pageOriginDelta?: any): this;
+  anchorType: any;
+  setAnchorType(anchorType?: any): this;
+  margin: any;
+  setMargin(margin?: any): this;
+  useMargin: any;
+  setUseMargin(useMargin?: any): this;
+  useMasterMargin: any;
+  setUseMasterMargin(useMasterMargin?: any): this;
+  marginFill: FillDescriptor;
+  setMarginFill(fillDescriptor?: FillDescriptor): this;
+  dimensions: any;
+  setDimensions(dimensions?: any): this;
 }
 
 export class SpreadDocumentProperties extends ArtboardDocumentProperties {
   constructor(handle?: any);
   static create(): SpreadDocumentProperties;
+  clone(): SpreadDocumentProperties;
   useMasterMargin: any;
   setUseMasterMargin(useMasterMargin?: any): this;
   useMasterDrawingScale: any;
@@ -69,8 +114,16 @@ export class SpreadDocumentProperties extends ArtboardDocumentProperties {
   setResamplerType(resamplerType?: any): this;
 }
 
+export const Colour: any;
+export const ColourProfile: any;
+export const DrawingScale: any;
+export const FillDescriptor: any;
 export { ImagePlacement } from 'affinity:dom';
+export { LTRB } from 'affinity:dom';
+export { PageOriginDelta } from 'affinity:dom';
 export { RasterFormat } from 'affinity:raster';
 export { RasterResamplerType } from 'affinity:raster';
+export { Size } from 'affinity:geometry';
+export const SolidFill: any;
 export { SpatialAnchor } from 'affinity:dom';
 export { UnitType } from 'affinity:common';

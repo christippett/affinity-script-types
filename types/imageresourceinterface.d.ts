@@ -7,7 +7,9 @@ import { ImagePlacement } from 'affinity:dom';
 export class ImageResourceInterface extends HandleObject {
   constructor(handle?: any);
   readonly imageFilePath: string;
+  getImageFileSize(asBigInt?: any): any;
   readonly imageFileSize: any;
+  getModifiedTime(asBigInt?: any): any;
   readonly modifiedTime: any;
   readonly fileType: FileType;
   readonly fileTypeName: string;

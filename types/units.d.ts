@@ -2,6 +2,23 @@
 
 import { HandleObject } from '/handleobject';
 
+export class UnitValue {
+  constructor(...args: any[]);
+  value: any;
+  units: any;
+  assign(source?: any): this;
+  makeZero(): this;
+  makeInfinity(): this;
+  getValueAsDegrees(): any;
+  getValueAsRadians(): any;
+  getValueAsNumber(): any;
+  getValueAsPixels(converter?: any): any;
+  getValueAsUnitType(converter?: any, unitType?: any): any;
+  getValueAsUnitTypePower(converter?: any, unitTypePower?: any): any;
+  readonly isFinite: boolean;
+  static getTypeCategory(unitType?: any): any;
+}
+
 export class UnitValueConverter extends HandleObject {
   constructor(handle?: any);
   static create(dpi?: any, viewDpi?: any): UnitValueConverter;
@@ -11,6 +28,6 @@ export class UnitValueConverter extends HandleObject {
   getConversionFactor(from?: any, to?: any): number;
 }
 
+export { UnitCategory } from 'affinity:common';
 export { UnitType } from 'affinity:common';
-export { UnitValue } from 'affinity:common';
 export { UserUnitType } from 'affinity:common';

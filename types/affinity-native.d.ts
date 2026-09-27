@@ -14,6 +14,14 @@ declare module 'affinity:application' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export type EnvironmentPermission = AffinityEnumValue;
+  export const EnvironmentPermission: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
   export type UiParadigm = AffinityEnumValue;
   export const UiParadigm: {
     readonly Desktop: AffinityEnumValue;
@@ -24,6 +32,10 @@ declare module 'affinity:application' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class HeapStatistics {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export const ApplicationApi: {
     getArgC(...args: any[]): any;
     getArgV(...args: any[]): any;
@@ -40,6 +52,7 @@ declare module 'affinity:application' {
     getProductPrimaryFileExtension(...args: any[]): any;
     getProductShortName(...args: any[]): any;
     getProductVersionName(...args: any[]): any;
+    getResourcesPath(...args: any[]): any;
     getRevisionVersion(...args: any[]): any;
     getShortVersion(...args: any[]): any;
     getSuiteFullName(...args: any[]): any;
@@ -48,9 +61,22 @@ declare module 'affinity:application' {
     getVersion(...args: any[]): any;
   };
   export const ApplicationSettingsApi: {
+    getAllowCodeGenerationFromStrings(...args: any[]): any;
     getLoadPSDWithEditableText(...args: any[]): any;
     getUndoLimit(...args: any[]): any;
     setLoadPSDWithEditableText(...args: any[]): any;
+  };
+  export const EnvironmentApi: {
+    enumerateFileSystemRoots(...args: any[]): any;
+    getConfiguration(...args: any[]): any;
+    getHeapStatistics(...args: any[]): any;
+    getLogLevel(...args: any[]): any;
+    getSDKVersionStr(...args: any[]): any;
+    getV8VersionStr(...args: any[]): any;
+    hasPermission(...args: any[]): any;
+    postTask(...args: any[]): any;
+    quit(...args: any[]): any;
+    setLogLevel(...args: any[]): any;
   };
 }
 
@@ -80,6 +106,22 @@ declare module 'affinity:brushes' {
     readonly Pull: AffinityEnumValue;
     readonly Fold: AffinityEnumValue;
     readonly Overlap: AffinityEnumValue;
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type PathBrushDynamicControllerType = AffinityEnumValue;
+  export const PathBrushDynamicControllerType: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type RasterBrushSubSyncMode = AffinityEnumValue;
+  export const RasterBrushSubSyncMode: {
     readonly keys: readonly string[];
     readonly values: readonly number[];
     readonly entries: readonly (readonly [string, number])[];
@@ -122,6 +164,29 @@ declare module 'affinity:brushes' {
     setValue(...args: any[]): any;
     setVariance(...args: any[]): any;
   };
+  export const BrushDynamicHandle: any;
+  export const PathBrushApi: {
+    clone(...args: any[]): any;
+    getBrushWidth(...args: any[]): any;
+    getCornerStrategy(...args: any[]): any;
+    getHeadOffset(...args: any[]): any;
+    getOpacityVariance(...args: any[]): any;
+    getSizeControllerType(...args: any[]): any;
+    getSizeSpline(...args: any[]): any;
+    getSizeVariance(...args: any[]): any;
+    getTailOffset(...args: any[]): any;
+    isRepeat(...args: any[]): any;
+    setBrushWidth(...args: any[]): any;
+    setCornerStrategy(...args: any[]): any;
+    setHeadOffset(...args: any[]): any;
+    setIsRepeat(...args: any[]): any;
+    setOpacityVariance(...args: any[]): any;
+    setSizeControllerType(...args: any[]): any;
+    setSizeSpline(...args: any[]): any;
+    setSizeVariance(...args: any[]): any;
+    setTailOffset(...args: any[]): any;
+  };
+  export const PathBrushHandle: any;
   export const RasterBrushApi: {
     clone(...args: any[]): any;
     getAccumulation(...args: any[]): any;
@@ -165,6 +230,7 @@ declare module 'affinity:brushes' {
     setSpacing(...args: any[]): any;
     setWetEdges(...args: any[]): any;
   };
+  export const RasterBrushHandle: any;
   export const VectorBrushApi: {
     clone(...args: any[]): any;
     getBrushWidth(...args: any[]): any;
@@ -202,6 +268,7 @@ declare module 'affinity:buffer' {
     getSize(...args: any[]): any;
     toString(...args: any[]): any;
   };
+  export const BufferHandle: any;
 }
 
 declare module 'affinity:colours' {
@@ -219,6 +286,14 @@ declare module 'affinity:colours' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class CMYKA8 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class CMYKAf {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export class ColourStop {
     constructor(...args: any[]);
     /** [0.0, 1.0] */
@@ -228,6 +303,46 @@ declare module 'affinity:colours' {
     /** [0.0, 1.0] */
     smoothness: number;
     colour: any;
+  }
+  export class HSLAf {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class IA16 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class IA8 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class LABA16 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class M16 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class M8 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class Mf {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class RGBA16 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class RGBA8 {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class RGBAuf {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export const ColourApi: {
     clone(...args: any[]): any;
@@ -265,6 +380,7 @@ declare module 'affinity:colours' {
     /** tint: [0.0, 1.0] */
     setTint(...args: any[]): any;
   };
+  export const ColourHandle: any;
   export const ColourProfileApi: {
     canApplyTo(...args: any[]): any;
     enumerateProfiles(...args: any[]): any;
@@ -283,6 +399,7 @@ declare module 'affinity:colours' {
     isLinear(...args: any[]): any;
     isStandard(...args: any[]): any;
   };
+  export const ColourProfileHandle: any;
   export const ColourProfileSetApi: {
     createDefault(...args: any[]): any;
     getBlackPointCompensation(...args: any[]): any;
@@ -294,6 +411,7 @@ declare module 'affinity:colours' {
     setProfileForColourSpaceType(...args: any[]): any;
     setProfileForFormat(...args: any[]): any;
   };
+  export const ColourProfileSetHandle: any;
   export const GradientApi: {
     clone(...args: any[]): any;
     create(...args: any[]): any;
@@ -316,6 +434,7 @@ declare module 'affinity:colours' {
     /** tint: [0.0, 1.0] */
     setTint(...args: any[]): any;
   };
+  export const GradientHandle: any;
 }
 
 declare module 'affinity:commands' {
@@ -426,6 +545,7 @@ declare module 'affinity:commands' {
     addLensBlurFilterRasterNode(...args: any[]): any;
     addLevelsAdjustmentRasterNode(...args: any[]): any;
     addMaximumBlurFilterRasterNode(...args: any[]): any;
+    addMeasurementNode(...args: any[]): any;
     addMedianBlurFilterRasterNode(...args: any[]): any;
     addMinimumBlurFilterRasterNode(...args: any[]): any;
     addMotionBlurFilterRasterNode(...args: any[]): any;
@@ -469,15 +589,19 @@ declare module 'affinity:commands' {
     setInsertionTarget(...args: any[]): any;
     setInsertionTargetSelection(...args: any[]): any;
   };
+  export const AddChildNodesCommandBuilderHandle: any;
   export const CommandApi: {
+    areEqual(...args: any[]): any;
     getDescription(...args: any[]): any;
   };
+  export const CommandHandle: any;
   export const CompoundCommandBuilderApi: {
     addCommand(...args: any[]): any;
     clear(...args: any[]): any;
     create(...args: any[]): any;
     createCommand(...args: any[]): any;
   };
+  export const CompoundCommandBuilderHandle: any;
   export const DocumentCommandApi: {
     createAddArtboardCommand(...args: any[]): any;
     createAddCurveCommand(...args: any[]): any;
@@ -493,6 +617,7 @@ declare module 'affinity:commands' {
     createBoolOpUnionCommand(...args: any[]): any;
     createBoolOpXorCommand(...args: any[]): any;
     createBoxBlurFilterCommand(...args: any[]): any;
+    createBreakCurvesCommand(...args: any[]): any;
     createClarityFilterCommand(...args: any[]): any;
     createClearMacroCommand(...args: any[]): any;
     createClearPreviewsCommand(...args: any[]): any;
@@ -526,6 +651,7 @@ declare module 'affinity:commands' {
     createFeatherRasterSelectionCommand(...args: any[]): any;
     createFieldBlurFilterCommand(...args: any[]): any;
     createFlattenCommand(...args: any[]): any;
+    createFlipCanvasCommand(...args: any[]): any;
     createFormatTextCommand(...args: any[]): any;
     createGaussianBlurFilterCommand(...args: any[]): any;
     createGenerateImageCommand(...args: any[]): any;
@@ -539,10 +665,15 @@ declare module 'affinity:commands' {
     createImageTraceCommand(...args: any[]): any;
     createImportMacroCommand(...args: any[]): any;
     createInsertGlyphCommand(...args: any[]): any;
+    createJoinCurvesCommand(...args: any[]): any;
     createKnifeCutCommand(...args: any[]): any;
     createLensBlurFilterCommand(...args: any[]): any;
+    createLinkTextFrameCommand(...args: any[]): any;
     createMaximumBlurFilterCommand(...args: any[]): any;
     createMedianBlurFilterCommand(...args: any[]): any;
+    createMergeCurvesCommand(...args: any[]): any;
+    createMergeDownCommand(...args: any[]): any;
+    createMergeSelectedCommand(...args: any[]): any;
     createMergeVisibleCommand(...args: any[]): any;
     createMinimumBlurFilterCommand(...args: any[]): any;
     createMotionBlurFilterCommand(...args: any[]): any;
@@ -558,11 +689,33 @@ declare module 'affinity:commands' {
     createOutlineRasterSelectionCommand(...args: any[]): any;
     createPinchPunchFilterCommand(...args: any[]): any;
     createPixelateFilterCommand(...args: any[]): any;
+    createPopulatePictureFrameCommand(...args: any[]): any;
     createRadialBlurFilterCommand(...args: any[]): any;
+    createRasterAutoColoursCommand(...args: any[]): any;
+    createRasterAutoContrastCommand(...args: any[]): any;
+    createRasterAutoLevelsCommand(...args: any[]): any;
+    createRasterAutoWhiteBalanceCommand(...args: any[]): any;
     createRasterDeselectCommand(...args: any[]): any;
+    createRasterEdgeDetectCommand(...args: any[]): any;
+    createRasterFillCommand(...args: any[]): any;
+    createRasterFloodFillCommand(...args: any[]): any;
+    createRasterFloodSelectCommand(...args: any[]): any;
+    createRasterHorizontalEdgeDetectCommand(...args: any[]): any;
     createRasterInvertSelectionCommand(...args: any[]): any;
+    createRasterPolarToRectangularCommand(...args: any[]): any;
+    createRasterRectangularToPolarCommand(...args: any[]): any;
     createRasterReselectCommand(...args: any[]): any;
     createRasterSelectAllCommand(...args: any[]): any;
+    createRasterSelectBluesCommand(...args: any[]): any;
+    createRasterSelectGreensCommand(...args: any[]): any;
+    createRasterSelectHighlightsCommand(...args: any[]): any;
+    createRasterSelectMidtonesCommand(...args: any[]): any;
+    createRasterSelectOpaqueCommand(...args: any[]): any;
+    createRasterSelectPartiallyTransparentCommand(...args: any[]): any;
+    createRasterSelectRedsCommand(...args: any[]): any;
+    createRasterSelectShadowsCommand(...args: any[]): any;
+    createRasterSelectTransparentCommand(...args: any[]): any;
+    createRasterVerticalEdgeDetectCommand(...args: any[]): any;
     createRasteriseObjectsCommand(...args: any[]): any;
     createRedoCommand(...args: any[]): any;
     createRemoveAllLayerEffectsCommand(...args: any[]): any;
@@ -581,10 +734,12 @@ declare module 'affinity:commands' {
     createReplaceBitmapCommand(...args: any[]): any;
     createReplayMacroCommand(...args: any[]): any;
     createRestoreDocumentSnapshotCommand(...args: any[]): any;
+    createReverseCurvesCommand(...args: any[]): any;
     createRippleFilterCommand(...args: any[]): any;
     createScissorCutCommand(...args: any[]): any;
     createSelectAllCommand(...args: any[]): any;
     createSelectSubjectCommand(...args: any[]): any;
+    createSeparateCurvesCommand(...args: any[]): any;
     createSetAddNoiseFilterParametersCommand(...args: any[]): any;
     createSetAllLayerEffectsScaleWithObjectCommand(...args: any[]): any;
     createSetAntialiasingModeCommand(...args: any[]): any;
@@ -642,6 +797,7 @@ declare module 'affinity:commands' {
     createSetDenoiseFilterParametersCommand(...args: any[]): any;
     createSetDepthOfFieldFilterParametersCommand(...args: any[]): any;
     createSetDescriptionCommand(...args: any[]): any;
+    createSetDevelopParametersCommand(...args: any[]): any;
     createSetDiffuseFilterParametersCommand(...args: any[]): any;
     createSetDiffuseGlowFilterParametersCommand(...args: any[]): any;
     createSetDocumentPropertiesCommand(...args: any[]): any;
@@ -701,6 +857,10 @@ declare module 'affinity:commands' {
     createSetLineStyleCommand(...args: any[]): any;
     createSetLineStyleDescriptorCommand(...args: any[]): any;
     createSetMaximumBlurFilterParametersCommand(...args: any[]): any;
+    createSetMeasurementAnnotationOffsetCommand(...args: any[]): any;
+    createSetMeasurementPrecisionCommand(...args: any[]): any;
+    createSetMeasurementShowEndpointMarkersCommand(...args: any[]): any;
+    createSetMeasurementUnitsCommand(...args: any[]): any;
     createSetMedianBlurFilterParametersCommand(...args: any[]): any;
     createSetMinimumBlurFilterParametersCommand(...args: any[]): any;
     createSetMotionBlurFilterParametersCommand(...args: any[]): any;
@@ -735,6 +895,7 @@ declare module 'affinity:commands' {
     createSetOutlineLayerEffectOpacityCommand(...args: any[]): any;
     createSetOutlineLayerEffectRadiusCommand(...args: any[]): any;
     createSetOutlineLayerEffectScaleWithObjectCommand(...args: any[]): any;
+    createSetPageDocumentPropertiesCommand(...args: any[]): any;
     createSetPenFillCommand(...args: any[]): any;
     createSetPenFillIsAnchoredToSpreadCommand(...args: any[]): any;
     createSetPhongBevelLayerEffectAmbientColourCommand(...args: any[]): any;
@@ -795,6 +956,7 @@ declare module 'affinity:commands' {
     createSetWindingModeCommand(...args: any[]): any;
     createShadowsHighlightsFilterCommand(...args: any[]): any;
     createShowAllCommand(...args: any[]): any;
+    createSmoothCurvesCommand(...args: any[]): any;
     /** radius: [0.0, 1024.0] */
     createSmoothRasterSelectionCommand(...args: any[]): any;
     createSphericalFilterCommand(...args: any[]): any;
@@ -804,11 +966,14 @@ declare module 'affinity:commands' {
     createTransformCommand(...args: any[]): any;
     createTwirlFilterCommand(...args: any[]): any;
     createUndoCommand(...args: any[]): any;
+    createUnlinkTextFrameCommand(...args: any[]): any;
+    createUnlockAllCommand(...args: any[]): any;
     createUnsharpMaskFilterCommand(...args: any[]): any;
     createVignetteFilterCommand(...args: any[]): any;
     createVoronoiFilterCommand(...args: any[]): any;
     enumerateNewNodes(...args: any[]): any;
   };
+  export const DocumentCommandHandle: any;
   export const SetHatchFillAttributesCommandBuilderApi: {
     clone(...args: any[]): any;
     create(...args: any[]): any;
@@ -826,6 +991,7 @@ declare module 'affinity:commands' {
     setUseCurrentItemOriginForRelativeTransform(...args: any[]): any;
     setUseRelativeTransform(...args: any[]): any;
   };
+  export const SetHatchFillAttributesCommandBuilderHandle: any;
 }
 
 declare module 'affinity:common' {
@@ -864,6 +1030,14 @@ declare module 'affinity:common' {
     readonly Glow: AffinityEnumValue;
     readonly ContrastInvert: AffinityEnumValue;
     readonly Erase: AffinityEnumValue;
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type ConfigurationValueType = AffinityEnumValue;
+  export const ConfigurationValueType: {
     readonly keys: readonly string[];
     readonly values: readonly number[];
     readonly entries: readonly (readonly [string, number])[];
@@ -1099,6 +1273,14 @@ declare module 'affinity:common' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export type UnitCategory = AffinityEnumValue;
+  export const UnitCategory: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
   export type UnitType = AffinityEnumValue;
   export const UnitType: {
     readonly Number: AffinityEnumValue;
@@ -1145,11 +1327,69 @@ declare module 'affinity:common' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class UnitTypePower {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export class UnitValue {
     constructor(...args: any[]);
     units: any;
     value: any;
   }
+  export const ConfigurationItemApi: {
+    createFromJsonString(...args: any[]): any;
+    enumerateItems(...args: any[]): any;
+    enumerateProperties(...args: any[]): any;
+    enumeratePropertyNames(...args: any[]): any;
+    getArrayItem(...args: any[]): any;
+    getArrayLength(...args: any[]): any;
+    getBool(...args: any[]): any;
+    getBoolOrDefault(...args: any[]): any;
+    getFloat(...args: any[]): any;
+    getFloatOrDefault(...args: any[]): any;
+    getInt(...args: any[]): any;
+    getIntOrDefault(...args: any[]): any;
+    getProperty(...args: any[]): any;
+    getPropertyBool(...args: any[]): any;
+    getPropertyBoolOrDefault(...args: any[]): any;
+    getPropertyCount(...args: any[]): any;
+    getPropertyFloat(...args: any[]): any;
+    getPropertyFloatOrDefault(...args: any[]): any;
+    getPropertyInt(...args: any[]): any;
+    getPropertyIntOrDefault(...args: any[]): any;
+    getPropertyString(...args: any[]): any;
+    getPropertyStringOrDefault(...args: any[]): any;
+    getPropertyUint(...args: any[]): any;
+    getPropertyUintOrDefault(...args: any[]): any;
+    getString(...args: any[]): any;
+    getStringOrDefault(...args: any[]): any;
+    getUint(...args: any[]): any;
+    getUintOrDefault(...args: any[]): any;
+    getValueType(...args: any[]): any;
+    hasProperty(...args: any[]): any;
+    isArray(...args: any[]): any;
+    isBinary(...args: any[]): any;
+    isBool(...args: any[]): any;
+    isFloat(...args: any[]): any;
+    isInt(...args: any[]): any;
+    isNull(...args: any[]): any;
+    isNumber(...args: any[]): any;
+    isObject(...args: any[]): any;
+    isPrimitive(...args: any[]): any;
+    isString(...args: any[]): any;
+    isStructured(...args: any[]): any;
+    isUint(...args: any[]): any;
+  };
+  export const ConfigurationItemHandle: any;
+  export const LogFileApi: {
+    create(...args: any[]): any;
+    flush(...args: any[]): any;
+    getLogLevel(...args: any[]): any;
+    setLogLevel(...args: any[]): any;
+    start(...args: any[]): any;
+    stop(...args: any[]): any;
+  };
+  export const LogFileHandle: any;
   export const RefControlApi: {
     cancel(...args: any[]): any;
     create(...args: any[]): any;
@@ -1157,6 +1397,20 @@ declare module 'affinity:common' {
     isCancelled(...args: any[]): any;
     ref(...args: any[]): any;
     unref(...args: any[]): any;
+  };
+  export const RefControlHandle: any;
+  export const UnitValueApi: {
+    assign(...args: any[]): any;
+    getTypeCategory(...args: any[]): any;
+    getValueAsDegrees(...args: any[]): any;
+    getValueAsNumber(...args: any[]): any;
+    getValueAsPixels(...args: any[]): any;
+    getValueAsRadians(...args: any[]): any;
+    getValueAsUnitType(...args: any[]): any;
+    getValueAsUnitTypePower(...args: any[]): any;
+    isFinite(...args: any[]): any;
+    makeInfinity(...args: any[]): any;
+    makeZero(...args: any[]): any;
   };
   export const UnitValueConverterApi: {
     clone(...args: any[]): any;
@@ -1167,6 +1421,7 @@ declare module 'affinity:common' {
     getDpi(...args: any[]): any;
     getViewDpi(...args: any[]): any;
   };
+  export const UnitValueConverterHandle: any;
 }
 
 declare module 'affinity:dom' {
@@ -1250,6 +1505,30 @@ declare module 'affinity:dom' {
   export const DepthOfFieldMode: {
     readonly Elliptical: AffinityEnumValue;
     readonly TiltShift: AffinityEnumValue;
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type DevelopDetailRefinementMethod = AffinityEnumValue;
+  export const DevelopDetailRefinementMethod: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type DevelopInvertMethod = AffinityEnumValue;
+  export const DevelopInvertMethod: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type DevelopToneCurveMethod = AffinityEnumValue;
+  export const DevelopToneCurveMethod: {
     readonly keys: readonly string[];
     readonly values: readonly number[];
     readonly entries: readonly (readonly [string, number])[];
@@ -1448,6 +1727,22 @@ declare module 'affinity:dom' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export type RasterFillMode = AffinityEnumValue;
+  export const RasterFillMode: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type RasterFloodFillSamplingSource = AffinityEnumValue;
+  export const RasterFloodFillSamplingSource: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
   export type RasterSelectionLogicalOperation = AffinityEnumValue;
   export const RasterSelectionLogicalOperation: {
     readonly New: AffinityEnumValue;
@@ -1465,6 +1760,14 @@ declare module 'affinity:dom' {
     readonly Outside: AffinityEnumValue;
     readonly Centre: AffinityEnumValue;
     readonly Inside: AffinityEnumValue;
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type SamplingSource = AffinityEnumValue;
+  export const SamplingSource: {
     readonly keys: readonly string[];
     readonly values: readonly number[];
     readonly entries: readonly (readonly [string, number])[];
@@ -1746,6 +2049,10 @@ declare module 'affinity:dom' {
     /** [0.0, 1.0] */
     opacity: number;
   }
+  export class DocumentLoadResult {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export class DustAndScratchFilterParameters {
     constructor(...args: any[]);
     /** [0.0, 1024.0] */
@@ -1777,6 +2084,10 @@ declare module 'affinity:dom' {
     power: number;
     /** [0.0, 1.0] */
     level: number;
+  }
+  export class FocalPoint {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export class GaussianBlurFilterParameters {
     constructor(...args: any[]);
@@ -1861,6 +2172,10 @@ declare module 'affinity:dom' {
     channelParameters: LevelsAdjustmentChannelParameters[];
     masterParameters: any;
   }
+  export class LineDescriptors {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export class MaximumBlurFilterParameters {
     constructor(...args: any[]);
     /** [0.0, 1024.0] */
@@ -1898,6 +2213,10 @@ declare module 'affinity:dom' {
     scale: number;
     flipX: any;
     flipY: any;
+  }
+  export class PageOriginDelta {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export class PinchPunchFilterParameters {
     constructor(...args: any[]);
@@ -2086,39 +2405,67 @@ declare module 'affinity:dom' {
     /** [-1.0, 1.0] */
     tint: number;
   }
+  export const AddNoiseFilterParametersApi: {
+    create(...args: any[]): any;
+    getIntensity(...args: any[]): any;
+    getIsMonochromatic(...args: any[]): any;
+    getNoiseType(...args: any[]): any;
+    setIntensity(...args: any[]): any;
+    setIsMonochromatic(...args: any[]): any;
+    setNoiseType(...args: any[]): any;
+  };
+  export const AddNoiseFilterParametersHandle: any;
   export const AddNoiseFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const AddNoiseFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
-  export const AdjustmentRasterNodeApi: any;
-  export const AdjustmentRasterNodeDefinitionApi: any;
+  export const AddNoiseFilterRasterNodeDefinitionHandle: any;
+  export const AddNoiseFilterRasterNodeHandle: any;
+  export const AdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
+  };
+  export const AdjustmentRasterNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const AdjustmentRasterNodeDefinitionHandle: any;
+  export const AdjustmentRasterNodeHandle: any;
   export const ArtTextNodeApi: {
     fromNode(...args: any[]): any;
   };
   export const ArtTextNodeDefinitionApi: {
     createFromStoryBuilder(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
   };
+  export const ArtTextNodeDefinitionHandle: any;
+  export const ArtTextNodeHandle: any;
   export const ArtboardDocumentPropertiesApi: {
+    clone(...args: any[]): any;
     create(...args: any[]): any;
     getAnchorType(...args: any[]): any;
     getDimensions(...args: any[]): any;
     getDrawingScale(...args: any[]): any;
     getMargin(...args: any[]): any;
+    getMarginFill(...args: any[]): any;
     getUseDrawingScale(...args: any[]): any;
     getUseMargin(...args: any[]): any;
     setAnchorType(...args: any[]): any;
     setDimensions(...args: any[]): any;
     setDrawingScale(...args: any[]): any;
     setMargin(...args: any[]): any;
+    setMarginFill(...args: any[]): any;
     setUseDrawingScale(...args: any[]): any;
     setUseMargin(...args: any[]): any;
   };
+  export const ArtboardDocumentPropertiesHandle: any;
   export const ArtboardInterfaceApi: {
+    fromNode(...args: any[]): any;
     getArtboardBaseBox(...args: any[]): any;
     getArtboardDescription(...args: any[]): any;
     getArtboardProperties(...args: any[]): any;
@@ -2129,6 +2476,7 @@ declare module 'affinity:dom' {
     isArtboardEnabled(...args: any[]): any;
     isSameObject(...args: any[]): any;
   };
+  export const ArtboardInterfaceHandle: any;
   export const ArtboardPropertiesApi: {
     getMarginBox(...args: any[]): any;
     getMarginFill(...args: any[]): any;
@@ -2136,29 +2484,64 @@ declare module 'affinity:dom' {
     getNode(...args: any[]): any;
     getPhysicalRootPropertiesInterface(...args: any[]): any;
   };
+  export const ArtboardPropertiesHandle: any;
   export const BaseBoxInterfaceApi: {
+    fromNode(...args: any[]): any;
     getBaseBox(...args: any[]): any;
     getConstrainingBaseBox(...args: any[]): any;
     getNode(...args: any[]): any;
   };
+  export const BaseBoxInterfaceHandle: any;
+  export const BilateralBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    getTolerance(...args: any[]): any;
+    setRadius(...args: any[]): any;
+    setTolerance(...args: any[]): any;
+  };
+  export const BilateralBlurFilterParametersHandle: any;
   export const BilateralBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const BilateralBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const BilateralBlurFilterRasterNodeDefinitionHandle: any;
+  export const BilateralBlurFilterRasterNodeHandle: any;
+  export const BlackAndWhiteAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getBlue(...args: any[]): any;
+    getCyan(...args: any[]): any;
+    getGreen(...args: any[]): any;
+    getMagenta(...args: any[]): any;
+    getRed(...args: any[]): any;
+    getYellow(...args: any[]): any;
+    setBlue(...args: any[]): any;
+    setCyan(...args: any[]): any;
+    setGreen(...args: any[]): any;
+    setMagenta(...args: any[]): any;
+    setRed(...args: any[]): any;
+    setYellow(...args: any[]): any;
+  };
+  export const BlackAndWhiteAdjustmentParametersHandle: any;
   export const BlackAndWhiteAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const BlackAndWhiteAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const BlackAndWhiteAdjustmentRasterNodeDefinitionHandle: any;
+  export const BlackAndWhiteAdjustmentRasterNodeHandle: any;
   export const BlendModeInterfaceApi: {
     fromNode(...args: any[]): any;
     getAntialiasingMode(...args: any[]): any;
@@ -2166,6 +2549,7 @@ declare module 'affinity:dom' {
     getBlendOptions(...args: any[]): any;
     getNode(...args: any[]): any;
   };
+  export const BlendModeInterfaceHandle: any;
   export const BlendOptionsApi: {
     getChannelSourceLayerRanges(...args: any[]): any;
     getChannelUnderlyingCompositionRanges(...args: any[]): any;
@@ -2179,33 +2563,78 @@ declare module 'affinity:dom' {
     setMasterSourceLayerRanges(...args: any[]): any;
     setMasterUnderlyingCompositionRanges(...args: any[]): any;
   };
+  export const BlendOptionsHandle: any;
+  export const BloomFilterParametersApi: {
+    create(...args: any[]): any;
+    getColour(...args: any[]): any;
+    getHighlightBlend(...args: any[]): any;
+    getIsStrong(...args: any[]): any;
+    getMethod(...args: any[]): any;
+    getMidtoneBlend(...args: any[]): any;
+    getShadowBlend(...args: any[]): any;
+    setColour(...args: any[]): any;
+    setHighlightBlend(...args: any[]): any;
+    setIsStrong(...args: any[]): any;
+    setMethod(...args: any[]): any;
+    setMidtoneBlend(...args: any[]): any;
+    setShadowBlend(...args: any[]): any;
+  };
+  export const BloomFilterParametersHandle: any;
   export const BloomFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const BloomFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const BloomFilterRasterNodeDefinitionHandle: any;
+  export const BloomFilterRasterNodeHandle: any;
+  export const BoxBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const BoxBlurFilterParametersHandle: any;
   export const BoxBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const BoxBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const BoxBlurFilterRasterNodeDefinitionHandle: any;
+  export const BoxBlurFilterRasterNodeHandle: any;
+  export const BrightnessContrastAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getBrightness(...args: any[]): any;
+    getContrast(...args: any[]): any;
+    getIsLinear(...args: any[]): any;
+    setBrightness(...args: any[]): any;
+    setContrast(...args: any[]): any;
+    setIsLinear(...args: any[]): any;
+  };
+  export const BrightnessContrastAdjustmentParametersHandle: any;
   export const BrightnessContrastAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const BrightnessContrastAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const BrightnessContrastAdjustmentRasterNodeDefinitionHandle: any;
+  export const BrightnessContrastAdjustmentRasterNodeHandle: any;
   export const BrushFillInterfaceApi: {
     enumerateDescriptors(...args: any[]): any;
     fromNode(...args: any[]): any;
@@ -2221,36 +2650,73 @@ declare module 'affinity:dom' {
     isBrushFillVisible(...args: any[]): any;
     isNoFill(...args: any[]): any;
   };
+  export const BrushFillInterfaceHandle: any;
+  export const ClarityFilterParametersApi: {
+    create(...args: any[]): any;
+    getStrength(...args: any[]): any;
+    setStrength(...args: any[]): any;
+  };
+  export const ClarityFilterParametersHandle: any;
   export const ClarityFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ClarityFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ClarityFilterRasterNodeDefinitionHandle: any;
+  export const ClarityFilterRasterNodeHandle: any;
+  export const ColourBalanceAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    enumerateValues(...args: any[]): any;
+    getPreserveLuminosity(...args: any[]): any;
+    getValues(...args: any[]): any;
+    getValuesCount(...args: any[]): any;
+    setPreserveLuminosity(...args: any[]): any;
+    setValues(...args: any[]): any;
+  };
+  export const ColourBalanceAdjustmentParametersHandle: any;
   export const ColourBalanceAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ColourBalanceAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ColourBalanceAdjustmentRasterNodeDefinitionHandle: any;
+  export const ColourBalanceAdjustmentRasterNodeHandle: any;
   export const ColouredLogicalNodeApi: {
+    fromNode(...args: any[]): any;
     getLayerColour(...args: any[]): any;
   };
-  export const ColouredLogicalNodeDefinitionApi: any;
+  export const ColouredLogicalNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const ColouredLogicalNodeDefinitionHandle: any;
+  export const ColouredLogicalNodeHandle: any;
   export const CompoundOperationInterfaceApi: {
+    fromNode(...args: any[]): any;
     getCompoundOperation(...args: any[]): any;
     getNode(...args: any[]): any;
   };
-  export const ContainerNodeApi: any;
+  export const CompoundOperationInterfaceHandle: any;
+  export const ContainerNodeApi: {
+    fromNode(...args: any[]): any;
+  };
   export const ContainerNodeDefinitionApi: {
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
   };
+  export const ContainerNodeDefinitionHandle: any;
+  export const ContainerNodeHandle: any;
   export const CurveEdgeSubSelectionApi: {
     clone(...args: any[]): any;
     cloneAndAddItems(...args: any[]): any;
@@ -2265,6 +2731,7 @@ declare module 'affinity:dom' {
     getItemCount(...args: any[]): any;
     isEmpty(...args: any[]): any;
   };
+  export const CurveEdgeSubSelectionHandle: any;
   export const CurveNodeSubSelectionApi: {
     clone(...args: any[]): any;
     cloneAndAddItems(...args: any[]): any;
@@ -2279,12 +2746,21 @@ declare module 'affinity:dom' {
     getItemCount(...args: any[]): any;
     isEmpty(...args: any[]): any;
   };
+  export const CurveNodeSubSelectionHandle: any;
   export const CurvePathTextNodeApi: {
     fromNode(...args: any[]): any;
   };
+  export const CurvePathTextNodeDefinitionApi: {
+    createFromStoryBuilder(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const CurvePathTextNodeDefinitionHandle: any;
+  export const CurvePathTextNodeHandle: any;
   export const CurvesAdjustmentParametersApi: {
     create(...args: any[]): any;
+    enumerateChannelSplines(...args: any[]): any;
     getChannelSpline(...args: any[]): any;
+    getChannelSplineCount(...args: any[]): any;
     getMasterSpline(...args: any[]): any;
     getMax(...args: any[]): any;
     getMin(...args: any[]): any;
@@ -2295,18 +2771,23 @@ declare module 'affinity:dom' {
     /** min: [-100.0, 100.0] */
     setMin(...args: any[]): any;
   };
+  export const CurvesAdjustmentParametersHandle: any;
   export const CurvesAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getColourSpace(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const CurvesAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getColourSpace(...args: any[]): any;
     getParameters(...args: any[]): any;
     setColourSpace(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const CurvesAdjustmentRasterNodeDefinitionHandle: any;
+  export const CurvesAdjustmentRasterNodeHandle: any;
   export const CurvesInterfaceApi: {
     fromNode(...args: any[]): any;
     getCorneredCurves(...args: any[]): any;
@@ -2319,24 +2800,61 @@ declare module 'affinity:dom' {
     getWindingOrder(...args: any[]): any;
     isMutable(...args: any[]): any;
   };
+  export const CurvesInterfaceHandle: any;
+  export const DefringeFilterParametersApi: {
+    create(...args: any[]): any;
+    getEdgeBrightnessThreshold(...args: any[]): any;
+    getHue(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    getRemoveComplementary(...args: any[]): any;
+    getTolerance(...args: any[]): any;
+    setEdgeBrightnessThreshold(...args: any[]): any;
+    setHue(...args: any[]): any;
+    setRadius(...args: any[]): any;
+    setRemoveComplementary(...args: any[]): any;
+    setTolerance(...args: any[]): any;
+  };
+  export const DefringeFilterParametersHandle: any;
   export const DefringeFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const DefringeFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const DefringeFilterRasterNodeDefinitionHandle: any;
+  export const DefringeFilterRasterNodeHandle: any;
+  export const DenoiseFilterParametersApi: {
+    create(...args: any[]): any;
+    getColours(...args: any[]): any;
+    getColoursContribution(...args: any[]): any;
+    getLuminance(...args: any[]): any;
+    getLuminanceContribution(...args: any[]): any;
+    getLuminanceDetail(...args: any[]): any;
+    setColours(...args: any[]): any;
+    setColoursContribution(...args: any[]): any;
+    setLuminance(...args: any[]): any;
+    setLuminanceContribution(...args: any[]): any;
+    setLuminanceDetail(...args: any[]): any;
+  };
+  export const DenoiseFilterParametersHandle: any;
   export const DenoiseFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const DenoiseFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const DenoiseFilterRasterNodeDefinitionHandle: any;
+  export const DenoiseFilterRasterNodeHandle: any;
   export const DepthOfFieldFilterParametersApi: {
     create(...args: any[]): any;
     getClarity(...args: any[]): any;
@@ -2354,16 +2872,22 @@ declare module 'affinity:dom' {
     /** vibrance: [0.0, 1.0] */
     setVibrance(...args: any[]): any;
   };
+  export const DepthOfFieldFilterParametersHandle: any;
   export const DepthOfFieldFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const DepthOfFieldFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const DepthOfFieldFilterRasterNodeDefinitionHandle: any;
+  export const DepthOfFieldFilterRasterNodeHandle: any;
   export const DescriptionInterfaceApi: {
+    fromNode(...args: any[]): any;
     getDefaultDescription(...args: any[]): any;
     getDefaultDescriptionForDisplay(...args: any[]): any;
     getDescription(...args: any[]): any;
@@ -2371,24 +2895,229 @@ declare module 'affinity:dom' {
     getTagColour(...args: any[]): any;
     getUserDescription(...args: any[]): any;
   };
+  export const DescriptionInterfaceHandle: any;
+  export const DevelopNodeApi: {
+    fromNode(...args: any[]): any;
+    getImageResourceInterface(...args: any[]): any;
+    getImageSize(...args: any[]): any;
+    getParameters(...args: any[]): any;
+    getRasterInterface(...args: any[]): any;
+    getSourceIsRaw(...args: any[]): any;
+  };
+  export const DevelopNodeHandle: any;
+  export const DevelopParametersApi: {
+    getApplyToneCurve(...args: any[]): any;
+    getBlackAndWhite(...args: any[]): any;
+    getBlackAndWhiteEnabled(...args: any[]): any;
+    getBlackpoint(...args: any[]): any;
+    getChromaticAberrationEnabled(...args: any[]): any;
+    getChromaticAberrationUseProfile(...args: any[]): any;
+    getClarity(...args: any[]): any;
+    getColourBalance(...args: any[]): any;
+    getColourBalanceEnabled(...args: any[]): any;
+    getColourContribution(...args: any[]): any;
+    getContrast(...args: any[]): any;
+    getCurves(...args: any[]): any;
+    getCurvesEnabled(...args: any[]): any;
+    getDefringeComplementary(...args: any[]): any;
+    getDefringeEnabled(...args: any[]): any;
+    getDefringeHue(...args: any[]): any;
+    getDefringeRadius(...args: any[]): any;
+    getDefringeThreshold(...args: any[]): any;
+    getDefringeTolerance(...args: any[]): any;
+    getDetailRefinementAmount(...args: any[]): any;
+    getDetailRefinementEnabled(...args: any[]): any;
+    getDetailRefinementMethod(...args: any[]): any;
+    getDetailRefinementRadius(...args: any[]): any;
+    getEnhanceEnabled(...args: any[]): any;
+    getExposure(...args: any[]): any;
+    getExposureEnabled(...args: any[]): any;
+    getFocusPeakingHue(...args: any[]): any;
+    getHSL(...args: any[]): any;
+    getHSLEnabled(...args: any[]): any;
+    getHighlightsIntensity(...args: any[]): any;
+    getInvertEnabled(...args: any[]): any;
+    getInvertMethod(...args: any[]): any;
+    getInvertStrength(...args: any[]): any;
+    getLensCorrectionEnabled(...args: any[]): any;
+    getLensDistortion(...args: any[]): any;
+    getLensHorizontal(...args: any[]): any;
+    getLensProfileDistortion(...args: any[]): any;
+    getLensProfileName(...args: any[]): any;
+    getLensRotation(...args: any[]): any;
+    getLensScale(...args: any[]): any;
+    getLensVertical(...args: any[]): any;
+    getLensVignetteEnabled(...args: any[]): any;
+    getLensVignetteIntensity(...args: any[]): any;
+    getLensVignetteUseProfile(...args: any[]): any;
+    getLuminanceContribution(...args: any[]): any;
+    getNoiseAdditionColour(...args: any[]): any;
+    getNoiseAdditionEnabled(...args: any[]): any;
+    getNoiseAdditionGaussian(...args: any[]): any;
+    getNoiseAdditionIntensity(...args: any[]): any;
+    getNoiseReductionChromaSigma(...args: any[]): any;
+    getNoiseReductionDetail(...args: any[]): any;
+    getNoiseReductionEnabled(...args: any[]): any;
+    getNoiseReductionLuminanceSigma(...args: any[]): any;
+    getPostVignetteEnabled(...args: any[]): any;
+    getPostVignetteHardness(...args: any[]): any;
+    getPostVignetteIntensity(...args: any[]): any;
+    getPostVignetteScale(...args: any[]): any;
+    getProfileEnabled(...args: any[]): any;
+    getRawWhiteBalance(...args: any[]): any;
+    getSaturation(...args: any[]): any;
+    getSelectiveColour(...args: any[]): any;
+    getSelectiveColourEnabled(...args: any[]): any;
+    getShadowsHighlightsEnabled(...args: any[]): any;
+    getShadowsIntensity(...args: any[]): any;
+    getShowClippedHighlights(...args: any[]): any;
+    getShowClippedShadows(...args: any[]): any;
+    getShowClippedTones(...args: any[]): any;
+    getShowFocusPeaking(...args: any[]): any;
+    getSplitToning(...args: any[]): any;
+    getSplitToningEnabled(...args: any[]): any;
+    getTexture(...args: any[]): any;
+    getTint(...args: any[]): any;
+    getToneCurveEnabled(...args: any[]): any;
+    getToneCurveMethod(...args: any[]): any;
+    getVibrance(...args: any[]): any;
+    getWaveletChromaLevels(...args: any[]): any;
+    getWaveletChromaSigma(...args: any[]): any;
+    getWaveletDetail(...args: any[]): any;
+    getWaveletLevels(...args: any[]): any;
+    getWaveletLumaSigma(...args: any[]): any;
+    getWaveletNoiseReductionEnabled(...args: any[]): any;
+    getWhiteBalance(...args: any[]): any;
+    getWhiteBalanceEnabled(...args: any[]): any;
+    getWhitepoint(...args: any[]): any;
+    setApplyToneCurve(...args: any[]): any;
+    setBlackAndWhite(...args: any[]): any;
+    setBlackAndWhiteEnabled(...args: any[]): any;
+    setBlackpoint(...args: any[]): any;
+    setChromaticAberrationEnabled(...args: any[]): any;
+    setChromaticAberrationUseProfile(...args: any[]): any;
+    setClarity(...args: any[]): any;
+    setColourBalance(...args: any[]): any;
+    setColourBalanceEnabled(...args: any[]): any;
+    setColourContribution(...args: any[]): any;
+    setContrast(...args: any[]): any;
+    setCurves(...args: any[]): any;
+    setCurvesEnabled(...args: any[]): any;
+    setDefringeComplementary(...args: any[]): any;
+    setDefringeEnabled(...args: any[]): any;
+    setDefringeHue(...args: any[]): any;
+    setDefringeRadius(...args: any[]): any;
+    setDefringeThreshold(...args: any[]): any;
+    setDefringeTolerance(...args: any[]): any;
+    setDetailRefinementAmount(...args: any[]): any;
+    setDetailRefinementEnabled(...args: any[]): any;
+    setDetailRefinementMethod(...args: any[]): any;
+    setDetailRefinementRadius(...args: any[]): any;
+    setEnhanceEnabled(...args: any[]): any;
+    setExposure(...args: any[]): any;
+    setExposureEnabled(...args: any[]): any;
+    setFocusPeakingHue(...args: any[]): any;
+    setHSL(...args: any[]): any;
+    setHSLEnabled(...args: any[]): any;
+    setHighlightsIntensity(...args: any[]): any;
+    setInvertEnabled(...args: any[]): any;
+    setInvertMethod(...args: any[]): any;
+    setInvertStrength(...args: any[]): any;
+    setLensCorrectionEnabled(...args: any[]): any;
+    setLensDistortion(...args: any[]): any;
+    setLensHorizontal(...args: any[]): any;
+    setLensProfileDistortion(...args: any[]): any;
+    setLensRotation(...args: any[]): any;
+    setLensScale(...args: any[]): any;
+    setLensVertical(...args: any[]): any;
+    setLensVignetteEnabled(...args: any[]): any;
+    setLensVignetteIntensity(...args: any[]): any;
+    setLensVignetteUseProfile(...args: any[]): any;
+    setLuminanceContribution(...args: any[]): any;
+    setNoiseAdditionColour(...args: any[]): any;
+    setNoiseAdditionEnabled(...args: any[]): any;
+    setNoiseAdditionGaussian(...args: any[]): any;
+    setNoiseAdditionIntensity(...args: any[]): any;
+    setNoiseReductionChromaSigma(...args: any[]): any;
+    setNoiseReductionDetail(...args: any[]): any;
+    setNoiseReductionEnabled(...args: any[]): any;
+    setNoiseReductionLuminanceSigma(...args: any[]): any;
+    setPostVignetteEnabled(...args: any[]): any;
+    setPostVignetteHardness(...args: any[]): any;
+    setPostVignetteIntensity(...args: any[]): any;
+    setPostVignetteScale(...args: any[]): any;
+    setProfileEnabled(...args: any[]): any;
+    setSaturation(...args: any[]): any;
+    setSelectiveColour(...args: any[]): any;
+    setSelectiveColourEnabled(...args: any[]): any;
+    setShadowsHighlightsEnabled(...args: any[]): any;
+    setShadowsIntensity(...args: any[]): any;
+    setShowClippedHighlights(...args: any[]): any;
+    setShowClippedShadows(...args: any[]): any;
+    setShowClippedTones(...args: any[]): any;
+    setShowFocusPeaking(...args: any[]): any;
+    setSplitToning(...args: any[]): any;
+    setSplitToningEnabled(...args: any[]): any;
+    setTexture(...args: any[]): any;
+    setTint(...args: any[]): any;
+    setToneCurveEnabled(...args: any[]): any;
+    setToneCurveMethod(...args: any[]): any;
+    setVibrance(...args: any[]): any;
+    setWaveletChromaLevels(...args: any[]): any;
+    setWaveletChromaSigma(...args: any[]): any;
+    setWaveletDetail(...args: any[]): any;
+    setWaveletLevels(...args: any[]): any;
+    setWaveletLumaSigma(...args: any[]): any;
+    setWaveletNoiseReductionEnabled(...args: any[]): any;
+    setWhiteBalance(...args: any[]): any;
+    setWhiteBalanceEnabled(...args: any[]): any;
+    setWhitepoint(...args: any[]): any;
+  };
+  export const DevelopParametersHandle: any;
+  export const DiffuseFilterParametersApi: {
+    create(...args: any[]): any;
+    getIntensity(...args: any[]): any;
+    setIntensity(...args: any[]): any;
+  };
+  export const DiffuseFilterParametersHandle: any;
   export const DiffuseFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const DiffuseFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const DiffuseFilterRasterNodeDefinitionHandle: any;
+  export const DiffuseFilterRasterNodeHandle: any;
+  export const DiffuseGlowFilterParametersApi: {
+    create(...args: any[]): any;
+    getIntensity(...args: any[]): any;
+    getOpacity(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    getThreshold(...args: any[]): any;
+    setIntensity(...args: any[]): any;
+    setOpacity(...args: any[]): any;
+    setRadius(...args: any[]): any;
+    setThreshold(...args: any[]): any;
+  };
+  export const DiffuseGlowFilterParametersHandle: any;
   export const DiffuseGlowFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const DiffuseGlowFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const DiffuseGlowFilterRasterNodeDefinitionHandle: any;
+  export const DiffuseGlowFilterRasterNodeHandle: any;
   export const DocumentApi: {
     close(...args: any[]): any;
     closeAsync(...args: any[]): any;
@@ -2416,6 +3145,7 @@ declare module 'affinity:dom' {
     getDpi(...args: any[]): any;
     getFormat(...args: any[]): any;
     getHistory(...args: any[]): any;
+    getInsertionMode(...args: any[]): any;
     getMaskFormat(...args: any[]): any;
     getPath(...args: any[]): any;
     getPersistentUuid(...args: any[]): any;
@@ -2451,10 +3181,13 @@ declare module 'affinity:dom' {
     getWarningMessage(...args: any[]): any;
     hasWarnings(...args: any[]): any;
   };
+  export const DocumentExportRecordHandle: any;
   export const DocumentExportRecordsApi: {
     enumerate(...args: any[]): any;
     getCount(...args: any[]): any;
   };
+  export const DocumentExportRecordsHandle: any;
+  export const DocumentHandle: any;
   export const DocumentHistoryApi: {
     canRedo(...args: any[]): any;
     canUndo(...args: any[]): any;
@@ -2465,6 +3198,7 @@ declare module 'affinity:dom' {
     getUndoDescription(...args: any[]): any;
     getUndoPosition(...args: any[]): any;
   };
+  export const DocumentHistoryHandle: any;
   export const DocumentHistoryItemApi: {
     dispose(...args: any[]): any;
     getCommand(...args: any[]): any;
@@ -2472,10 +3206,13 @@ declare module 'affinity:dom' {
     getThumbnail(...args: any[]): any;
     hasAlternateFutures(...args: any[]): any;
   };
+  export const DocumentHistoryItemHandle: any;
   export const DocumentNodeApi: {
+    fromNode(...args: any[]): any;
     getPageCount(...args: any[]): any;
     getSpreadCount(...args: any[]): any;
   };
+  export const DocumentNodeHandle: any;
   export const DocumentPresetApi: {
     enumerateAll(...args: any[]): any;
     getBleed(...args: any[]): any;
@@ -2500,13 +3237,16 @@ declare module 'affinity:dom' {
     getViewDpi(...args: any[]): any;
     getWidth(...args: any[]): any;
   };
+  export const DocumentPresetHandle: any;
   export const DocumentPropertiesApi: {
+    clone(...args: any[]): any;
     create(...args: any[]): any;
     getAssignColourProfile(...args: any[]): any;
     getBleed(...args: any[]): any;
     getBleedFill(...args: any[]): any;
     getColourFormat(...args: any[]): any;
     getColourProfile(...args: any[]): any;
+    getDimensions(...args: any[]): any;
     getDpi(...args: any[]): any;
     getDrawingScale(...args: any[]): any;
     getImageResourcePolicy(...args: any[]): any;
@@ -2532,6 +3272,7 @@ declare module 'affinity:dom' {
     setBleed(...args: any[]): any;
     setBleedFill(...args: any[]): any;
     setColourFormatAndProfile(...args: any[]): any;
+    setDimensions(...args: any[]): any;
     setDpi(...args: any[]): any;
     setDrawingScale(...args: any[]): any;
     setImageResourcePolicy(...args: any[]): any;
@@ -2553,10 +3294,12 @@ declare module 'affinity:dom' {
     setShouldReflowPages(...args: any[]): any;
     setUnits(...args: any[]): any;
   };
+  export const DocumentPropertiesHandle: any;
   export const DocumentSnapshotApi: {
     getDescription(...args: any[]): any;
     getFormat(...args: any[]): any;
   };
+  export const DocumentSnapshotHandle: any;
   export const DocumentViewApi: {
     centreOn(...args: any[]): any;
     centreOnAsync(...args: any[]): any;
@@ -2599,6 +3342,7 @@ declare module 'affinity:dom' {
     zoomToWidth(...args: any[]): any;
     zoomToWidthAsync(...args: any[]): any;
   };
+  export const DocumentViewHandle: any;
   export const DrawingScaleApi: {
     create(...args: any[]): any;
     createFromIntegers(...args: any[]): any;
@@ -2608,21 +3352,38 @@ declare module 'affinity:dom' {
     getLeftValue(...args: any[]): any;
     getRightValue(...args: any[]): any;
   };
+  export const DrawingScaleHandle: any;
+  export const DustAndScratchFilterParametersApi: {
+    create(...args: any[]): any;
+    getIsChannelTolerance(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    getTolerance(...args: any[]): any;
+    setIsChannelTolerance(...args: any[]): any;
+    setRadius(...args: any[]): any;
+    setTolerance(...args: any[]): any;
+  };
+  export const DustAndScratchFilterParametersHandle: any;
   export const DustAndScratchFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const DustAndScratchFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const DustAndScratchFilterRasterNodeDefinitionHandle: any;
+  export const DustAndScratchFilterRasterNodeHandle: any;
   export const EditabilityInterfaceApi: {
+    fromNode(...args: any[]): any;
     getNode(...args: any[]): any;
     isEditable(...args: any[]): any;
     isLocalEditable(...args: any[]): any;
     isMasterEditable(...args: any[]): any;
   };
+  export const EditabilityInterfaceHandle: any;
   export const EmbeddedDocumentNodeApi: {
     canEditEmbeddedImage(...args: any[]): any;
     canMakeLinked(...args: any[]): any;
@@ -2635,6 +3396,7 @@ declare module 'affinity:dom' {
     enumerateLayerVisibilities(...args: any[]): any;
     enumeratePageBoundingBoxes(...args: any[]): any;
     enumerateSpreads(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getImageResourceInterface(...args: any[]): any;
     getLoadDocumentOptions(...args: any[]): any;
     getOriginalHostDPI(...args: any[]): any;
@@ -2651,8 +3413,15 @@ declare module 'affinity:dom' {
     needsPassword(...args: any[]): any;
     shouldAllowSelectDocument(...args: any[]): any;
   };
-  export const EnclosureRasterNodeApi: any;
-  export const EnclosureRasterNodeDefinitionApi: any;
+  export const EmbeddedDocumentNodeHandle: any;
+  export const EnclosureRasterNodeApi: {
+    fromNode(...args: any[]): any;
+  };
+  export const EnclosureRasterNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const EnclosureRasterNodeDefinitionHandle: any;
+  export const EnclosureRasterNodeHandle: any;
   export const ExportConfigApi: {
     appendFormat(...args: any[]): any;
     deleteFormat(...args: any[]): any;
@@ -2660,6 +3429,7 @@ declare module 'affinity:dom' {
     getFormatCount(...args: any[]): any;
     replaceFormat(...args: any[]): any;
   };
+  export const ExportConfigHandle: any;
   export const ExportFormatApi: {
     appendSize(...args: any[]): any;
     createWithFileExportOptions(...args: any[]): any;
@@ -2668,6 +3438,7 @@ declare module 'affinity:dom' {
     getSizeCount(...args: any[]): any;
     replaceSize(...args: any[]): any;
   };
+  export const ExportFormatHandle: any;
   export const ExportScaleApi: {
     createWithHeight(...args: any[]): any;
     createWithMultiplier(...args: any[]): any;
@@ -2683,43 +3454,63 @@ declare module 'affinity:dom' {
     getWidth(...args: any[]): any;
     hasMultiplier(...args: any[]): any;
   };
+  export const ExportScaleHandle: any;
   export const ExportSizeApi: {
     createWithExportScale(...args: any[]): any;
     getExportScale(...args: any[]): any;
     setExportScale(...args: any[]): any;
   };
+  export const ExportSizeHandle: any;
   export const ExportableInterfaceApi: {
+    fromNode(...args: any[]): any;
     getExportConfig(...args: any[]): any;
     getNode(...args: any[]): any;
   };
+  export const ExportableInterfaceHandle: any;
+  export const ExposureAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getExposure(...args: any[]): any;
+    setExposure(...args: any[]): any;
+  };
+  export const ExposureAdjustmentParametersHandle: any;
   export const ExposureAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ExposureAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ExposureAdjustmentRasterNodeDefinitionHandle: any;
+  export const ExposureAdjustmentRasterNodeHandle: any;
   export const FieldBlurFilterParametersApi: {
     addBlurItem(...args: any[]): any;
     create(...args: any[]): any;
     deleteBlurItem(...args: any[]): any;
+    enumerateBlurItems(...args: any[]): any;
     getBlurItem(...args: any[]): any;
     getBlurItemCount(...args: any[]): any;
     getGlobalRadius(...args: any[]): any;
     /** radius: [0.0, 1024.0] */
     setGlobalRadius(...args: any[]): any;
   };
+  export const FieldBlurFilterParametersHandle: any;
   export const FieldBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const FieldBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const FieldBlurFilterRasterNodeDefinitionHandle: any;
+  export const FieldBlurFilterRasterNodeHandle: any;
   export const FileExportAreaApi: {
     clone(...args: any[]): any;
     createForArtboard(...args: any[]): any;
@@ -2731,49 +3522,76 @@ declare module 'affinity:dom' {
     createForSpreads(...args: any[]): any;
     createForWholeDocument(...args: any[]): any;
   };
+  export const FileExportAreaHandle: any;
   export const FileExportOptionsApi: {
     createForCanvaExport(...args: any[]): any;
     createWithPresetName(...args: any[]): any;
     enumeratePresetNames(...args: any[]): any;
   };
+  export const FileExportOptionsHandle: any;
   export const FillMeshSubSelectionApi: {
     enumerateItems(...args: any[]): any;
     fromSubSelection(...args: any[]): any;
     getItemCount(...args: any[]): any;
     isEmpty(...args: any[]): any;
   };
+  export const FillMeshSubSelectionHandle: any;
   export const FillSubSelectionApi: {
     clone(...args: any[]): any;
     cloneAsFillSubSelection(...args: any[]): any;
     fromSubSelection(...args: any[]): any;
     getIndex(...args: any[]): any;
   };
+  export const FillSubSelectionHandle: any;
   export const FilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getPreserveAlpha(...args: any[]): any;
   };
   export const FilterRasterNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
     getPreserveAlpha(...args: any[]): any;
     setPreserveAlpha(...args: any[]): any;
   };
+  export const FilterRasterNodeDefinitionHandle: any;
+  export const FilterRasterNodeHandle: any;
   export const FrameTextNodeApi: {
     fromNode(...args: any[]): any;
   };
   export const FrameTextNodeDefinitionApi: {
     createFromStoryBuilder(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
   };
+  export const FrameTextNodeDefinitionHandle: any;
+  export const FrameTextNodeHandle: any;
+  export const GaussianBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const GaussianBlurFilterParametersHandle: any;
   export const GaussianBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const GaussianBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
-  export const GroupNodeApi: any;
+  export const GaussianBlurFilterRasterNodeDefinitionHandle: any;
+  export const GaussianBlurFilterRasterNodeHandle: any;
+  export const GroupNodeApi: {
+    fromNode(...args: any[]): any;
+  };
+  export const GroupNodeHandle: any;
   export const HSLShiftAdjustmentParametersApi: {
     create(...args: any[]): any;
+    enumerateChannelColourRanges(...args: any[]): any;
+    enumerateChannelParameters(...args: any[]): any;
     getChannelColourRange(...args: any[]): any;
+    getChannelCount(...args: any[]): any;
     getChannelParameters(...args: any[]): any;
     getMasterParameters(...args: any[]): any;
     getUseHSV(...args: any[]): any;
@@ -2782,34 +3600,74 @@ declare module 'affinity:dom' {
     setMasterParameters(...args: any[]): any;
     setUseHSV(...args: any[]): any;
   };
+  export const HSLShiftAdjustmentParametersHandle: any;
   export const HSLShiftAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const HSLShiftAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const HSLShiftAdjustmentRasterNodeDefinitionHandle: any;
+  export const HSLShiftAdjustmentRasterNodeHandle: any;
+  export const HalftoneFilterParametersApi: {
+    create(...args: any[]): any;
+    getCellSize(...args: any[]): any;
+    getContrast(...args: any[]): any;
+    getDotType(...args: any[]): any;
+    getGreyComponentReplacement(...args: any[]): any;
+    getScreenAngle(...args: any[]): any;
+    getScreenType(...args: any[]): any;
+    getUnderColourRemoval(...args: any[]): any;
+    setCellSize(...args: any[]): any;
+    setContrast(...args: any[]): any;
+    setDotType(...args: any[]): any;
+    setGreyComponentReplacement(...args: any[]): any;
+    setScreenAngle(...args: any[]): any;
+    setScreenType(...args: any[]): any;
+    setUnderColourRemoval(...args: any[]): any;
+  };
+  export const HalftoneFilterParametersHandle: any;
   export const HalftoneFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const HalftoneFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const HalftoneFilterRasterNodeDefinitionHandle: any;
+  export const HalftoneFilterRasterNodeHandle: any;
+  export const HighPassFilterParametersApi: {
+    create(...args: any[]): any;
+    getIsMonochrome(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setIsMonochrome(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const HighPassFilterParametersHandle: any;
   export const HighPassFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const HighPassFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const HighPassFilterRasterNodeDefinitionHandle: any;
+  export const HighPassFilterRasterNodeHandle: any;
   export const ImageNodeApi: {
+    fromNode(...args: any[]): any;
     getBitmapBrushFillDescriptor(...args: any[]): any;
     getExtendType(...args: any[]): any;
     getImageResourceInterface(...args: any[]): any;
@@ -2823,12 +3681,16 @@ declare module 'affinity:dom' {
   };
   export const ImageNodeDefinitionApi: {
     create(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getBitmap(...args: any[]): any;
     setBitmap(...args: any[]): any;
   };
+  export const ImageNodeDefinitionHandle: any;
+  export const ImageNodeHandle: any;
   export const ImageResourceInterfaceApi: {
     canEditOriginalImage(...args: any[]): any;
     createFileTypeName(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getArtboard(...args: any[]): any;
     getColourFormat(...args: any[]): any;
     getFileType(...args: any[]): any;
@@ -2850,6 +3712,7 @@ declare module 'affinity:dom' {
     isOnArtboard(...args: any[]): any;
     saveOriginalFile(...args: any[]): any;
   };
+  export const ImageResourceInterfaceHandle: any;
   export const ImportOptionsApi: {
     asLoadDocumentOptions(...args: any[]): any;
     createDefault(...args: any[]): any;
@@ -2863,12 +3726,19 @@ declare module 'affinity:dom' {
     setRemoveHiddenItems(...args: any[]): any;
     setShowHandles(...args: any[]): any;
   };
-  export const InvertAdjustmentRasterNodeApi: any;
+  export const ImportOptionsHandle: any;
+  export const InvertAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
+  };
   export const InvertAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
   };
+  export const InvertAdjustmentRasterNodeDefinitionHandle: any;
+  export const InvertAdjustmentRasterNodeHandle: any;
   export const LayerEffectsInterfaceApi: {
     enumerateEffects(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getEffect(...args: any[]): any;
     getEffectCount(...args: any[]): any;
     getNode(...args: any[]): any;
@@ -2876,39 +3746,76 @@ declare module 'affinity:dom' {
     hasAnyVisibleEffects(...args: any[]): any;
     isScaleWithObject(...args: any[]): any;
   };
+  export const LayerEffectsInterfaceHandle: any;
+  export const LensBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getBladeCurvature(...args: any[]): any;
+    getBloomColour(...args: any[]): any;
+    getBloomFactor(...args: any[]): any;
+    getBloomThreshold(...args: any[]): any;
+    getNumberOfBlades(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setBladeCurvature(...args: any[]): any;
+    setBloomColour(...args: any[]): any;
+    setBloomFactor(...args: any[]): any;
+    setBloomThreshold(...args: any[]): any;
+    setNumberOfBlades(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const LensBlurFilterParametersHandle: any;
   export const LensBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const LensBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const LensBlurFilterRasterNodeDefinitionHandle: any;
+  export const LensBlurFilterRasterNodeHandle: any;
+  export const LevelsAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    enumerateChannelParameters(...args: any[]): any;
+    getChannelParameters(...args: any[]): any;
+    getChannelParametersCount(...args: any[]): any;
+    getMasterParameters(...args: any[]): any;
+    setChannelParameters(...args: any[]): any;
+    setMasterParameters(...args: any[]): any;
+  };
+  export const LevelsAdjustmentParametersHandle: any;
   export const LevelsAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getColourSpace(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const LevelsAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getColourSpace(...args: any[]): any;
     getParameters(...args: any[]): any;
     setColourSpace(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const LevelsAdjustmentRasterNodeDefinitionHandle: any;
+  export const LevelsAdjustmentRasterNodeHandle: any;
   export const LineFillMeshSubSelectionApi: {
     enumerateItems(...args: any[]): any;
     fromSubSelection(...args: any[]): any;
     getItemCount(...args: any[]): any;
     isEmpty(...args: any[]): any;
   };
+  export const LineFillMeshSubSelectionHandle: any;
   export const LineFillSubSelectionApi: {
     clone(...args: any[]): any;
     cloneAsLineFillSubSelection(...args: any[]): any;
     fromSubSelection(...args: any[]): any;
     getIndex(...args: any[]): any;
   };
+  export const LineFillSubSelectionHandle: any;
   export const LineStyleInterfaceApi: {
     enumerateDescriptors(...args: any[]): any;
     enumerateFillDescriptors(...args: any[]): any;
@@ -2929,6 +3836,7 @@ declare module 'affinity:dom' {
     isLineStyleVisible(...args: any[]): any;
     isNoFill(...args: any[]): any;
   };
+  export const LineStyleInterfaceHandle: any;
   export const LoadDocumentOptionsApi: {
     createDefault(...args: any[]): any;
     setColourSpace(...args: any[]): any;
@@ -2938,55 +3846,144 @@ declare module 'affinity:dom' {
     setLoadMode(...args: any[]): any;
     setPassword(...args: any[]): any;
   };
+  export const LoadDocumentOptionsHandle: any;
   export const LogicalNodeApi: {
+    fromNode(...args: any[]): any;
     getBrushFillInterface(...args: any[]): any;
     getLineStyleInterface(...args: any[]): any;
     getTransparencyInterface(...args: any[]): any;
     hasNonMaskChildren(...args: any[]): any;
     hasNonMaskOrAdjustmentChildren(...args: any[]): any;
   };
-  export const LogicalNodeDefinitionApi: any;
+  export const LogicalNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const LogicalNodeDefinitionHandle: any;
+  export const LogicalNodeHandle: any;
   export const MarginsInterfaceApi: {
+    getMarginFill(...args: any[]): any;
+    getMargins(...args: any[]): any;
     getUseMargins(...args: any[]): any;
     hasMargins(...args: any[]): any;
   };
+  export const MarginsInterfaceHandle: any;
+  export const MaximumBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getIsCircular(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setIsCircular(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const MaximumBlurFilterParametersHandle: any;
   export const MaximumBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const MaximumBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const MaximumBlurFilterRasterNodeDefinitionHandle: any;
+  export const MaximumBlurFilterRasterNodeHandle: any;
+  export const MeasurementNodeApi: {
+    fromNode(...args: any[]): any;
+    getAnnotationOffset(...args: any[]): any;
+    getDecimalPlaces(...args: any[]): any;
+    getDisplayUnitType(...args: any[]): any;
+    getFactor(...args: any[]): any;
+    getScaledUnitType(...args: any[]): any;
+    getShowEndpointMarkers(...args: any[]): any;
+    getSpreadDistance(...args: any[]): any;
+    getSpreadEndpoints(...args: any[]): any;
+    getUseDocumentPrecision(...args: any[]): any;
+  };
+  export const MeasurementNodeDefinitionApi: {
+    create(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
+    getAnnotationOffset(...args: any[]): any;
+    getDecimalPlaces(...args: any[]): any;
+    getEndpoints(...args: any[]): any;
+    getFactor(...args: any[]): any;
+    getLabelGlyphAtts(...args: any[]): any;
+    getScaledUnitType(...args: any[]): any;
+    getShowEndpointMarkers(...args: any[]): any;
+    getUseDocumentPrecision(...args: any[]): any;
+    setAnnotationOffset(...args: any[]): any;
+    setDisplayPrecision(...args: any[]): any;
+    setEndpoints(...args: any[]): any;
+    setFactor(...args: any[]): any;
+    setLabelGlyphAtts(...args: any[]): any;
+    setScaledUnitType(...args: any[]): any;
+    setShowEndpointMarkers(...args: any[]): any;
+  };
+  export const MeasurementNodeDefinitionHandle: any;
+  export const MeasurementNodeHandle: any;
+  export const MedianBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const MedianBlurFilterParametersHandle: any;
   export const MedianBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const MedianBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const MedianBlurFilterRasterNodeDefinitionHandle: any;
+  export const MedianBlurFilterRasterNodeHandle: any;
+  export const MinimumBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getIsCircular(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setIsCircular(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const MinimumBlurFilterParametersHandle: any;
   export const MinimumBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const MinimumBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const MinimumBlurFilterRasterNodeDefinitionHandle: any;
+  export const MinimumBlurFilterRasterNodeHandle: any;
+  export const MotionBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getAngle(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setAngle(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const MotionBlurFilterParametersHandle: any;
   export const MotionBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const MotionBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const MotionBlurFilterRasterNodeDefinitionHandle: any;
+  export const MotionBlurFilterRasterNodeHandle: any;
   export const NewDocumentOptionsApi: {
+    clone(...args: any[]): any;
     createDefault(...args: any[]): any;
     createFromPreset(...args: any[]): any;
     getMaxDpi(...args: any[]): any;
@@ -3014,7 +4011,9 @@ declare module 'affinity:dom' {
     setViewDpi(...args: any[]): any;
     setWidth(...args: any[]): any;
   };
+  export const NewDocumentOptionsHandle: any;
   export const NodeApi: {
+    fromSelectable(...args: any[]): any;
     getBaseBoxInterface(...args: any[]): any;
     getBaseToSpreadTransform(...args: any[]): any;
     getBlendModeInterface(...args: any[]): any;
@@ -3072,6 +4071,7 @@ declare module 'affinity:dom' {
     setDefringeFilterRasterNodeHandler(...args: any[]): any;
     setDenoiseFilterRasterNodeHandler(...args: any[]): any;
     setDepthOfFieldFilterRasterNodeHandler(...args: any[]): any;
+    setDevelopNodeHandler(...args: any[]): any;
     setDiffuseFilterRasterNodeHandler(...args: any[]): any;
     setDiffuseGlowFilterRasterNodeHandler(...args: any[]): any;
     setDocumentNodeHandler(...args: any[]): any;
@@ -3093,6 +4093,7 @@ declare module 'affinity:dom' {
     setLevelsAdjustmentRasterNodeHandler(...args: any[]): any;
     setLogicalNodeHandler(...args: any[]): any;
     setMaximumBlurFilterRasterNodeHandler(...args: any[]): any;
+    setMeasurementNodeHandler(...args: any[]): any;
     setMedianBlurFilterRasterNodeHandler(...args: any[]): any;
     setMinimumBlurFilterRasterNodeHandler(...args: any[]): any;
     setMotionBlurFilterRasterNodeHandler(...args: any[]): any;
@@ -3131,52 +4132,105 @@ declare module 'affinity:dom' {
     setVoronoiFilterRasterNodeHandler(...args: any[]): any;
     setWhiteBalanceAdjustmentRasterNodeHandler(...args: any[]): any;
   };
+  export const NodeCastHandle: any;
   export const NodeDefinitionApi: {
     getTransform(...args: any[]): any;
     getUserDescription(...args: any[]): any;
     setTransform(...args: any[]): any;
     setUserDescription(...args: any[]): any;
   };
+  export const NodeDefinitionHandle: any;
+  export const NodeHandle: any;
+  export const NormalsAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getFlipX(...args: any[]): any;
+    getFlipY(...args: any[]): any;
+    getRotation(...args: any[]): any;
+    getScale(...args: any[]): any;
+    setFlipX(...args: any[]): any;
+    setFlipY(...args: any[]): any;
+    setRotation(...args: any[]): any;
+    setScale(...args: any[]): any;
+  };
+  export const NormalsAdjustmentParametersHandle: any;
   export const NormalsAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const NormalsAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const NormalsAdjustmentRasterNodeDefinitionHandle: any;
+  export const NormalsAdjustmentRasterNodeHandle: any;
   export const PageBoxInterfaceApi: {
     fromNode(...args: any[]): any;
     getPageBoundingBox(...args: any[]): any;
   };
+  export const PageBoxInterfaceHandle: any;
+  export const PageDocumentPropertiesApi: {
+    clone(...args: any[]): any;
+    create(...args: any[]): any;
+    getAnchorType(...args: any[]): any;
+    getDimensions(...args: any[]): any;
+    getMargin(...args: any[]): any;
+    getMarginFill(...args: any[]): any;
+    getMoveFollowingPages(...args: any[]): any;
+    getPageOriginDelta(...args: any[]): any;
+    getUseMargin(...args: any[]): any;
+    getUseMasterMargin(...args: any[]): any;
+    setAnchorType(...args: any[]): any;
+    setDimensions(...args: any[]): any;
+    setMargin(...args: any[]): any;
+    setMarginFill(...args: any[]): any;
+    setMoveFollowingPages(...args: any[]): any;
+    setPageOriginDelta(...args: any[]): any;
+    setUseMargin(...args: any[]): any;
+    setUseMasterMargin(...args: any[]): any;
+  };
+  export const PageDocumentPropertiesHandle: any;
   export const PatternRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getMirror(...args: any[]): any;
   };
   export const PatternRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getMirror(...args: any[]): any;
     setMirror(...args: any[]): any;
   };
+  export const PatternRasterNodeDefinitionHandle: any;
+  export const PatternRasterNodeHandle: any;
   export const PhysicalNodeApi: {
     canTransformWhileProtectingChildList(...args: any[]): any;
+    fromNode(...args: any[]): any;
   };
-  export const PhysicalNodeDefinitionApi: any;
+  export const PhysicalNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const PhysicalNodeDefinitionHandle: any;
+  export const PhysicalNodeHandle: any;
   export const PhysicalRootInterfaceApi: {
     fromNode(...args: any[]): any;
     getNode(...args: any[]): any;
     getPhysicalRootProperties(...args: any[]): any;
   };
+  export const PhysicalRootInterfaceHandle: any;
   export const PhysicalRootPropertiesInterfaceApi: {
     fromNode(...args: any[]): any;
     getNode(...args: any[]): any;
     getPageBoxInterface(...args: any[]): any;
     getPageCount(...args: any[]): any;
   };
+  export const PhysicalRootPropertiesInterfaceHandle: any;
   export const PictureFrameInterfaceApi: {
     calculateAnchor(...args: any[]): any;
     calculateConstraints(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getAnchor(...args: any[]): any;
     getDataMergeFieldId(...args: any[]): any;
     getDescription(...args: any[]): any;
@@ -3187,58 +4241,116 @@ declare module 'affinity:dom' {
     isClearFillOnPopulate(...args: any[]): any;
     isEnabled(...args: any[]): any;
   };
+  export const PictureFrameInterfaceHandle: any;
+  export const PinchPunchFilterParametersApi: {
+    create(...args: any[]): any;
+    getIntensity(...args: any[]): any;
+    getPosition(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setIntensity(...args: any[]): any;
+    setPosition(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const PinchPunchFilterParametersHandle: any;
   export const PinchPunchFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const PinchPunchFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const PinchPunchFilterRasterNodeDefinitionHandle: any;
+  export const PinchPunchFilterRasterNodeHandle: any;
+  export const PixelateFilterParametersApi: {
+    create(...args: any[]): any;
+    getQuantisation(...args: any[]): any;
+    setQuantisation(...args: any[]): any;
+  };
+  export const PixelateFilterParametersHandle: any;
   export const PixelateFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const PixelateFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const PixelateFilterRasterNodeDefinitionHandle: any;
+  export const PixelateFilterRasterNodeHandle: any;
   export const PolyCurveNodeApi: {
+    fromNode(...args: any[]): any;
     getArtboardInterface(...args: any[]): any;
   };
   export const PolyCurveNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getCurves(...args: any[]): any;
     setCurves(...args: any[]): any;
   };
+  export const PolyCurveNodeDefinitionHandle: any;
+  export const PolyCurveNodeHandle: any;
   export const PolyCurveTextNodeApi: {
     fromNode(...args: any[]): any;
   };
+  export const PolyCurveTextNodeDefinitionApi: {
+    createFromStoryBuilder(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const PolyCurveTextNodeDefinitionHandle: any;
+  export const PolyCurveTextNodeHandle: any;
+  export const PosteriseAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getLevels(...args: any[]): any;
+    setLevels(...args: any[]): any;
+  };
+  export const PosteriseAdjustmentParametersHandle: any;
   export const PosteriseAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const PosteriseAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const PosteriseAdjustmentRasterNodeDefinitionHandle: any;
+  export const PosteriseAdjustmentRasterNodeHandle: any;
+  export const RadialBlurFilterParametersApi: {
+    create(...args: any[]): any;
+    getAngle(...args: any[]): any;
+    getPosition(...args: any[]): any;
+    setAngle(...args: any[]): any;
+    setPosition(...args: any[]): any;
+  };
+  export const RadialBlurFilterParametersHandle: any;
   export const RadialBlurFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const RadialBlurFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const RadialBlurFilterRasterNodeDefinitionHandle: any;
+  export const RadialBlurFilterRasterNodeHandle: any;
   export const RasterInterfaceApi: {
     copyTo(...args: any[]): any;
     createCompatibleBitmap(...args: any[]): any;
     createCompatibleBuffer(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getBitmap(...args: any[]): any;
     getDomainTransform(...args: any[]): any;
     getFormat(...args: any[]): any;
@@ -3247,39 +4359,72 @@ declare module 'affinity:dom' {
     getPixelSize(...args: any[]): any;
     getWidth(...args: any[]): any;
   };
+  export const RasterInterfaceHandle: any;
   export const RasterNodeApi: {
+    fromNode(...args: any[]): any;
     getRasterInterface(...args: any[]): any;
     isExtendEmpty(...args: any[]): any;
   };
   export const RasterNodeDefinitionApi: {
     create(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getBitmap(...args: any[]): any;
     setBitmap(...args: any[]): any;
   };
+  export const RasterNodeDefinitionHandle: any;
+  export const RasterNodeHandle: any;
   export const RasterSelectionApi: {
     isCurrentPixelSelection(...args: any[]): any;
     isSelectAllOrNone(...args: any[]): any;
     isSelectNone(...args: any[]): any;
   };
+  export const RasterSelectionHandle: any;
+  export const RecolourAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getHue(...args: any[]): any;
+    getLightness(...args: any[]): any;
+    getSaturation(...args: any[]): any;
+    setHue(...args: any[]): any;
+    setLightness(...args: any[]): any;
+    setSaturation(...args: any[]): any;
+  };
+  export const RecolourAdjustmentParametersHandle: any;
   export const RecolourAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const RecolourAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const RecolourAdjustmentRasterNodeDefinitionHandle: any;
+  export const RecolourAdjustmentRasterNodeHandle: any;
+  export const RippleFilterParametersApi: {
+    create(...args: any[]): any;
+    getIntensity(...args: any[]): any;
+    getPosition(...args: any[]): any;
+    setIntensity(...args: any[]): any;
+    setPosition(...args: any[]): any;
+  };
+  export const RippleFilterParametersHandle: any;
   export const RippleFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const RippleFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const RippleFilterRasterNodeDefinitionHandle: any;
+  export const RippleFilterRasterNodeHandle: any;
   export const SelectableApi: any;
+  export const SelectableHandle: any;
   export const SelectionApi: {
     addItem(...args: any[]): any;
     addNode(...args: any[]): any;
@@ -3294,7 +4439,9 @@ declare module 'affinity:dom' {
     getHasKeyObject(...args: any[]): any;
     getItem(...args: any[]): any;
     removeNested(...args: any[]): any;
+    setHasKeyObject(...args: any[]): any;
   };
+  export const SelectionHandle: any;
   export const SelectionItemApi: {
     enumerateSubSelections(...args: any[]): any;
     getNode(...args: any[]): any;
@@ -3302,79 +4449,179 @@ declare module 'affinity:dom' {
     getSubSelectionCount(...args: any[]): any;
     getSubSelectionOfType(...args: any[]): any;
   };
+  export const SelectionItemHandle: any;
+  export const SelectiveColourAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    enumerateWeights(...args: any[]): any;
+    getIsRelative(...args: any[]): any;
+    getWeights(...args: any[]): any;
+    getWeightsCount(...args: any[]): any;
+    setIsRelative(...args: any[]): any;
+    setWeights(...args: any[]): any;
+  };
+  export const SelectiveColourAdjustmentParametersHandle: any;
   export const SelectiveColourAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const SelectiveColourAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const SelectiveColourAdjustmentRasterNodeDefinitionHandle: any;
+  export const SelectiveColourAdjustmentRasterNodeHandle: any;
+  export const ShadowsHighlightsAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getHighlights(...args: any[]): any;
+    getShadows(...args: any[]): any;
+    setHighlights(...args: any[]): any;
+    setShadows(...args: any[]): any;
+  };
+  export const ShadowsHighlightsAdjustmentParametersHandle: any;
   export const ShadowsHighlightsAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ShadowsHighlightsAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ShadowsHighlightsAdjustmentRasterNodeDefinitionHandle: any;
+  export const ShadowsHighlightsAdjustmentRasterNodeHandle: any;
+  export const ShadowsHighlightsFilterParametersApi: {
+    create(...args: any[]): any;
+    getHighlightsRadius(...args: any[]): any;
+    getHighlightsRange(...args: any[]): any;
+    getHighlightsStrength(...args: any[]): any;
+    getShadowsRadius(...args: any[]): any;
+    getShadowsRange(...args: any[]): any;
+    getShadowsStrength(...args: any[]): any;
+    getVersion(...args: any[]): any;
+    setHighlightsRadius(...args: any[]): any;
+    setHighlightsRange(...args: any[]): any;
+    setHighlightsStrength(...args: any[]): any;
+    setShadowsRadius(...args: any[]): any;
+    setShadowsRange(...args: any[]): any;
+    setShadowsStrength(...args: any[]): any;
+    setVersion(...args: any[]): any;
+  };
+  export const ShadowsHighlightsFilterParametersHandle: any;
   export const ShadowsHighlightsFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ShadowsHighlightsFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ShadowsHighlightsFilterRasterNodeDefinitionHandle: any;
+  export const ShadowsHighlightsFilterRasterNodeHandle: any;
   export const ShapeInterfaceApi: {
+    fromNode(...args: any[]): any;
     getDomainTransform(...args: any[]): any;
     getNode(...args: any[]): any;
     getShape(...args: any[]): any;
     getShapeBoundingBox(...args: any[]): any;
     getType(...args: any[]): any;
   };
+  export const ShapeInterfaceHandle: any;
   export const ShapeNodeApi: {
+    fromNode(...args: any[]): any;
     getArtboardInterface(...args: any[]): any;
     getShapeInterface(...args: any[]): any;
   };
   export const ShapeNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getBoundingRectangle(...args: any[]): any;
     getShape(...args: any[]): any;
     setBoundingRectangle(...args: any[]): any;
     setShape(...args: any[]): any;
   };
+  export const ShapeNodeDefinitionHandle: any;
+  export const ShapeNodeHandle: any;
   export const ShapePathTextNodeApi: {
     fromNode(...args: any[]): any;
     getShapeInterface(...args: any[]): any;
   };
+  export const ShapePathTextNodeDefinitionApi: {
+    createFromStoryBuilder(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const ShapePathTextNodeDefinitionHandle: any;
+  export const ShapePathTextNodeHandle: any;
   export const ShapeTextNodeApi: {
     fromNode(...args: any[]): any;
     getShapeInterface(...args: any[]): any;
   };
+  export const ShapeTextNodeDefinitionApi: {
+    createFromStoryBuilder(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const ShapeTextNodeDefinitionHandle: any;
+  export const ShapeTextNodeHandle: any;
+  export const SphericalFilterParametersApi: {
+    create(...args: any[]): any;
+    getIntensity(...args: any[]): any;
+    getPosition(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setIntensity(...args: any[]): any;
+    setPosition(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const SphericalFilterParametersHandle: any;
   export const SphericalFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const SphericalFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const SphericalFilterRasterNodeDefinitionHandle: any;
+  export const SphericalFilterRasterNodeHandle: any;
+  export const SplitToningAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getBalance(...args: any[]): any;
+    getHighlightsHue(...args: any[]): any;
+    getHighlightsSaturation(...args: any[]): any;
+    getShadowsHue(...args: any[]): any;
+    getShadowsSaturation(...args: any[]): any;
+    setBalance(...args: any[]): any;
+    setHighlightsHue(...args: any[]): any;
+    setHighlightsSaturation(...args: any[]): any;
+    setShadowsHue(...args: any[]): any;
+    setShadowsSaturation(...args: any[]): any;
+  };
+  export const SplitToningAdjustmentParametersHandle: any;
   export const SplitToningAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const SplitToningAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const SplitToningAdjustmentRasterNodeDefinitionHandle: any;
+  export const SplitToningAdjustmentRasterNodeHandle: any;
   export const SpreadDocumentPropertiesApi: {
+    clone(...args: any[]): any;
     create(...args: any[]): any;
     getReflowPages(...args: any[]): any;
     getResamplerType(...args: any[]): any;
@@ -3385,8 +4632,10 @@ declare module 'affinity:dom' {
     setUseMasterDrawingScale(...args: any[]): any;
     setUseMasterMargin(...args: any[]): any;
   };
+  export const SpreadDocumentPropertiesHandle: any;
   export const SpreadNodeApi: {
     enumerateArtboards(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getArtboard(...args: any[]): any;
     getArtboardCount(...args: any[]): any;
     getFirstPageIndex(...args: any[]): any;
@@ -3399,6 +4648,7 @@ declare module 'affinity:dom' {
     isFirstPage(...args: any[]): any;
     isLastPage(...args: any[]): any;
   };
+  export const SpreadNodeHandle: any;
   export const StoryInterfaceApi: {
     fromNode(...args: any[]): any;
     getDomainTransform(...args: any[]): any;
@@ -3411,9 +4661,11 @@ declare module 'affinity:dom' {
     getTextUiScale(...args: any[]): any;
     isMultiFrameTextFlow(...args: any[]): any;
   };
+  export const StoryInterfaceHandle: any;
   export const SubSelectionApi: {
     getSubSelectionType(...args: any[]): any;
   };
+  export const SubSelectionHandle: any;
   export const TableSubSelectionApi: {
     enumerateCells(...args: any[]): any;
     enumerateEdges(...args: any[]): any;
@@ -3424,12 +4676,16 @@ declare module 'affinity:dom' {
     isEmpty(...args: any[]): any;
     isRectangle(...args: any[]): any;
   };
+  export const TableSubSelectionHandle: any;
   export const TableTextNodeApi: {
     fromNode(...args: any[]): any;
   };
   export const TableTextNodeDefinitionApi: {
     create(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
   };
+  export const TableTextNodeDefinitionHandle: any;
+  export const TableTextNodeHandle: any;
   export const TagInterfaceApi: {
     fromNode(...args: any[]): any;
     getNode(...args: any[]): any;
@@ -3439,10 +4695,12 @@ declare module 'affinity:dom' {
     hasPredefinedKey(...args: any[]): any;
     isMarkAsDecoration(...args: any[]): any;
   };
+  export const TagInterfaceHandle: any;
   export const TextFrameInterfaceApi: {
     canHideOverflow(...args: any[]): any;
     canUseBaselineGrid(...args: any[]): any;
     canUseTextWraps(...args: any[]): any;
+    enumerateTextFlowNodes(...args: any[]): any;
     fromNode(...args: any[]): any;
     getNode(...args: any[]): any;
     getScalarStoryToDomainTransform(...args: any[]): any;
@@ -3460,6 +4718,7 @@ declare module 'affinity:dom' {
     isTextFlowFront(...args: any[]): any;
     isWrappingText(...args: any[]): any;
   };
+  export const TextFrameInterfaceHandle: any;
   export const TextNodeApi: {
     fromNode(...args: any[]): any;
     getArtboardInterface(...args: any[]): any;
@@ -3471,7 +4730,11 @@ declare module 'affinity:dom' {
     getTextFrameInterface(...args: any[]): any;
     getTransparencyInterface(...args: any[]): any;
   };
-  export const TextNodeDefinitionApi: any;
+  export const TextNodeDefinitionApi: {
+    fromNodeDefinition(...args: any[]): any;
+  };
+  export const TextNodeDefinitionHandle: any;
+  export const TextNodeHandle: any;
   export const TextSelectionApi: {
     create(...args: any[]): any;
     enumerateRanges(...args: any[]): any;
@@ -3485,6 +4748,7 @@ declare module 'affinity:dom' {
     hasMarkedText(...args: any[]): any;
     isEmpty(...args: any[]): any;
   };
+  export const TextSelectionHandle: any;
   export const TextVisibilityOptionsApi: {
     anySet(...args: any[]): any;
     clone(...args: any[]): any;
@@ -3503,34 +4767,78 @@ declare module 'affinity:dom' {
     setShowNoteMarks(...args: any[]): any;
     setShowSpecialCharacters(...args: any[]): any;
   };
+  export const TextVisibilityOptionsHandle: any;
+  export const ThresholdAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getThreshold(...args: any[]): any;
+    setThreshold(...args: any[]): any;
+  };
+  export const ThresholdAdjustmentParametersHandle: any;
   export const ThresholdAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ThresholdAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ThresholdAdjustmentRasterNodeDefinitionHandle: any;
+  export const ThresholdAdjustmentRasterNodeHandle: any;
+  export const ToneCompressionAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getColour(...args: any[]): any;
+    getExposure(...args: any[]): any;
+    getGamma(...args: any[]): any;
+    getMethod(...args: any[]): any;
+    setColour(...args: any[]): any;
+    setExposure(...args: any[]): any;
+    setGamma(...args: any[]): any;
+    setMethod(...args: any[]): any;
+  };
+  export const ToneCompressionAdjustmentParametersHandle: any;
   export const ToneCompressionAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ToneCompressionAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ToneCompressionAdjustmentRasterNodeDefinitionHandle: any;
+  export const ToneCompressionAdjustmentRasterNodeHandle: any;
+  export const ToneStretchAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getCompression(...args: any[]): any;
+    getGamma(...args: any[]): any;
+    getMethod(...args: any[]): any;
+    getStretchFactor(...args: any[]): any;
+    setCompression(...args: any[]): any;
+    setGamma(...args: any[]): any;
+    setMethod(...args: any[]): any;
+    setStretchFactor(...args: any[]): any;
+  };
+  export const ToneStretchAdjustmentParametersHandle: any;
   export const ToneStretchAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const ToneStretchAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const ToneStretchAdjustmentRasterNodeDefinitionHandle: any;
+  export const ToneStretchAdjustmentRasterNodeHandle: any;
   export const TransformInterfaceApi: {
+    fromNode(...args: any[]): any;
     getDomainTransform(...args: any[]): any;
     getFocalPoint(...args: any[]): any;
     getFrameTextScale(...args: any[]): any;
@@ -3541,45 +4849,79 @@ declare module 'affinity:dom' {
     getUnconstrainedTransform(...args: any[]): any;
     prefersAspectRatioLockedResize(...args: any[]): any;
   };
+  export const TransformInterfaceHandle: any;
   export const TransparencyInterfaceApi: {
+    fromNode(...args: any[]): any;
     getContentType(...args: any[]): any;
     getDomainTransform(...args: any[]): any;
     getFillDescriptor(...args: any[]): any;
     getNode(...args: any[]): any;
     isTransparencyNone(...args: any[]): any;
   };
+  export const TransparencyInterfaceHandle: any;
   export const TransparencyMeshSubSelectionApi: {
     enumerateItems(...args: any[]): any;
     fromSubSelection(...args: any[]): any;
     getItemCount(...args: any[]): any;
     isEmpty(...args: any[]): any;
   };
+  export const TransparencyMeshSubSelectionHandle: any;
   export const TransparencySubSelectionApi: {
     clone(...args: any[]): any;
     cloneAsTransparencySubSelection(...args: any[]): any;
     fromSubSelection(...args: any[]): any;
     getIndex(...args: any[]): any;
   };
+  export const TransparencySubSelectionHandle: any;
+  export const TwirlFilterParametersApi: {
+    create(...args: any[]): any;
+    getAngle(...args: any[]): any;
+    getPosition(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    setAngle(...args: any[]): any;
+    setPosition(...args: any[]): any;
+    setRadius(...args: any[]): any;
+  };
+  export const TwirlFilterParametersHandle: any;
   export const TwirlFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const TwirlFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const TwirlFilterRasterNodeDefinitionHandle: any;
+  export const TwirlFilterRasterNodeHandle: any;
+  export const UnsharpMaskFilterParametersApi: {
+    create(...args: any[]): any;
+    getFactor(...args: any[]): any;
+    getRadius(...args: any[]): any;
+    getThreshold(...args: any[]): any;
+    setFactor(...args: any[]): any;
+    setRadius(...args: any[]): any;
+    setThreshold(...args: any[]): any;
+  };
+  export const UnsharpMaskFilterParametersHandle: any;
   export const UnsharpMaskFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const UnsharpMaskFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const UnsharpMaskFilterRasterNodeDefinitionHandle: any;
+  export const UnsharpMaskFilterRasterNodeHandle: any;
   export const VectorNodeApi: {
     canBeExpressedAsVectorClip(...args: any[]): any;
+    fromNode(...args: any[]): any;
     getBrushFillInterface(...args: any[]): any;
     getCompoundOperationInterface(...args: any[]): any;
     getCurvesInterface(...args: any[]): any;
@@ -3590,12 +4932,14 @@ declare module 'affinity:dom' {
   export const VectorNodeDefinitionApi: {
     addBrushFillDescriptor(...args: any[]): any;
     addLineDescriptors(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getBrushFillDescriptor(...args: any[]): any;
     getBrushFillDescriptorCount(...args: any[]): any;
     getCurrentBrushFillIndex(...args: any[]): any;
     getCurrentLineDescriptorsIndex(...args: any[]): any;
     getLineDescriptors(...args: any[]): any;
     getLineDescriptorsCount(...args: any[]): any;
+    getPictureFrameEnabled(...args: any[]): any;
     getTransparencyDescriptor(...args: any[]): any;
     insertBrushFillDescriptor(...args: any[]): any;
     insertLineDescriptors(...args: any[]): any;
@@ -3605,26 +4949,57 @@ declare module 'affinity:dom' {
     setCurrentBrushFillIndex(...args: any[]): any;
     setCurrentLineDescriptorsIndex(...args: any[]): any;
     setLineDescriptors(...args: any[]): any;
+    setPictureFrameEnabled(...args: any[]): any;
     setTransparencyDescriptor(...args: any[]): any;
   };
+  export const VectorNodeDefinitionHandle: any;
+  export const VectorNodeHandle: any;
+  export const VibranceAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getSaturation(...args: any[]): any;
+    getVibrance(...args: any[]): any;
+    setSaturation(...args: any[]): any;
+    setVibrance(...args: any[]): any;
+  };
+  export const VibranceAdjustmentParametersHandle: any;
   export const VibranceAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const VibranceAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const VibranceAdjustmentRasterNodeDefinitionHandle: any;
+  export const VibranceAdjustmentRasterNodeHandle: any;
+  export const VignetteFilterParametersApi: {
+    create(...args: any[]): any;
+    getExposure(...args: any[]): any;
+    getHardness(...args: any[]): any;
+    getScale(...args: any[]): any;
+    getShape(...args: any[]): any;
+    setExposure(...args: any[]): any;
+    setHardness(...args: any[]): any;
+    setScale(...args: any[]): any;
+    setShape(...args: any[]): any;
+  };
+  export const VignetteFilterParametersHandle: any;
   export const VignetteFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const VignetteFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const VignetteFilterRasterNodeDefinitionHandle: any;
+  export const VignetteFilterRasterNodeHandle: any;
   export const VisibilityInterfaceApi: {
     getFillOpacity(...args: any[]): any;
     getGlobalOpacity(...args: any[]): any;
@@ -3634,6 +5009,7 @@ declare module 'affinity:dom' {
     isVisibleInExport(...args: any[]): any;
     testVisibility(...args: any[]): any;
   };
+  export const VisibilityInterfaceHandle: any;
   export const VisibilityTestOptionsApi: {
     clone(...args: any[]): any;
     create(...args: any[]): any;
@@ -3652,27 +5028,68 @@ declare module 'affinity:dom' {
     setShowPictureFrames(...args: any[]): any;
     setTextVisibilityOptions(...args: any[]): any;
   };
+  export const VisibilityTestOptionsHandle: any;
+  export const VoronoiFilterParametersApi: {
+    create(...args: any[]): any;
+    getCellSize(...args: any[]): any;
+    getLineWidth(...args: any[]): any;
+    setCellSize(...args: any[]): any;
+    setLineWidth(...args: any[]): any;
+  };
+  export const VoronoiFilterParametersHandle: any;
   export const VoronoiFilterRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const VoronoiFilterRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const VoronoiFilterRasterNodeDefinitionHandle: any;
+  export const VoronoiFilterRasterNodeHandle: any;
+  export const WhiteBalanceAdjustmentParametersApi: {
+    create(...args: any[]): any;
+    getTint(...args: any[]): any;
+    getWhiteBalance(...args: any[]): any;
+    setTint(...args: any[]): any;
+    setWhiteBalance(...args: any[]): any;
+  };
+  export const WhiteBalanceAdjustmentParametersHandle: any;
   export const WhiteBalanceAdjustmentRasterNodeApi: {
+    fromNode(...args: any[]): any;
     getParameters(...args: any[]): any;
   };
   export const WhiteBalanceAdjustmentRasterNodeDefinitionApi: {
     create(...args: any[]): any;
     createDefault(...args: any[]): any;
+    fromNodeDefinition(...args: any[]): any;
     getParameters(...args: any[]): any;
     setParameters(...args: any[]): any;
   };
+  export const WhiteBalanceAdjustmentRasterNodeDefinitionHandle: any;
+  export const WhiteBalanceAdjustmentRasterNodeHandle: any;
 }
 
 declare module 'affinity:fills' {
+  export type DiffusionCurveKind = AffinityEnumValue;
+  export const DiffusionCurveKind: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type DiffusionCurveSide = AffinityEnumValue;
+  export const DiffusionCurveSide: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
   export type FillMask = AffinityEnumValue;
   export const FillMask: {
     readonly None: AffinityEnumValue;
@@ -3713,6 +5130,14 @@ declare module 'affinity:fills' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class DiffusionCurveParametric {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class TransformInfo {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export const BitmapFillApi: {
     clone(...args: any[]): any;
     cloneAsBitmapFill(...args: any[]): any;
@@ -3729,6 +5154,63 @@ declare module 'affinity:fills' {
     setProfile(...args: any[]): any;
     setUpsamplerType(...args: any[]): any;
   };
+  export const BitmapFillHandle: any;
+  export const ColourMeshApi: {
+    clone(...args: any[]): any;
+    cloneAsColourMesh(...args: any[]): any;
+    createDefaultNone(...args: any[]): any;
+    createDefaultWhite(...args: any[]): any;
+    createFromColour(...args: any[]): any;
+    createFromGradient(...args: any[]): any;
+    getNodeColour(...args: any[]): any;
+    setNodeColour(...args: any[]): any;
+  };
+  export const ColourMeshHandle: any;
+  export const DiffusionCurveSetApi: {
+    addArc(...args: any[]): any;
+    addCurve(...args: any[]): any;
+    addEllipse(...args: any[]): any;
+    addLine(...args: any[]): any;
+    clone(...args: any[]): any;
+    create(...args: any[]): any;
+    createDefault(...args: any[]): any;
+    getBackgroundColour(...args: any[]): any;
+    getBackgroundStrength(...args: any[]): any;
+    getCurveBlur(...args: any[]): any;
+    getCurveColour(...args: any[]): any;
+    getCurveCount(...args: any[]): any;
+    getCurveKind(...args: any[]): any;
+    getCurveNodeCount(...args: any[]): any;
+    getCurveNodeSmooth(...args: any[]): any;
+    getCurveParametric(...args: any[]): any;
+    getCurvePoint(...args: any[]): any;
+    getCurvePointCount(...args: any[]): any;
+    getCurvePressure(...args: any[]): any;
+    getCurveStrength(...args: any[]): any;
+    removeCurve(...args: any[]): any;
+    setBackgroundColour(...args: any[]): any;
+    setBackgroundStrength(...args: any[]): any;
+    setCurveArc(...args: any[]): any;
+    setCurveBlur(...args: any[]): any;
+    setCurveColour(...args: any[]): any;
+    setCurveEllipse(...args: any[]): any;
+    setCurveLine(...args: any[]): any;
+    setCurveNodeSmooth(...args: any[]): any;
+    setCurvePoints(...args: any[]): any;
+    setCurvePressure(...args: any[]): any;
+    setCurveStrength(...args: any[]): any;
+  };
+  export const DiffusionCurveSetHandle: any;
+  export const DiffusionFillApi: {
+    clone(...args: any[]): any;
+    cloneAsDiffusionFill(...args: any[]): any;
+    cloneWithNewCurves(...args: any[]): any;
+    create(...args: any[]): any;
+    createDefault(...args: any[]): any;
+    fromFill(...args: any[]): any;
+    getCurves(...args: any[]): any;
+  };
+  export const DiffusionFillHandle: any;
   export const FillApi: {
     clone(...args: any[]): any;
     cloneAsFill(...args: any[]): any;
@@ -3766,6 +5248,8 @@ declare module 'affinity:fills' {
     getTransform(...args: any[]): any;
     getTransformInfo(...args: any[]): any;
   };
+  export const FillDescriptorHandle: any;
+  export const FillHandle: any;
   export const GradientFillApi: {
     clone(...args: any[]): any;
     cloneAsGradientFill(...args: any[]): any;
@@ -3777,6 +5261,7 @@ declare module 'affinity:fills' {
     getGradient(...args: any[]): any;
     getGradientFillType(...args: any[]): any;
   };
+  export const GradientFillHandle: any;
   export const HatchFillApi: {
     clone(...args: any[]): any;
     cloneAsHatchFill(...args: any[]): any;
@@ -3793,12 +5278,22 @@ declare module 'affinity:fills' {
     setPenColour(...args: any[]): any;
     setUnits(...args: any[]): any;
   };
+  export const HatchFillHandle: any;
+  export const MeshFillApi: {
+    clone(...args: any[]): any;
+    cloneAsMeshFill(...args: any[]): any;
+    create(...args: any[]): any;
+    fromFill(...args: any[]): any;
+    getColourMesh(...args: any[]): any;
+  };
+  export const MeshFillHandle: any;
   export const NoFillApi: {
     clone(...args: any[]): any;
     cloneAsNoFill(...args: any[]): any;
     create(...args: any[]): any;
     fromFill(...args: any[]): any;
   };
+  export const NoFillHandle: any;
   export const SolidFillApi: {
     clone(...args: any[]): any;
     cloneAsSolidFill(...args: any[]): any;
@@ -3808,9 +5303,18 @@ declare module 'affinity:fills' {
     getColour(...args: any[]): any;
     setColour(...args: any[]): any;
   };
+  export const SolidFillHandle: any;
 }
 
 declare module 'affinity:fonts' {
+  export type FontField = AffinityEnumValue;
+  export const FontField: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
   export type FontMatch = AffinityEnumValue;
   export const FontMatch: {
     readonly Any: AffinityEnumValue;
@@ -3870,6 +5374,14 @@ declare module 'affinity:fonts' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class VariableFontBold {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class VariableFontItalic {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export const FontApi: {
     clone(...args: any[]): any;
     cloneAsFont(...args: any[]): any;
@@ -3912,6 +5424,7 @@ declare module 'affinity:fonts' {
     getDefault(...args: any[]): any;
     getDisplayName(...args: any[]): any;
   };
+  export const FontCollectionHandle: any;
   export const FontFamilyApi: {
     clone(...args: any[]): any;
     cloneAsFontFamily(...args: any[]): any;
@@ -3923,6 +5436,8 @@ declare module 'affinity:fonts' {
     hasFixed(...args: any[]): any;
     hasVariations(...args: any[]): any;
   };
+  export const FontFamilyHandle: any;
+  export const FontHandle: any;
   export const PanoseApi: {
     clone(...args: any[]): any;
     cloneAsPanose(...args: any[]): any;
@@ -3934,6 +5449,7 @@ declare module 'affinity:fonts' {
     isSerif(...args: any[]): any;
     toString(...args: any[]): any;
   };
+  export const PanoseHandle: any;
 }
 
 declare module 'affinity:fs' {
@@ -4023,6 +5539,10 @@ declare module 'affinity:fs' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class FileSystemSpace {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export const DirectoryIteratorApi: {
     create(...args: any[]): any;
     getFileSize(...args: any[]): any;
@@ -4032,6 +5552,7 @@ declare module 'affinity:fs' {
     isDone(...args: any[]): any;
     next(...args: any[]): any;
   };
+  export const DirectoryIteratorHandle: any;
   export const FileApi: {
     close(...args: any[]): any;
     closeAsync(...args: any[]): any;
@@ -4053,11 +5574,13 @@ declare module 'affinity:fs' {
     write(...args: any[]): any;
     writeAsync(...args: any[]): any;
   };
+  export const FileHandle: any;
   export const FileStatusApi: {
     clone(...args: any[]): any;
     getPermissions(...args: any[]): any;
     getType(...args: any[]): any;
   };
+  export const FileStatusHandle: any;
   export const FileSystemApi: {
     areEquivalent(...args: any[]): any;
     areEquivalentAsync(...args: any[]): any;
@@ -4155,6 +5678,14 @@ declare module 'affinity:geometry' {
     readonly OnCurve: AffinityEnumValue;
     readonly Cubic1: AffinityEnumValue;
     readonly Cubic2: AffinityEnumValue;
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
+  export type MeshDirection = AffinityEnumValue;
+  export const MeshDirection: {
     readonly keys: readonly string[];
     readonly values: readonly number[];
     readonly entries: readonly (readonly [string, number])[];
@@ -4423,12 +5954,20 @@ declare module 'affinity:geometry' {
     readonly isEnum: true;
     parse(value: number): AffinityEnumValue;
   };
+  export class BoundingBox {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export class CubicBezier {
     constructor(...args: any[]);
     end: any;
     c2: any;
     c1: any;
     start: any;
+  }
+  export class CubicBezierPair {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export class CurveCornerData {
     constructor(...args: any[]);
@@ -4440,10 +5979,30 @@ declare module 'affinity:geometry' {
     style: any;
     position: any;
   }
+  export class CurvePair {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class Endpoints {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class MeshSize {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
   export class Point {
     constructor(...args: any[]);
     y: any;
     x: any;
+  }
+  export class PointIntMinMax {
+    constructor(...args: any[]);
+    [key: string]: any;
+  }
+  export class PointMinMax {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export class Rectangle {
     constructor(...args: any[]);
@@ -4451,6 +6010,10 @@ declare module 'affinity:geometry' {
     width: any;
     y: any;
     x: any;
+  }
+  export class ShapeTrapezoidPositions {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export class Size {
     constructor(...args: any[]);
@@ -4461,6 +6024,10 @@ declare module 'affinity:geometry' {
     constructor(...args: any[]);
     height: any;
     width: any;
+  }
+  export class SplineFindPointResult {
+    constructor(...args: any[]);
+    [key: string]: any;
   }
   export class Transform {
     constructor(...args: any[]);
@@ -4571,6 +6138,22 @@ declare module 'affinity:geometry' {
     versineRelative(...args: any[]): any;
     versineTo(...args: any[]): any;
   };
+  export const CurveBuilderHandle: any;
+  export const CurveHandle: any;
+  export const MeshApi: {
+    clone(...args: any[]): any;
+    cloneAsMesh(...args: any[]): any;
+    deleteSpline(...args: any[]): any;
+    getCurveNodePosition(...args: any[]): any;
+    getNodePosition(...args: any[]): any;
+    getNodeStyle(...args: any[]): any;
+    getSize(...args: any[]): any;
+    insertSpline(...args: any[]): any;
+    setCurveNodePosition(...args: any[]): any;
+    setNodePosition(...args: any[]): any;
+    setNodeStyle(...args: any[]): any;
+  };
+  export const MeshHandle: any;
   export const PointApi: {
     absEq(...args: any[]): any;
     assign(...args: any[]): any;
@@ -4599,6 +6182,7 @@ declare module 'affinity:geometry' {
     removeEmptyCurves(...args: any[]): any;
     transform(...args: any[]): any;
   };
+  export const PolyCurveHandle: any;
   export const PolyPolyCurveApi: {
     addPolyCurve(...args: any[]): any;
     addPolyPolyCurve(...args: any[]): any;
@@ -4619,6 +6203,7 @@ declare module 'affinity:geometry' {
     isNearRectangle(...args: any[]): any;
     transform(...args: any[]): any;
   };
+  export const PolyPolyCurveHandle: any;
   export const PolygonApi: {
     addPoint(...args: any[]): any;
     clear(...args: any[]): any;
@@ -4639,6 +6224,7 @@ declare module 'affinity:geometry' {
     isRectangle(...args: any[]): any;
     reverse(...args: any[]): any;
   };
+  export const PolygonHandle: any;
   export const QRPayloadApi: {
     clearPayload(...args: any[]): any;
     clone(...args: any[]): any;
@@ -4660,6 +6246,7 @@ declare module 'affinity:geometry' {
     setDataMergeField(...args: any[]): any;
     setPreviewValue(...args: any[]): any;
   };
+  export const QRPayloadDataMergeHandle: any;
   export const QRPayloadEmailApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadEmail(...args: any[]): any;
@@ -4673,6 +6260,7 @@ declare module 'affinity:geometry' {
     setBody(...args: any[]): any;
     setSubject(...args: any[]): any;
   };
+  export const QRPayloadEmailHandle: any;
   export const QRPayloadFaceTimeApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadFaceTime(...args: any[]): any;
@@ -4681,6 +6269,8 @@ declare module 'affinity:geometry' {
     getRecipient(...args: any[]): any;
     setRecipient(...args: any[]): any;
   };
+  export const QRPayloadFaceTimeHandle: any;
+  export const QRPayloadHandle: any;
   export const QRPayloadLocationApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadLocation(...args: any[]): any;
@@ -4696,6 +6286,7 @@ declare module 'affinity:geometry' {
     setLatitude(...args: any[]): any;
     setLongitude(...args: any[]): any;
   };
+  export const QRPayloadLocationHandle: any;
   export const QRPayloadPhoneApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadPhone(...args: any[]): any;
@@ -4704,6 +6295,7 @@ declare module 'affinity:geometry' {
     getNumber(...args: any[]): any;
     setNumber(...args: any[]): any;
   };
+  export const QRPayloadPhoneHandle: any;
   export const QRPayloadSMSApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadSMS(...args: any[]): any;
@@ -4715,6 +6307,7 @@ declare module 'affinity:geometry' {
     setContent(...args: any[]): any;
     setNumber(...args: any[]): any;
   };
+  export const QRPayloadSMSHandle: any;
   export const QRPayloadTextApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadText(...args: any[]): any;
@@ -4723,6 +6316,7 @@ declare module 'affinity:geometry' {
     getText(...args: any[]): any;
     setText(...args: any[]): any;
   };
+  export const QRPayloadTextHandle: any;
   export const QRPayloadURLApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadURL(...args: any[]): any;
@@ -4732,6 +6326,7 @@ declare module 'affinity:geometry' {
     isURLValid(...args: any[]): any;
     setURL(...args: any[]): any;
   };
+  export const QRPayloadURLHandle: any;
   export const QRPayloadVCardApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadVCard(...args: any[]): any;
@@ -4775,6 +6370,7 @@ declare module 'affinity:geometry' {
     setSuffixes(...args: any[]): any;
     setWebsite(...args: any[]): any;
   };
+  export const QRPayloadVCardHandle: any;
   export const QRPayloadWhatsAppApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadWhatsApp(...args: any[]): any;
@@ -4785,6 +6381,7 @@ declare module 'affinity:geometry' {
     setContent(...args: any[]): any;
     setNumber(...args: any[]): any;
   };
+  export const QRPayloadWhatsAppHandle: any;
   export const QRPayloadWifiApi: {
     clone(...args: any[]): any;
     cloneAsQRPayloadWifi(...args: any[]): any;
@@ -4800,6 +6397,7 @@ declare module 'affinity:geometry' {
     setPassword(...args: any[]): any;
     setSSID(...args: any[]): any;
   };
+  export const QRPayloadWifiHandle: any;
   export const RectangleApi: {
     assign(...args: any[]): any;
     assignMinMax(...args: any[]): any;
@@ -4863,6 +6461,7 @@ declare module 'affinity:geometry' {
     setRightLength(...args: any[]): any;
     setThickness(...args: any[]): any;
   };
+  export const ShapeArrowHandle: any;
   export const ShapeCalloutEllipseApi: {
     clone(...args: any[]): any;
     cloneAsShapeCalloutEllipse(...args: any[]): any;
@@ -4877,6 +6476,7 @@ declare module 'affinity:geometry' {
     setTailEndPosition(...args: any[]): any;
     setTailHeight(...args: any[]): any;
   };
+  export const ShapeCalloutEllipseHandle: any;
   export const ShapeCalloutRectangleApi: {
     clone(...args: any[]): any;
     cloneAsShapeCalloutRectangle(...args: any[]): any;
@@ -4897,30 +6497,35 @@ declare module 'affinity:geometry' {
     setTailWidth(...args: any[]): any;
     setUseSingleRadius(...args: any[]): any;
   };
+  export const ShapeCalloutRectangleHandle: any;
   export const ShapeCat2Api: {
     clone(...args: any[]): any;
     cloneAsShapeCat2(...args: any[]): any;
     create(...args: any[]): any;
     fromShape(...args: any[]): any;
   };
+  export const ShapeCat2Handle: any;
   export const ShapeCat3Api: {
     clone(...args: any[]): any;
     cloneAsShapeCat3(...args: any[]): any;
     create(...args: any[]): any;
     fromShape(...args: any[]): any;
   };
+  export const ShapeCat3Handle: any;
   export const ShapeCat4Api: {
     clone(...args: any[]): any;
     cloneAsShapeCat4(...args: any[]): any;
     create(...args: any[]): any;
     fromShape(...args: any[]): any;
   };
+  export const ShapeCat4Handle: any;
   export const ShapeCatApi: {
     clone(...args: any[]): any;
     cloneAsShapeCat(...args: any[]): any;
     create(...args: any[]): any;
     fromShape(...args: any[]): any;
   };
+  export const ShapeCatHandle: any;
   export const ShapeCloudApi: {
     clone(...args: any[]): any;
     cloneAsShapeCloud(...args: any[]): any;
@@ -4931,6 +6536,7 @@ declare module 'affinity:geometry' {
     setBubbleCount(...args: any[]): any;
     setInnerRadius(...args: any[]): any;
   };
+  export const ShapeCloudHandle: any;
   export const ShapeCogApi: {
     clone(...args: any[]): any;
     cloneAsShapeCog(...args: any[]): any;
@@ -4949,6 +6555,7 @@ declare module 'affinity:geometry' {
     setToothCount(...args: any[]): any;
     setToothSize(...args: any[]): any;
   };
+  export const ShapeCogHandle: any;
   export const ShapeCrescentApi: {
     clone(...args: any[]): any;
     cloneAsShapeCrescent(...args: any[]): any;
@@ -4959,6 +6566,7 @@ declare module 'affinity:geometry' {
     setArcLeft(...args: any[]): any;
     setArcRight(...args: any[]): any;
   };
+  export const ShapeCrescentHandle: any;
   export const ShapeDiamondApi: {
     clone(...args: any[]): any;
     cloneAsShapeDiamond(...args: any[]): any;
@@ -4967,6 +6575,7 @@ declare module 'affinity:geometry' {
     getPosition(...args: any[]): any;
     setPosition(...args: any[]): any;
   };
+  export const ShapeDiamondHandle: any;
   export const ShapeDoubleStarApi: {
     clone(...args: any[]): any;
     cloneAsShapeDoubleStar(...args: any[]): any;
@@ -4979,12 +6588,15 @@ declare module 'affinity:geometry' {
     setPointCount(...args: any[]): any;
     setPointRadius(...args: any[]): any;
   };
+  export const ShapeDoubleStarHandle: any;
   export const ShapeEllipseApi: {
     clone(...args: any[]): any;
     cloneAsShapeEllipse(...args: any[]): any;
     create(...args: any[]): any;
     fromShape(...args: any[]): any;
   };
+  export const ShapeEllipseHandle: any;
+  export const ShapeHandle: any;
   export const ShapeHeartApi: {
     clone(...args: any[]): any;
     cloneAsShapeHeart(...args: any[]): any;
@@ -4993,6 +6605,7 @@ declare module 'affinity:geometry' {
     getSpread(...args: any[]): any;
     setSpread(...args: any[]): any;
   };
+  export const ShapeHeartHandle: any;
   export const ShapePieApi: {
     clone(...args: any[]): any;
     cloneAsShapePie(...args: any[]): any;
@@ -5009,6 +6622,7 @@ declare module 'affinity:geometry' {
     setStartAngle(...args: any[]): any;
     setSweep(...args: any[]): any;
   };
+  export const ShapePieHandle: any;
   export const ShapePolygonApi: {
     clone(...args: any[]): any;
     cloneAsShapePolygon(...args: any[]): any;
@@ -5022,6 +6636,7 @@ declare module 'affinity:geometry' {
     setSideCount(...args: any[]): any;
     setSmoothPoints(...args: any[]): any;
   };
+  export const ShapePolygonHandle: any;
   export const ShapeQRCodeApi: {
     clone(...args: any[]): any;
     cloneAsShapeQRCode(...args: any[]): any;
@@ -5030,6 +6645,7 @@ declare module 'affinity:geometry' {
     getPayload(...args: any[]): any;
     setPayload(...args: any[]): any;
   };
+  export const ShapeQRCodeHandle: any;
   export const ShapeRectangleApi: {
     clone(...args: any[]): any;
     cloneAsShapeRectangle(...args: any[]): any;
@@ -5045,6 +6661,7 @@ declare module 'affinity:geometry' {
     setCornerType(...args: any[]): any;
     setUseSingleRadius(...args: any[]): any;
   };
+  export const ShapeRectangleHandle: any;
   export const ShapeSegmentApi: {
     clone(...args: any[]): any;
     cloneAsShapeSegment(...args: any[]): any;
@@ -5057,6 +6674,7 @@ declare module 'affinity:geometry' {
     setLowerLine(...args: any[]): any;
     setUpperLine(...args: any[]): any;
   };
+  export const ShapeSegmentHandle: any;
   export const ShapeSpiralApi: {
     clone(...args: any[]): any;
     cloneAsShapeSpiral(...args: any[]): any;
@@ -5089,6 +6707,7 @@ declare module 'affinity:geometry' {
     setStyle(...args: any[]): any;
     setTurns(...args: any[]): any;
   };
+  export const ShapeSpiralHandle: any;
   export const ShapeSquareStarApi: {
     clone(...args: any[]): any;
     cloneAsShapeSquareStar(...args: any[]): any;
@@ -5099,6 +6718,7 @@ declare module 'affinity:geometry' {
     setCutout(...args: any[]): any;
     setSideCount(...args: any[]): any;
   };
+  export const ShapeSquareStarHandle: any;
   export const ShapeStarApi: {
     clone(...args: any[]): any;
     cloneAsShapeStar(...args: any[]): any;
@@ -5120,6 +6740,7 @@ declare module 'affinity:geometry' {
     setPointCount(...args: any[]): any;
     setRightCurve(...args: any[]): any;
   };
+  export const ShapeStarHandle: any;
   export const ShapeTearApi: {
     clone(...args: any[]): any;
     cloneAsShapeTear(...args: any[]): any;
@@ -5136,6 +6757,7 @@ declare module 'affinity:geometry' {
     setFixedBallSize(...args: any[]): any;
     setTailPosition(...args: any[]): any;
   };
+  export const ShapeTearHandle: any;
   export const ShapeTrapezoidApi: {
     clone(...args: any[]): any;
     cloneAsShapeTrapezoid(...args: any[]): any;
@@ -5148,6 +6770,7 @@ declare module 'affinity:geometry' {
     setPositions(...args: any[]): any;
     setRightPosition(...args: any[]): any;
   };
+  export const ShapeTrapezoidHandle: any;
   export const ShapeTriangleApi: {
     clone(...args: any[]): any;
     cloneAsShapeTriangle(...args: any[]): any;
@@ -5156,6 +6779,7 @@ declare module 'affinity:geometry' {
     getPosition(...args: any[]): any;
     setPosition(...args: any[]): any;
   };
+  export const ShapeTriangleHandle: any;
   export const SplineApi: {
     clear(...args: any[]): any;
     clone(...args: any[]): any;
@@ -5171,6 +6795,7 @@ declare module 'affinity:geometry' {
     replaceOrInsertPoint(...args: any[]): any;
     setIsLinear(...args: any[]): any;
   };
+  export const SplineHandle: any;
   export const TransformApi: {
     add(...args: any[]): any;
     applyToPoint(...args: any[]): any;
@@ -5228,6 +6853,7 @@ declare module 'affinity:hatches' {
     setRotation(...args: any[]): any;
     setStep(...args: any[]): any;
   };
+  export const HatchLineHandle: any;
   export const HatchPatternApi: {
     appendHatchLine(...args: any[]): any;
     appendHatchLineData(...args: any[]): any;
@@ -5242,6 +6868,7 @@ declare module 'affinity:hatches' {
     insertHatchLine(...args: any[]): any;
     insertHatchLineData(...args: any[]): any;
   };
+  export const HatchPatternHandle: any;
 }
 
 declare module 'affinity:layereffects' {
@@ -5322,6 +6949,7 @@ declare module 'affinity:layereffects' {
     setSoften(...args: any[]): any;
     setStandardBevelProfile(...args: any[]): any;
   };
+  export const BevelEmbossLayerEffectHandle: any;
   export const ColourOverlayLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsColourOverlayLayerEffect(...args: any[]): any;
@@ -5330,6 +6958,7 @@ declare module 'affinity:layereffects' {
     getColour(...args: any[]): any;
     setColour(...args: any[]): any;
   };
+  export const ColourOverlayLayerEffectHandle: any;
   export const GaussianBlurLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsGaussianBlurLayerEffect(...args: any[]): any;
@@ -5340,6 +6969,7 @@ declare module 'affinity:layereffects' {
     setPreserveAlpha(...args: any[]): any;
     setRadius(...args: any[]): any;
   };
+  export const GaussianBlurLayerEffectHandle: any;
   export const GradientOverlayLayerEffectApi: {
     calculateTransform(...args: any[]): any;
     clone(...args: any[]): any;
@@ -5349,6 +6979,7 @@ declare module 'affinity:layereffects' {
     getFillDescriptor(...args: any[]): any;
     setFillDescriptor(...args: any[]): any;
   };
+  export const GradientOverlayLayerEffectHandle: any;
   export const InnerGlowLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsInnerGlowLayerEffect(...args: any[]): any;
@@ -5363,6 +6994,7 @@ declare module 'affinity:layereffects' {
     setIntensity(...args: any[]): any;
     setRadius(...args: any[]): any;
   };
+  export const InnerGlowLayerEffectHandle: any;
   export const InnerShadowLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsInnerShadowLayerEffect(...args: any[]): any;
@@ -5380,6 +7012,7 @@ declare module 'affinity:layereffects' {
     setOffset(...args: any[]): any;
     setRadius(...args: any[]): any;
   };
+  export const InnerShadowLayerEffectHandle: any;
   export const LayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsLayerEffect(...args: any[]): any;
@@ -5394,6 +7027,7 @@ declare module 'affinity:layereffects' {
     setOpacity(...args: any[]): any;
     setScaleWithObject(...args: any[]): any;
   };
+  export const LayerEffectHandle: any;
   export const OuterGlowLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsOuterGlowLayerEffect(...args: any[]): any;
@@ -5407,6 +7041,7 @@ declare module 'affinity:layereffects' {
     setIntensity(...args: any[]): any;
     setRadius(...args: any[]): any;
   };
+  export const OuterGlowLayerEffectHandle: any;
   export const OuterShadowLayerEffectApi: {
     clone(...args: any[]): any;
     cloneAsOuterShadowLayerEffect(...args: any[]): any;
@@ -5426,6 +7061,7 @@ declare module 'affinity:layereffects' {
     setOffset(...args: any[]): any;
     setRadius(...args: any[]): any;
   };
+  export const OuterShadowLayerEffectHandle: any;
   export const OutlineLayerEffectApi: {
     calculateTransform(...args: any[]): any;
     clone(...args: any[]): any;
@@ -5443,6 +7079,7 @@ declare module 'affinity:layereffects' {
     setFillType(...args: any[]): any;
     setRadius(...args: any[]): any;
   };
+  export const OutlineLayerEffectHandle: any;
   export const PhongBevelLayerEffectApi: {
     appendLight(...args: any[]): any;
     clone(...args: any[]): any;
@@ -5483,6 +7120,7 @@ declare module 'affinity:layereffects' {
     setSpecularColour(...args: any[]): any;
     setStandardBevelProfile(...args: any[]): any;
   };
+  export const PhongBevelLayerEffectHandle: any;
   export const PointLightApi: {
     clone(...args: any[]): any;
     cloneAsPointLight(...args: any[]): any;
@@ -5493,6 +7131,7 @@ declare module 'affinity:layereffects' {
     setColour(...args: any[]): any;
     setElevation(...args: any[]): any;
   };
+  export const PointLightHandle: any;
 }
 
 declare module 'affinity:linestyles' {
@@ -5614,6 +7253,7 @@ declare module 'affinity:linestyles' {
     setScaleY(...args: any[]): any;
     setSolidLine(...args: any[]): any;
   };
+  export const ArrowHeadHandle: any;
   export const LineStyleApi: {
     clone(...args: any[]): any;
     create(...args: any[]): any;
@@ -5625,6 +7265,7 @@ declare module 'affinity:linestyles' {
     getDashPhase(...args: any[]): any;
     getJoin(...args: any[]): any;
     getMiterLimit(...args: any[]): any;
+    getPathBrush(...args: any[]): any;
     getType(...args: any[]): any;
     getVectorBrush(...args: any[]): any;
     getWeight(...args: any[]): any;
@@ -5638,6 +7279,7 @@ declare module 'affinity:linestyles' {
     setJoin(...args: any[]): any;
     /** miterLimit: [1.0, 100.0] */
     setMiterLimit(...args: any[]): any;
+    setPathBrush(...args: any[]): any;
     setType(...args: any[]): any;
     setVectorBrush(...args: any[]): any;
     setWeight(...args: any[]): any;
@@ -5659,6 +7301,8 @@ declare module 'affinity:linestyles' {
     isBehind(...args: any[]): any;
     isScale(...args: any[]): any;
   };
+  export const LineStyleDescriptorHandle: any;
+  export const LineStyleHandle: any;
 }
 
 declare module 'affinity:network' {
@@ -5746,10 +7390,24 @@ declare module 'affinity:network' {
     setUseConstrainedNetwork(...args: any[]): any;
     setUseExpensiveNetwork(...args: any[]): any;
   };
+  export const HttpRequestHandle: any;
   export const HttpResponseApi: {
     getContent(...args: any[]): any;
     getHeaderValue(...args: any[]): any;
     getStatusCode(...args: any[]): any;
+  };
+  export const HttpResponseHandle: any;
+}
+
+declare module 'affinity:os' {
+  export const OSApi: {
+    getArchitecture(...args: any[]): any;
+    getEol(...args: any[]): any;
+    getMachine(...args: any[]): any;
+    getOSName(...args: any[]): any;
+    getOSVersion(...args: any[]): any;
+    getPlatform(...args: any[]): any;
+    getRelease(...args: any[]): any;
   };
 }
 
@@ -5838,116 +7496,161 @@ declare module 'affinity:raster' {
     upResamplerType: any;
     downResamplerType: any;
   }
+  export const NodeRenderingEngineOptionsApi: {
+    clone(...args: any[]): any;
+    create(...args: any[]): any;
+    getAllowDegradedBitmaps(...args: any[]): any;
+    getAntialias(...args: any[]): any;
+    getClipToSpread(...args: any[]): any;
+    getDitherGradients(...args: any[]): any;
+    getDownResamplerType(...args: any[]): any;
+    getDrawBackground(...args: any[]): any;
+    getIsIsolatedRendering(...args: any[]): any;
+    getIsMaskRenderingMode(...args: any[]): any;
+    getIsPerfectClipping(...args: any[]): any;
+    getUpResamplerType(...args: any[]): any;
+    setAllowDegradedBitmaps(...args: any[]): any;
+    setAntialias(...args: any[]): any;
+    setClipToSpread(...args: any[]): any;
+    setDitherGradients(...args: any[]): any;
+    setDownResamplerType(...args: any[]): any;
+    setDrawBackground(...args: any[]): any;
+    setIsIsolatedRendering(...args: any[]): any;
+    setIsMaskRenderingMode(...args: any[]): any;
+    setIsPerfectClipping(...args: any[]): any;
+    setUpResamplerType(...args: any[]): any;
+  };
+  export const NodeRenderingEngineOptionsHandle: any;
   export const PixelReaderCMYKA8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderCMYKA8Handle: any;
   export const PixelReaderIA16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderIA16Handle: any;
   export const PixelReaderIA8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderIA8Handle: any;
   export const PixelReaderLABA16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderLABA16Handle: any;
   export const PixelReaderM16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderM16Handle: any;
   export const PixelReaderM8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderM8Handle: any;
   export const PixelReaderMfApi: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderMfHandle: any;
   export const PixelReaderRGBA16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderRGBA16Handle: any;
   export const PixelReaderRGBA8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderRGBA8Handle: any;
   export const PixelReaderRGBAufApi: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
   };
+  export const PixelReaderRGBAufHandle: any;
   export const PixelReaderWriterCMYKA8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterCMYKA8Handle: any;
   export const PixelReaderWriterIA16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterIA16Handle: any;
   export const PixelReaderWriterIA8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterIA8Handle: any;
   export const PixelReaderWriterLABA16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterLABA16Handle: any;
   export const PixelReaderWriterM16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterM16Handle: any;
   export const PixelReaderWriterM8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterM8Handle: any;
   export const PixelReaderWriterMfApi: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterMfHandle: any;
   export const PixelReaderWriterRGBA16Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterRGBA16Handle: any;
   export const PixelReaderWriterRGBA8Api: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterRGBA8Handle: any;
   export const PixelReaderWriterRGBAufApi: {
     create(...args: any[]): any;
     dispose(...args: any[]): any;
     readPixel(...args: any[]): any;
     writePixel(...args: any[]): any;
   };
+  export const PixelReaderWriterRGBAufHandle: any;
   export const RasterObjectApi: {
     clone(...args: any[]): any;
     cloneEmpty(...args: any[]): any;
@@ -5970,6 +7673,7 @@ declare module 'affinity:raster' {
     loadBitmapFromFile(...args: any[]): any;
     loadBitmapFromFileAsync(...args: any[]): any;
   };
+  export const RasterObjectHandle: any;
 }
 
 declare module 'affinity:story' {
@@ -6491,12 +8195,14 @@ declare module 'affinity:story' {
     cloneAsAnchorGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const AnchorGlyphHandle: any;
   export const CapturedDateTimeGlyphApi: {
     clone(...args: any[]): any;
     cloneAsCapturedDateTimeGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getDateTime(...args: any[]): any;
   };
+  export const CapturedDateTimeGlyphHandle: any;
   export const CharGlyphApi: {
     clone(...args: any[]): any;
     cloneAsCharGlyph(...args: any[]): any;
@@ -6506,6 +8212,7 @@ declare module 'affinity:story' {
     getChar32(...args: any[]): any;
     getString(...args: any[]): any;
   };
+  export const CharGlyphHandle: any;
   export const CrossReferenceGlyphApi: {
     clone(...args: any[]): any;
     cloneAsCrossReferenceGlyph(...args: any[]): any;
@@ -6515,46 +8222,54 @@ declare module 'affinity:story' {
     isTargetDifferentChapter(...args: any[]): any;
     usesStyles(...args: any[]): any;
   };
+  export const CrossReferenceGlyphHandle: any;
   export const CrossReferenceSubGlyphApi: {
     clone(...args: any[]): any;
     cloneAsCrossReferenceSubGlyph(...args: any[]): any;
     create(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const CrossReferenceSubGlyphHandle: any;
   export const CustomFieldGlyphApi: {
     clone(...args: any[]): any;
     cloneAsCustomFieldGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const CustomFieldGlyphHandle: any;
   export const DataMergeFieldGlyphApi: {
     clone(...args: any[]): any;
     cloneAsDataMergeFieldGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getDataMergeFieldId(...args: any[]): any;
   };
+  export const DataMergeFieldGlyphHandle: any;
   export const DataMergeGlyphApi: {
     clone(...args: any[]): any;
     cloneAsDataMergeGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const DataMergeGlyphHandle: any;
   export const DataMergeSourceGlyphApi: {
     clone(...args: any[]): any;
     cloneAsDataMergeSourceGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getDataMergeSourceType(...args: any[]): any;
   };
+  export const DataMergeSourceGlyphHandle: any;
   export const DocumentFieldGlyphApi: {
     clone(...args: any[]): any;
     cloneAsDocumentFieldGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getDocumentFieldType(...args: any[]): any;
   };
+  export const DocumentFieldGlyphHandle: any;
   export const FieldGlyphApi: {
     clone(...args: any[]): any;
     cloneAsFieldGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getFieldName(...args: any[]): any;
   };
+  export const FieldGlyphHandle: any;
   export const FillerTextGlyphApi: {
     clone(...args: any[]): any;
     cloneAsFillerTextGlyph(...args: any[]): any;
@@ -6563,12 +8278,14 @@ declare module 'affinity:story' {
     getFillerTextType(...args: any[]): any;
     getSourceBegin(...args: any[]): any;
   };
+  export const FillerTextGlyphHandle: any;
   export const FormattableFieldGlyphApi: {
     clone(...args: any[]): any;
     cloneAsFormattableFieldGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getFieldDataType(...args: any[]): any;
   };
+  export const FormattableFieldGlyphHandle: any;
   export const GlyphApi: {
     canSoftBreakAfter(...args: any[]): any;
     canSoftBreakBefore(...args: any[]): any;
@@ -6644,45 +8361,54 @@ declare module 'affinity:story' {
     setUnderlineFill(...args: any[]): any;
     setUnderlineType(...args: any[]): any;
   };
+  export const GlyphAttsHandle: any;
+  export const GlyphHandle: any;
   export const GlyphIndexGlyphApi: {
     clone(...args: any[]): any;
     cloneAsGlyphIndexGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getIndex(...args: any[]): any;
   };
+  export const GlyphIndexGlyphHandle: any;
   export const HardBreakGlyphApi: {
     clone(...args: any[]): any;
     cloneAsHardBreakGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const HardBreakGlyphHandle: any;
   export const IndentToHereGlyphApi: {
     clone(...args: any[]): any;
     cloneAsIndentToHereGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const IndentToHereGlyphHandle: any;
   export const IndexMarkGlyphApi: {
     clone(...args: any[]): any;
     cloneAsIndexMarkGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getGlyphStyle(...args: any[]): any;
   };
+  export const IndexMarkGlyphHandle: any;
   export const ListNumberGlyphApi: {
     clone(...args: any[]): any;
     cloneAsListNumberGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getLevel(...args: any[]): any;
   };
+  export const ListNumberGlyphHandle: any;
   export const NoteNumberGlyphApi: {
     clone(...args: any[]): any;
     cloneAsNoteNumberGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const NoteNumberGlyphHandle: any;
   export const PageNumberGlyphApi: {
     clone(...args: any[]): any;
     cloneAsPageNumberGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     getPageNumberType(...args: any[]): any;
   };
+  export const PageNumberGlyphHandle: any;
   export const ParagraphAttsApi: {
     clone(...args: any[]): any;
     create(...args: any[]): any;
@@ -6735,6 +8461,7 @@ declare module 'affinity:story' {
     setUseSpaceBeforeMode(...args: any[]): any;
     setUseSpaceBetweenSameStyles(...args: any[]): any;
   };
+  export const ParagraphAttsHandle: any;
   export const PinGlyphApi: {
     clone(...args: any[]): any;
     cloneAsPinGlyph(...args: any[]): any;
@@ -6744,18 +8471,21 @@ declare module 'affinity:story' {
     isInline(...args: any[]): any;
     isNote(...args: any[]): any;
   };
+  export const PinGlyphHandle: any;
   export const RangenoteBodyGlyphApi: {
     clone(...args: any[]): any;
     cloneAsRangenoteBodyGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     isLive(...args: any[]): any;
   };
+  export const RangenoteBodyGlyphHandle: any;
   export const RangenoteEndGlyphApi: {
     clone(...args: any[]): any;
     cloneAsRangenoteEndGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
     isLive(...args: any[]): any;
   };
+  export const RangenoteEndGlyphHandle: any;
   export const RangenoteReferenceGlyphApi: {
     clone(...args: any[]): any;
     cloneAsRangenoteReferenceGlyph(...args: any[]): any;
@@ -6763,21 +8493,25 @@ declare module 'affinity:story' {
     getNotePosition(...args: any[]): any;
     getNoteType(...args: any[]): any;
   };
+  export const RangenoteReferenceGlyphHandle: any;
   export const RightIndentTabGlyphApi: {
     clone(...args: any[]): any;
     cloneAsRightIndentTabGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const RightIndentTabGlyphHandle: any;
   export const RunningHeaderGlyphApi: {
     clone(...args: any[]): any;
     cloneAsRunningHeaderGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const RunningHeaderGlyphHandle: any;
   export const SectionNameGlyphApi: {
     clone(...args: any[]): any;
     cloneAsSectionNameGlyph(...args: any[]): any;
     fromGlyph(...args: any[]): any;
   };
+  export const SectionNameGlyphHandle: any;
   export const StoryApi: {
     containsBookEndnotes(...args: any[]): any;
     containsIndex(...args: any[]): any;
@@ -6826,6 +8560,7 @@ declare module 'affinity:story' {
     setToArtisticTextDefaultStyle(...args: any[]): any;
     setToFrameTextDefaultStyle(...args: any[]): any;
   };
+  export const StoryBuilderHandle: any;
   export const StoryDeltaApi: {
     createAlignToBaselineGridDelta(...args: any[]): any;
     createAlignXDelta(...args: any[]): any;
@@ -6864,6 +8599,7 @@ declare module 'affinity:story' {
     createPenFillDelta(...args: any[]): any;
     createPostscriptNameDelta(...args: any[]): any;
     createRightIndentDelta(...args: any[]): any;
+    createSetAttsDelta(...args: any[]): any;
     createStartAtHardBreakDelta(...args: any[]): any;
     createStrikeoutFillDelta(...args: any[]): any;
     createStrikeoutTypeDelta(...args: any[]): any;
@@ -6878,6 +8614,8 @@ declare module 'affinity:story' {
     createWeightDelta(...args: any[]): any;
     createWidthDelta(...args: any[]): any;
   };
+  export const StoryDeltaHandle: any;
+  export const StoryHandle: any;
   export const StoryRangeApi: {
     getCount(...args: any[]): any;
     getReversed(...args: any[]): any;
@@ -6888,6 +8626,14 @@ declare module 'affinity:story' {
 }
 
 declare module 'affinity:timers' {
+  export type TaskCallbackReason = AffinityEnumValue;
+  export const TaskCallbackReason: {
+    readonly keys: readonly string[];
+    readonly values: readonly number[];
+    readonly entries: readonly (readonly [string, number])[];
+    readonly isEnum: true;
+    parse(value: number): AffinityEnumValue;
+  };
   export const TimerApi: {
     cancel(...args: any[]): any;
     cancelAll(...args: any[]): any;
@@ -6901,6 +8647,7 @@ declare module 'affinity:timers' {
     setExpiryFromNow(...args: any[]): any;
     waitAsync(...args: any[]): any;
   };
+  export const TimerHandle: any;
   export const sleep: any;
 }
 
@@ -6959,9 +8706,11 @@ declare module 'affinity:ui' {
     setOnControlValueChangedHandler(...args: any[]): any;
   };
   export const DialogBoolControlApi: {
+    fromControl(...args: any[]): any;
     getValue(...args: any[]): any;
     setValue(...args: any[]): any;
   };
+  export const DialogBoolControlHandle: any;
   export const DialogButtonApi: {
     fromControl(...args: any[]): any;
     getAlignment(...args: any[]): any;
@@ -6969,16 +8718,19 @@ declare module 'affinity:ui' {
     setAlignment(...args: any[]): any;
     setIsFullWidth(...args: any[]): any;
   };
+  export const DialogButtonHandle: any;
   export const DialogButtonSetApi: {
     fromControl(...args: any[]): any;
     getIsFullWidth(...args: any[]): any;
     setIsFullWidth(...args: any[]): any;
   };
+  export const DialogButtonSetHandle: any;
   export const DialogCheckBoxApi: {
     fromControl(...args: any[]): any;
     getIsFullWidth(...args: any[]): any;
     setIsFullWidth(...args: any[]): any;
   };
+  export const DialogCheckBoxHandle: any;
   export const DialogColourPickerApi: {
     fromControl(...args: any[]): any;
     getAllowNoise(...args: any[]): any;
@@ -6990,6 +8742,7 @@ declare module 'affinity:ui' {
     setIsFullWidth(...args: any[]): any;
     setValue(...args: any[]): any;
   };
+  export const DialogColourPickerHandle: any;
   export const DialogColumnApi: {
     addGroup(...args: any[]): any;
     enumerateGroups(...args: any[]): any;
@@ -7001,17 +8754,20 @@ declare module 'affinity:ui' {
     setPaddingFactor(...args: any[]): any;
     setWidthProportion(...args: any[]): any;
   };
+  export const DialogColumnHandle: any;
   export const DialogColumnStackApi: {
     addColumn(...args: any[]): any;
     enumerateColumns(...args: any[]): any;
     getColumn(...args: any[]): any;
     getColumnCount(...args: any[]): any;
   };
+  export const DialogColumnStackHandle: any;
   export const DialogComboBoxApi: {
     fromControl(...args: any[]): any;
     getIsFullWidth(...args: any[]): any;
     setIsFullWidth(...args: any[]): any;
   };
+  export const DialogComboBoxHandle: any;
   export const DialogControlApi: {
     getDescription(...args: any[]): any;
     getIsEnabled(...args: any[]): any;
@@ -7020,10 +8776,13 @@ declare module 'affinity:ui' {
     setIsEnabled(...args: any[]): any;
     setOnValueChangedHandler(...args: any[]): any;
   };
+  export const DialogControlHandle: any;
   export const DialogEnumControlApi: {
+    fromControl(...args: any[]): any;
     getSelectedIndex(...args: any[]): any;
     setSelectedIndex(...args: any[]): any;
   };
+  export const DialogEnumControlHandle: any;
   export const DialogFillEditorApi: {
     fromControl(...args: any[]): any;
     getFill(...args: any[]): any;
@@ -7033,6 +8792,7 @@ declare module 'affinity:ui' {
     setIsFullWidth(...args: any[]): any;
     setIsStrokeFill(...args: any[]): any;
   };
+  export const DialogFillEditorHandle: any;
   export const DialogFontPickerApi: {
     fromControl(...args: any[]): any;
     getFont(...args: any[]): any;
@@ -7046,6 +8806,7 @@ declare module 'affinity:ui' {
     setIsFullWidth(...args: any[]): any;
     setText(...args: any[]): any;
   };
+  export const DialogFontPickerHandle: any;
   export const DialogGroupApi: {
     addButton(...args: any[]): any;
     addButtonGetID(...args: any[]): any;
@@ -7087,25 +8848,31 @@ declare module 'affinity:ui' {
     getLabel(...args: any[]): any;
     setEnableSeparator(...args: any[]): any;
   };
+  export const DialogGroupHandle: any;
+  export const DialogHandle: any;
   export const DialogItemApi: {
     getIsVisible(...args: any[]): any;
     getItemID(...args: any[]): any;
     getItemType(...args: any[]): any;
     setIsVisible(...args: any[]): any;
   };
+  export const DialogItemHandle: any;
   export const DialogRadioGroupApi: {
     fromControl(...args: any[]): any;
     getIsFullWidth(...args: any[]): any;
     setIsFullWidth(...args: any[]): any;
   };
+  export const DialogRadioGroupHandle: any;
   export const DialogSpatialAnchorApi: {
     fromControl(...args: any[]): any;
     getValue(...args: any[]): any;
     setValue(...args: any[]): any;
   };
+  export const DialogSpatialAnchorHandle: any;
   export const DialogStaticTextApi: {
     fromControl(...args: any[]): any;
   };
+  export const DialogStaticTextHandle: any;
   export const DialogStrokeEditorApi: {
     fromControl(...args: any[]): any;
     getIsFullWidth(...args: any[]): any;
@@ -7113,9 +8880,11 @@ declare module 'affinity:ui' {
     setIsFullWidth(...args: any[]): any;
     setStroke(...args: any[]): any;
   };
+  export const DialogStrokeEditorHandle: any;
   export const DialogSwitchApi: {
     fromControl(...args: any[]): any;
   };
+  export const DialogSwitchHandle: any;
   export const DialogTextBoxApi: {
     fromControl(...args: any[]): any;
     getIsMultiLine(...args: any[]): any;
@@ -7123,6 +8892,7 @@ declare module 'affinity:ui' {
     setIsMultiLine(...args: any[]): any;
     setRowSpan(...args: any[]): any;
   };
+  export const DialogTextBoxHandle: any;
   export const DialogTextControlApi: {
     fromControl(...args: any[]): any;
     getIsFullWidth(...args: any[]): any;
@@ -7132,6 +8902,7 @@ declare module 'affinity:ui' {
     setText(...args: any[]): any;
     setTextHorizontalAlignment(...args: any[]): any;
   };
+  export const DialogTextControlHandle: any;
   export const DialogUnitValueEditorApi: {
     fromControl(...args: any[]): any;
     getHasNoMaxValue(...args: any[]): any;
@@ -7148,6 +8919,7 @@ declare module 'affinity:ui' {
     setShowPopupSlider(...args: any[]): any;
     setValue(...args: any[]): any;
   };
+  export const DialogUnitValueEditorHandle: any;
   export const UiApi: {
     alert(...args: any[]): any;
     alertAsync(...args: any[]): any;

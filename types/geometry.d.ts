@@ -5,49 +5,6 @@ import { HandleObject } from '/handleobject';
 import { SpanCollection } from '/collection';
 import { CurveCornerType } from 'affinity:geometry';
 import { CurveNodeType } from 'affinity:geometry';
-import { Point } from 'affinity:geometry';
-import { Vector } from 'affinity:geometry';
-
-export class Transform {
-  constructor(...args: any[]);
-  data: any;
-  setIdentity(): this;
-  assign(source?: any): this;
-  compose(data?: any): this;
-  scale(x?: any, y?: any): this;
-  shear(x?: any, y?: any): this;
-  rotate(rads?: any): this;
-  translate(x?: any, y?: any): this;
-  invert(): this;
-  decompose(): any;
-  applyToPoint(pt?: any): any;
-  applyToVector(vec?: any): any;
-  premultiplyBy(other?: any): this;
-  postmultiplyBy(other?: any): this;
-  premultipliedBy(other?: any): Transform;
-  postmultipliedBy(other?: any): Transform;
-  multiply(other?: any): Transform;
-  around(x?: any, y?: any): any;
-  about(x?: any, y?: any): any;
-  clone(): Transform;
-  scaled(x?: any, y?: any): any;
-  sheared(x?: any, y?: any): any;
-  rotated(rads?: any): any;
-  translated(x?: any, y?: any): any;
-  undefined
-  readonly xAxis: Vector;
-  readonly yAxis: Vector;
-  readonly origin: Point;
-  readonly inverted: any;
-  static multiply(a?: any, b?: any): Transform;
-  static add(a?: any, b?: any): Transform;
-  static subtract(a?: any, b?: any): Transform;
-  static createIdentity(): Transform;
-  static createTranslate(x?: any, y?: any): Transform;
-  static createRotate(rads?: any): Transform;
-  static createScale(x?: any, y?: any): Transform;
-  static createShear(x?: any, y?: any): Transform;
-}
 
 export class CubicBezier {
   constructor(...args: any[]);
@@ -76,6 +33,126 @@ export class CubicBezier {
   readonly boundingBox: any;
   readonly controlBox: any;
   static createLine(ptA?: any, ptB?: any): any;
+}
+
+export class Point {
+  constructor(...args: any[]);
+  x: any;
+  y: any;
+  makeZero(): this;
+  assign(source?: any): this;
+  negEq(): this;
+  absEq(): this;
+  distance(other?: any): any;
+  distanceSquared(other?: any): any;
+  interpolate(other?: any, t?: any): any;
+  scale(factor?: any): any;
+  translate(vec?: any): any;
+  transform(xf?: any): any;
+  vectorTo(other?: any): any;
+  readonly neg: any;
+  readonly abs: any;
+}
+
+export class Rectangle {
+  constructor(...args: any[]);
+  x: any;
+  y: any;
+  width: any;
+  height: any;
+  makeZero(): this;
+  makeNormalised(): this;
+  assign(source?: any): this;
+  assignMinMax(minPt?: any, maxPt?: any): this;
+  offset(vec?: any): this;
+  moveTo(pt?: any): this;
+  centreOn(pt?: any): this;
+  readonly topLeft: any;
+  readonly topCentre: any;
+  readonly topRight: any;
+  readonly centreLeft: any;
+  readonly centre: any;
+  readonly centreRight: any;
+  readonly bottomLeft: any;
+  readonly bottomCentre: any;
+  readonly bottomRight: any;
+  readonly minPoint: any;
+  readonly maxPoint: any;
+  readonly minMaxPoints: any;
+  readonly area: any;
+  readonly isFinite: boolean;
+  readonly isValid: boolean;
+}
+
+export class Transform {
+  constructor(...args: any[]);
+  data: any;
+  setIdentity(): this;
+  assign(source?: any): this;
+  compose(data?: any): this;
+  scale(x?: any, y?: any): this;
+  shear(x?: any, y?: any): this;
+  rotate(rads?: any): this;
+  translate(x?: any, y?: any): this;
+  invert(): this;
+  decompose(): any;
+  applyToPoint(pt?: any): any;
+  applyToVector(vec?: any): any;
+  premultiplyBy(other?: any): this;
+  postmultiplyBy(other?: any): this;
+  premultipliedBy(other?: any): Transform;
+  postmultipliedBy(other?: any): Transform;
+  multiply(other?: any): Transform;
+  around(x?: any, y?: any): any;
+  about(x?: any, y?: any): any;
+  clone(): Transform;
+  scaled(x?: any, y?: any): any;
+  sheared(x?: any, y?: any): any;
+  rotated(rads?: any): any;
+  translated(x?: any, y?: any): any;
+  undefined
+  function(depth?: any, options?: any, inspect?: any): string;
+  readonly xAxis: Vector;
+  readonly yAxis: Vector;
+  readonly origin: Point;
+  readonly inverted: any;
+  static multiply(a?: any, b?: any): Transform;
+  static add(a?: any, b?: any): Transform;
+  static subtract(a?: any, b?: any): Transform;
+  static createIdentity(): Transform;
+  static createTranslate(x?: any, y?: any): Transform;
+  static createRotate(rads?: any): Transform;
+  static createScale(x?: any, y?: any): Transform;
+  static createShear(x?: any, y?: any): Transform;
+}
+
+export class Vector {
+  constructor(...args: any[]);
+  x: any;
+  y: any;
+  makeZero(): this;
+  assign(source?: any): this;
+  negEq(): this;
+  absEq(): this;
+  reverse(): any;
+  dot(other?: any): any;
+  cross(other?: any): any;
+  normalise(): any;
+  scale(factor?: any): any;
+  add(other?: any): any;
+  subtract(other?: any): any;
+  rotate(rads?: any): any;
+  transform(xf?: any): any;
+  readonly neg: any;
+  readonly abs: any;
+  readonly angle: any;
+  readonly angleDeg: any;
+  readonly spangle: any;
+  readonly length: any;
+  readonly lengthSquared: any;
+  static withAngle(rads?: any): Vector;
+  static withAngleDeg(deg?: any): Vector;
+  static withSpangle(spangle?: any): Vector;
 }
 
 export class Curve extends HandleObject {
@@ -164,6 +241,20 @@ export class CurveBuilder extends HandleObject {
   bulgeToXY(x?: any, y?: any, bulge?: any): this;
   bulgeRelative(vector?: any, bulge?: any): this;
   bulgeRelativeXY(dx?: any, dy?: any, bulge?: any): this;
+}
+
+export class Mesh extends HandleObject {
+  constructor(handle?: any);
+  clone(): Mesh;
+  readonly size: any;
+  getNodePosition(xIndex?: number, yIndex?: number): any;
+  setNodePosition(xIndex?: number, yIndex?: number, point?: any): any;
+  getNodeStyle(xIndex?: number, yIndex?: number): any;
+  setNodeStyle(xIndex?: number, yIndex?: number, style?: any): any;
+  insertSpline(isVertical?: boolean, index?: any, param?: any): any;
+  deleteSpline(isVertical?: boolean, index?: any): any;
+  getCurveNodePosition(xIndex?: number, yIndex?: number, direction?: any): any;
+  setCurveNodePosition(xIndex?: number, yIndex?: number, direction?: any, point?: any): any;
 }
 
 export class PolyCurve extends HandleObject {
@@ -293,16 +384,21 @@ export function rectsIntersect(rc1?: any, rc2?: any): any;
 export function unionRanges(a1?: any, a2?: any, b1?: any, b2?: any): any;
 export function unionRects(rc1?: any, rc2?: any): any;
 export function valueInRange(r1?: any, r2?: any, value?: any): any;
+export { BoundingBox } from 'affinity:geometry';
+export { CubicBezierPair } from 'affinity:geometry';
 export { CurveCornerData } from 'affinity:geometry';
 export { CurveCornerType } from 'affinity:geometry';
 export { CurveNode } from 'affinity:geometry';
 export { CurveNodeStyle } from 'affinity:geometry';
 export { CurveNodeType } from 'affinity:geometry';
-export { Point } from 'affinity:geometry';
-export { Rectangle } from 'affinity:geometry';
+export { CurvePair } from 'affinity:geometry';
+export { Endpoints } from 'affinity:geometry';
+export { MeshDirection } from 'affinity:geometry';
+export { MeshSize } from 'affinity:geometry';
+export { PointMinMax } from 'affinity:geometry';
+export { ShapeTrapezoidPositions } from 'affinity:geometry';
 export { Size } from 'affinity:geometry';
-export { SizeInt } from 'affinity:geometry';
+export { SplineFindPointResult } from 'affinity:geometry';
 export { SplineProfile } from 'affinity:geometry';
 export { TransformData } from 'affinity:geometry';
-export { Vector } from 'affinity:geometry';
 export { WindingOrder } from 'affinity:geometry';

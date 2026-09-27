@@ -328,10 +328,10 @@ export class ShapeRectangle extends Shape {
   constructor(handle?: any);
   static create(): ShapeRectangle;
   clone(): ShapeRectangle;
-  readonly topLeft: ShapeRectangleCornerProxy;
-  readonly topRight: ShapeRectangleCornerProxy;
-  readonly bottomLeft: ShapeRectangleCornerProxy;
-  readonly bottomRight: ShapeRectangleCornerProxy;
+  readonly topLeft: ShapeRectangleCorner;
+  readonly topRight: ShapeRectangleCorner;
+  readonly bottomLeft: ShapeRectangleCorner;
+  readonly bottomRight: ShapeRectangleCorner;
   readonly isPlainRectangle: boolean;
   readonly absoluteSizes: any;
   useSingleRadius: any;
@@ -342,7 +342,7 @@ export class ShapeRectangle extends Shape {
   setAbsoluteSizes(value?: any, width?: any, height?: any): this;
 }
 
-export class ShapeRectangleCornerProxy extends HandleObject {
+export class ShapeRectangleCorner {
   constructor(shapeRectangleHandle?: any, cornerIndex?: number);
   readonly radius: any;
   cornerType: any;

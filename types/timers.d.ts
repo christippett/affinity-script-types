@@ -8,13 +8,16 @@ export class Timer extends HandleObject {
   cancel(): any;
   static cancelAll(): any;
   static readonly now: any;
+  static readonly nowBigInt: any;
   expiry: any;
   expiryBigInt: any;
-  moveExpiry(value?: any): any;
+  moveExpiry(integerOrBigInt?: any): any;
   expiryFromNow: any;
+  readonly expiryFromNowBigInt: any;
   waitAsync(callback?: (...args: any[]) => any): any;
   dispose(): any;
   expiresFromNow: any;
+  readonly expiresFromNowBigInt: any;
 }
 
 export function setImmediate(callback?: (...args: any[]) => any, ...args: any): any;

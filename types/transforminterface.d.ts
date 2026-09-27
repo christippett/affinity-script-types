@@ -18,3 +18,4 @@ export class TransformInterface extends HandleObject {
   getNode(): any;
 }
 
+export { FocalPoint } from 'affinity:dom';

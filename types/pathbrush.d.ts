@@ -4,10 +4,10 @@ import { HandleObject } from '/handleobject';
 import { Spline } from '/geometry';
 import { CornerStrategy } from 'affinity:brushes';
 
-export class VectorBrush extends HandleObject {
+export class PathBrush extends HandleObject {
   constructor(handle?: any);
   static createDefault(): any;
-  clone(): VectorBrush;
+  clone(): PathBrush;
   brushWidth: number;
   sizeVariance: any;
   sizeControllerType: any;
@@ -19,5 +19,5 @@ export class VectorBrush extends HandleObject {
   cornerStrategy: CornerStrategy;
 }
 
-export { VectorBrushDynamicControllerType } from 'affinity:brushes';
+export { PathBrushDynamicControllerType } from 'affinity:brushes';
 export { CornerStrategy } from 'affinity:brushes';

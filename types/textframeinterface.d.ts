@@ -16,6 +16,8 @@ export class TextFrameInterface extends HandleObject {
   readonly isWrappingText: boolean;
   readonly textBegin: any;
   readonly textFlowIndex: number;
+  enumerateTextFlowNodes(callback?: (...args: any[]) => any): any;
+  readonly textFlowNodes: any;
   readonly scalarStoryToDomainTransform: any;
   readonly storyToDomainTransform: any;
   readonly textRenderScale: any;

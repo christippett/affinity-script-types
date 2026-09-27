@@ -4,6 +4,7 @@ import { Colour } from '/colours';
 import { Gradient } from '/colours';
 import { HandleObject } from '/handleobject';
 import { HatchPattern } from '/hatch';
+import { Mesh } from '/geometry';
 import { RasterObject } from '/rasterobject';
 import { BlendMode } from 'affinity:common';
 import { FillType } from 'affinity:fills';
@@ -21,6 +22,62 @@ export class BitmapFill extends Fill {
   isKOnly: boolean;
   profile: any;
   upsamplerType: any;
+}
+
+export class ColourMesh extends Mesh {
+  constructor(handle?: any);
+  static createDefaultNone(): ColourMesh;
+  static createDefaultWhite(): ColourMesh;
+  static createFromColour(colour?: any, size?: any): ColourMesh;
+  static createFromGradient(gradient?: any, isRadial?: boolean): ColourMesh;
+  clone(): ColourMesh;
+  getNodeColour(xIndex?: number, yIndex?: number): any;
+  setNodeColour(xIndex?: number, yIndex?: number, colour?: any): this;
+}
+
+export class DiffusionCurveSet extends HandleObject {
+  constructor(handle?: any);
+  static create(): DiffusionCurveSet;
+  static createDefault(colourA?: any, colourB?: any): DiffusionCurveSet;
+  clone(): DiffusionCurveSet;
+  readonly curveCount: number;
+  addCurve(points?: any, leftColour?: any, rightColour?: any): any;
+  removeCurve(index?: any): any;
+  getCurvePointCount(index?: any): number;
+  getCurvePoint(index?: any, pointIndex?: number): any;
+  getCurvePoints(index?: any): any;
+  setCurvePoints(index?: any, points?: any): this;
+  getCurveColour(index?: any, side?: any): any;
+  setCurveColour(index?: any, side?: any, colour?: any): this;
+  getCurveBlur(index?: any): any;
+  setCurveBlur(index?: any, blur?: any): this;
+  getCurveStrength(index?: any): any;
+  setCurveStrength(index?: any, strength?: any): this;
+  getCurvePressure(index?: any): any;
+  setCurvePressure(index?: any, curve?: any): this;
+  backgroundColour: any;
+  backgroundStrength: any;
+  getCurveKind(index?: any): any;
+  getCurveParametric(index?: any): any;
+  setCurveEllipse(index?: any, centre?: any, radiusX?: any, radiusY?: any, rotation?: number): this;
+  setCurveArc(index?: any, centre?: any, radiusX?: any, radiusY?: any, rotation?: any, angle0?: any, angle1?: any): this;
+  setCurveLine(index?: any, start?: any, end?: any): this;
+  addEllipse(centre?: any, radiusX?: any, radiusY?: any, rotation?: number, leftColour?: any, rightColour?: any): any;
+  addArc(centre?: any, radiusX?: any, radiusY?: any, rotation?: any, angle0?: any, angle1?: any, leftColour?: any, rightColour?: any): any;
+  addLine(start?: any, end?: any, leftColour?: any, rightColour?: any): any;
+  getCurveNodeCount(index?: any): number;
+  getCurveNodeSmooth(index?: any, node?: any): any;
+  setCurveNodeSmooth(index?: any, node?: any, smooth?: any): this;
+}
+
+export class DiffusionFill extends Fill {
+  constructor(handle?: any);
+  static create(curveSet?: any): DiffusionFill;
+  static createDefault(): DiffusionFill;
+  static fromFill(fill?: any): DiffusionFill;
+  clone(): DiffusionFill;
+  cloneWithNewCurves(curveSet?: any): DiffusionFill;
+  readonly curveSet: DiffusionCurveSet;
 }
 
 export class Fill extends HandleObject {
@@ -83,6 +140,14 @@ export class HatchFill extends Fill {
   lineWeight: any;
 }
 
+export class MeshFill extends Fill {
+  constructor(handle?: any);
+  static create(colourMesh?: any): MeshFill;
+  static fromFill(fill?: any): MeshFill;
+  clone(): MeshFill;
+  readonly colourMesh: ColourMesh;
+}
+
 export class NoFill extends Fill {
   constructor(handle?: any);
   static create(): NoFill;
@@ -101,9 +166,14 @@ export class SolidFill extends Fill {
 
 export { BlendMode } from 'affinity:common';
 export function createTypedFill(fillHandle?: any): any;
+export { DiffusionCurveKind } from 'affinity:fills';
+export { DiffusionCurveParametric } from 'affinity:fills';
+export { DiffusionCurveSide } from 'affinity:fills';
 export { FillMask } from 'affinity:fills';
 export { FillType } from 'affinity:fills';
 export { GradientFillType } from 'affinity:fills';
+export function makeFillDescriptor(fillDescriptor?: any): any;
 export { RasterExtendType } from 'affinity:raster';
 export { RasterResamplerType } from 'affinity:raster';
+export { TransformInfo } from 'affinity:fills';
 export { UnitType } from 'affinity:common';

@@ -33,8 +33,9 @@ export class DirectoryIterator extends HandleObject {
 }
 
 export class File extends HandleObject {
-  constructor(path?: string, mode?: any);
-  static length(path?: string): File;
+  constructor(handleOrPath?: any, mode?: any);
+  static create(path?: string, mode?: any): File;
+  static length(path?: string): any;
   static size(path?: string): any;
   open(path?: string, mode?: any): any;
   seek(offset?: any, origin?: any): any;
@@ -64,7 +65,7 @@ export class File extends HandleObject {
   readonly length: number;
   readonly size: any;
   static readAll(path?: string): any;
-  static readAllAsync(path?: string, callback?: (...args: any[]) => any): File;
+  static readAllAsync(path?: string, callback?: (...args: any[]) => any): any;
   readonly promises: FilePromises;
 }
 
@@ -140,5 +141,6 @@ export { FilePermissions } from 'affinity:fs';
 export { PathType } from 'affinity:fs';
 export { PermOptions } from 'affinity:fs';
 export const FileSystemApi: any;
+export { FileSystemSpace } from 'affinity:fs';
 export const fs: any;
 export const promises: any;

@@ -54,9 +54,13 @@ export class StoryDelta extends HandleObject {
   static createParagraphDouble(key?: any, value?: any): StoryDelta;
   static createParagraphString(key?: any, value?: any): StoryDelta;
   static createComposite(deltas?: any): StoryDelta;
+  static createFromGlyphAtts(glyphAtts?: any): StoryDelta;
+  static createFromParagraphAtts(paragraphAtts?: any): StoryDelta;
+  static createFromAtts(glyphAtts?: any, paragraphAtts?: any): StoryDelta;
 }
 
 export { CapsType } from 'affinity:story';
+export { FontField } from 'affinity:fonts';
 export { FontWidth } from 'affinity:fonts';
 export { GlyphAttDoubleType } from 'affinity:story';
 export { GlyphAttStringType } from 'affinity:story';

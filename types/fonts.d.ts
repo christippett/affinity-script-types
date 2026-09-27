@@ -77,6 +77,9 @@ export class Panose extends HandleObject {
   getDistance(other?: any): any;
 }
 
+export { FontField } from 'affinity:fonts';
 export { FontWeight } from 'affinity:fonts';
 export { FontWidth } from 'affinity:fonts';
 export { PanoseType } from 'affinity:fonts';
+export { VariableFontBold } from 'affinity:fonts';
+export { VariableFontItalic } from 'affinity:fonts';

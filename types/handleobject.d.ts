@@ -5,3 +5,7 @@ export class HandleObject {
   readonly handle: any;
 }
 
+export function liveStruct(fields?: any, get?: any, set?: any): any;
+export function livePoint(get?: any, set?: any): any;
+export function liveStructArray(count?: any, fields?: any, get?: any, set?: any): any;
+export function setStructArray(count?: any, values?: any, set?: any, typeName?: any): any;

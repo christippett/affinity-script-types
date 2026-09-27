@@ -268,7 +268,24 @@ export class SVG11 {
   static random(): any;
 }
 
-export { ColourSpaceType } from 'affinity:colours';
+export class colourData {
+  constructor(...args: any[]);
+  static CMYKA8: any;
+  static CMYKAf: any;
+  static ColourStop: any;
+  static HSLAf: any;
+  static IA16: any;
+  static IA8: any;
+  static LABA16: any;
+  static M16: any;
+  static M8: any;
+  static Mf: any;
+  static RGBA16: any;
+  static RGBA8: any;
+  static RGBAuf: any;
+}
+
+export const ColourSpaceType: any;
 export { RasterFormat } from 'affinity:raster';
 export { RasterIntent } from 'affinity:raster';
 export function RGB8(r?: any, g?: any, b?: any): any;

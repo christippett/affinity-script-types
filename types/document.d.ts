@@ -13,6 +13,7 @@ import { Selection } from '/selections';
 import { SpreadNode } from '/nodes';
 import { UnitValueConverter } from '/units';
 import { ImagePlacement } from 'affinity:dom';
+import { InsertionMode } from 'affinity:commands';
 import { NodeChildType } from 'affinity:dom';
 import { RasterFormat } from 'affinity:raster';
 import { UnitType } from 'affinity:common';
@@ -25,6 +26,7 @@ export class Document extends HandleObject {
   readonly path: string;
   readonly rootNode: DocumentNode;
   selection: Selection;
+  hasKeyObject: boolean;
   readonly dpi: number;
   readonly viewdpi: number;
   executeCommand(documentCommand?: any, preview?: any): any;
@@ -45,13 +47,14 @@ export class Document extends HandleObject {
   readonly colourProfile: ColourProfile;
   readonly currentSpread: SpreadNode;
   close(): void;
-  static createFromPreset(preset?: any, landscape?: any): Document;
+  static createFromPreset(preset?: any, isLandscape?: boolean): Document;
   static createFromOptions(options?: any): Document;
   static create(options?: any): Document;
   export(path?: string, exportOptions?: any, exportArea?: any, size?: any): DocumentExportRecords;
   format: any;
   readonly maskFormat: any;
   units: UnitType;
+  readonly insertionMode: InsertionMode;
   readonly unitValueConverter: UnitValueConverter;
   enumerateSnapshots(callback?: (...args: any[]) => any): any;
   readonly snapshotCount: number;
@@ -66,7 +69,7 @@ export class Document extends HandleObject {
   readonly persistentUuid: string;
   static getCurrentAsync(callback?: (...args: any[]) => any): any;
   static loadAsync(path?: string, callback?: (...args: any[]) => any): any;
-  static createFromPresetAsync(preset?: any, landscape?: any, callback?: (...args: any[]) => any): any;
+  static createFromPresetAsync(preset?: any, isLandscape?: boolean, callback?: (...args: any[]) => any): any;
   static createAsync(options?: any, callback?: (...args: any[]) => any): any;
   executeCommandAsync(command?: any, callback?: (...args: any[]) => any, preview?: any): any;
   saveAsync(callback?: (...args: any[]) => any): any;
@@ -97,6 +100,8 @@ export class Document extends HandleObject {
   showSelection(selection?: any, preview?: any): any;
   hideSelection(selection?: any, preview?: any): any;
   showAll(preview?: any): any;
+  unlockAll(preview?: any): any;
+  flipCanvas(isHorizontal?: boolean, preview?: any): any;
   addNode(nodeDefinition?: any, targetNode?: any, childList?: NodeChildType, preview?: any): any;
   setBlendMode(blendMode?: any, setPassthrough?: any, selection?: any, preview?: any): any;
   setOpacity(opacity?: any, selection?: any, preview?: any): any;
@@ -145,6 +150,12 @@ export class Document extends HandleObject {
   setTransparencyFillIsAnchoredToSpread(anchoredToSpread?: any, selection?: any, options?: any, preview?: any): any;
   rasteriseObjects(selection?: any, rasteriseContentsOnly?: any, clipToSpread?: any, preview?: any): any;
   convertToCurves(selection?: any, preview?: any): any;
+  smoothCurves(selection?: any, preview?: any): any;
+  breakCurves(selection?: any, preview?: any): any;
+  joinCurves(selection?: any, isJoinStraight?: boolean, preview?: any): any;
+  reverseCurves(selection?: any, preview?: any): any;
+  mergeCurves(selection?: any, preview?: any): any;
+  separateCurves(selection?: any, preview?: any): any;
   setBrushHatchFillAttributes(attr?: any, selection?: any, options?: any, preview?: any): any;
   setPenHatchFillAttributes(attr?: any, selection?: any, options?: any, preview?: any): any;
   setTransparencyHatchFillAttributes(attr?: any, selection?: any, options?: any, preview?: any): any;
@@ -157,9 +168,29 @@ export class Document extends HandleObject {
   insertGlyphAt(glyph?: any, textNode?: any, position?: any, preview?: any): any;
   imageTrace(edgeThreshold?: any, curveFittingTolerance?: any, selection?: any, preview?: any): any;
   rasterSelectAll(preview?: any): any;
+  rasterSelectReds(preview?: any): any;
+  rasterSelectGreens(preview?: any): any;
+  rasterSelectBlues(preview?: any): any;
+  rasterSelectMidtones(preview?: any): any;
+  rasterSelectShadows(preview?: any): any;
+  rasterSelectHighlights(preview?: any): any;
+  rasterSelectTransparent(preview?: any): any;
+  rasterSelectPartiallyTransparent(preview?: any): any;
+  rasterSelectOpaque(preview?: any): any;
   rasterDeselect(preview?: any): any;
   rasterInvertSelection(preview?: any): any;
   rasterReselect(preview?: any): any;
+  rasterAutoColours(selection?: any, preview?: any): any;
+  rasterAutoContrast(selection?: any, preview?: any): any;
+  rasterAutoLevels(selection?: any, preview?: any): any;
+  rasterAutoWhiteBalance(selection?: any, preview?: any): any;
+  rasterPolarToRectangular(selection?: any, preview?: any): any;
+  rasterRectangularToPolar(selection?: any, preview?: any): any;
+  rasterEdgeDetect(selection?: any, preview?: any): any;
+  rasterHorizontalEdgeDetect(selection?: any, preview?: any): any;
+  rasterVerticalEdgeDetect(selection?: any, preview?: any): any;
+  rasterFill(selection?: any, mode?: any, colour?: any, opacity?: any, blendMode?: any, preview?: any): any;
+  rasterFloodFill(selection?: any, point?: any, tolerance?: any, isContiguous?: boolean, antialias?: any, samplingSource?: any, blendMode?: any, colour?: any, preview?: any): any;
   setRasterSelectionFromPolygon(polygon?: any, operation?: any, isAntialias?: boolean, featherRadius?: any, preview?: any): any;
   setRasterSelectionFromObject(node?: any, useIntensity?: any, operation?: any, preview?: any): any;
   rasterSelectPolygon(polygon?: any, operation?: any, isAntialias?: boolean, featherRadius?: any, preview?: any): any;
@@ -167,7 +198,10 @@ export class Document extends HandleObject {
   featherRasterSelection(radius?: any, preview?: any): any;
   smoothRasterSelection(radius?: any, preview?: any): any;
   outlineRasterSelection(radius?: any, alignment?: any, circular?: any, preview?: any): any;
+  rasterFloodSelect(point?: any, tolerance?: any, isContiguous?: boolean, antialias?: any, operation?: any, samplingSource?: any, preview?: any): any;
   flatten(preview?: any): any;
+  mergeDown(preview?: any): any;
+  mergeSelected(preview?: any): any;
   mergeVisible(preview?: any): any;
   setAllLayerEffectsScaleWithObject(selection?: any, scaleWithObject?: any, preview?: any): any;
   removeAllLayerEffects(selection?: any, preview?: any): any;
@@ -295,8 +329,14 @@ export class Document extends HandleObject {
   setArtboardSizeWithAnchor(artboardInterface?: any, width?: any, height?: any, anchor?: any): any;
   setSpreadDocumentProperties(spreadNode?: any, spreadDocumentProperties?: any): any;
   setArtboardDocumentProperties(artboardInterface?: any, artboardDocumentProperties?: any): any;
+  setPageDocumentProperties(spreadNode?: any, page?: any, pageDocumentProperties?: any): any;
   addArtboard(artboardDefinition?: any, copyProperties?: any, copyGuides?: any, preview?: any): any;
   addRectangularArtboard(rectangle?: any, copyProperties?: any, copyGuides?: any, preview?: any): any;
+  boolOpUnion(selection?: any, preview?: any): any;
+  boolOpSubtract(selection?: any, preview?: any): any;
+  boolOpIntersect(selection?: any, preview?: any): any;
+  boolOpXor(selection?: any, preview?: any): any;
+  divideShapes(selection?: any, preview?: any): any;
   setLayerDescriptionAsync(description?: any, selection?: any, callback?: (...args: any[]) => any, preview?: any): any;
   setTagColourAsync(colour?: any, selection?: any, callback?: (...args: any[]) => any, preview?: any): any;
   setShapeAsync(shape?: any, selection?: any, callback?: (...args: any[]) => any, preview?: any): any;
@@ -383,7 +423,7 @@ export class DocumentPromises {
   readonly document: any;
   static load(path?: string): Promise;
   static getCurrent(): Promise;
-  static createFromPreset(preset?: any, landscape?: any): Promise;
+  static createFromPreset(preset?: any, isLandscape?: boolean): Promise;
   static create(options?: any): Promise;
   export(path?: string, exportOptions?: any, exportArea?: any, size?: any): Promise;
   executeCommand(command?: any, preview?: any): Promise;
@@ -439,6 +479,7 @@ export class LoadDocumentOptions extends HandleObject {
 
 export class NewDocumentOptions extends HandleObject {
   constructor(handle?: any);
+  clone(): NewDocumentOptions;
   static createDefault(): NewDocumentOptions;
   static createFromPreset(documentPreset?: any): NewDocumentOptions;
   static getMaxDpi(unit?: any, dimension?: any): number;
@@ -448,7 +489,6 @@ export class NewDocumentOptions extends HandleObject {
   isTransparentBackground: any;
   createArtboard: any;
   isFacing: any;
-  isLandscape: any;
   isVerticalStack: any;
   isDoublePageStart: any;
   rasterFormat: any;
@@ -469,8 +509,10 @@ export class NewDocumentOptions extends HandleObject {
 
 export { ColourSpaceType } from 'affinity:colours';
 export { DocumentLoadMode } from 'affinity:dom';
+export { DocumentLoadResult } from 'affinity:dom';
 export { ErrorCode } from 'affinity:common';
 export { ImagePlacement } from 'affinity:dom';
+export { InsertionMode } from 'affinity:commands';
 export { PackageResourcesPolicy } from 'affinity:dom';
 export { RasterFormat } from 'affinity:raster';
 export { SpatialAnchor } from 'affinity:dom';

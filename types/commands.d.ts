@@ -65,6 +65,7 @@ export class AddChildNodesCommandBuilder extends HandleObject {
   addToneStretchAdjustmentRasterNode(toneStretchAdjustmentRasterNodeDefinition?: any): any;
   addContainerNode(containerNodeDefinition?: any): any;
   addTableTextNode(tableTextNodeDefinition?: any): any;
+  addMeasurementNode(measurementNodeDefinition?: any): any;
   createCommand(andSelect?: boolean, childListType?: NodeChildType): DocumentCommand;
   createCommandAndReset(andSelect?: boolean, childListType?: NodeChildType): DocumentCommand;
   autoName: any;
@@ -122,6 +123,7 @@ export class DocumentCommand extends HandleObject {
   static createSetShapeBoolParam(selection?: any, key?: any, value?: any): DocumentCommand;
   static createSetShapeEnumParam(selection?: any, key?: any, value?: any): DocumentCommand;
   static createShowAll(): DocumentCommand;
+  static createUnlockAll(): DocumentCommand;
   static createSelectAll(selectOnCurrentLayerOnly?: any): DocumentCommand;
   static createSetText(selection?: any, text?: string): DocumentCommand;
   static createInsertGlyph(selection?: any, glyph?: any): DocumentCommand;
@@ -153,6 +155,17 @@ export class DocumentCommand extends HandleObject {
   static createStopRecordingMacro(): DocumentCommand;
   static createRemoveBackground(): DocumentCommand;
   static createSelectSubject(): DocumentCommand;
+  static createRasterAutoColours(selection?: any): DocumentCommand;
+  static createRasterAutoContrast(selection?: any): DocumentCommand;
+  static createRasterAutoLevels(selection?: any): DocumentCommand;
+  static createRasterAutoWhiteBalance(selection?: any): DocumentCommand;
+  static createRasterPolarToRectangular(selection?: any): DocumentCommand;
+  static createRasterRectangularToPolar(selection?: any): DocumentCommand;
+  static createRasterEdgeDetect(selection?: any): DocumentCommand;
+  static createRasterHorizontalEdgeDetect(selection?: any): DocumentCommand;
+  static createRasterVerticalEdgeDetect(selection?: any): DocumentCommand;
+  static createRasterFill(selection?: any, mode?: any, colour?: any, opacity?: any, blendMode?: any): DocumentCommand;
+  static createRasterFloodFill(selection?: any, point?: any, tolerance?: any, isContiguous?: boolean, antialias?: any, samplingSource?: any, blendMode?: any, colour?: any): DocumentCommand;
   static createSetEditable(selection?: any, editable?: any): DocumentCommand;
   static createSetArtboardEnabled(selection?: any, enabled?: any): DocumentCommand;
   static createSetDocumentUnits(units?: any): DocumentCommand;
@@ -168,6 +181,12 @@ export class DocumentCommand extends HandleObject {
   static createSetGuidesColour(colour?: any): DocumentCommand;
   static createRasteriseObjects(selection?: any, rasteriseContentsOnly?: any, clipToSpread?: any): DocumentCommand;
   static createConvertToCurves(selection?: any): DocumentCommand;
+  static createSmoothCurves(selection?: any): DocumentCommand;
+  static createBreakCurves(selection?: any): DocumentCommand;
+  static createJoinCurves(selection?: any, isJoinStraight?: boolean): DocumentCommand;
+  static createReverseCurves(selection?: any): DocumentCommand;
+  static createMergeCurves(selection?: any): DocumentCommand;
+  static createSeparateCurves(selection?: any): DocumentCommand;
   static createSetBrushFillIsAnchoredToSpread(selection?: any, anchoredToSpread?: any, options?: any): DocumentCommand;
   static createSetPenFillIsAnchoredToSpread(selection?: any, anchoredToSpread?: any, options?: any): DocumentCommand;
   static createSetTransparencyFillIsAnchoredToSpread(selection?: any, anchoredToSpread?: any, options?: any): DocumentCommand;
@@ -178,6 +197,8 @@ export class DocumentCommand extends HandleObject {
   static createSetCurves(curvesInterface?: any, polyCurve?: any): DocumentCommand;
   static createClearPreviews(): DocumentCommand;
   static createFlatten(): DocumentCommand;
+  static createMergeDown(): DocumentCommand;
+  static createMergeSelected(): DocumentCommand;
   static createMergeVisible(): DocumentCommand;
   static createAddDocumentSnapshot(description?: any): DocumentCommand;
   static createDeleteDocumentSnapshot(snapshot?: any): DocumentCommand;
@@ -232,6 +253,7 @@ export class DocumentCommand extends HandleObject {
   static createSetHSLShiftAdjustmentParameters(selection?: any, params?: any): DocumentCommand;
   static createSetCurvesAdjustmentParameters(selection?: any, curvesAdjustmentParameters?: any): DocumentCommand;
   static createSetCurvesAdjustmentColourSpace(selection?: any, colourSpace?: any): DocumentCommand;
+  static createSetDevelopParameters(selection?: any, developParameters?: any): DocumentCommand;
   static createSetBlendGamma(selection?: any, gamma?: any): DocumentCommand;
   static createSetBlendRanges(selection?: any, blendOptions?: any): DocumentCommand;
   static createSetTagValueForKey(selection?: any, key?: any, value?: any): DocumentCommand;
@@ -239,6 +261,15 @@ export class DocumentCommand extends HandleObject {
   static createSetToneCompressionAdjustmentParameters(selection?: any, params?: any): DocumentCommand;
   static createSetToneStretchAdjustmentParameters(selection?: any, params?: any): DocumentCommand;
   static createRasterSelectAll(): DocumentCommand;
+  static createRasterSelectReds(): DocumentCommand;
+  static createRasterSelectGreens(): DocumentCommand;
+  static createRasterSelectBlues(): DocumentCommand;
+  static createRasterSelectMidtones(): DocumentCommand;
+  static createRasterSelectShadows(): DocumentCommand;
+  static createRasterSelectHighlights(): DocumentCommand;
+  static createRasterSelectTransparent(): DocumentCommand;
+  static createRasterSelectPartiallyTransparent(): DocumentCommand;
+  static createRasterSelectOpaque(): DocumentCommand;
   static createRasterDeselect(): DocumentCommand;
   static createRasterInvertSelection(): DocumentCommand;
   static createRasterReselect(): DocumentCommand;
@@ -249,6 +280,7 @@ export class DocumentCommand extends HandleObject {
   static createFeatherRasterSelection(radius?: any): DocumentCommand;
   static createSmoothRasterSelection(radius?: any): DocumentCommand;
   static createOutlineRasterSelection(radius?: any, alignment?: any, circular?: any): DocumentCommand;
+  static createRasterFloodSelect(point?: any, tolerance?: any, isContiguous?: boolean, antialias?: any, operation?: any, samplingSource?: any): DocumentCommand;
   static createGaussianBlurFilter(selection?: any, gaussianBlurParameters?: any): DocumentCommand;
   static createBoxBlurFilter(selection?: any, boxBlurParameters?: any): DocumentCommand;
   static createBilateralBlurFilter(selection?: any, bilateralBlurParameters?: any): DocumentCommand;
@@ -422,10 +454,24 @@ export class DocumentCommand extends HandleObject {
   static createSetGaussianBlurLayerEffectPreserveAlpha(selection?: any, preserveAlpha?: any, enableIfDisabled?: any): DocumentCommand;
   static createSetTextFrameIgnoreTextWraps(selection?: any, ignoreTextWraps?: any): DocumentCommand;
   static createSetTextFrameIgnoreBaselineGrid(selection?: any, ignoreBaselineGrid?: any): DocumentCommand;
+  static createLinkTextFrame(srcNode?: any, destNode?: any): DocumentCommand;
+  static createUnlinkTextFrame(node?: any): DocumentCommand;
+  static createSetMeasurementAnnotationOffset(node?: any, offset?: any): DocumentCommand;
+  static createSetMeasurementShowEndpointMarkers(show?: any): DocumentCommand;
+  static createSetMeasurementUnits(unitType?: any): DocumentCommand;
+  static createSetMeasurementPrecision(useDocumentPrecision?: any, decimalPlaces?: any): DocumentCommand;
+  static createPopulatePictureFrame(contentNode?: any, selection?: any): DocumentCommand;
   static createSetSpreadSizeWithAnchor(spreadNode?: any, width?: any, height?: any, anchor?: any): DocumentCommand;
   static createSetArtboardSizeWithAnchor(artboardInterface?: any, width?: any, height?: any, anchor?: any): DocumentCommand;
   static createSetSpreadDocumentProperties(spreadNode?: any, spreadDocumentProperties?: any): DocumentCommand;
   static createSetArtboardDocumentProperties(artboardInterface?: any, artboardDocumentProperties?: any): DocumentCommand;
+  static createSetPageDocumentProperties(spreadNode?: any, page?: any, pageDocumentProperties?: any): DocumentCommand;
+  static createBoolOpUnion(selection?: any): DocumentCommand;
+  static createBoolOpSubtract(selection?: any): DocumentCommand;
+  static createBoolOpIntersect(selection?: any): DocumentCommand;
+  static createBoolOpXor(selection?: any): DocumentCommand;
+  static createDivideShapes(selection?: any): DocumentCommand;
+  static createFlipCanvas(isHorizontal?: boolean): DocumentCommand;
 }
 
 export class SetHatchFillAttributesCommandBuilder extends HandleObject {
@@ -446,7 +492,7 @@ export class SetHatchFillAttributesCommandBuilder extends HandleObject {
   createTransparencyFillCommand(selection?: any, contentType?: ContentType, useTextSelection?: boolean, applyToAllFills?: boolean): DocumentCommand;
 }
 
-export { DocumentProperties } from '/documentproperties';
+export const DocumentProperties: any;
 export { AntialiasingMode } from 'affinity:dom';
 export { BevelEmbossType } from 'affinity:layereffects';
 export { BlendMode } from 'affinity:common';
@@ -465,9 +511,12 @@ export { NodeChildType } from 'affinity:dom';
 export { NodeMoveType } from 'affinity:dom';
 export { PageBoundingBoxType } from 'affinity:dom';
 export { PredefinedTagKey } from 'affinity:dom';
+export { RasterFillMode } from 'affinity:dom';
+export { RasterFloodFillSamplingSource } from 'affinity:dom';
 export { RasterFormat } from 'affinity:raster';
 export { RasterSelectionLogicalOperation } from 'affinity:dom';
 export { RasterSelectionOutlineAlignment } from 'affinity:dom';
+export { SamplingSource } from 'affinity:dom';
 export { ShapeBoolParam } from 'affinity:geometry';
 export { ShapeEnumParam } from 'affinity:geometry';
 export { ShapeFloatParam } from 'affinity:geometry';

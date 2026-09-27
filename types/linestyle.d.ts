@@ -32,7 +32,7 @@ export class LineStyle extends HandleObject {
   dashPattern: any;
   isResolutionIndependent: boolean;
   hasBalancedDashes: boolean;
-  vectorBrush: any;
+  pathBrush: any;
 }
 
 export class LineStyleDescriptor extends HandleObject {

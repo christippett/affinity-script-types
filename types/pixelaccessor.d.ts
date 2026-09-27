@@ -152,3 +152,6 @@ export class PixelReaderWriterRGBAuf extends HandleObject {
   static create(bitmap?: any): PixelReaderWriterRGBAuf;
 }
 
+export const RasterFormat: any;
+export function createPixelReader(bitmap?: any): any;
+export function createPixelReaderWriter(bitmap?: any): any;

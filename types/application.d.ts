@@ -3,15 +3,43 @@
 import { BuildKind } from 'affinity:application';
 import { UiParadigm } from 'affinity:application';
 
-export class AppDocuments {
-  constructor(...args: any[]);
-  readonly all: Document[];
-  readonly current: Document;
-  load(path: string): Document;
-}
-
 export class Application {
-  constructor();
+  constructor(...args: any[]);
+  undefined
+  readonly documents: AppDocuments;
+  alert(message?: string, title?: string): void;
+  confirm(message?: string, title?: string): boolean;
+  prompt(message?: string, title?: string, initialText?: string): string;
+  chooseFile(): string;
+  alertAsync(message?: string, title?: string, callback?: () => void): void;
+  confirmAsync(message?: string, title?: string, callback?: (result: boolean) => void): void;
+  promptAsync(message?: string, title?: string, initialText?: string, callback?: (result: string | null) => void): void;
+  chooseFileAsync(callback?: (path: string | null) => void): void;
+  readonly compileDate: string;
+  readonly platformName: string;
+  readonly shortVersion: string;
+  readonly version: string;
+  readonly buildVersion: number;
+  readonly majorVersion: number;
+  readonly minorVersion: number;
+  readonly revisionVersion: number;
+  readonly documentVersion: number;
+  readonly buildKind: BuildKind;
+  readonly productCopyrightMessage: string;
+  readonly productFullName: string;
+  readonly productLongName: string;
+  readonly productPrimaryFileExtension: string;
+  readonly productVersionName: string;
+  readonly productShortName: string;
+  readonly suiteFullName: string;
+  readonly uiParadigm: UiParadigm;
+  readonly argC: number;
+  readonly argV: string[];
+  readonly args: string[];
+  readonly settings: ApplicationSettings;
+  readonly getUserDesktopPath: string;
+  readonly userDesktopPath: string;
+  static readonly resourcesPath: string;
   readonly documents: AppDocuments;
   alert(message?: string, title?: string): void;
   confirm(message?: string, title?: string): boolean;
@@ -47,12 +75,24 @@ export class Application {
   readonly userDesktopPath: string;
 }
 
+export class ApplicationDocuments {
+  constructor(...args: any[]);
+  undefined
+  static readonly all: any;
+  static readonly current: any;
+  static load(path?: string): any;
+}
+
 export class ApplicationSettings {
   constructor(...args: any[]);
+  undefined
+  loadPSDWithEditableText: boolean;
+  readonly undoLimit: number;
+  static readonly allowCodeGenerationFromStrings: any;
   loadPSDWithEditableText: boolean;
   readonly undoLimit: number;
 }
 
-export const app: any;
 export { BuildKind } from 'affinity:application';
 export { UiParadigm } from 'affinity:application';
+export const app: any;

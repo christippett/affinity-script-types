@@ -79,6 +79,7 @@ export class Selection extends HandleObject {
   readonly items: SpanCollection;
   readonly nodes: any;
   readonly firstNode: any;
+  hasKeyObject: boolean;
   add(nodeOrItem?: any): any;
   addNode(node?: any): any;
   addItem(item?: any): any;

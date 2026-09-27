@@ -17,6 +17,22 @@ export class NodeRenderingEngine extends RasterObject {
   static create(node?: any, format?: any, options?: any): NodeRenderingEngine;
 }
 
+export class NodeRenderingEngineOptions extends HandleObject {
+  constructor(...args: any);
+  static create(): NodeRenderingEngineOptions;
+  clone(): NodeRenderingEngineOptions;
+  downResamplerType: any;
+  upResamplerType: any;
+  isPerfectClipping: boolean;
+  antialias: any;
+  ditherGradients: any;
+  isMaskRenderingMode: boolean;
+  clipToSpread: any;
+  allowDegradedBitmaps: any;
+  isIsolatedRendering: boolean;
+  drawBackground: any;
+}
+
 export class PixelBuffer extends RasterObject {
   constructor(handle?: any);
   static create(width?: any, height?: any, format?: any): PixelBuffer;
