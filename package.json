@@ -30,7 +30,8 @@
     "init": "node generate-types.mjs --init",
     "init:ts": "node generate-types.mjs --init:ts",
     "build": "node generate-types.mjs --out-dir .",
-    "generate": "node generate-types.mjs"
+    "generate": "node generate-types.mjs",
+    "validate": "node scratch/compare-types.mjs"
   },
   "keywords": [
     "affinity",
