@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/christippett/affinity-script-types/compare/v1.3.0...v1.4.0) (2026-11-05)
+
+
+### Features
+
+* base type generation on official Affinity SDK declarations ([#5](https://github.com/christippett/affinity-script-types/issues/5)) ([1a5a46c](https://github.com/christippett/affinity-script-types/commit/1a5a46c3ab4dbc1ceec0425fc0d2e831ef677d0e))
+
 ## [1.3.0](https://github.com/christippett/affinity-script-types/compare/v1.2.0...v1.3.0) (2026-09-27)
 
 
